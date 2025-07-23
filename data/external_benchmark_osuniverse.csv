@@ -1,0 +1,9 @@
+﻿id,Name,Model version,Agent,Paper,Wood,Bronze,Silver,Gold,Weighted Score,Cost,Duration (seconds),Notes,Source,Source link
+recbTcR0VcO22PhxR,Computer use agent with computer-use-preview-2025-03-11,computer-use-preview-2025-03-11,Computer use agent,100.00%,86.21%,75.00%,34.38%,9.09%,47.80%,$124.00,55921.0,,OSUniverse Paper,https://arxiv.org/pdf/2505.03570
+reca8hBVJjJ8YCYuw,Claude Computer Use with claude-3-5-sonnet-20241022,claude-3-5-sonnet-20241022,Claude Computer Use,100.00%,53.45%,43.75%,21.88%,0.00%,28.36%,$73.00,26611.0,,OSUniverse Paper,https://arxiv.org/pdf/2505.03570
+rec7c6zquoDnXGgys,AgentDesk-based ReACT with claude-3-5-sonnet-20241022 ,claude-3-5-sonnet-20241022,AgentDesk-based ReACT,90.91%,56.90%,39.58%,9.38%,0.00%,23.44%,$49.00,29335.0,,OSUniverse Paper,https://arxiv.org/pdf/2505.03570
+recVwsWsTN123cM0Q,QWEN-based ReACT with qwen2.5-vl-72b-instruct,Qwen2.5-VL-72B-Instruct,QWEN-based ReACT,90.91%,46.55%,31.25%,6.25%,0.00%,18.64%,$63.00,96500.0,,OSUniverse Paper,https://arxiv.org/pdf/2505.03570
+recaPGaftqlOiGhLM,AgentDesk-based ReACT with gemini-2.5-pro-exp-03-25 ,gemini-2.5-pro-exp-03-25,AgentDesk-based ReACT,90.91%,15.52%,18.75%,3.12%,0.00%,9.59%,$24.00,30997.0,,OSUniverse Paper,https://arxiv.org/pdf/2505.03570
+recxtja3SQ7xBN9x6,AgentDesk-based ReACT with gemini-2.0-flash-001,gemini-2.0-flash-001,AgentDesk-based ReACT,90.91%,13.79%,14.58%,3.12%,0.00%,8.26%,$4.00,45558.0,,OSUniverse Paper,https://arxiv.org/pdf/2505.03570
+recnnx44lqU1ivOYw,AgentDesk-based ReACT with gpt-4o-2024-11-20 ,gpt-4o-2024-11-20,AgentDesk-based ReACT,100.00%,6.90%,12.50%,3.12%,0.00%,6.79%,$78.00,50337.0,,OSUniverse Paper,https://arxiv.org/pdf/2505.03570
+rec35N6v6vBDXRnUM,AgentDesk-based ReACT with gemini-1.5-pro-002,gemini-1.5-pro-002,AgentDesk-based ReACT,90.91%,3.45%,12.50%,3.12%,0.00%,6.12%,$23.00,29673.0,,OSUniverse Paper,https://arxiv.org/pdf/2505.03570

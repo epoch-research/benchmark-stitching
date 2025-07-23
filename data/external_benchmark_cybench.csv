@@ -1,0 +1,21 @@
+﻿id,Model version,Unguided % Solved,Subtask-Guided % Solved,Subtasks % Solved,Unguided most difficult task solved (minutes),Subtask-Guided most difficult task solved (minutes),Notes,Source,Source link
+recZdBmmrzod4SvRl,o3-mini-2025-01-31_medium,22.5%,,,42.0,,"""* Results from HAL leaderboard evaluation
+
+† The scores for OpenAI o3-mini and OpenAI o1-mini are inflated because HAL likely ran on a fork of the Inspect framework that leaked the answer to a task that both models completed successfully. Their Unguided % Solved scores have been adjusted downward by 2.5% (to 22.5% and 10% respectively) and their FSTs have been updated to reflect their most difficult tasks solved excluding the leaked task (42 min for o3-mini and 11 min for o1-mini).""
+
+Assuming medium reasoning effort.",Cybench leaderboard,https://cybench.github.io/
+reccK2H4ppj3E4QcM,claude-3-7-sonnet-20250219,20.0%,,,11.0,,"""* Results from HAL leaderboard evaluation""",Cybench leaderboard,https://cybench.github.io/
+rec7SnJJ5vaTPzZMS,gpt-4.5-preview-2025-02-27,17.5%,,,11.0,,"""* Results from HAL leaderboard evaluation""",Cybench leaderboard,https://cybench.github.io/
+recnDZnKntPQUMNMP,claude-3-5-sonnet-20240620,17.5%,15.0%,43.9%,11.0,11.0,,Cybench leaderboard,https://cybench.github.io/
+reca4ghOZAGJnaIQP,gpt-4o-2024-11-20,12.5%,17.5%,28.7%,11.0,52.0,Assuming latest version,Cybench leaderboard,https://cybench.github.io/
+recDdu0Wr7UcjeILN,o1-mini-2024-09-12_medium,10.0%,,,11.0,,"""* Results from HAL leaderboard evaluation
+
+† The scores for OpenAI o3-mini and OpenAI o1-mini are inflated because HAL likely ran on a fork of the Inspect framework that leaked the answer to a task that both models completed successfully. Their Unguided % Solved scores have been adjusted downward by 2.5% (to 22.5% and 10% respectively) and their FSTs have been updated to reflect their most difficult tasks solved excluding the leaked task (42 min for o3-mini and 11 min for o1-mini).""
+
+Assuming medium reasoning effort.",Cybench leaderboard,https://cybench.github.io/
+recBEOU9mpDvDjB0J,claude-3-opus-20240229,10.0%,12.5%,36.8%,11.0,11.0,,Cybench leaderboard,https://cybench.github.io/
+recrEGfmnK38cjFjn,o1-preview-2024-09-12,10.0%,10.0%,46.8%,11.0,11.0,,Cybench leaderboard,https://cybench.github.io/
+recHTQDbjXmORU18G,Llama-3.1-405B-Instruct,7.5%,15.0%,20.5%,9.0,11.0,,Cybench leaderboard,https://cybench.github.io/
+recFsRheuwg1wunwf,Mixtral-8x22B-Instruct-v0.1,7.5%,5.0%,15.2%,9.0,7.0,,Cybench leaderboard,https://cybench.github.io/
+reco8bWKr3VP7mW4o,gemini-1.5-pro-001,7.5%,5.0%,11.7%,9.0,6.0,,Cybench leaderboard,https://cybench.github.io/
+recqUzjd97hyzZN2f,Meta-Llama-3-70B-Instruct,5.0%,7.5%,8.2%,9.0,11.0,,Cybench leaderboard,https://cybench.github.io/

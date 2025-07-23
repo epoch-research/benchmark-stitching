@@ -1,0 +1,135 @@
+﻿id,Name,Model version,EM,Shots,Notes,Source,Source link
+recoTsRA8ILsdFhsM,Claude 3.5 Sonnet (20241022),claude-3-5-sonnet-20241022,80.9%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recZAYS2AtKUwDAot,DeepSeek v3,DeepSeek-V3,80.3%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rectxjtMFzEfdNd3Q,Claude 3.5 Sonnet (20240620),claude-3-5-sonnet-20240620,79.9%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recosbed3WAJ7x0aX,Gemini 1.5 Pro (002),gemini-1.5-pro-002,79.5%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recWbQsttPCe4RW4T,Gemini 1.5 Pro (001),gemini-1.5-pro-001,77.2%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rec4k5yqvGWnSlnLK,Qwen2 Instruct (72B),qwen2-72b-instruct,76.9%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+receM7r5loSsHAQw3,Claude 3 Opus (20240229),claude-3-opus-20240229,76.8%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recIRlQ5EAWn5dxqD,Amazon Nova Pro,amazon.nova-pro-v1:0,75.8%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rec7uXJcDwu5vAB0v,GPT-4o (2024-05-13),gpt-4o-2024-05-13,74.8%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recP6zUYu6rVqvynx,GPT-4 (initial release),gpt-4-0314,86.4%,5,,GPT-4 Technical Report,https://arxiv.org/pdf/2303.08774
+recxRfXGUWwfxzfMT,Palmyra-X-004,,73.9%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recngZX6kgPdpEuvJ,GPT-4o (2024-08-06),gpt-4o-2024-08-06,73.8%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+reccKxm0VqsklwpFa,GPT-4 (0613),gpt-4-0613,73.5%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recKDxkbfoASopZz7,Mistral Large 2 (2407),mistral-large-2407,72.5%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recGFT80UG5ZvEXom,Gemini 2.0 Flash (Experimental),gemini-2.0-flash-exp,71.7%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recbChoe3AEIXUMHg,Yi Large (Preview),,71.2%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recTZoT00f1052qmh,GPT-4 Turbo (2024-04-09),gpt-4-turbo-2024-04-09,71.1%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rec4IdPlkVEWoAke2,Qwen1.5 Chat (110B),,70.4%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recya8zx93N6YFh4J,Gemini 1.5 Flash (001),gemini-1.5-flash-001,70.3%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recrhlTc9IULolRYJ,PaLM-2 (Unicorn),,70.2%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recraXT1q5kVa9Df9,Palmyra X V3 (72B),,70.2%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+reczWpbUvk8LZHdwj,Mixtral (8x22B),Mixtral-8x22B-v0.1,70.1%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rec6xx0AwDEsiaUS8,GPT-4 Turbo (1106 preview),gpt-4-turbo,69.9%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recWvSXL72D2hpbVl,Llama 3 (70B),Meta-Llama-3-70B-Instruct,69.5%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+reccNX56mRCIhx9ok,Amazon Nova Lite,amazon.nova-lite-v1:0,69.3%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rec1aPizKw4Q63HiH,Jamba 1.5 Large,,68.3%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recIlo0YrdpQ2gmEe,Gemini 1.5 Flash (002),gemini-1.5-flash-002,67.9%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recvPdPH4F3YB9X2m,Solar Pro,,67.9%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recIC2lbeIoOMCnU9,Phi-3 (14B),Phi-3-medium-128k-instruct,67.5%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recYAn1b7tiMc4vIW,Claude 3.5 Haiku (20241022),claude-3-5-haiku-20241022,67.1%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rec66ukiUXgRuE5uX,GPT-4o mini (2024-07-18),gpt-4o-mini-2024-07-18,66.8%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recvSF9bkUFYJFbvW,Gemma 2 Instruct (27B),gemma-2-27b-it,66.4%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recFv7M6aEx8RaC1z,Claude 3 Haiku (20240307),claude-3-haiku-20240307,66.2%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recjSB9vhRshMrbfW,Phi-3 (7B),,65.9%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recE3DF6ClfScS431,Claude 3 Sonnet (20240229),claude-3-sonnet-20240229,65.2%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recjx70KTlRekGQ02,Yi (34B),Yi-34B,65.0%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recHxyrzN6ysHgwup,Mixtral (8x7B 32K seqlen),,64.9%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recN7w14y80rqwibJ,Qwen1.5 (72B),,64.7%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+receSMvaZsWAJGCwz,Gemma 2 Instruct (9B),gemma-2-9b-it,64.5%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rec3x29hlWlm49CQP,Claude 2.1,claude-2.1,64.3%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recNBl9C5PMTK1z60,DBRX Instruct,,64.3%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recSzBzlqINbmZstc,DeepSeek LLM Chat (67B),,64.1%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recMu6jniW4Q1aHhj,Amazon Nova Micro,amazon.nova-micro-v1:0,64.0%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rec27Ld4GRYCOplnG,Claude 2.0,claude-2.0,63.9%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recMfHwyb3g0GU3WP,Mistral Large (2402),mistral-large-2402,63.8%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recwIQ8Mq5bF9pkt0,Claude v1.3,claude-1.3,63.1%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rec5zO5kkq0fxUAov,Claude Instant 1.2,claude-instant-1.2,63.1%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recpbIA4MZ2d0bMHo,Qwen1.5 (32B),qwen1.5-32B,62.8%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recgNYd9sZSHzqlh3,Qwen1.5 (14B),qwen1.5-14B,62.6%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recgWVSaehLn2uc2n,Palmyra X V2 (33B),,62.1%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rec24Dl5sNevybHc0,Mistral Medium (2312),mistral-medium-2312,61.8%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+receZjlh6qpQqkcqQ,GPT-3.5 Turbo (0613),gpt-3.5-turbo-0613,61.4%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+receRMAyrZg4S22XH,PaLM-2 (Bison),,60.8%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+reccvR6S88KxSkuED,Mistral NeMo (2402),,60.4%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recShUHfQj3yvMmET,Llama 3 (8B),Meta-Llama-3-8B-Instruct,60.2%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recKStU0sPWNiLWCM,Mistral Small (2402),mistral-small-2402,59.3%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rectFxVzTinEXE5UP,Command R Plus,c4ai-command-r-plus-08-2024,59.0%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recRL4emx0yUKHstE,LLaMA (65B),LLaMA-65B,58.4%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recdbbEpQDnuQx1SM,Mistral v0.1 (7B),Mistral-7B-v0.1,58.4%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recTOe7AnWWDiRdsD,Jamba 1.5 Mini,,58.2%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recg1lDZgeQXcOhJk,Jamba Instruct,,58.2%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recOpGv66pVIzJc2y,Llama 2 (70B),Llama-2-70b-hf ,58.0%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+receF4qeBwFbaGr6r,Arctic Instruct,,57.5%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rec9XaJ2TmQNbln0Q,Gemma (7B),gemma-7b,57.1%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recFmlmIXPZeKd0uT,Qwen1.5 (7B),Qwen1.5-7B,56.9%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recl2ayHYyWSQ7ejk,GPT-3.5 (text-davinci-002),text-davinci-002,56.8%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recuAOzevJhAkVd3J,GPT-3.5,text-davinci-002,70.0%,5,,GPT-4 Technical Report,https://arxiv.org/pdf/2303.08774
+recalVfY5uZ17cXy1,Command R,c4ai-command-r-08-2024,56.7%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recNIoSP9zPHcNC2Y,GPT-3.5 (text-davinci-003),text-davinci-003,55.5%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recDQ1QpgC68ANVnv,Gemini 1.0 Pro (002),,53.4%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recQDuDGOq1wY5Ouj,Yi (6B),Yi-6B,53.0%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rech1ZHqErScy64bs,Command,,52.5%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recOjVJ9mVKxRJb67,Phi-2,phi-2,51.8%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recxGM6lCcs0CnKWO,Mistral Instruct v0.3 (7B),Mistral-7B-Instruct-v0.3,51.0%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+rec3Lgpx99X6l1FYA,Falcon (40B),falcon-40b,50.7%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recHeILlp9WyfKuQk,Llama 2 (13B),Llama-2-13b,50.5%,5,,Stanford CRFM Leaderboard,https://crfm.stanford.edu/helm/lite/latest/#/leaderboard/mmlu
+recvrlr1UHnsu2xMG,Claude instant,,73.4%,5,5-shot CoT,Model Card and Evaluations for Claude Models,https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/claude-2-model-card.pdf
+recMiCaKbG8RgAL4z,Claude 1.3,claude-1.3,77.0%,5,5-shot CoT,Model Card and Evaluations for Claude Models,https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/claude-2-model-card.pdf
+recrV38I6BcgNumAG,Claude 2,claude-2.0,78.5%,5,5-shot CoT,Model Card and Evaluations for Claude Models,https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/claude-2-model-card.pdf
+recJEnP48cP1MNsrP,Qwen 1.8B,Qwen-1_8B,28.2%,5,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recZMyuEA1HyQDC9A,Qwen 7B,Qwen-7B,45.0%,5,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+reci4VBEctqPF5t2B,Qwen 14B,Qwen-14B,53.4%,5,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+receYgtoMItZ5byvT,LLaMA-2 7B,Llama-2-7b,45.3%,5,"5-shot top-1
+",Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+recm3ckG9rQdlSf3G,LLaMA-2 13B,Llama-2-13b,54.8%,5,"5-shot top-1
+",Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+rec5aVLAAe2uwnAJ3,Mistral 7B,,62.5%,5,"5-shot top-1
+",Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+recFxjYqOdtTFaKbb,Gemma 2B,gemma-2b,42.3%,5,"5-shot top-1
+",Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+recVGRLvxWiFAKPkj,Gemma 7B,gemma-7b,64.3%,5,"5-shot top-1
+",Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+rec2QbPaiM3fs3ojk,Mixtral 8x7B,Mixtral-8x7B-v0.1,70.6%,5,,Mixtral of Experts,https://arxiv.org/pdf/2401.04088
+recUe3PPejBJft24I,DeepSeek-V2 Base,DeepSeek-V2,78.4%,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+rec1e9rTGH12ziqp2,Qwen2.5 72B Base,Qwen2.5-72B,85.0%,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+rec7Kb0dlps0bAwVq,LLaMA-3.1 405B Base,Llama-3.1-405B,84.4%,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+reciHYY3MaHRp7o7O,DeepSeek-V3 Base,DeepSeek-V3,87.1%,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+recIRX5Xrwuj0aVsw,phi-1.5,phi-1_5,37.6%,2,"We use the harness-eval zero-shot accuracy on PIQA, Hellaswag, OpenbookQA, 2-shot performance on MMLU,",Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recGm5EDNDIETSYi6,Yi 6B,Yi-6B,63.2%,5,"We report the overall results for MMLU[27](5-shot), CMMLU[42] (5-shot), Gaokao-Bench[90] (5-shot), and BigBench[72] Hard (BBH[74]) (3-shot).",Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recrn20mUuMopGxXJ,Yi-9B,,68.4%,5,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recwCEStuvtsY9T89,Yi 34B,Yi-34B,76.3%,5,"We report the overall results for MMLU[27](5-shot), CMMLU[42] (5-shot), Gaokao-Bench[90] (5-shot), and BigBench[72] Hard (BBH[74]) (3-shot).",Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recZxu6DjE1qtZ1S3,Falcon 7B,falcon-7b,35.0%,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
+recz02AVGuolhygEY,Falcon 40B,falcon-40b,56.9%,5,,Falcon2-11B Technical ReportFalcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
+reca5QOZscaMohhwc,Falcon2-11B,falcon-11b,58.4%,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
+rec47dDuJMqw0UtNo,Falcon-180B,falcon-180B,70.6%,5,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recFoOkw8h4blebt7,Nemotron-4 15B,,58.7%,5,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+rechuNXbQCiXvI5bb,Baichuan 1-7B,Baichuan-7B,42.3%,5,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recL0KmTLb9YnVqAX,Baichuan 2-7B-Base,Baichuan-2-7B-Base,54.2%,5,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recCxbVxrA9fWanQp,Baichuan 1-13B-Base,Baichuan-13B-Base,51.6%,5,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+rec2lAAR2TzfQNZIn,Baichuan 2-13B-Base,Baichuan-2-13B-Base,59.2%,5,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recBm3x8Mkas41pg2,Phi-3-mini,Phi-3-mini-4k-instruct,68.8%,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+reclGoqueJP6ji9WZ,Phi-3-small,Phi-3-small-8k-instruct,75.7%,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recCmqAcPDN7z3eOd,Phi-3-medium,,78.0%,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recZMvyAbMp0eIx88,Phi-2,,56.3%,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recwT2hhSXlrSRq1X,InternLM (104B),,67.2%,5,,InternLM: A Multilingual Language Model with Progressively Enhanced Capabilities,https://static.aminer.cn/upload/pdf/127/1564/656/6481884993eaf7045294a0c4_0.pdf
+recPr3djloYa7CtTW,Phi-4 14b,,84.8%,5,"""Specifically, we used log-likelihood evaluations for MMLU (5-shot)""",Phi-4 Technical Report,http://arxiv.org/abs/2412.08905
+recokPFC1wM7clrm7,Phi-3 14b,,77.9%,5,"Specifically, we used log-likelihood evaluations for MMLU (5-shot)",Phi-4 Technical Report,http://arxiv.org/abs/2412.08905
+recaLqeKOZiJFuyWC,Qwen2.5 14b instruct,qwen2.5-14b-instruct,79.9%,5,"Specifically, we used log-likelihood evaluations for MMLU (5-shot)",Phi-4 Technical Report,http://arxiv.org/abs/2412.08905
+rec9BQTN7H8M50fyc,GPT 4o-mini,gpt-4o-mini-2024-07-18,81.8%,5,"Specifically, we used log-likelihood evaluations for MMLU (5-shot)",Phi-4 Technical Report,http://arxiv.org/abs/2412.08905
+recFwE99pUPS1RrqR,Llama3.3 70b instruct,Llama-3.3-70B-Instruct,86.3%,5,"Specifically, we used log-likelihood evaluations for MMLU (5-shot)",Phi-4 Technical Report,http://arxiv.org/abs/2412.08905
+recbl49vkZltt7Qu7,Qwen2.5 72b instruct,qwen2.5-72b-instruct,85.3%,5,"Specifically, we used log-likelihood evaluations for MMLU (5-shot)",Phi-4 Technical Report,http://arxiv.org/abs/2412.08905
+recTErMEF70Oq8pZU,GPT-4o,gpt-4o-2024-11-20,88.1%,5,"Specifically, we used log-likelihood evaluations for MMLU (5-shot)",Phi-4 Technical Report,http://arxiv.org/abs/2412.08905
+recNkiYry1lAvuSwK,Gopher,Gopher (280B),60.0%,5,,"Scaling Language Models: Methods, Analysis & Insights from Training Gopher",http://arxiv.org/abs/2112.11446
+recuAsFQiyYxqtm21,GPT-3,text-davinci-001,43.9%,5,,"Scaling Language Models: Methods, Analysis & Insights from Training Gopher",http://arxiv.org/abs/2112.11446
+recXxnvP42eSSUf1r,MPT 7B,mpt-7b,30.8%,5,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recsvME0N7N3lHCNM,MPT 30B,mpt-30b,47.9%,5,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recJMYoLpkfhVACXE,ChatGLM2 6B,,47.9%,5,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+rec43wZbfZGjTvUxq,LLaMA 7B,LLaMA-7B,35.6%,5,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recvzXv36THWKaBgb,LLaMA 13B,LLaMA-13B,47.7%,5,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+receAb9h5D57B0gYh,LLaMA 33B,LLaMA-33B,58.7%,5,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+rec4EA8N1sXX54njV,LLaMA 2 34B,Llama-2-34b,62.6%,5,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recEQPQjoxax64ZSN,LLaMA 2 70B,Llama-2-70b-hf ,69.8%,5,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+reca4GRikJuwzhgQj,StableBeluga2 70B,,68.6%,5,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+rechQVncuCixOKIxc,Inflection 1,Inflection-1,72.7%,5,,Inflection-1 ,https://inflection.ai/blog/inflection-1

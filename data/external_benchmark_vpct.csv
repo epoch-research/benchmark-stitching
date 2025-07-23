@@ -1,0 +1,17 @@
+﻿id,Model version,Correct,Notes,Source,Source link
+recLSdu00YI6KGPj1,claude-3-5-sonnet-20241022,33.0%,Assuming latest version of Claude 3.5 Sonnet,VPCT leaderboard,https://cbrower.dev/vpct
+rec9Z8ze3bQlJ2HJ8,gpt-4o-mini-2024-07-18,34.0%,,VPCT leaderboard,https://cbrower.dev/vpct
+recKCsz6Np1hFa9Io,o1-2024-12-17_medium,37.0%,Assuming medium reasoning effort for o1,VPCT leaderboard,https://cbrower.dev/vpct
+recDPItICe3yrLPoM,gemini-2.5-flash-preview-04-17,38.0%,,VPCT leaderboard,https://cbrower.dev/vpct
+recM5woYQkKuJ3OW3,claude-3-7-sonnet-20250219,39.0%,,VPCT leaderboard,https://cbrower.dev/vpct
+recM0nqnoo0kn90F5,gpt-4o-2024-11-20,40.0%,,VPCT leaderboard,https://cbrower.dev/vpct
+recJ6k9ReFhyFGQtA,gemini-2.5-pro-preview-05-06,40.5%,,VPCT leaderboard,https://cbrower.dev/vpct
+recmQTMUVSEqkDA69,gpt-4.5-preview-2025-02-27,45.0%,,VPCT leaderboard,https://cbrower.dev/vpct
+recoN8YNFbyWyRXtj,claude-3-7-sonnet-20250219_64K,35.0%,,VPCT leaderboard,https://cbrower.dev/vpct
+recbwV5ELYHiGvFL7,gemini-2.5-pro-preview-03-25,48.0%,,VPCT leaderboard,https://cbrower.dev/vpct
+recFneRecBUyPfN2q,o3-2025-04-16_medium,52.0%,Assuming medium reasoning effort,VPCT leaderboard,https://cbrower.dev/vpct
+recMIWcdIKL4MZxYy,o4-mini-2025-04-16_medium,57.5%,Assuming medium reasoning effort,VPCT leaderboard,https://cbrower.dev/vpct
+recGWkeppRnxmGMKI,claude-sonnet-4-20250514,30.0%,,VPCT leaderboard,https://cbrower.dev/vpct
+recJ544ON0UcQQyf3,claude-opus-4-20250514,33.0%,,VPCT leaderboard,https://cbrower.dev/vpct
+recWXF1ad4xrXBBTa,claude-3-7-sonnet-20250219_32K,34.0%,,VPCT leaderboard,https://cbrower.dev/vpct
+recR0EgymqTMRoVGM,claude-opus-4-20250514_16K,38.0%,,VPCT leaderboard,https://cbrower.dev/vpct

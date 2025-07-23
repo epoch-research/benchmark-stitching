@@ -1,0 +1,26 @@
+﻿id,Name,Model version,Accuracy,Notes,Shots,Source,Source link
+recvoaYztvUBvsqKw,PaLM 540B,PaLM 540B,53.4%,,0,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
+reczsCmGsOF2cuiTX,PaLM 540B,PaLM 540B,53.6%,,1,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
+recUDUft5bxQOJL2u,PaLM 540B,PaLM 540B,68.0%,,few,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
+recBqXIB4reE9vndJ,PaLM 2-S,PaLM 2-S,53.6%,,1,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
+recBNf9DNfr8q6ppe,PaLM 2-M,PaLM 2-M,57.4%,,1,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
+recGMiq3GPLHIV4OI,PaLM 2-L,PaLM 2-S,56.2%,,1,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
+rec3L2OKijkkbrBp1,Llama 3 8B,Meta-Llama-3-8B-Instruct,45.0%,"""For pre-trained models, we use a 0-shot config and report average accuracy. We run these as choice task.""",0,The Llama 3 Herd of Models,https://arxiv.org/pdf/2407.21783
+recQmSGZukK5lqht3,Llama 3 70B,Meta-Llama-3-70B-Instruct,47.6%,"""For pre-trained models, we use a 0-shot config and report average accuracy. We run these as choice task.""",0,The Llama 3 Herd of Models,https://arxiv.org/pdf/2407.21783
+recRs51YLI4tT8MOL,Llama 3 405B,Llama-3.1-405B-Instruct,49.2%,"""For pre-trained models, we use a 0-shot config and report average accuracy. We run these as choice task.""",0,The Llama 3 Herd of Models,https://arxiv.org/pdf/2407.21783
+recqLehIM25p3OUAM,phi-1.5,phi-1_5,37.2%,,0,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+reccJipEIOFHnc7eW,Falcon-180B,falcon-180B,64.2%,,1,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recGJPRGYdYCQ5VHo,Phi-3-mini,Phi-3-mini-4k-instruct,83.2%,,10,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recwHz5iXxJOt3fJZ,Phi-3-small,Phi-3-mini-4k-instruct,88.0%,,10,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recVdd6z2Oqgmy2eF,Phi-3-medium,,87.4%,,10,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+rec8R0aZuAAgy9GXj,Phi-2,phi-2,73.6%,,10,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recGiuywzkfGkjfa9,GPT-3 (175B),text-davinci-001,57.6%,,"0
+",GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recEoJmc12bQ9cfIJ,GLaM,GLaM (MoE),53.4%,,0,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+rec1lRzMumzZON196,GPT-3 (175B),text-davinci-001,58.8%,,1,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recLCaTp5a71NVAdg,GLaM,GLaM (MoE),55.2%,,1,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recSDCmLFvBeiQOqG,GPT-3 (175B),text-davinci-001,65.4%,,100,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recKeJAcYdE1fqMp0,GLaM,GLaM (MoE),63.0%,,32,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recFibgTqlVSOR9VX,GPT-3 Zero-Shot,text-davinci-001,57.6%,,0,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
+rec6lQxIK5zT1TvsP,GPT-3 One-Shot,text-davinci-001,58.8%,,1,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
+recV8gA88czCjdZG5,GPT-3 Few-Shot,text-davinci-001,65.4%,,few,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
