@@ -208,3 +208,9 @@ marimo/_lsp/
 __marimo__/
 
 .DS_Store
+
+# Analysis outputs
+outputs/
+
+# Claude Code
+.claude/

@@ -132,11 +132,12 @@ df_gsobench.dropna(inplace=True)
 df_gsobench["benchmark"] = "GSO-Bench"
 df_gsobench["performance"] = pd.to_numeric(df_gsobench["performance"].str.rstrip('%'), errors="raise") / 100
 
-df_mcbench = pd.read_csv("data/external_benchmark_mcbench.csv")[["Model version", "Win rate", "Source"]]
-df_mcbench = df_mcbench.rename(columns={"Model version": "model", "Win rate": "performance", "Source": "source"})
-df_mcbench.dropna(inplace=True)
-df_mcbench["benchmark"] = "MCBench"
-df_mcbench["performance"] = pd.to_numeric(df_mcbench["performance"].str.rstrip('%'), errors="raise") / 100
+# MCBench commented out - arena winrate metric doesn't fit well with benchmark stitching approach
+# df_mcbench = pd.read_csv("data/external_benchmark_mcbench.csv")[["Model version", "Win rate", "Source"]]
+# df_mcbench = df_mcbench.rename(columns={"Model version": "model", "Win rate": "performance", "Source": "source"})
+# df_mcbench.dropna(inplace=True)
+# df_mcbench["benchmark"] = "MCBench"
+# df_mcbench["performance"] = pd.to_numeric(df_mcbench["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_osuniverse = pd.read_csv("data/external_benchmark_osuniverse.csv")[["Model version", "Weighted Score", "Source"]]
 df_osuniverse = df_osuniverse.rename(columns={"Model version": "model", "Weighted Score": "performance", "Source": "source"})
@@ -192,7 +193,7 @@ benchmarks = [
     df_deepresearch, # really new, probably not
     df_geobench, # probably not?
     df_gsobench, # probably not, really new! https://x.com/slimshetty_/status/1932491280971608253
-    df_mcbench, # probably not? wasn't able to find anything
+    # df_mcbench, # commented out - arena winrate metric doesn't fit benchmark stitching
     # df_osuniverse, # seems likely very sensitive to the specific agent scaffold, messes up the fit
     df_terminal, # mildly since very recent, e.g. 
     # df_videomme 
