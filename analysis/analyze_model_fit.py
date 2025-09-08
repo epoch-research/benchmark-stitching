@@ -181,6 +181,90 @@ def main():
     
     save_results_summary(results, output_dir / "analysis_summary.txt")
     
+    # Additional Figure: AI model capabilities & benchmark difficulties (from notebook)
+    print("Creating additional figure from notebook...")
+    
+    # ── 1)  PREP THE TWO DATA SETS ────────────────────────────────────────────
+    # --- models / capabilities
+    cap_df = df_capabilities_clean.copy()
+    cap_df["date_obj"] = pd.to_datetime(cap_df["date_obj"])
+    cap_df.sort_values("date_obj", inplace=True, ignore_index=True)
+    cap_dates_num = mdates.date2num(cap_df["date_obj"])
+    cap_values = cap_df["estimated_capability"]
+
+    # --- benchmarks / difficulties
+    bench_df = df_benchmarks_sorted.copy()
+    bench_df["date_obj"] = pd.to_datetime(bench_df["benchmark_release_date"])
+    bench_df.sort_values("date_obj", inplace=True, ignore_index=True)
+    bench_dates_num = mdates.date2num(bench_df["date_obj"])
+    bench_values = bench_df["estimated_difficulty"]
+
+    # ── 2)  PLOT BOTH SERIES ON ONE AXES ───────────────────────────────────────
+    fig_notebook, ax_notebook = plt.subplots(figsize=(14, 8))
+
+    cap_plot = ax_notebook.scatter(cap_dates_num, cap_values,
+                                  marker='o', s=60, color='tab:blue', label='Model capability')
+    bench_plot = ax_notebook.scatter(bench_dates_num, bench_values,
+                                    marker='s', s=60, color='tab:orange', label='Benchmark difficulty')
+
+    # ── 3)  ANNOTATE SELECTED POINTS ───────────────────────────────────────────
+    annotate_models = {
+        "gpt-4-0613",
+        "claude-3-opus-20240229", 
+        "gemini-2.5-pro-exp-03-25",
+        "o1-preview-2024-09-12",
+    }
+
+    for i, (d, y, name) in enumerate(zip(cap_dates_num, cap_values, cap_df["model"])):
+        if name not in annotate_models:
+            continue
+        y_offset = 0.05 if i % 2 == 0 else -0.05
+        va = 'bottom' if i % 2 == 0 else 'top'
+        ax_notebook.annotate(name, xy=(d, y), xytext=(0, y_offset),
+                           textcoords='offset points', ha='center', va=va, fontsize=12)
+
+    annotate_benchmarks = {
+        "MMLU",
+        "Winogrande",
+        "GPQA diamond",
+        "OSWorld",
+        "Cybench", 
+        "Terminal Bench",
+        "TriviaQA",
+    }
+
+    for i, (d, y, name) in enumerate(zip(bench_dates_num, bench_values, bench_df["benchmark_name"])):
+        if name not in annotate_benchmarks:
+            continue
+        y_offset = 0.05 if i % 2 == 0 else -0.05
+        va = 'bottom' if i % 2 == 0 else 'top'
+        ax_notebook.annotate(name, xy=(d, y), xytext=(0, y_offset),
+                           textcoords='offset points', ha='center', va=va, fontsize=12)
+
+    # ── 4)  AXES COSMETICS & LEGEND ────────────────────────────────────────────
+    ax_notebook.set_xlabel("Release date", fontsize=14)
+    ax_notebook.set_ylabel("Estimated capability / difficulty", fontsize=14)
+    ax_notebook.set_title("AI model capabilities & benchmark difficulties", fontsize=18)
+
+    # date ticks every 3 months
+    ax_notebook.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+    ax_notebook.xaxis.set_major_locator(mdates.MonthLocator(interval=3))
+    fig_notebook.autofmt_xdate()
+
+    # y-range covers both series
+    min_y = min(cap_values.min(), bench_values.min()) - 0.1
+    max_y = max(cap_values.max(), bench_values.max()) + 0.1
+    ax_notebook.set_ylim(min_y, max_y)
+
+    # x-range exactly as requested
+    # ax_notebook.set_xlim(datetime(2023, 1, 1), datetime(2025, 7, 1))
+
+    ax_notebook.grid(True, linestyle='--', alpha=0.3)
+    ax_notebook.legend(fontsize=12)
+
+    plt.tight_layout()
+    plt.savefig(output_dir / "capabilities_and_benchmarks_over_time.png", dpi=300, bbox_inches='tight')
+    
     print(f"Analysis complete! Results saved to {output_dir}")
     print(f"Key findings:")
     print(f"  - Capability growth rate: {growth_stats['mean_slope']:.3f} ± {growth_stats['std_slope']:.3f} per year")

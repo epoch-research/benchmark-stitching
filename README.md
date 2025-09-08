@@ -68,3 +68,23 @@ All analyses save results to `outputs/[analysis_name]/` with:
 - Detailed parameters and statistics
 
 See `CLAUDE.md` for comprehensive documentation of the methodology, repository structure, and usage examples.
+
+## Creating figures and tables
+- Figure 1: Estimated model capabilities and benchmark difficulties over time - `analyze_model_fit.py`
+- Figure 2: top N models and top M benchmarks - `analyze_model_fit.py`
+- Figure 3: 3 year forecast - `analyze_forecasting.py`
+- Figure 4: More forecasts - `analyze_forecasting.py`
+- Figure 5: algorithmic progress - `analyze_algorithmic_progress.py`
+- Figure 6: synthetic data - `software_singularity.ipynb`
+- Figure 7: synthetic data - `software_singularity.ipynb`
+- Figure 8: analyzing data - `analyze_data_exploration.py`
+- Figure 9: estimated distributions of benchmark difficulties and model capabilities - `model_fit.ipynb`
+- Table 3: model estimated capabilities - `model_fit.ipynb`
+- Figure 10: residuals per benchmark - `model_fit.ipynb`
+- Table 4: annual compute efficiency improvements - `algorithmic_progress.ipynb`
+- Table 5: annual estimated capabilities increase at fixed compute budget - `algorithmic_progress.ipynb`
+- Figure 11: Noise structure - `model_fit.ipynb`
+- Figure 12: varying the amount of overlap - `model_fit.ipynb` (did this manually by changing the overlap in `data_loader.py`. The relevant line is `models_to_keep = model_benchmark_counts[model_benchmark_counts > 3].index`, where you change the number.)
+- Figure 13: changing benchmark anchors and showing error bars - `change_anchor.ipynb`
+- Figure 14: benchmark splits - `splitting_benchmarks.ipynb`
+- Table 7: cross validation and other stats - `cross_validation.ipynb`
