@@ -53,7 +53,11 @@ def main():
     anchor_slope = 1
     
     df_filtered, df_capabilities, df_benchmarks = fit_statistical_model(
-        scores_df, anchor_benchmark, anchor_difficulty, anchor_slope
+        scores_df, 
+        anchor_mode="benchmark",
+        anchor_benchmark=anchor_benchmark, 
+        anchor_difficulty=anchor_difficulty, 
+        anchor_slope=anchor_slope
     )
     
     print(f"Model fitted with {len(df_capabilities)} models and {len(df_benchmarks)} benchmarks")
@@ -64,7 +68,12 @@ def main():
     
     # Calculate capability growth rate
     print("Calculating capability growth rate...")
-    growth_stats = calculate_capability_growth_rate(df_capabilities_sorted)
+    
+    # Remove rows with NaN values in date or estimated_capability
+    df_capabilities_clean = df_capabilities_sorted.dropna(subset=['date', 'estimated_capability'])
+    print(f"Using {len(df_capabilities_clean)} models (removed {len(df_capabilities_sorted) - len(df_capabilities_clean)} with missing dates)")
+    
+    growth_stats = calculate_capability_growth_rate(df_capabilities_clean)
     
     print(f"Mean capability growth rate: {growth_stats['mean_slope']:.4f} ± {growth_stats['std_slope']:.4f} per year")
     print(f"95% CI: [{growth_stats['ci_2_5']:.4f}, {growth_stats['ci_97_5']:.4f}]")
@@ -74,7 +83,7 @@ def main():
     
     # 1. Model capabilities over time
     fig1, ax1 = plot_capabilities_over_time(
-        df_capabilities_sorted,
+        df_capabilities_clean,
         title="Model Capabilities Over Time",
         save_path=output_dir / "capabilities_over_time.png"
     )
@@ -83,8 +92,8 @@ def main():
     fig2, (ax2a, ax2b) = plt.subplots(2, 1, figsize=(12, 10), sharex=True)
     
     # Top plot: Model capabilities
-    ax2a.scatter(df_capabilities_sorted['date_obj'], 
-                df_capabilities_sorted['estimated_capability'], 
+    ax2a.scatter(df_capabilities_clean['date_obj'], 
+                df_capabilities_clean['estimated_capability'], 
                 alpha=0.7, s=30, label='Model Capabilities')
     ax2a.set_ylabel('Estimated Capability')
     ax2a.set_title('Model Capabilities and Benchmark Difficulties Over Time')
@@ -111,7 +120,7 @@ def main():
     
     # 3. Model capabilities ranking
     fig3, ax3 = plt.subplots(figsize=(12, 8))
-    top_models = df_capabilities_sorted.nlargest(20, 'estimated_capability')
+    top_models = df_capabilities_clean.nlargest(20, 'estimated_capability')
     
     y_pos = np.arange(len(top_models))
     bars = ax3.barh(y_pos, top_models['estimated_capability'])
@@ -135,7 +144,7 @@ def main():
     
     # Save data
     print("Saving data...")
-    df_capabilities_sorted.to_csv(output_dir / "model_capabilities.csv", index=False)
+    df_capabilities_clean.to_csv(output_dir / "model_capabilities.csv", index=False)
     df_benchmarks_sorted.to_csv(output_dir / "benchmark_difficulties.csv", index=False)
     
     # Save results summary

@@ -1,5 +1,9 @@
-﻿id,Name,Average score,Model version,Notes,Source,Source link
-recR3uOS0BLHqkwxL,Claude 4 Opus,51%,claude-opus-4-20250514_2K,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-reciPR9ZrmNzGMR41,Claude 4 Sonnet,51%,claude-sonnet-4-20250514_2K,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-recZOsBdFIcclcWLC,O3,46%,o3-2025-04-16_medium,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-recXizbzd3b0y22vq,Gemini 2.5 Pro Preview 06/05,40%,gemini-2.5-pro-preview-06-05,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+﻿id,Average score,Model version,Agent,Notes,Source,Source link
+recR3uOS0BLHqkwxL,55.1%,claude-opus-4-20250514_2K,checked,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+reciPR9ZrmNzGMR41,54.4%,claude-sonnet-4-20250514_2K,checked,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recZOsBdFIcclcWLC,53.0%,o3-2025-04-16_medium,checked,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recXizbzd3b0y22vq,44.9%,gemini-2.5-pro-preview-06-05,checked,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+rec8Lh9Jnh2v0o4mA,36.8%,DeepSeek-R1-0528,checked,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+rec7sfVScDTbadXOF,47.8%,claude-3-7-sonnet-20250219_2K,checked,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recAThc100QSltAYp,55.9%,grok-4-0709,checked,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+reckInEIVVazTCcXH,11.9%,gemini-2.5-pro,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai

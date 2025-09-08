@@ -1,0 +1,12 @@
+﻿id,Name,Model version,Score,Source,Source link,Notes
+recjdKkQvD43gCZIG,GPT-3 Few-Shot,text-davinci-001,71.8%,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165,
+recZEQUJTXyiuueTC,T5-Base,T5-Base,75.1%,Switch Transformers: Scaling to Trillion Parameter Models with Simple and Eﬃcient Sparsity,http://arxiv.org/abs/2101.03961,
+rec295HTE28FPSMIh,Switch-Base,Switch-Base,73.3%,Switch Transformers: Scaling to Trillion Parameter Models with Simple and Eﬃcient Sparsity,http://arxiv.org/abs/2101.03961,
+recyMbNGI1OZRdoDb,T5-Large,T5-Large,82.7%,Switch Transformers: Scaling to Trillion Parameter Models with Simple and Eﬃcient Sparsity,http://arxiv.org/abs/2101.03961,
+recOy50NpQz1hM303,Switch-Large,Switch-Large,84.7%,Switch Transformers: Scaling to Trillion Parameter Models with Simple and Eﬃcient Sparsity,http://arxiv.org/abs/2101.03961,
+reccyDHcByzWJvzEC,deBERTa,,,,,
+rectWEngA0ZxOhjXS,T5-Small,T5-Small,63.3%,Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,https://arxiv.org/pdf/1910.10683,
+recKOjji7dPv8CMeY,T5-Base,T5-Base,76.2%,Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,https://arxiv.org/pdf/1910.10683,
+recn2AEOdhT6ox1s3,T5-Large,T5-Large,82.3%,Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,https://arxiv.org/pdf/1910.10683,
+recsyCrajtvMBWsU7,T5-3B,T5-3B,86.4%,Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,https://arxiv.org/pdf/1910.10683,
+recyISVSc8fWnwPWJ,T5-11B,T5-11B,88.9%,Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,https://arxiv.org/pdf/1910.10683,

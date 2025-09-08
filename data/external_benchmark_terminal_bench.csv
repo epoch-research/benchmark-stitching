@@ -1,5 +1,5 @@
 ﻿id,Agent,Name,Model version,Accuracy mean,Accuracy SE,Notes,Source,Source link
-recQJgn8smPVLOz3F,Claude Code,claude-3-7-sonnet,claude-3-7-sonnet-20250219,35.2%,1.3%,The choice of thinking effort is made by the Claude code scaffolding,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recQJgn8smPVLOz3F,Claude Code,claude-3-7-sonnet,claude-3-7-sonnet-20250219,35.2%,1.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
 recHaZf9xmVOj8cxI,Terminus,claude-3-7-sonnet,claude-3-7-sonnet-20250219,30.6%,1.9%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
 recVIdPAUDakmSij0,Terminus,gpt-4.1,gpt-4.1-2025-04-14,30.3%,2.1%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
 recV9BNYucqd7iG2f,Terminus,o3,o3-2025-04-16_medium,30.2%,0.9%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
@@ -14,3 +14,12 @@ recpCwaNamDZITNIF,Codex CLI,codex-mini-latest,codex-mini-2025-05-16,11.3%,1.6%,,
 reccyI4aWNN41GEYb,Codex CLI,gpt-4.1,gpt-4.1-2025-04-14,8.3%,1.4%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
 reci9iwpZzPhCpaQl,Terminus,Qwen3-235B,qwen3-235b-a22b,6.6%,1.4%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
 rec49wbTlhSEHbviQ,Terminus,DeepSeek-R1,DeepSeek-R1,5.7%,0.7%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recJ3nXlRqC9WnAG2,Claude Code,claude-4-opus,claude-opus-4-20250514,43.2%,1.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recSkVDPx6rtq4E2s,Claude Code,claude-4-sonnet,claude-sonnet-4-20250514,35.5%,1.0%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recFWex768BAyAaDV,Warp,Multiple,,52.0%,1.0%,No model version selected due to there being multiple models,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recJ4sPKZxcbLkH3H,Terminus,GLM-4.5,GLM-4.5,39.9%,1.0%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+rec6wmJqssZgjwxpw,Engine Labs,claude-4-sonnet,claude-sonnet-4-20250514,44.8%,0.8%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+rec0IOb2BpGeKVaId,Goose,claude-4-opus,claude-opus-4-20250514,42.0%,1.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recqxf2Cu2L8JBwhj,Goose,claude-4-sonnet,claude-sonnet-4-20250514,34.3%,1.0%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recWCekkW8mdwUF80,OpenHands,claude-4-sonnet,claude-sonnet-4-20250514,41.3%,0.7%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recMALFWwwE9SZZ9M,TerminalAgent,Qwen3-32B,Qwen3-32B,15.5%,1.1%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard

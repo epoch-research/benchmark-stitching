@@ -1,0 +1,207 @@
+﻿id,Name,Score,Model version,Shots,Notes,Source,Source link
+recHVOcpl5EdpYNHo,,75.0%,mpt-7b,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recZ0BDsmFyBaGQ3q,,67.5%,falcon-7b,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+rect9TCmUKTJmVpeh,ChatGLM2,79.0%,chatglm2-6b,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recHXC9HRaDYhPd1W,,64.1%,internlm-7b,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+reczVJsR2mliD98Nl,,87.5%,internlm-20b,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recs3JGd4KHA3XC6w,XVerse,64.2%,,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recXyZbdJhwQiIzZO,,63.2%,Baichuan-2-7B-Base,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recyIRzjbpg4lwyF3,,67.0%,Baichuan-2-13B-Base,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recpwKBXvQCelNvqc,,76.5%,LLaMA-7B,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recE0zMVHow2T8FrJ,,78.7%,LLaMA-13B,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+rec82RLAgLSGjWYqo,,84.4%,LLaMA-33B,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recmtoGmjxfWqgb9P,,86.6%,LLaMA-65B,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recqrWI0B1Ddw0iFT,,77.4%,Llama-2-7b,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recRE7Bx5SvbT0CeF,,82.4%,Llama-2-13b,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+rec0UwLPLa3ZNqSaH,,87.7%,Llama-2-70b-hf ,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recaU8WSEEzPkxd7t,,89.4%,StableBeluga2,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recdNVDZXTh5DKble,,68.0%,Qwen-1_8B,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recoOIXstoGV17NnV,,76.4%,Qwen-7B,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recMLnbsklYmrgR72,,86.2%,Qwen-14B,,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recjT2p6s5emF8ljV,,77.4%,Llama-2-7b,0,,Gemma: Open Models Based on Gemini Research and Technology,http://arxiv.org/abs/2403.08295
+recwePxenE1s2MEDc,,81.7%,Llama-2-13b,0,,Gemma: Open Models Based on Gemini Research and Technology,http://arxiv.org/abs/2403.08295
+rechrxxd2cyc5qvCK,Mistral 7b,83.2%,Mistral-7B-Instruct-v0.2,0,,Gemma: Open Models Based on Gemini Research and Technology,http://arxiv.org/abs/2403.08295
+recL1IR83icoHlfOo,,69.4%,gemma-2b,0,,Gemma: Open Models Based on Gemini Research and Technology,http://arxiv.org/abs/2403.08295
+reczCGCIi9ogRGKSQ,,83.2%,gemma-7b,0,,Gemma: Open Models Based on Gemini Research and Technology,http://arxiv.org/abs/2403.08295
+recEBvcI43dfWNYn9,Palmyra X (43B),89.6%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recBQdP8b3eIHdgG6,Llama 2 (70B),88.6%,Llama-2-70b-hf ,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recH6d8ExyapqWoaZ,text-davinci-003,88.1%,text-davinci-003,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rec21epodjC4RKZOx,text-davinci-002,87.7%,text-davinci-002,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recfRB8rclD0fcc5y,Mistral v0.1 (7B),87.4%,Mistral-7B-v0.1,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+reczBOxXmMvGByV42,LLaMA (65B),87.1%,LLaMA-65B,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recyVcZ23aeVIuZ1t,gpt-3.5-turbo-0613,87.0%,gpt-3.5-turbo-0613,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recwJIq7xykbFffHt,LLaMA (30B),86.1%,LLaMA-33B,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recfZCCcAlqZjWlZy,Cohere Command beta (52.4B),85.6%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recn1pl2GKarqRqur,MPT-Instruct (30B),85.0%,mpt-30b-instruct,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recjheArndqKcELeP,Jurassic-2 Jumbo (178B),82.9%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recgEWsM6qDRamDVb,Falcon-Instruct (40B),82.9%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rec5Fx8g4Sl5kQJnD,Jurassic-2 Grande (17B),82.6%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recuQ5Yr1laHCD3E1,Falcon (40B),81.9%,falcon-40b,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rec66hrBDLUlCMOoJ,Anthropic-LM v4-s3 (52B),81.5%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recBGZbrriR4WKJtI,J1-Grande v2 beta (17B),81.2%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recTu0x07WmvoVj5H,Llama 2 (13B),81.1%,Llama-2-13b,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recCLh6aitaIK0n3k,TNLG v2 (530B),80.9%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recPPbDL9r2HfV1gY,Vicuna v1.3 (13B),80.8%,vicuna-13b-v1.3,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recX3iInzqff9NrS7,Cohere Command beta (6.1B),79.8%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recdUJtVpunC6bget,OPT (175B),79.3%,opt-175b,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recD3TNnUPFxbn4hQ,GLM (130B),78.4%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recxCZRbVOQhb2tT7,Alpaca (7B),77.8%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recQSq97M3GsbLA1a,J1-Jumbo v1 (178B),77.6%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recMRgi1BIA6w5w9t,Luminous Supreme (70B),77.5%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recjazJ6sf0ECpJ73,Luminous Extended (30B),76.7%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+reczARKbf0v4uqrJ7,Llama 2 (7B),76.2%,Llama-2-7b,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recuobs1gD4UWl7xG,Cohere xlarge v20221108 (52.4B),76.2%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rec4qGZsK5ZSaigQY,T5 (11B),76.1%,T5-11B,,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recoTFyMtUPbNMDlF,OPT (66B),76.0%,opt-66b,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+reclEbYLWWMUyLey3,Vicuna v1.3 (7B),76.0%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recb9Gg4qx25jTl8T,LLaMA (7B),75.6%,LLaMA-7B,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recqpN4PPkUHOfuzM,Falcon (7B),75.3%,falcon-7b,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rec30xgqfnae4lm1s,InstructPalmyra (30B),75.1%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rec6qSDYmA2l1yMgY,UL2 (20B),74.6%,,,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recxOFYcNdrgrRggF,Jurassic-2 Large (7.5B),74.2%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rec6HBCQ0GWOMrF5x,gpt-3.5-turbo-0301,74.0%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rechDEN0CEV43ECO5,Cohere large v20220720 (13.1B),72.5%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recfjfOx271bgYCFm,davinci (175B),72.2%,davinci,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recmaaOAzTTZ9ON83,J1-Grande v1 (17B),72.2%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recAqzeW1MLJtPsYd,Falcon-Instruct (7B),72.0%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+reclZcm9tVEbwlQyO,Luminous Base (13B),71.9%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recZtrJAUnYfiIeDC,Cohere xlarge v20220609 (52.4B),71.8%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rec8uZxM89GP1el28,LLaMA (13B),71.4%,LLaMA-13B,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recjNKU5sEcFWlNXL,RedPajama-INCITE-Base (7B),71.3%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recmg2FxS47biEbAo,RedPajama-INCITE-Instruct (7B),70.5%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recAvnz7EM41lTjc4,BLOOM (176B),70.4%,bloom,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rectEiEz1royh5rn1,MPT (30B),70.4%,mpt-30b,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recNlN7Ephy9Qgycm,Cohere medium v20221108 (6.1B),70.0%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recn4aWHOTg0GzH9W,TNLG v2 (6.7B),69.8%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recIOGE6gCWTEZ0wx,RedPajama-INCITE-Base-v1 (3B),68.5%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recbwKMNWyLCtVgH6,J1-Large v1 (7.5B),68.3%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+reczcQiBTj6KsB52K,GPT-NeoX (20B),68.3%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rectiwHmHGEhHHtm1,RedPajama-INCITE-Instruct-v1 (3B),67.7%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recuYOjoaQ6LvytSN,Pythia (12B),66.2%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recUc2Ah4ofeadD0N,Cohere medium v20220720 (6.1B),65.9%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recopuZrvouRmaJuY,curie (6.7B),65.6%,curie,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rec06x25JAUWzWalp,GPT-J (6B),64.9%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+reclEf4zZ2oSCUoZq,YaLM (100B),63.4%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recilfbyDQboJy8yr,Pythia (6.9B),63.1%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recZv2dfvg2B38Q8n,text-curie-001,62.0%,text-curie-001,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recuxYuqda0BgQhJY,ada (350M),58.1%,ada,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+rec3r9ODWHvb0JhHT,babbage (1.3B),57.4%,babbage,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recMowoIcCL0xyNCc,text-ada-001,46.4%,text-ada-001,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recB5FNshTVhRpthj,Cohere small v20220720 (410M),45.7%,,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recwFyj4k7N8CWhsj,text-babbage-001,45.1%,text-babbage-001,5,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recUwgPFUdlclbdtt,T0pp (11B),0.0%,,,,Stanford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/boolq
+recspTyjE5hylm1UT,GLaM (MoE) 0.1B/64E,56.6%,,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recaOxFtPf6V24w6g,GLaM (MoE) 1.7B/64E,62.7%,,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recrLAm0to0YVSV7Y,GLaM (MoE) 8B/64E,72.2%,,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recWw9X7YzAz7PgVH,GLaM (MoE) 64B/64E,83.1%,,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+reckrescnS4Hr4jV6,GLaM (Dense) 0.1B,56.6%,,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recITVQC8hpvRj8RU,GLaM (Dense) 1.7B,56.1%,,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recxgNsJvrCeUNMfl,GLaM (Dense) 8B,73.6%,,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recHLid8zAZTuID7C,GLaM (Dense) 137B,78.0%,,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recPFIUksIr65OD9X,GPT3 175B,60.5%,,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recKD79eLM2axAygP,GLaM (MoE) 0.1B/64E,53.6%,,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+reciW6HZ4R0p6DqIe,GLaM (MoE) 1.7B/64E,62.0%,,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+rec5Caj4pOG9OXOBs,GLaM (MoE) 8B/64E,70.8%,,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recRp8hzT443Dchl9,GLaM (MoE) 64B/64E,82.8%,,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+rec7wUP3rSd0EN1m3,GLaM (Dense) 0.1B,55.7%,,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recatsCMZ3NA1IcDI,GLaM (Dense) 1.7B,58.1%,,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recsBMR3cVKQrpoii,GLaM (Dense) 8B,76.4%,,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recGmXkj0jxZLGpE9,GLaM (Dense) 137B,77.5%,,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+rechcklkYf759OmcE,GPT-3 (175B),76.7%,text-davinci-001,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recAlhXalSd2RFZkL,GLaM (MoE) 0.1B/64E,53.6%,,few,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recB4Wd1Xo9PbkLfr,GLaM (MoE) 1.7B/64E,62.0%,,few,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recxndNl6AXgnPs1k,GLaM (MoE) 8B/64E,70.5%,,few,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recg4KwahhytQyS1n,GLaM (MoE) 64B/64E,83.1%,,few,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recs4Q6EOL94J1mze,GLaM (Dense) 0.1B,59.9%,,few,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+rec0cjz8yLer2q5Rb,GLaM (Dense) 1.7B,63.1%,,few,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+rec2hSRioVeeDvVVt,GLaM (Dense) 8B,76.4%,,few,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recIhjPsADstByRUY,GLaM (Dense) 137B,80.5%,,few,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+rec4h1FDNDFDmV32Z,GPT-3 (175B),77.5%,text-davinci-001,few,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recZhel5rsnPzr7yb,Phi-3.5-mini,78.0%,Phi-3.5-mini-instruct,2,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+rec83R4zQ59VpXJGd,Phi-3.5-MoE,84.6%,Phi-3.5-MoE-instruct,2,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+rece8qjazdWTKnvG1,Mistral 7B,80.5%,Mistral-7B-v0.1,2,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recJXBsbsGjM6r8IP,Mistral-Nemo 12B,82.5%,Mistral-Nemo-Base-2407,2,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recauId7IvSgbcDLC,Llama-3.1-In 8B,82.8%,Llama-3.1-8B-Instruct,2,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recht7f4a80DWbgMN,Gemma-2 9B,85.7%,gemma-2-9b,2,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recLLijFlIEJQiniu,Gemini-1.5 Flash,85.8%,gemini-1.5-flash-001,2,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recizVJrP3lam4Dj6,GPT-4o-mini,88.7%,gpt-4o-mini-2024-07-18,2,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recOueG0773kjBUnT,GPT-3,60.5%,text-davinci-001,0,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+reczpDrT20I92v7cm,GPT-3,76.7%,text-davinci-001,1,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+recRdRHAlrhly8hu3,GPT-3,77.5%,text-davinci-001,few,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+recSrLGObTDXVTGLX,MT-NLG,78.2%,Megatron-Turing NLG 530B,0,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+recvGG1jljsdpWBxK,MT-NLG,82.5%,Megatron-Turing NLG 530B,1,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+recIZKFQQyhw23W0n,MT-NLG,84.8%,Megatron-Turing NLG 530B,few,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+recm7HR2MIA1lJTvd,GPT-3,76.4%,text-davinci-001,few,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
+recfTRiyofC2FAKWk,MPT 7B,75.0%,mpt-7b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recy4wDNfg4zU5Kfm,MPT 30B,79.0%,mpt-30b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recbAlTSkblYogQHw,Falcon 7B,67.5%,falcon-7b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recE8phjP9jiZWBfT,Falcon 40B,83.1%,falcon-40b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+reczhmMSNPZ9EJiyg,LLAMA 1 7B,76.5%,LLaMA-7B,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recgnN499a9fPoAEL,LLAMA 1 13B,78.1%,LLaMA-13B,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recFao7zOzUGLtIjN,LLAMA 1 33B,83.1%,LLaMA-33B,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recvXX52834VbbFW3,LLAMA 1 65B,85.3%,LLaMA-65B,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recG4WRS5BghAvk6Y,LLAMA 2 7B,77.4%,Llama-2-7b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+rech3JdcTT3kv3qu5,LLAMA 2 13B,81.7%,Llama-2-13b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recfEGMnrNkXNwPPi,LLAMA 2 34B,83.7%,Llama-2-34b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+reciadFY9H9wkmY3z,LLAMA 2 70B,85.0%,Llama-2-70b-hf ,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recn2QgU7kt60wQMf,GPT-3 175B,60.5%,text-davinci-001,0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recuZQPvxb8IaEpqF,Gopher 280B,79.3%,Gopher (280B),0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recMWwNiBWKAOg6kJ,Chinchilla 70B,83.7%,Chinchilla (70B),0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+reck42cJ26yoLKNtU,PaLM 62B,84.8%,PaLM 62B,0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recjHgaDNUiZ03YYu,PaLM-cont 62B,83.9%,,0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+rectUVBLNget8omGA,PaLM 540B,88.0%,PaLM 540B,0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recWJYo2XN4WQclvW,LLaMA 7B,76.5%,LLaMA-7B,0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recD09aNkSfpjpNGd,LLaMA 13B,78.1%,LLaMA-13B,0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recTV8p9ldsizwhxf,LLaMA 33B,83.1%,LLaMA-33B,0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recvFXQQ05stZUOqm,LLaMA 65B,85.3%,LLaMA-65B,0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recL6VYFLDmi24iX1,Vicuna-13B (v1.1),83.5%,vicuna-13b-v1.1,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+rec0J7W0GcCwspbI5,Llama2-7B,77.9%,Llama-2-7b,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recwSmbQFWdIq6oNj,Llama-7B,73.2%,LLaMA-7B,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recAepoQ1X3IV1zKD,MPT-7B,73.9%,mpt-7b,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+rec7MXZRUX9RKaxzq,Falcon-7B,68.5%,falcon-7b,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recMHT4ZOodYXr7DO,Falcon-rw-1.3B,63.2%,,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recjiJINwIbUczh5B,OPT-1.3B,59.6%,opt-1.3b,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+rec2lQCso9gS2nRx3,GPT-Neo-2.7B,61.8%,gpt-neo-2.7B,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recLUbtWDOXZleRu3,GPT2-XL-1.5B,61.8%,gpt2-xl,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recv7lufYH32PogeY,phi-1.5-web-only (1.3B),63.2%,,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+rec7GiTLwHViwZcV5,phi-1.5-web (1.3B),72.8%,,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recL7N3v3HNGYrMYP,phi-1.5 (1.3B),75.8%,phi-1_5,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recRhDl4Z6NbPmtxb,PalM,88.7%,PaLM 540B,1,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recxf15f7V0ann295,PaLM-2 S,88.1%,PaLM 2-S,1,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+rec8eL2GH4EnQBBS6,PaLM-2 M,88.6%,PaLM 2-M,1,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recEIFrHcE6dr8nui,PaLM-2 L,90.9%,PaLM 2-L,1,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+rec0s5hZESCO9CSIm,Falcon 180B,89.0%,falcon-180B,1,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recwKMMtCzOuwW4c4,GPT-3,60.5%,text-davinci-001,,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+rech2f4n7o3GTNuiE,Gopher,79.4%,Gopher (280B),,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recd1SuMlPypqXymS,Chinchilla,83.7%,Chinchilla (70B),,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recTl1Vbdzvo45D7K,MT-NLG,78.2%,Megatron-Turing NLG 530B,,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recmmwz1UjW3jHsyr,PaLM,88.0%,PaLM 540B,,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recqU7IALE6TynEe2,LLaMA-2 7B,77.4%,Llama-2-7b,,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recPkoBqZap7jXzgB,LLaMA-2 13B,81.7%,Llama-2-13b,,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+rechAJ1zWpe1ZCwMR,LLaMA-2 34B,83.7%,Llama-2-34b,,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recbiZ4NS4ck3z8RR,LLaMA-2 70B,85.0%,Llama-2-70b-hf ,,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recjqB6KY2VD9lRq4,Inflection-1,89.7%,Inflection-1,,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recPpHF47MVPuGYHh,Falcon 7B,73.8%,falcon-7b,,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recuoAdmvVf1gxS0Y,Falcon 40B,81.9%,falcon-40b,,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recAGePlElM7Iyr35,Falcon 180B,87.8%,falcon-180B,,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recEThKkmruDgpAbW,Chinchilla,83.7%,Chinchilla (70B),0,,Training Compute-Optimal Large Language Models,http://arxiv.org/abs/2203.15556
+recqIqa15nYxZ9gnF,Gopher,79.3%,Gopher (280B),0,,Training Compute-Optimal Large Language Models,http://arxiv.org/abs/2203.15556
+rec4Pxnfze9hfW9Rv,GPT-3,60.5%,text-davinci-001,0,,Training Compute-Optimal Large Language Models,http://arxiv.org/abs/2203.15556
+recdV90DkEOlAJrx3,MT-NLG 530B,78.2%,Megatron-Turing NLG 530B,0,,Training Compute-Optimal Large Language Models,http://arxiv.org/abs/2203.15556
+recyTyx10NhAUx6Tx,XGen-7B,74.3%,xgen-7b-8k-base,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recge42MZtxHObbhV,LLaMA-7B,74.9%,LLaMA-7B,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recl6xPFTAG6JhJz6,Falcon-7B,73.8%,falcon-7b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recaiOmdDGH74rhYr,MPT-7B,74.1%,mpt-7b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recWFedHzxqXyOy0H,OpenLLaMA-7B,70.6%,open_llama_7b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+reckzjCj8MFWX4ciG,Redpajama-7B,69.3%,RedPajama-INCITE-7B-Base,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recxDRq4b1ufMQvK9,GPT-neox-20B,64.9%,gpt-neox-20b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recy780ljZMfx4lsm,OPT-13B,65.0%,opt-13b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recZKmrERvEZF19dQ,GPT-J-6B,65.4%,gpt-j-6b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+rec2kgz52vP9geaQT,Dolly-v2-12B,56.3%,dolly-v2-12b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+rec16ATP420iWWI5Q,Cerebras-GPT-13B,61.1%,Cerebras-GPT-13B,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recDlV2VRTJZln7b2,StableLM-alpha-7B,59.0%,stablelm-tuned-alpha-7b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+rec48lEgo5a0lIcCQ,T5-Small,76.4%,T5-Small,,,Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,https://arxiv.org/pdf/1910.10683
+recOwAD9Jhe7hSl9k,T5-Base,81.4%,T5-Base,,,Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,https://arxiv.org/pdf/1910.10683
+recvh3VHfWBGU2p2P,T5-Large,85.4%,T5-Large,,,Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,https://arxiv.org/pdf/1910.10683
+recwuCAISo7vgsHoh,T5-3B,89.9%,T5-3B,,,Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,https://arxiv.org/pdf/1910.10683
+recZoSfzBQ8qwHGbj,T5-11B,91.2%,T5-11B,,,Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,https://arxiv.org/pdf/1910.10683

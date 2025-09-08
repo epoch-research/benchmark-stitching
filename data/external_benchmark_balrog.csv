@@ -23,3 +23,5 @@ recBFyLHvaPPkNhv7,Qwen2-VL-7B-Instruct,3.7%,0.8%,4.0%,2.8%,6.4%,1.7%,1.6%,0.6%,7
 recSOJ5L6wiyC21mt,gemini-2.5-pro-exp-03-25,40.4%,2.2%,80.0%,5.7%,37.3%,4.9%,49.2%,8.2%,56.7%,4.5%,17.5%,6.0%,1.7%,0.2%,25/4/2025,https://github.com/balrog-ai/experiments/tree/main/submissions/LLM/20250425_naive_Gemini-2.5-Pro-Exp-03-25,Balrog Leaderboard,https://balrogai.com/,
 recOo6W8q0IzNh3Fz,grok-3-beta,29.5%,2.2%,62.0%,68.6%,25.0%,4.1%,32.5%,6.9%,33.3%,4.3%,22.5%,6.6%,1.6%,0.4%,25/4/2025,https://github.com/balrog-ai/experiments/tree/main/submissions/LLM/20250425_naive_grok-3,Balrog Leaderboard,https://balrogai.com/,
 recHSLh1tcRzi8OcW,DeepSeek-R1,34.9%,2.1%,74.0%,6.2%,36.4%,3.8%,21.8%,6.1%,50.8%,4.6%,25.0%,6.8%,1.4%,0.5%,10/4/2025,,Balrog Leaderboard,https://balrogai.com/,
+recj1cynwUw30DZ24,grok-4-0709,43.6%,2.2%,76.0%,6.0%,57.3%,3.9%,62.9%,7.9%,45.8%,4.5%,17.5%,6.0%,1.8%,0.8%,23/7/2024,https://github.com/balrog-ai/experiments/tree/main/submissions/LLM/20250713_naive_grok-4,Balrog Leaderboard,https://balrogai.com/,
+recUkPodDLc0rmUT6,gemini-2.5-flash,33.5%,2.2%,68.0%,6.6%,40.0%,4.8%,29.6%,7.2%,50.0%,4.6%,12.5%,5.2%,0.8%,0.4%,22/7/2025,,Balrog Leaderboard,https://balrogai.com/,

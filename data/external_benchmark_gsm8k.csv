@@ -1,0 +1,235 @@
+﻿id,Name,EM,Model version,Shots,Notes,Source,Source link
+rec4CueQU1xHD6ywH,Palmyra X (43B),63.3%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recC9RJ4GUYLfhNZC,code-davinci-002,56.8%,code-davinci-002,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recDLPnJQLx5mPIau,gpt-3.5-turbo-0301,53.1%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec8hZWOfPZGc8t7Q,text-davinci-003,50.6%,text-davinci-003,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recXJZtKCyb4P4SVF,Llama 2 (70B),48.4%,Llama-2-70b-hf ,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recqp1V0mwUdsVRem,gpt-3.5-turbo-0613,46.9%,gpt-3.5-turbo-0613,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recroBXEiAHrbJ0G6,LLaMA (65B),46.6%,LLaMA-65B,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recoDKfXnKDzKIo3R,text-davinci-002,41.5%,text-davinci-002,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recHcwXx5qAtSwauC,Mistral v0.1 (7B),38.1%,Mistral-7B-v0.1,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+reciGMGxgYhthpF6j,MPT-Instruct (30B),34.4%,mpt-30b-instruct,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rece6CXnlwtcJqjXw,Falcon-Instruct (40B),33.8%,falcon-40b-instruct,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recftyEtwpgppPQJY,LLaMA (30B),32.0%,LLaMA-33B,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+reciN3EJDuJw028OV,Falcon (40B),25.0%,falcon-40b,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recpxfs0xcllEJeu8,Llama 2 (13B),24.5%,Llama-2-13b,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec3Y7X7VdJ4nw0QX,Vicuna v1.3 (13B),22.6%,vicuna-13b-v1.3,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recyyp4t07UQ3ZaH5,Jurassic-2 Jumbo (178B),22.5%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recQaQcqamlu5PKSd,Anthropic-LM v4-s3 (52B),17.1%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recth8oFuGYbZWmt3,MPT (30B),16.4%,mpt-30b,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec376aACcpELpmU8,LLaMA (13B),15.4%,LLaMA-13B,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recKwouXHcxopeJf1,TNLG v2 (530B),14.6%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec3SmeOMNoW5COjL,Cohere Command beta (52.4B),13.8%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recEecB1UymnGAnoH,Vicuna v1.3 (7B),13.4%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recOJI8uhjSL51VhF,Llama 2 (7B),13.3%,Llama-2-70b-hf ,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec7OERRU92S60XcW,Jurassic-2 Grande (17B),13.3%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recF0xxpBLdkHHTBY,Luminous Supreme (70B),11.2%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rect1yJAE3NqA5La5,Cohere xlarge v20221108 (52.4B),10.0%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recgExIqpdbU2tFdY,J1-Grande v2 beta (17B),9.6%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recAoaesoiJO7uTlT,BLOOM (176B),9.5%,bloom,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recN3MvbzHfDJYOx0,davinci (175B),9.0%,davinci,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+reczTfwmbEvxPqfHI,LLaMA (7B),8.0%,LLaMA-7B,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recrUXH7eLjFY4EFu,Cohere xlarge v20220609 (52.4B),7.0%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+reclof9kk0IAc7WDr,Luminous Extended (30B),6.7%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recmKV4Tds6c5lIOE,InstructPalmyra (30B),6.3%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+reckbpG01XNBl7qdp,GLM (130B),6.1%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec7RaORATBvc6IMl,J1-Jumbo v1 (178B),5.4%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec3W8elfDYkMa3w5,J1-Grande v1 (17B),5.4%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recSmCfOfOFtxYCEG,GPT-NeoX (20B),5.3%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recPY25oC8cF7JPUD,Falcon-Instruct (7B),5.2%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recsGPbcax6JOyzhx,code-cushman-001 (12B),4.9%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec5Tmjxxco3f4pmV,OPT (175B),4.0%,opt-175b,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recaVUOlS9XK6d01V,Falcon (7B),4.0%,falcon-7b,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec57vShxJRf01fKT,Cohere Command beta (6.1B),3.6%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recNsIcYRc5CWdusZ,GPT-J (6B),3.6%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recIpwVJzviyRFcS1,Pythia (12B),3.2%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recgzzYoN2Obu06FX,Jurassic-2 Large (7.5B),3.0%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec9lz6MoFiMtzQqG,Luminous Base (13B),2.6%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recAvetQksEkPeMk3,UL2 (20B),2.4%,,,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recMSiJgORxKn1mQg,T5 (11B),2.3%,,,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recqOdjgXKSTdUfyz,RedPajama-INCITE-Base (7B),2.1%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recB2wlUPM4E0D3qB,TNLG v2 (6.7B),1.8%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recNXn5TKfIeDBCX1,OPT (66B),1.8%,opt-66b,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recRe4sqJ9eCgfgO7,Cohere large v20220720 (13.1B),1.8%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec3OZAHG2RCDqVZG,Cohere medium v20221108 (6.1B),1.7%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec0RRaE0qUMJBpPU,RedPajama-INCITE-Instruct (7B),1.6%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recG9AtQzNyxmyNcN,curie (6.7B),1.6%,curie,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recJFFrPczWzQmiBR,Cohere medium v20220720 (6.1B),1.5%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recRuFpBQ6ExADb5h,Pythia (6.9B),1.4%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recfTVUoayvro0LCh,J1-Large v1 (7.5B),1.4%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recHIR8DMclXpho37,Alpaca (7B),1.2%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recgstza6y5IkJb4W,RedPajama-INCITE-Instruct-v1 (3B),1.1%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+reckFHsWLvLSdMn74,RedPajama-INCITE-Base-v1 (3B),1.0%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec2iML006beoMXFn,babbage (1.3B),0.7%,babbage,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recV2EaPfHNBvr0hb,ada (350M),0.6%,ada,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec191CB0bMuoPuGK,text-curie-001,0.6%,text-curie-001,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recjNFwom3HA53xs5,Cohere small v20220720 (410M),0.4%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec0V8SZd0uPBlgyp,text-ada-001,0.4%,text-ada-001,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recPnofjm1vlqkfwp,text-babbage-001,0.0%,text-babbage-001,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+recF8TzpBQW5P8RoY,T0pp (11B),0.0%,,,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec3Ozt3KxljpCaIz,YaLM (100B),0.0%,,5,,Standford HELM,https://crfm.stanford.edu/helm/classic/latest/#/groups/gsm
+rec1iVL6AnUBdhAMO,,14.6%,Llama-2-7b,,,Gemma: Open Models Based on Gemini Research and Technology,http://arxiv.org/abs/2403.08295
+recZfU3XHlvMu46sP,,28.7%,Llama-2-13b,,,Gemma: Open Models Based on Gemini Research and Technology,http://arxiv.org/abs/2403.08295
+rec0smApu8Mq2BOsY,Mistral 7B,35.4%,Mistral-7B-Instruct-v0.2,,,Gemma: Open Models Based on Gemini Research and Technology,http://arxiv.org/abs/2403.08295
+recYegDkHsIh69wUi,,17.7%,gemma-2b,,,Gemma: Open Models Based on Gemini Research and Technology,http://arxiv.org/abs/2403.08295
+reccmnrR6t9A5tbfZ,,46.4%,gemma-7b,,,Gemma: Open Models Based on Gemini Research and Technology,http://arxiv.org/abs/2403.08295
+recAv3zIYd8lTYBBs,QWEN 14B,60.1%,Qwen-14B,8,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+recoYBTgs9ooX9x9h,Nemotron-4 15B,46.0%,Nemotron-4 15B,8,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+rec87oNIjkEeALpVG,LLaMA-2 13B,28.7%,Llama-2-13b,8,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+recrojyKXfVp438n3,LLaMA-2 34B,42.2%,Llama-2-34b,8,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+reczmqKWq7JkTfpa6,Baichuan-2 13B,52.8%,Baichuan-2-13B-Base,8,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+recxjNidfoLOuJkgZ,Mistral 7B,35.4%,Mistral-7B-v0.1,8,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+recgxNHJ9ndu3AnUb,Gemma 7B,46.4%,gemma-7b,8,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+recUjhbldxzRr4009,GPT-4,90.0%,gpt-4-0613,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recVbcJgszljOW7Kk,GPT-3.5 Turbo,57.8%,gpt-3.5-turbo-0613,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recUCtsCjtPJ6tU2S,LLAMA-7B,9.8%,LLaMA-7B,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recQl93FcUulVDpYh,LLAMA 2-7B,16.2%,Llama-2-7b,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recQY9qdqwrrOh82b,MPT-7B,8.6%,mpt-7b,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recaRQgaTBxBau6lP,Falcon-7B,5.5%,falcon-7b,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recyALBBs1Nq8G6a1,ChatGLM 2-6B,28.9%,chatglm2-6b,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recXedJgypN9E4urq,Baichuan 1-7B,9.2%,Baichuan-7B,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+rec7vTJoXibWJVN3I,Baichuan 2-7B-Base,24.5%,Baichuan-2-7B-Base,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recLX4SpBZawYMjNC,LLaMA-13B,20.5%,LLaMA-13B,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recci7OCQPpd5JeXn,LLAMA 2-13B,28.9%,Llama-2-13b,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+rec7e2U57eUieqNli,Vicuna-13B,28.1%,vicuna-13b-v1.1,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recuh3Mbm6vmZve96,Chinese-Alpaca-Plus-13B,12.0%,,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+rec2HoqksNZOicM5E,XVERSE-13B,18.0%,,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+rec9UJIdmGpZliFSB,Baichuan 1-13B-Base,26.8%,Baichuan-13B-Base,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recGqlIrVF6UiDf9Q,Baichuan 2-13B-Base,52.8%,Baichuan-2-13B-Base,4,"""For GSM8K, we adopt 4-shot testing derived from OpenCompass (OpenCompass, 2023).""",Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+reccYIVbofOBOPknJ,Phi-3.5-mini,86.2%,Phi-3.5-mini-instruct,8,CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recDI1z24XCRLbrny,Phi-3.5-MoE,88.7%,Phi-3.5-MoE-instruct,8,CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+rec4iro1y3Mse53sB,Mistral 7B,54.4%,Mistral-7B-v0.1,8,CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recdbE6j0lBrX5byj,Mistral-Nemo 12B,84.2%,Mistral-Nemo-Base-2407,8,CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recOcYLjPO17LCZQP,Llama-3.1-In 8B,82.4%,Llama-3.1-8B-Instruct,8,CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+rec7skWHWt0sr5KwE,Gemma-2 9B,84.9%,gemma-2-9b,8,CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recx5qxkmLl6QN3sM,Gemini-1.5 Flash,82.4%,gemini-1.5-flash-001,8,CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recf8nbb0TVMGvbfa,GPT-4o-mini,91.3%,gpt-4o-mini-2024-07-18,8,CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recxA7ihKzVOLgmMY,GPT-3.5,57.1%,text-davinci-003,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recG9xCafZa19bziY,GPT-4,92.0%,,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recifLu8aRHvaMnoy,Falcon 180B,54.4%,falcon-180B,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recJXNf2osPIVcVJ1,Qwen 7B,51.7%,Qwen-7B,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recHeOf9hsuMTB0Nt,Qwen 14B,61.3%,Qwen-14B,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+rect5qryhROP5cKF1,Baichuan 2 7B,24.5%,Baichuan-2-7B-Base,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recS8XnSp8vwS08Nq,Baichuan 2 13B,22.1%,Baichuan-2-13B-Base,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recalDZW02BuhxxDe,LlaMA 2 7B,16.7%,Llama-2-7b,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recp9w8gDc4q84LTY,LlaMA 2 34B,42.2%,Llama-2-34b,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recFypD2efi4otQCy,LlaMA 2 70B,56.8%,Llama-2-70b-hf ,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+reclGrtotrnt1MfuQ,Mistral 7B,47.5%,Mistral-7B-v0.1,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+reccIpxndujtTs3bV,InternLM 20B,62.9%,internlm-20b,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recGiS1gp3htD6tJL,Skywork 7B,55.8%,,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recA2Ili8KeePjYZs,Yi 6B,32.5%,Yi-6B,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recpRrI1v4ew4AMpx,Yi 34B,67.2%,Yi-34B,,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recwye183nOXecXAC,MPT 7B,6.8%,mpt-7b,8,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+rec6UjNAzgKa4aDoH,MPT 30B,15.2%,mpt-30b,8,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recbtjtAzdu0vswek,Falcon 7B,6.8%,falcon-7b,8,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+reccgFXJBe3qRmPEN,Falcon 40B,19.6%,falcon-40b,8,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recMklFp5jpk1l1Dr,LLAMA 1 7B,11.0%,LLaMA-7B,8,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recmVk4n0ii6xMABS,LLAMA 1 13B,17.8%,LLaMA-13B,8,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recSODAewQMPlTkes,LLAMA 1 33B,35.6%,LLaMA-33B,8,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+rec4NnfPf2dSIvbCy,LLAMA 1 65B,50.9%,LLaMA-65B,8,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recUQV5eq2Y7i9TTm,LLAMA 2 7B,14.6%,Llama-2-7b,8,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recjXiUynLVUcfghM,LLAMA 2 13B,28.7%,Llama-2-13b,8,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recoM9rGsGnmYfvdg,LLAMA 2 34B,42.2%,Llama-2-34b,8,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+rec087bDThmBmUa7C,LLAMA 2 70B,56.8%,Llama-2-70b-hf ,8,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recMPdjwlUnS63u4r,PaLM 8B,4.1%,,,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recdeOIkjqHvhVHBF,PaLM 62B,33.0%,PaLM 62B,,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+rec0taUYKp9iVVfCD,PaLM 540B,56.5%,PaLM 540B,,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+rec0tX9cIDwIb6fEu,Minerva 8B,16.2%,,,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recAZyShgnuUMMwcM,Minerva 62B,52.4%,,,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recGMaBgBDmrpUvvI,Minerva 540B,68.5%,,,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recTfzfAsGKOt9prx,LLaMA 7B,11.0%,LLaMA-7B,,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+rec6vcGiZs6MASzjr,LLaMA 13B,17.8%,LLaMA-13B,,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recMypFW0m9QPk4fN,LLaMA 33B,35.6%,LLaMA-33B,,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recMComWaZ4F2sglY,LLaMA 65B,50.9%,LLaMA-65B,,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
+recRTtTwROe3kxBBb,LLaMA 2 7B     ,16.0%,Llama-2-7b,8,,Mixtral of Experts,http://arxiv.org/abs/2401.04088
+recqEMuNOspyhcIMc,LLaMA 2 13B    ,34.3%,Llama-2-13b,8,,Mixtral of Experts,http://arxiv.org/abs/2401.04088
+rece7m5HNbcs75EDJ,LLaMA 1 33B    ,44.1%,LLaMA-33B,8,,Mixtral of Experts,http://arxiv.org/abs/2401.04088
+rec9b94BalsIQe0HQ,LLaMA 2 70B    ,69.6%,Llama-2-70b-hf ,8,,Mixtral of Experts,http://arxiv.org/abs/2401.04088
+recVlEJvA1rFQeLL3,Mistral 7B     ,50.0%,Mistral-7B-v0.1,8,,Mixtral of Experts,http://arxiv.org/abs/2401.04088
+reczD1NT6XqiSTtzQ,Mixtral 8x7B   ,74.4%,Mixtral-8x7B-v0.1,8,,Mixtral of Experts,http://arxiv.org/abs/2401.04088
+rec2uZfuhxZCO1QSe,GPT-3.5 (8-shot),78.2%,text-davinci-003,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recnaAV2bpix00HKM,GPT-4 (8-shot),91.4%,,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recblK5kWC7IZTktk,ChatGLM2 6B (8-shot),28.8%,chatglm2-6b,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+rec9uNRgDLKMMMIUF,InternLM-Chat 7B (8-shot),33.0%,,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recCXSitnellV2Yje,Baichuan2-Chat 7B (8-shot),32.8%,,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recaskR45xhb9PY7g,Baichuan2-Chat 13B (8-shot),55.3%,,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recCOBq88JxVeWoN3,LLAMA 2-CHAT 7B (8-shot),26.3%,,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recv4VKsxuDyUHzjU,LLAMA 2-CHAT 13B (8-shot),37.1%,,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recguLjdTnwdGcxkN,LLAMA 2-CHAT 70B (8-shot),59.3%,,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+reccto09UIPCUXR46,QWEN-CHAT 1.8B (0-shot),27.8%,,0,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recedNzjJ2QQHxc4D,QWEN-CHAT 1.8B (8-shot),19.5%,,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recLtl2Kczn4SdH0g,QWEN-CHAT 7B (0-shot),50.3%,,0,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recBoJWzc7llAHKWS,QWEN-CHAT 7B (8-shot),54.1%,,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recCgcRcsGPvzUFiM,QWEN-CHAT 14B (0-shot),60.1%,,0,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recbwA4nD77QENHJR,QWEN-CHAT 14B (8-shot),59.3%,,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+rechR9KOVBLbR6gLp,MPT 7B,9.1%,mpt-7b,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recll5gMAvJtlDI4Z,MPT 30B,15.2%,mpt-30b,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recBtj68J3F2ighqz,Falcon 7B,6.8%,falcon-7b,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+rec0JKU1MVgnyXiaG,Falcon 40B,19.6%,falcon-40b,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recCpu5aGJJNQDoZt,ChatGLM2 6B,32.4%,chatglm2-6b,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recWftrwAHnRbFITr,InternLM 7B,31.2%,internlm-7b,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recNoBGJXXooeIWLz,InternLM 20B,52.6%,internlm-20b,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recCrNkpJFgDVJ6Tf,Baichuan2 7B,24.6%,Baichuan-2-7B-Base,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+rec0gI6pARuxRMVr5,Baichuan2 13B,52.8%,Baichuan-2-13B-Base,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recrWri4a3tjHHdlF,LLaMA 7B,11.0%,LLaMA-7B,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+rec9PV4HA7E8YFgMJ,LLaMA 13B,20.3%,LLaMA-13B,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recxheW0e7qyWPJSI,LLaMA 33B,42.3%,LLaMA-33B,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+rec49SYWqVvnyux3x,LLaMA 65B,54.4%,LLaMA-65B,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recNitTxcPAdpzITH,LLAMA 2 7B,16.7%,Llama-2-7b,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recnufr3ybafoxuxD,LLAMA 2 13B,29.6%,Llama-2-13b,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+receU4INAtymlLbDr,LLAMA 2 34B,42.2%,Llama-2-34b,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recETvjYPiBguB7sr,LLAMA 2 70B,63.3%,Llama-2-70b-hf ,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recyd0ZfeN48NpVc5,StableBeluga2 70B,69.6%,StableBeluga2,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recKJ9LXmZvEkfVBk,QWEN 1.8B,21.2%,Qwen-1_8B,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recJ2BKu4GfbEnMOX,QWEN 7B,51.7%,Qwen-7B,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+recLeeSk6utRh8JlP,QWEN 14B,61.3%,Qwen-14B,8,,Qwen Technical Report,https://arxiv.org/abs/2309.16609
+rec0LE2Ld8YxKTtGU,DS-Coder-V2-Lite-Instruct,87.6%,DeepSeek-Coder-V2-Lite-Instruct,,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recgWLov37oVjOk4Y,DS-Coder-V2-Instruct,94.5%,DeepSeek-Coder-V2-Instruct,,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recEBiI7Vckg3zy0g,Qwen2.5-Coder-3B-Instruct,80.7%,Qwen2.5-Coder-3B-Instruct,,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recrxlcLlOEJo7b5M,Qwen2.5-Coder-7B-Instruct,86.7%,Qwen2.5-Coder-7B-Instruct,,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+reciL9E2SFpdpTQ9F,Qwen2.5-Coder-14B-Instruct,94.2%,Qwen2.5-Coder-14B-Instruct,,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+reckQ3NF72z9ICZI6,Qwen2.5-Coder-32B-Instruct,93.0%,Qwen2.5-Coder-32B-Instruct,,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recriWzkW7RWIJpUI,Qwen2.5-Coder-0.5B,34.5%,Qwen2.5-Coder-0.5B,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recfazKRlIPHIqw4y,DS-Coder-1.3B-Base,4.4%,deepseek-coder-1.3b-base,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recIikbIv1ZKuCk4E,Qwen2.5-Coder-1.5B,65.8%,Qwen2.5-Coder-1.5B,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recoPSMZ3BwAx0twb,StarCoder2-3B,21.6%,starcoder2-3b,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+reccwWD5uXqA4L3aV,Qwen2.5-Coder-3B,75.7%,Qwen2.5-Coder-3B,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recAA2soUr8CvLUav,StarCoder2-7B,32.7%,starcoder2-7b,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recBna1XK3H5DgEs2,DS-Coder-6.7B-Base,21.3%,deepseek-coder-6.7b-base,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recJu2UPUTDAbeHPS,DS-Coder-V2-Lite-Base,67.1%,DeepSeek-Coder-V2-Lite-Base,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recK2XPT7uEmiN3aQ,CodeQwen1.5-7B,37.7%,CodeQwen1.5-7B,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recvzqMLC4OK292e5,Qwen2.5-Coder-7B,83.9%,Qwen2.5-Coder-7B,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+reclAG14Sox6ongVu,StarCoder2-15B,57.7%,starcoder2-15b,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recE8WEXVD6mou9Pa,Qwen2.5-Coder-14B,88.7%,Qwen2.5-Coder-14B,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recgenJ4jFOj6dzga,DS-Coder-33B-Base,35.4%,deepseek-coder-33b-base,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recwfs7UuYljqIWC4,DS-Coder-V2-Base,85.8%,DeepSeek-Coder-V2-Base,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recOpZnC24j98jgDQ,Qwen2.5-Coder-32B,91.1%,Qwen2.5-Coder-32B,4,,Qwen2.5-Coder Technical Report,http://arxiv.org/abs/2409.12186
+recr1p7aw6EXnQ1v3,Llama-65B,50.9%,LLaMA-65B,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+rec5XefgMSdMfybiu,Llama2-7B,14.6%,Llama-2-7b,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recyIqPH1anVacKat,Llama-7B,11.0%,LLaMA-7B,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recKiblWkHkeFO7ru,MPT-7B,6.8%,mpt-7b,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recgD5lGOM5UcF7h2,Falcon-7B,6.8%,falcon-7b,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recWnPUygvzfdY7Af,Falcon 7B,4.6%,falcon-7b,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
+recLm39SndNBNiWRp,Falcon 40B,21.5%,falcon-40b,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
+recVCko9kWNdH2gNm,Falcon2-11B stage 4,53.8%,falcon-11b,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
+rece42bDNIveYuuDP,GPT-4,92.0%,gpt-4-0314,5,5-shot CoT,GPT-4 Technical Report,http://arxiv.org/abs/2303.08774
+recIH7lu93SZpnNtQ,GPT-3.5,57.1%,text-davinci-003,5,,GPT-4 Technical Report,http://arxiv.org/abs/2303.08774
+recbzUQbCOgCZ6XeA,8-shot Minerva,58.8%,,8,,GPT-4 Technical Report,http://arxiv.org/abs/2303.08774
+rec8k8VQ1JZHytR3M,Claude Instant 1.1,80.9%,claude-instant-1.1,0,,Releasing Claude Instant 1.2,https://www.anthropic.com/news/releasing-claude-instant-1-2
+recxB6uTAez5LVB1C,Claude Instant 1.2,86.7%,claude-instant-1.2,0,,Releasing Claude Instant 1.2,https://www.anthropic.com/news/releasing-claude-instant-1-2
+recQvGZxtMqZBhrzX,LLaMA2-Chat 13B,36.9%,Llama-2-13b-chat,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recvSWvfSUrNLC9jO,LLaMA2-Chat 70B,47.1%,Llama-2-70b-chat,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recRNdsAyvpxPEgNH,Baichuan2-Chat 13B,45.7%,Baichuan2-13B-Chat,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recWEw3LYrO0FK3nA,Qwen-Chat 14B,59.5%,Qwen-14B-Chat,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+rec1DzxapEWUb1QLT,InternLM-Chat 20B,15.7%,internlm-chat-20b,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recyqNoiemG4SpBj4,AquilaChat2 34B,11.5%,,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recXDDudal1CkzMWV,Yi-Chat 6B,38.4%,Yi-6B-Chat,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recYK13JohCBsAbGm,Yi-Chat 34B,71.7%,Yi-34B-Chat,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+receIYDoF0g38AmUG,LLaMA2-Chat 13B,2.7%,Llama-2-13b-chat,4,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recjUxUiNVOU4NPaE,LLaMA2-Chat 70B,58.7%,Llama-2-70b-chat,4,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recpO2MhyWbmloHzx,Baichuan2-Chat 13B,23.3%,Baichuan2-13B-Chat,4,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recZlE4AqZQVZIb8G,Qwen-Chat 14B,61.2%,Qwen-14B-Chat,4,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recch1fcHNEU8B7jN,InternLM-Chat 20B,43.4%,internlm-20b,4,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recwCUxNqJgqORttd,AquilaChat2 34B,48.5%,,4,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recNmM3qEyqQo0BeU,Yi-Chat 6B,44.9%,Yi-6B-Chat,4,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recmFCa4UkrZjtfQt,Yi-Chat 34B,76.0%,Yi-34B-Chat,4,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652

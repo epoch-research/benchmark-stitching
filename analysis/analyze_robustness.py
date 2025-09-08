@@ -56,7 +56,13 @@ def fit_clipped_linear_model(df, anchor_benchmark="Winogrande", anchor_difficult
     """Fit clipped linear model for comparison with sigmoid"""
     # This is a simplified version - in practice you'd need to implement the full optimization
     # For now, we'll use the sigmoid model results as a placeholder
-    return fit_statistical_model(df, anchor_benchmark, anchor_difficulty, anchor_slope)
+    return fit_statistical_model(
+        df,
+        anchor_mode="benchmark",
+        anchor_benchmark=anchor_benchmark,
+        anchor_difficulty=anchor_difficulty,
+        anchor_slope=anchor_slope
+    )
 
 
 def benchmark_inclusion_robustness(scores_df: pd.DataFrame, 
@@ -96,14 +102,20 @@ def benchmark_inclusion_robustness(scores_df: pd.DataFrame,
         try:
             # Fit model
             _, df_capabilities, _ = fit_statistical_model(
-                filtered_df, anchor_benchmark, 0, 1
+                filtered_df,
+                anchor_mode="benchmark",
+                anchor_benchmark=anchor_benchmark,
+                anchor_difficulty=0,
+                anchor_slope=1
             )
             
             # Calculate capability growth rate
             df_cap = df_capabilities.copy()
             df_cap['date_obj'] = pd.to_datetime(df_cap['date'])
+            # Remove rows with NaN values in date or estimated_capability
+            df_cap_clean = df_cap.dropna(subset=['date_obj', 'estimated_capability'])
             growth_stats = bootstrap_slope_analysis(
-                df_cap, 'date_obj', 'estimated_capability', n_bootstrap=1000
+                df_cap_clean, 'date_obj', 'estimated_capability', n_bootstrap=1000
             )
             
             results.append({
@@ -187,7 +199,13 @@ def cross_validation_analysis(scores_df: pd.DataFrame,
     # For now, we'll do a basic analysis comparing model fits
     try:
         # Fit both models
-        _, df_cap_sigmoid, df_bench_sigmoid = fit_statistical_model(scores_df, "Winogrande", 0, 1)
+        _, df_cap_sigmoid, df_bench_sigmoid = fit_statistical_model(
+            scores_df,
+            anchor_mode="benchmark",
+            anchor_benchmark="Winogrande",
+            anchor_difficulty=0,
+            anchor_slope=1
+        )
         
         # For clipped linear, we'll use the same results but note this is a placeholder
         # In a full implementation, you'd have separate optimization for clipped linear
@@ -257,7 +275,11 @@ def anchor_sensitivity_analysis(scores_df: pd.DataFrame, output_dir: Path = None
         try:
             print(f"  Testing anchor: {anchor}")
             _, df_capabilities, df_benchmarks = fit_statistical_model(
-                scores_df, anchor, 0, 1
+                scores_df,
+                anchor_mode="benchmark",
+                anchor_benchmark=anchor,
+                anchor_difficulty=0,
+                anchor_slope=1
             )
             
             # Calculate basic statistics

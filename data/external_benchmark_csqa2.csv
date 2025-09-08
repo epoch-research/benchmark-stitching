@@ -1,0 +1,12 @@
+﻿id,Name,Score,Model version,Shots,Source,Source link,Notes
+rec2N4ugHyIuFFHCg,GPT-3,52.9%,text-davinci-001,,CommonsenseQA 2.0: Exposing the Limits of AI through Gamification,https://arxiv.org/pdf/2201.05320,
+recXRfZ560YNIjqvj,T5-Large,54.6%,T5-Large,,CommonsenseQA 2.0: Exposing the Limits of AI through Gamification,https://arxiv.org/pdf/2201.05320,
+recxLFYG3VFl6Zp2H,Unicorn-Large,54.9%,,,CommonsenseQA 2.0: Exposing the Limits of AI through Gamification,https://arxiv.org/pdf/2201.05320,
+recjb7oltbflJgcnj,T5-11B,67.8%,T5-11B,,CommonsenseQA 2.0: Exposing the Limits of AI through Gamification,https://arxiv.org/pdf/2201.05320,
+rece5VQKCulKYKcIX,Unicorn-11B,70.2%,,,CommonsenseQA 2.0: Exposing the Limits of AI through Gamification,https://arxiv.org/pdf/2201.05320,
+recQ5nmRkgX6o08i1,Unicorn 770M,54.9%,,,Decker: Double Check with Heterogeneous Knowledge for Commonsense Fact Verification,https://arxiv.org/abs/2305.05921,
+recDaVPKR6YwbKmLZ,T5-3B,60.2%,T5-3B,,Decker: Double Check with Heterogeneous Knowledge for Commonsense Fact Verification,https://arxiv.org/abs/2305.05921,
+rec4OHB4cwgb9XLmT,RACo,61.8%,,,Decker: Double Check with Heterogeneous Knowledge for Commonsense Fact Verification,https://arxiv.org/abs/2305.05921,
+recLJTHqISFdhqJwy,GPT-3.5 Turbo,57.0%,gpt-3.5-turbo-0613,few,,https://arxiv.org/pdf/2309.13165v1,Assuming original 3.5-turbo release
+recdvV2jdEN8V6o76,LLama-70B,50.0%,Llama-2-70b-hf ,few,,https://arxiv.org/pdf/2309.13165v1,"Assuming LLAMA-70b was LLAMA 2
+"

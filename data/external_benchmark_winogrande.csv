@@ -1,67 +1,145 @@
-﻿id,Name,Model version,Accuracy,Shots,Notes,Source,Source link
-recaR4Pf3RkCiAANz,GPT-4,gpt-4-0314,87.5%,5,,GPT-4 technical report,https://arxiv.org/pdf/2303.08774
-rec0Dj1umKnw4t9yi,PaLM 2-L,PaLM 2-L,83.0%,1,,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
-recXkgGBeKRwNlOKi,GPT-3.5,text-davinci-002,81.6%,5,,GPT-4 technical report,https://arxiv.org/pdf/2303.08774
-recWVCWC5EMRDNSgL,PaLM 540B,PaLM 540B,81.1%,0,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
-rec55d9FyJAq5fQhK,PaLM 540B,PaLM 540B,83.7%,1,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
-recx099eSrOmwL3QU,PaLM 540B,PaLM 540B,85.1%,few,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
-recFe6bxFdt4wLRkZ,PaLM 2-M,PaLM 2-M,79.2%,1,,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
-recuJFdgWw2tZaQoH,PaLM 2-S,PaLM 2-S,77.9%,1,,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
-recsfrlaaHsWLi9qx,PaLM 62B,PaLM 62B,77.0%,0,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
-recKKmmLkXD2Vjn2e,LLaMA 65B,LLaMA-65B,77.0%,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
-recBt1SpsffLcrMS9,LLaMA 33B,LLaMA-33B,76.0%,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
-recfxiFrvSCnxbjsX,Mistral 7B,Mistral-7B-v0.1,75.3%,0,,Mistral 7B,https://arxiv.org/abs/2203.15556
-recZr3ktMwbyI4XeS,Chinchilla 70B,Chinchilla (70B),74.9%,0,,Training Compute-Optimal Large Language Models,https://arxiv.org/abs/2203.15556
-recfo636SsgKz6bre,Claude 3 Sonnet,claude-3-sonnet-20240229,75.1%,5,,"The Claude 3 Model Family: Opus, Sonnet, Haiku",https://assets.anthropic.com/m/61e7d27f8c8f5919/original/Claude-3-Model-Card.pdf
-rec48LdyvDEsxod6W,Claude 3 Haiku,claude-3-haiku-20240307,74.2%,5,,"The Claude 3 Model Family: Opus, Sonnet, Haiku",https://assets.anthropic.com/m/61e7d27f8c8f5919/original/Claude-3-Model-Card.pdf
-recwhfZU1uHwUbOtB,Claude 3 Opus,claude-3-opus-20240229,88.5%,5,,"The Claude 3 Model Family: Opus, Sonnet, Haiku",https://assets.anthropic.com/m/61e7d27f8c8f5919/original/Claude-3-Model-Card.pdf
-recpYeKQZjkeJmFjK,LLaMA 13B,LLaMA-13B,73.0%,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
-recuE1AFI2Xi9TRZy,GPT-3,text-davinci-001,70.2%,0,,Language Models are Few-Shot Learners,https://arxiv.org/pdf/2005.14165v4
-recFDEwWa9MDvdGp7,GPT-3,text-davinci-001,73.2%,1,,Language Models are Few-Shot Learners,https://arxiv.org/pdf/2005.14165v4
-reczqA3lUwnnCXwU9,GPT-3,text-davinci-001,77.7%,few,,Language Models are Few-Shot Learners,https://arxiv.org/pdf/2005.14165v4
-recCO5IfFJGtcuttU,Gopher 280B,Gopher (280B),70.1%,0,,Training Compute-Optimal Large Language Models,https://arxiv.org/abs/2203.15556
-recmWn1dhJq25abBB,LLaMA 7B,LLaMA-7B,70.1%,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
-rec9CyRHN8LPTzTOx,GPT-2-XL 1.5B,gpt2-xl,58.3%,,,,
-recEkDlzbxAaHusuf,LLaMA 2 7B,Llama-2-7b,69.2%,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
-recdNf2o3JtJPXmKH,LLaMA 2 13B,Llama-2-13b,72.8%,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
-recd4W7iTigIgk5d5,LLaMA 2 34B,Llama-2-34b,76.7%,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
-recaurFL0h5T9Whbj,LLaMA 2 70B,Llama-2-70b-hf ,80.2%,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
-recJOWqocH7c9al6M,LLaMA 3 8B,Meta-Llama-3-8B,75.7%,5,"""For pre-trained models, we use a choice based setup for evaluation where we fill in the missing blank with the two possible choices and then compute log-likelihood over the suffix. We use a 5-shot config. We use the MMLU setup where we provide all the choices in the prompt and calculate likelihood over choice characters.""",The Llama 3 Herd of Models,https://arxiv.org/pdf/2407.21783
-rec876vd5CO6jC2xx,LLaMA 3 70B,Meta-Llama-3-70B,83.5%,5,"""For pre-trained models, we use a choice based setup for evaluation where we fill in the missing blank with the two possible choices and then compute log-likelihood over the suffix. We use a 5-shot config. We use the MMLU setup where we provide all the choices in the prompt and calculate likelihood over choice characters.""",The Llama 3 Herd of Models,https://arxiv.org/pdf/2407.21783
-rectAF9Y0lcDhgjKK,LLaMA 3 405B,Llama-3.1-405B-Instruct,82.2%,5,"""For pre-trained models, we use a choice based setup for evaluation where we fill in the missing blank with the two possible choices and then compute log-likelihood over the suffix. We use a 5-shot config. We use the MMLU setup where we provide all the choices in the prompt and calculate likelihood over choice characters.""",The Llama 3 Herd of Models,https://arxiv.org/pdf/2407.21783
-recUhmmH8qA5xRclp,Qwen2.5-Coder-0.5B,Qwen2.5-Coder-0.5B,54.8%,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
-recO1g2UPif64BQXO,Qwen2.5-Coder-1.5B,Qwen2.5-Coder-1.5B,60.7%,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
-recPKH8NBSdyoeNF7,Qwen2.5-Coder-3B,Qwen2.5-Coder-3B,67.4%,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
-recsRQvpUY7AtRA2v,Qwen2.5-Coder-7B,Qwen2.5-Coder-7B,72.9%,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
-recWCbZW93Xb7mgLW,Qwen2.5-Coder-14B,Qwen2.5-Coder-14B,76.8%,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
-rec8gc150DTSOhEKr,Qwen2.5-Coder-32B,Qwen2.5-Coder-32B,80.8%,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
-rec5MLRl0r4y0sPhr,Mistral 7B,Mistral-7B-v0.1,74.2%,,,Mixtral of Experts,https://arxiv.org/pdf/2401.04088
-recOiKNC7k9QoMUyx,Mixtral 8x7B,Mixtral-8x7B-v0.1,77.2%,,,Mixtral of Experts,https://arxiv.org/pdf/2401.04088
-recVCwFxC4Uz2gxlu,Gemma 7B,gemma-7b,79.0%,,Run with HuggingFace H6 suite,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
-recv143kxseDbH93b,DeepSeek-V2 Base,DeepSeek-V2,86.3%,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
-recRvIn2aFK6GuRSa,DeepSeek-V3 Base,DeepSeek-V3,85.2%,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
-rec6ChHalhgDSzRNN,LLaMA-3.1 405B Base,Llama-3.1-405B,89.2%,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
-recFEIHaal9FCmhYN,Qwen2.5 72B Base,Qwen2.5-72B,82.3%,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
-rechsjFFmjkjr59Th,phi-1.5,phi-1_5,73.4%,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
-recHcfsJvgD1v3Za1,Yi-6B,Yi-6B,71.3%,5,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-rec2uwtoTBL3OG07a,Yi-9B,,73.0%,5,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-rec0bXWNApugy6PsT,Falcon 7B,falcon-7b,67.2%,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
-recCsPlKCS5V7sQ3u,Falcon 40B,falcon-40b,76.4%,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
-rec07tuBa7aAoZtf3,Falcon2-11B stage 4,,78.3%,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
-recqDqOI7R6EJDWXm,Falcon-180B,falcon-180B,87.1%,5,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
-rechEkVlfpVzd5dGw,Nemotron-4 15B,,78.0%,0,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
-recijvxN8UXEh3SBp,GPT-3 (175B),text-davinci-001,70.2%,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recqVwM8SVe4yfcGZ,GLaM (MoE),GLaM (MoE),73.5%,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recUq5YXIoV0cbBQh,GLaM (dense),,71.5%,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recl9X5JuCNXMgSCh,GPT-3 (175B),text-davinci-001,73.2%,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recu2bgRPUptWpqiE,GLaM (MoE),GLaM (MoE),73.0%,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recfyp5PkOYRko4ty,GLaM (dense),,73.1%,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recQ2RjlzBCPbvsAn,GPT-3 (175B),text-davinci-001,77.7%,16,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recMniA3bIw2cxmTk,Gopher (280B),Gopher (280B),70.1%,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recgrfBPvZUqv8bhZ,Megatron-NLG (530B),,78.9%,,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-reclLFFps8D3lgnnZ,GLaM,GLaM (MoE),79.2%,8,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recBRuKvfAnXUpJGz,GPT-3 Zero-Shot,text-davinci-001,70.2%,0,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
-recBbxInhFByx7qHT,GPT-3 One-Shot,text-davinci-001,73.2%,1,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
-recLMdsVONh2oFds1,GPT-3 Few-Shot,text-davinci-001,77.7%,few,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
-rec0czb9iRGEYELDL,MT-NLG,,73.0%,0,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
-recdxz6xNRRDR3Ect,MT-NLG,,73.7%,1,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+﻿id,Name,Accuracy,Model version,Shots,Notes,Source,Source link
+rec0Dj1umKnw4t9yi,PaLM 2-L,83.0%,PaLM 2-L,1,,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
+recaR4Pf3RkCiAANz,GPT-4,87.5%,gpt-4-0314,5,,GPT-4 technical report,https://arxiv.org/pdf/2303.08774
+recAD31ZnGeO3eOwm,5-shot PaLM,85.1%,PaLM 540B,5,,GPT-4 Technical report,https://arxiv.org/pdf/2303.08774
+recXkgGBeKRwNlOKi,GPT-3.5,81.6%,text-davinci-002,5,,GPT-4 technical report,https://arxiv.org/pdf/2303.08774
+recWVCWC5EMRDNSgL,PaLM 540B,81.1%,PaLM 540B,0,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
+rec55d9FyJAq5fQhK,PaLM 540B,83.7%,PaLM 540B,1,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
+recx099eSrOmwL3QU,PaLM 540B,85.1%,PaLM 540B,few,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
+recFe6bxFdt4wLRkZ,PaLM 2-M,79.2%,PaLM 2-M,1,,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
+recuJFdgWw2tZaQoH,PaLM 2-S,77.9%,PaLM 2-S,1,,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
+recsfrlaaHsWLi9qx,PaLM 62B,77.0%,PaLM 62B,0,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
+rec8u6KWQWeBGN0Km,GPT-3 175B,70.2%,text-davinci-001,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
+recDkEgLhPRjy4v8h,Gopher 280B,70.1%,Gopher (280B),0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
+recGnjvDzN0ewjxiG,Chinchilla 70B,74.9%,Chinchilla (70B),0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
+reclQUJcaj2JrjyI8,PaLM 62B,77.0%,PaLM 62B,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
+recM1g2Pmz7TjEik7,PaLM-cont 62B,77.0%,,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
+recI8uxkEPA3KQdbm,PaLM 540B,81.1%,PaLM 540B,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
+recIMvkFXTo2hwuhs,LLaMA 7B,70.1%,LLaMA-7B,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
+rechN7puQcuTcXy3a,LLaMA 13B,73.0%,LLaMA-13B,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
+recKKmmLkXD2Vjn2e,LLaMA 65B,77.0%,LLaMA-65B,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
+recBt1SpsffLcrMS9,LLaMA 33B,76.0%,LLaMA-33B,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
+recfxiFrvSCnxbjsX,Mistral 7B,75.3%,Mistral-7B-v0.1,0,,Training Compute-Optimal Large Language Models,https://arxiv.org/abs/2203.15556
+recZr3ktMwbyI4XeS,Chinchilla 70B,74.9%,Chinchilla (70B),0,,Training Compute-Optimal Large Language Models,https://arxiv.org/abs/2203.15556
+recfo636SsgKz6bre,Claude 3 Sonnet,75.1%,claude-3-sonnet-20240229,5,,"The Claude 3 Model Family: Opus, Sonnet, Haiku",https://assets.anthropic.com/m/61e7d27f8c8f5919/original/Claude-3-Model-Card.pdf
+rec48LdyvDEsxod6W,Claude 3 Haiku,74.2%,claude-3-haiku-20240307,5,,"The Claude 3 Model Family: Opus, Sonnet, Haiku",https://assets.anthropic.com/m/61e7d27f8c8f5919/original/Claude-3-Model-Card.pdf
+recwhfZU1uHwUbOtB,Claude 3 Opus,88.5%,claude-3-opus-20240229,5,,"The Claude 3 Model Family: Opus, Sonnet, Haiku",https://assets.anthropic.com/m/61e7d27f8c8f5919/original/Claude-3-Model-Card.pdf
+recpYeKQZjkeJmFjK,LLaMA 13B,73.0%,LLaMA-13B,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
+recuE1AFI2Xi9TRZy,GPT-3,70.2%,text-davinci-001,0,,Language Models are Few-Shot Learners,https://arxiv.org/pdf/2005.14165v4
+recFDEwWa9MDvdGp7,GPT-3,73.2%,text-davinci-001,1,,Language Models are Few-Shot Learners,https://arxiv.org/pdf/2005.14165v4
+reczqA3lUwnnCXwU9,GPT-3,77.7%,text-davinci-001,few,,Language Models are Few-Shot Learners,https://arxiv.org/pdf/2005.14165v4
+recCO5IfFJGtcuttU,Gopher 280B,70.1%,Gopher (280B),0,,Training Compute-Optimal Large Language Models,https://arxiv.org/abs/2203.15556
+recmWn1dhJq25abBB,LLaMA 7B,70.1%,LLaMA-7B,0,,LLaMA: Open and Efficient Foundation Language Models,https://arxiv.org/pdf/2302.13971
+rec9CyRHN8LPTzTOx,GPT-2-XL 1.5B,58.3%,gpt2-xl,,,,
+recktbU0qGqP0imC6,MPT 7B,68.3%,mpt-7b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
+recT5IXUPTJfXiCp2,MPT 30B,71.0%,mpt-30b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
+recSntxSuHYG1VyHo,Falcon 7B,66.3%,falcon-7b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
+recgYrmCHlDlyq9yx,Falcon 40B,76.9%,falcon-40b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
+rec7Ph7OFjE8lEJHt,LLAMA 1 7B,70.1%,LLaMA-7B,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
+recT2f8OQfNtIgwue,LLAMA 1 13B,73.0%,LLaMA-13B,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
+recJAkorJg8DBb8w6,LLAMA 1 33B,76.0%,LLaMA-33B,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
+rec7MyukTwpdy8CSL,LLAMA 1 65B,77.0%,LLaMA-65B,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
+recEkDlzbxAaHusuf,LLaMA 2 7B,69.2%,Llama-2-7b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
+recdNf2o3JtJPXmKH,LLaMA 2 13B,72.8%,Llama-2-13b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
+recd4W7iTigIgk5d5,LLaMA 2 34B,76.7%,Llama-2-34b,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
+recaurFL0h5T9Whbj,LLaMA 2 70B,80.2%,Llama-2-70b-hf ,,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288
+recJOWqocH7c9al6M,LLaMA 3 8B,75.7%,Meta-Llama-3-8B,5,"""For pre-trained models, we use a choice based setup for evaluation where we fill in the missing blank with the two possible choices and then compute log-likelihood over the suffix. We use a 5-shot config. We use the MMLU setup where we provide all the choices in the prompt and calculate likelihood over choice characters.""",The Llama 3 Herd of Models,https://arxiv.org/pdf/2407.21783
+rec876vd5CO6jC2xx,LLaMA 3 70B,83.5%,Meta-Llama-3-70B,5,"""For pre-trained models, we use a choice based setup for evaluation where we fill in the missing blank with the two possible choices and then compute log-likelihood over the suffix. We use a 5-shot config. We use the MMLU setup where we provide all the choices in the prompt and calculate likelihood over choice characters.""",The Llama 3 Herd of Models,https://arxiv.org/pdf/2407.21783
+rectAF9Y0lcDhgjKK,LLaMA 3 405B,82.2%,Llama-3.1-405B-Instruct,5,"""For pre-trained models, we use a choice based setup for evaluation where we fill in the missing blank with the two possible choices and then compute log-likelihood over the suffix. We use a 5-shot config. We use the MMLU setup where we provide all the choices in the prompt and calculate likelihood over choice characters.""",The Llama 3 Herd of Models,https://arxiv.org/pdf/2407.21783
+recUhmmH8qA5xRclp,Qwen2.5-Coder-0.5B,54.8%,Qwen2.5-Coder-0.5B,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+recO1g2UPif64BQXO,Qwen2.5-Coder-1.5B,60.7%,Qwen2.5-Coder-1.5B,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+recPKH8NBSdyoeNF7,Qwen2.5-Coder-3B,67.4%,Qwen2.5-Coder-3B,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+recsRQvpUY7AtRA2v,Qwen2.5-Coder-7B,72.9%,Qwen2.5-Coder-7B,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+recWCbZW93Xb7mgLW,Qwen2.5-Coder-14B,76.8%,Qwen2.5-Coder-14B,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+rec8gc150DTSOhEKr,Qwen2.5-Coder-32B,80.8%,Qwen2.5-Coder-32B,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+recVHFqbsrGnj2Vx2,DS-Coder-1.3B-Base,53.3%,deepseek-coder-1.3b-base,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+recyselPDxHqK6S7m,StarCoder2-3B,57.1%,starcoder2-3b,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+recXQnGi8m8ri82zZ,StarCoder2-7B,57.1%,starcoder2-7b,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+recjz7QSFeeZcphoR,DS-Coder-6.7B-Base,57.6%,deepseek-coder-6.7b-base,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+rec8sY5AZGjTEHSIb,DS-Coder-V2-Lite-Base,72.9%,DeepSeek-Coder-V2-Lite-Base,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+recZQWDgmY6X1bV95,CodeQwen1.5-7B,59.8%,CodeQwen1.5-7B,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+recr8hrjiAzMZKfoe,StarCoder2-15B,64.3%,starcoder2-15b,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+recU2oocllLjEXaxq,DS-Coder-33B-Base,62.0%,deepseek-coder-33b-base,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+rec7J2f61YnAY2lHm,DS-Coder-V2-Base,83.7%,DeepSeek-Coder-V2-Base,,,Qwen2.5-Coder Technical Report,https://arxiv.org/pdf/2409.12186
+rec5MLRl0r4y0sPhr,Mistral 7B,74.2%,Mistral-7B-v0.1,,,Mixtral of Experts,https://arxiv.org/pdf/2401.04088
+recOiKNC7k9QoMUyx,Mixtral 8x7B,77.2%,Mixtral-8x7B-v0.1,,,Mixtral of Experts,https://arxiv.org/pdf/2401.04088
+recVCwFxC4Uz2gxlu,Gemma 7B,79.0%,gemma-7b,,Run with HuggingFace H6 suite,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+rechilCTigqP9uXxA,LLaMA-2 7B   ,69.2%,Llama-2-7b,,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+reczujVPa7Ol17Ep3,LLaMA-2 13B  ,72.8%,Llama-2-13b,,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+recdZaaWYWrX1u3Si,Mistral 7B   ,74.2%,Mistral-7B-v0.1,,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+recAROl6cvkyIz2XU,Gemma 2B     ,65.4%,gemma-2b,,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+recv143kxseDbH93b,DeepSeek-V2 Base,86.3%,DeepSeek-V2,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+recRvIn2aFK6GuRSa,DeepSeek-V3 Base,85.2%,DeepSeek-V3,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+rec6ChHalhgDSzRNN,LLaMA-3.1 405B Base,89.2%,Llama-3.1-405B,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+recFEIHaal9FCmhYN,Qwen2.5 72B Base,82.3%,Qwen2.5-72B,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+rechsjFFmjkjr59Th,phi-1.5,73.4%,phi-1_5,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+rec1zWhRyar1a1ya7,Vicuna-13B (v1.1),70.8%,vicuna-13b-v1.1,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+rec6mSfCZRnko6k95,Llama2-7B,69.1%,Llama-2-7b,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recnremIrBRActHkF,Llama-7B,66.9%,LLaMA-7B,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recIj2gakuqj9fTET,MPT-7B,68.0%,mpt-7b,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recMpIBB0KkHPY3G4,Falcon-7B,66.2%,falcon-7b,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+reclGtegHjrQ3efS6,Falcon-rw-1.3B,60.7%,,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recfHebaHDX7FJeud,OPT-1.3B,61.0%,opt-1.3b,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+rec1UadYIFb39uga7,GPT-Neo-2.7B,57.7%,,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+rec4vKSLgu8gPF3BP,GPT2-XL-1.5B,58.3%,gpt2-xl,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recQjBBobsKTnpyEB,phi-1.5-web-only (1.3B),60.4%,,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+rec5GGdUuE2S4GIHR,phi-1.5-web (1.3B),74.0%,,0,,Textbooks Are All You Need II: phi-1.5 technical report,http://arxiv.org/abs/2309.05463
+recHcfsJvgD1v3Za1,Yi-6B,71.3%,Yi-6B,5,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+rec2uwtoTBL3OG07a,Yi-9B,73.0%,Yi-9B,5,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+rec0bXWNApugy6PsT,Falcon 7B,67.2%,falcon-7b,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
+recCsPlKCS5V7sQ3u,Falcon 40B,76.4%,falcon-40b,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
+rec07tuBa7aAoZtf3,Falcon2-11B stage 4,78.3%,falcon-11b,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
+recqDqOI7R6EJDWXm,Falcon-180B,87.1%,falcon-180B,5,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recVLx9PCXRj3W5o5,GPT-3.5,81.6%,gpt-3.5-turbo-0613,5,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+recHX5MxEY42Quo60,GPT-4,87.5%,gpt-4-32k-0314,5,,The Falcon Series of Open Language Models,http://arxiv.org/abs/2311.16867
+rechEkVlfpVzd5dGw,Nemotron-4 15B,78.0%,Nemotron-4 15B,0,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+recqBhxwgsUhCNmVj,LLaMA-2 13B,72.8%,Llama-2-13b,0,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+recqPFwpVlEXRAuAZ,LLaMA-2 34B,76.7%,Llama-2-34b,0,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+recIbFwTUgH5IpHS5,Mistral 7B,75.3%,Mistral-7B-v0.1,0,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+recK1nMPSyPQhO9AS,Gemma 7B,72.3%,gemma-7b,0,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+recijvxN8UXEh3SBp,GPT-3 (175B),70.2%,text-davinci-001,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recqVwM8SVe4yfcGZ,GLaM (MoE),73.5%,GLaM (MoE),0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recUq5YXIoV0cbBQh,GLaM (dense),71.5%,,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recl9X5JuCNXMgSCh,GPT-3 (175B),73.2%,text-davinci-001,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recu2bgRPUptWpqiE,GLaM (MoE),73.0%,GLaM (MoE),1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recfyp5PkOYRko4ty,GLaM (dense),73.1%,,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recQ2RjlzBCPbvsAn,GPT-3 (175B),77.7%,text-davinci-001,16,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recMniA3bIw2cxmTk,Gopher (280B),70.1%,Gopher (280B),0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recgrfBPvZUqv8bhZ,Megatron-NLG (530B),78.9%,Megatron-Turing NLG 530B,,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+reclLFFps8D3lgnnZ,GLaM,79.2%,GLaM (MoE),8,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recBRuKvfAnXUpJGz,GPT-3 Zero-Shot,70.2%,text-davinci-001,0,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
+recBbxInhFByx7qHT,GPT-3 One-Shot,73.2%,text-davinci-001,1,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
+recLMdsVONh2oFds1,GPT-3 Few-Shot,77.7%,text-davinci-001,few,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
+rec0czb9iRGEYELDL,MT-NLG,73.0%,Megatron-Turing NLG 530B,0,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+recdxz6xNRRDR3Ect,MT-NLG,73.7%,Megatron-Turing NLG 530B,1,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+reciL6h4SYzWnjYZA,MT-NLG,73.0%,Megatron-Turing NLG 530B,few,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+recMIaObYJI2WngO3,GPT-3,70.2%,text-davinci-001,0,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+recuZIZGrqaZmTQHx,GPT-3,73.2%,text-davinci-001,1,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+reczOX5oz5FcrxCks,GPT-3,77.7%,text-davinci-001,few,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+recsE9YoNgrdm5sJC,Gopher,70.2%,Gopher (280B),0,,"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",https://arxiv.org/pdf/2201.11990
+rec8NmM7FImqk915G,Phi-3-mini 3.8b        ,70.8%,Phi-3-mini-4k-instruct,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+rectBk3iRc4LVIqKf,Phi-3-small 7b         ,81.5%,Phi-3-small-8k-instruct,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recawVi9MBcu9YVNA,Phi-3-medium 14b       ,81.5%,Phi-3-medium-128k-instruct,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recj9UKpqcNorm2DD,Phi-2 2.7b             ,54.7%,phi-2,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recxXMjf8MjkinJeQ,Mistral 7b             ,54.2%,Mistral-7B-v0.1,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recQOKrVhA7MxaYqV,Gemma 7b,55.6%,gemma-7b,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+rec71xWl1TzaoATvj,Llama-3-In 8b          ,65.0%,Meta-Llama-3-8B-Instruct,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+rectsfybsCEwcCVin,Mixtral 8x7b           ,62.0%,Mixtral-8x7B-v0.1,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+rec3A3yupKXU0nX4B,GPT-3.5 version 1106   ,68.8%,gpt-3.5-turbo-1106,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recsLsEiFg3I9Ntcq,Gopher (k-Shot),70.1%,Gopher (280B),0,,"Scaling Language Models: Methods, Analysis & Insights from Training Gopher",http://arxiv.org/abs/2112.11446
+reck2rBf1aBKCdo96,Falcon 7B,67.2%,falcon-7b,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
+recc4PwFMQbVu2672,Falcon 40B,76.4%,falcon-40b,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
+recXN0upU7mukMw2r,Falcon2-11B stage 4,78.3%,falcon-11b,5,,Falcon2-11B Technical Report,http://arxiv.org/abs/2407.14885
+recpUncBDSEU1nw70,UNICORN,86.6%,,,,UNICORN on RAINBOW: A Universal Commonsense Reasoning Model on a New Multitask Benchmark,https://ojs.aaai.org/index.php/AAAI/article/view/17590
+recRH0L7wxPtAYPUF,XGen-7B,64.9%,xgen-7b-8k-base,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recHZxb3yRFkZMu5a,LLaMA-7B,69.6%,LLaMA-7B,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recBPubyTMjeIazf2,Falcon-7B,67.2%,falcon-7b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recv1knMvkcKfwZYE,MPT-7B,68.6%,mpt-7b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recfcPcVYmxdywnKe,OpenLLaMA-7B,67.0%,open_llama_7b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recvO9MD0YBHFshpN,Redpajama-7B,63.8%,RedPajama-INCITE-7B-Base,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+rec00370DghOGVzXq,GPT-neox-20B,66.1%,gpt-neox-20b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+rec1gcVGZXPvpvkCm,OPT-13B,64.7%,opt-13b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recqm0WP49ptSUceV,GPT-J-6B,64.5%,gpt-j-6b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recorForiZEuS4nQF,Dolly-v2-12B,61.8%,dolly-v2-12b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recluVRCBoH49In4Y,Cerebras-GPT-13B,60.8%,Cerebras-GPT-13B,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450
+recfH4Zt9mBnsKlXy,StableLM-alpha-7B,51.5%,stablelm-tuned-alpha-7b,0,,XGen-7B Technical Report,http://arxiv.org/abs/2309.03450

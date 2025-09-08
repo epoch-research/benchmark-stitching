@@ -41,6 +41,36 @@ from analysis_utils import (
 )
 
 
+def _normalize_column_name(name: str) -> str:
+    """Normalize a column name for fuzzy matching (lowercase, underscores)."""
+    return (
+        str(name)
+        .strip()
+        .lower()
+        .replace(" ", "_")
+        .replace("-", "_")
+        .replace("/", "_")
+    )
+
+
+def _find_column(df: pd.DataFrame, candidates: list[str]) -> str | None:
+    """
+    Return the actual column name from df matching one of the candidate names.
+    Matching is case/spacing insensitive and allows minor delimiter differences.
+    """
+    normalized_to_actual = { _normalize_column_name(c): c for c in df.columns }
+    for cand in candidates:
+        norm_cand = _normalize_column_name(cand)
+        # Exact normalized match
+        if norm_cand in normalized_to_actual:
+            return normalized_to_actual[norm_cand]
+        # Substring fallback
+        for norm_col, actual in normalized_to_actual.items():
+            if norm_cand == norm_col or norm_cand in norm_col:
+                return actual
+    return None
+
+
 def load_pcd_data():
     """Load Parameter-Compute Database data if available"""
     try:
@@ -70,14 +100,49 @@ def match_models_with_pcd(df_capabilities: pd.DataFrame, pcd_data: pd.DataFrame)
     """Match model capabilities with PCD compute data"""
     print("Matching models with compute data...")
     
-    # Simple name matching - in practice this would need more sophisticated matching
-    df_capabilities['model_clean'] = df_capabilities['model'].str.lower().str.replace('-', '_')
-    pcd_data['model_clean'] = pcd_data['model_name'].str.lower().str.replace('-', '_')
-    
+    # Identify the relevant columns in PCD data robustly
+    model_col = _find_column(pcd_data, [
+        'model_name', 'model', 'name', 'system', 'model_id', 'model title'
+    ])
+    compute_col = _find_column(pcd_data, [
+        'training_compute_flops', 'training_compute', 'total_training_flops',
+        'train_flops', 'training flops', 'compute_flops_training', 'compute_flops',
+        'training_compute (flops)'
+    ])
+    params_col = _find_column(pcd_data, [
+        'parameters', 'num_parameters', 'n_params', '#params', 'params', 'parameter_count'
+    ])
+
+    missing = []
+    if model_col is None:
+        missing.append('model name')
+    if compute_col is None:
+        missing.append('training compute FLOPs')
+    if params_col is None:
+        missing.append('parameters')
+    if missing:
+        raise KeyError(
+            "PCD data is missing required columns: " + ", ".join(missing) +
+            f". Available columns: {list(pcd_data.columns)}"
+        )
+
+    # Standardize to a consistent schema for merging
+    pcd_trimmed = pcd_data[[model_col, compute_col, params_col]].copy()
+    pcd_trimmed.columns = ['pcd_model_raw', 'training_compute_flops', 'parameters']
+
+    # Simple name normalization for matching
+    df_capabilities = df_capabilities.copy()
+    df_capabilities['model_clean'] = (
+        df_capabilities['model'].astype(str).str.lower().str.replace('-', '_')
+    )
+    pcd_trimmed['model_clean'] = (
+        pcd_trimmed['pcd_model_raw'].astype(str).str.lower().str.replace('-', '_')
+    )
+
     # Merge datasets
     merged_df = df_capabilities.merge(
-        pcd_data[['model_clean', 'training_compute_flops', 'parameters']], 
-        on='model_clean', 
+        pcd_trimmed[['model_clean', 'training_compute_flops', 'parameters']],
+        on='model_clean',
         how='inner'
     )
     
@@ -291,7 +356,11 @@ def main():
     # Fit the statistical model to get capabilities
     print("Fitting statistical model...")
     df_filtered, df_capabilities, df_benchmarks = fit_statistical_model(
-        scores_df, "Winogrande", 0, 1
+        scores_df,
+        anchor_mode="benchmark",
+        anchor_benchmark="Winogrande",
+        anchor_difficulty=0,
+        anchor_slope=1
     )
     
     # Load compute data

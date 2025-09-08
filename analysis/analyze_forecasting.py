@@ -46,7 +46,8 @@ from analysis_utils import (
 def validate_forecast_accuracy(df_capabilities: pd.DataFrame, 
                              cutoff_date: str,
                              top_n_models: int,
-                             output_dir: Path):
+                             output_dir: Path,
+                             label_frontier: bool = False):
     """Validate forecast accuracy by comparing pre-cutoff predictions to post-cutoff reality"""
     print(f"Validating forecast accuracy with cutoff date: {cutoff_date} using models that were top {top_n_models} at release")
     
@@ -116,6 +117,29 @@ def validate_forecast_accuracy(df_capabilities: pd.DataFrame,
     
     ax.scatter(post_cutoff['date_obj'], post_cutoff['estimated_capability'], 
               alpha=0.8, s=50, label=f'Frontier models (actual)', color='green')
+
+    # Optional labels for frontier models
+    if label_frontier:
+        for _, r in pre_cutoff.dropna(subset=['date_obj', 'estimated_capability']).iterrows():
+            ax.annotate(
+                r['model'],
+                xy=(r['date_obj'], r['estimated_capability']),
+                xytext=(4, 4),
+                textcoords='offset points',
+                fontsize=8,
+                color='blue',
+                alpha=0.9,
+            )
+        for _, r in post_cutoff.dropna(subset=['date_obj', 'estimated_capability']).iterrows():
+            ax.annotate(
+                r['model'],
+                xy=(r['date_obj'], r['estimated_capability']),
+                xytext=(4, 4),
+                textcoords='offset points',
+                fontsize=8,
+                color='green',
+                alpha=0.9,
+            )
     
     # Plot predictions
     ax.scatter(post_cutoff['date_obj'], y_pred, 
@@ -158,7 +182,8 @@ def validate_forecast_accuracy(df_capabilities: pd.DataFrame,
 def create_future_forecast(df_capabilities: pd.DataFrame,
                          forecast_years: int = 3,
                          top_n_models: int = 1,
-                         output_dir: Path = None):
+                         output_dir: Path = None,
+                         label_frontier: bool = False):
     """Create forecast for future capabilities based on models that were frontier at release"""
     print(f"Creating {forecast_years}-year capability forecast using models that were top {top_n_models} at release...")
     
@@ -237,6 +262,19 @@ def create_future_forecast(df_capabilities: pd.DataFrame,
     # Plot frontier models data (highlighted)
     ax.scatter(df_frontier['date_obj'], df_frontier['estimated_capability'], 
               alpha=0.8, s=40, label=f'Models that were top {top_n_models} at release', color='blue')
+
+    # Optional labels for frontier models
+    if label_frontier:
+        for _, r in df_frontier.dropna(subset=['date_obj', 'estimated_capability']).iterrows():
+            ax.annotate(
+                r['model'],
+                xy=(r['date_obj'], r['estimated_capability']),
+                xytext=(4, 4),
+                textcoords='offset points',
+                fontsize=8,
+                color='blue',
+                alpha=0.9,
+            )
     
     # Plot historical trend (based on frontier models)
     y_hist_trend = model.predict(X)
@@ -295,6 +333,187 @@ def create_future_forecast(df_capabilities: pd.DataFrame,
     }
 
 
+def create_post_cutoff_frontier_forecast(
+    df_capabilities: pd.DataFrame,
+    cutoff_date: str,
+    forecast_years: int = 3,
+    top_n_models: int = 1,
+    output_dir: Path | None = None,
+    label_frontier: bool = False,
+):
+    """Create a post-cutoff forecast using only models that were frontier at release AFTER the cutoff.
+
+    Fits a linear trend to post-cutoff frontier (top-N-at-release) points and extrapolates
+    forecast_years into the future.
+    """
+    print(
+        f"Creating post-cutoff ({cutoff_date}) {forecast_years}-year forecast using models that were top {top_n_models} at release..."
+    )
+
+    df = prepare_model_data(df_capabilities)
+    cutoff_dt = pd.to_datetime(cutoff_date)
+
+    # Identify post-cutoff frontier models: those that were among top N at their release, and released after cutoff
+    post_cutoff_frontier_models: list[pd.Series] = []
+
+    for _, model_row in df.iterrows():
+        model_release_date = model_row['date_obj']
+        if pd.isna(model_release_date) or pd.isna(model_row['estimated_capability']):
+            continue
+
+        if model_release_date <= cutoff_dt:
+            continue
+
+        available_models = df[df['date_obj'] <= model_release_date]
+        top_models_at_release = available_models.nlargest(top_n_models, 'estimated_capability')
+
+        if model_row['model'] in top_models_at_release['model'].values:
+            post_cutoff_frontier_models.append(model_row)
+
+    df_frontier_post = pd.DataFrame(post_cutoff_frontier_models)
+
+    if len(df_frontier_post) < 2:
+        print("Insufficient post-cutoff frontier data points to fit a trend. Skipping post-cutoff forecast plot.")
+        return {}
+
+    # Prepare numeric features from post-cutoff data only
+    x0 = df_frontier_post['date_obj'].min()
+    X = (df_frontier_post['date_obj'] - x0).dt.days.values.reshape(-1, 1)
+    y = df_frontier_post['estimated_capability'].values
+
+    # Fit models
+    lr_model = LinearRegression()
+    lr_model.fit(X, y)
+
+    X_sm = sm.add_constant(X.flatten())
+    ols_model = sm.OLS(y, X_sm).fit()
+
+    # Forecast horizon based on latest available date in the full dataset
+    last_date = df['date_obj'].max()
+    forecast_end = last_date + timedelta(days=365.25 * forecast_years)
+    forecast_dates = pd.date_range(start=last_date, end=forecast_end, freq='ME')
+
+    # Use the same baseline (x0) for conversion to numeric
+    X_forecast = (forecast_dates - x0).days.values.reshape(-1, 1)
+    X_forecast_sm = sm.add_constant(X_forecast.flatten())
+
+    # Predictions
+    y_hist_trend = lr_model.predict(X)
+    y_forecast = lr_model.predict(X_forecast)
+
+    # Confidence and prediction intervals via statsmodels
+    forecast_sm = ols_model.get_prediction(X_forecast_sm)
+    ci_lower = forecast_sm.conf_int()[:, 0]
+    ci_upper = forecast_sm.conf_int()[:, 1]
+
+    try:
+        pi_lower = forecast_sm.prediction_interval[:, 0]
+        pi_upper = forecast_sm.prediction_interval[:, 1]
+    except AttributeError:
+        prediction_std_err = forecast_sm.se_mean
+        t_val = stats.t.ppf(0.975, ols_model.df_resid)
+        pi_lower = y_forecast - t_val * prediction_std_err
+        pi_upper = y_forecast + t_val * prediction_std_err
+
+    # Plot
+    fig, ax = plt.subplots(figsize=(14, 8))
+
+    # Context: all models
+    ax.scatter(
+        df['date_obj'],
+        df['estimated_capability'],
+        alpha=0.25,
+        s=20,
+        label='All models',
+        color='lightblue',
+    )
+
+    # Highlight: post-cutoff frontier models used for fit
+    ax.scatter(
+        df_frontier_post['date_obj'],
+        df_frontier_post['estimated_capability'],
+        alpha=0.9,
+        s=50,
+        label=f'Post-cutoff models that were top {top_n_models} at release',
+        color='blue',
+    )
+
+    # Optional labels for frontier models (post-cutoff)
+    if label_frontier:
+        for _, r in df_frontier_post.dropna(subset=['date_obj', 'estimated_capability']).iterrows():
+            ax.annotate(
+                r['model'],
+                xy=(r['date_obj'], r['estimated_capability']),
+                xytext=(4, 4),
+                textcoords='offset points',
+                fontsize=8,
+                color='blue',
+                alpha=0.9,
+            )
+
+    # Trend on the post-cutoff segment
+    ax.plot(
+        df_frontier_post['date_obj'], y_hist_trend, 'b--', alpha=0.8, label='Post-cutoff frontier trend'
+    )
+
+    # Forecast and intervals
+    ax.plot(forecast_dates, y_forecast, 'r-', linewidth=2, label='Post-cutoff forecast')
+    ax.fill_between(
+        forecast_dates, ci_lower, ci_upper, alpha=0.3, color='red', label='95% Confidence interval'
+    )
+    ax.fill_between(
+        forecast_dates, pi_lower, pi_upper, alpha=0.2, color='red', label='95% Prediction interval'
+    )
+
+    # Lines for cutoff and present
+    ax.axvline(x=cutoff_dt, color='black', linestyle=':', alpha=0.7, label='Cutoff date')
+    ax.axvline(x=last_date, color='gray', linestyle='--', alpha=0.7, label='Present')
+
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Estimated Capability')
+    ax.set_title(
+        f'Post-cutoff Frontier Forecast (Top {top_n_models} at Release after {cutoff_date}, +{forecast_years}y)'
+    )
+    ax.grid(True, alpha=0.3)
+    ax.legend()
+
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+    ax.xaxis.set_major_locator(mdates.MonthLocator(interval=3))
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    # Save
+    forecast_df = pd.DataFrame(
+        {
+            'date': forecast_dates,
+            'predicted_capability': y_forecast,
+            'ci_lower': ci_lower,
+            'ci_upper': ci_upper,
+            'pi_lower': pi_lower,
+            'pi_upper': pi_upper,
+        }
+    )
+
+    if output_dir is not None:
+        plt.savefig(
+            output_dir / f"post_cutoff_frontier_forecast_{forecast_years}yr.png",
+            dpi=300,
+            bbox_inches='tight',
+        )
+        forecast_df.to_csv(
+            output_dir / f"post_cutoff_forecast_table_{forecast_years}yr.csv", index=False
+        )
+
+    return {
+        'model': lr_model,
+        'forecast_df': forecast_df,
+        'slope_per_year': lr_model.coef_[0] * 365.25,
+        'r2': lr_model.score(X, y),
+        'model_summary': ols_model.summary(),
+        'n_points': len(df_frontier_post),
+    }
+
+
 def analyze_benchmark_saturation_forecasts(df_capabilities: pd.DataFrame,
                                          df_benchmarks: pd.DataFrame,
                                          output_dir: Path):
@@ -303,12 +522,14 @@ def analyze_benchmark_saturation_forecasts(df_capabilities: pd.DataFrame,
     
     # Get capability growth rate
     df_cap = prepare_model_data(df_capabilities)
-    growth_stats = bootstrap_slope_analysis(df_cap, 'date_obj', 'estimated_capability')
+    # Remove rows with NaN values in date or estimated_capability
+    df_cap_clean = df_cap.dropna(subset=['date_obj', 'estimated_capability'])
+    growth_stats = bootstrap_slope_analysis(df_cap_clean, 'date_obj', 'estimated_capability')
     annual_growth = growth_stats['mean_slope']
     
     # Current maximum capability
-    current_max_capability = df_cap['estimated_capability'].max()
-    current_date = df_cap['date_obj'].max()
+    current_max_capability = df_cap_clean['estimated_capability'].max()
+    current_date = df_cap_clean['date_obj'].max()
     
     # For each benchmark, estimate when 50% performance will be reached
     saturation_forecasts = []
@@ -379,6 +600,8 @@ def main():
                        help='Number of years to forecast ahead')
     parser.add_argument('--top-n-models', type=int, default=1,
                        help='Number of top models at release to use for frontier forecasting (default: 1 for pure frontier)')
+    parser.add_argument('--label-frontier', action='store_true',
+                       help='Annotate frontier model points with their model names')
     
     args = parser.parse_args()
     
@@ -395,17 +618,33 @@ def main():
     # Fit the statistical model
     print("Fitting statistical model...")
     df_filtered, df_capabilities, df_benchmarks = fit_statistical_model(
-        scores_df, "Winogrande", 0, 1
+        scores_df,
+        anchor_mode="benchmark",
+        anchor_benchmark="Winogrande",
+        anchor_difficulty=0,
+        anchor_slope=1
     )
     
     # Validate forecast accuracy
     validation_results = validate_forecast_accuracy(
-        df_capabilities, args.cutoff_date, args.top_n_models, output_dir
+        df_capabilities, args.cutoff_date, args.top_n_models, output_dir,
+        label_frontier=args.label_frontier,
     )
     
     # Create future forecast
     forecast_results = create_future_forecast(
-        df_capabilities, args.forecast_years, args.top_n_models, output_dir
+        df_capabilities, args.forecast_years, args.top_n_models, output_dir,
+        label_frontier=args.label_frontier,
+    )
+
+    # Create post-cutoff frontier-only forecast (top-N-at-release after cutoff)
+    post_cutoff_results = create_post_cutoff_frontier_forecast(
+        df_capabilities,
+        cutoff_date=args.cutoff_date,
+        forecast_years=args.forecast_years,
+        top_n_models=args.top_n_models,
+        output_dir=output_dir,
+        label_frontier=args.label_frontier,
     )
     
     # Analyze benchmark saturation forecasts
@@ -420,6 +659,12 @@ def main():
             "slope_per_year": forecast_results['slope_per_year'],
             "r_squared": forecast_results['r2'],
             "forecast_years": args.forecast_years
+        },
+        "Post-cutoff Forecast": {
+            "slope_per_year": post_cutoff_results.get('slope_per_year') if post_cutoff_results else None,
+            "r_squared": post_cutoff_results.get('r2') if post_cutoff_results else None,
+            "n_points": post_cutoff_results.get('n_points') if post_cutoff_results else 0,
+            "forecast_years": args.forecast_years,
         },
         "Benchmark Saturation": {
             "benchmarks_analyzed": len(saturation_forecasts),
@@ -444,6 +689,14 @@ def main():
     print(f"\nFrontier Forecast ({args.forecast_years} years, models that were top {args.top_n_models} at release):")
     print(f"  Annual growth rate: {forecast_results['slope_per_year']:.3f}")
     print(f"  Model R²: {forecast_results['r2']:.3f}")
+
+    if post_cutoff_results:
+        print(
+            f"\nPost-cutoff Frontier Forecast (after {args.cutoff_date}, top {args.top_n_models} at release, {args.forecast_years} years):"
+        )
+        print(f"  Points used: {post_cutoff_results['n_points']}")
+        print(f"  Annual growth rate: {post_cutoff_results['slope_per_year']:.3f}")
+        print(f"  Model R²: {post_cutoff_results['r2']:.3f}")
     
     if len(saturation_forecasts) > 0:
         next_benchmark = saturation_forecasts.iloc[0]
