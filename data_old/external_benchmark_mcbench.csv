@@ -1,0 +1,35 @@
+﻿Name,UUID,Model version,ELO,Win rate,Votes,Notes,Source,Source link
+Claude 3.7 Sonnet (2025-02-19),rec6f5YPwzNDBDEc1,,1312,84.2%,1585,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+GPT 4.5 - Preview (2025-02-27),recwcMTvNmTLdRk6D,gpt-4.5-preview-2025-02-27,1270,71.4%,3284,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Claude 3.5 Sonnet (2024-10-22),recZIlyFfTxjiJ3m0,claude-3-5-sonnet-20241022,1180,72.7%,2422,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+deepseek-r1,recw58gXzz0xvm1nW,DeepSeek-R1,1105,66.4%,3268,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+DeepSeek-V3-0324,rec3FZuNF15R5klsP,DeepSeek-V3-0324,1095,65.0%,654,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Gemini 2.0 Flash Thinking - Experimental (01-21),recUBAebRtkcyRac1,gemini-2.0-flash-thinking-exp-01-21,1090,59.9%,2956,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+quasar-alpha,rec1fFMBNIbWWyP7q,,1086,77.8%,9,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Gemini 2.0 Pro Experimental (02-05),rec8G0mN1Ai5Xi8bD,gemini-2.0-pro-exp-02-05,1084,57.9%,404,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+o1 (2024-12-17),rec5PA9MABvioiHaX,o1-2024-12-17_medium,1076,57.2%,3585,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+ChatGPT-4o-latest-2025-03-27,recvfDXoyJWd0JwKg,,1063,40.0%,160,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+gemini-2.5-pro-exp-03-25,recg66bMLsXT6EXMO,gemini-2.5-pro-exp-03-25,1055,62.5%,8,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Claude 3 Opus (2024-02-29),rect4Eg4GKteJu1sY,claude-3-opus-20240229,1028,51.0%,1413,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+GPT 4o (2024-08-06),recUZqjooX7T4bzcS,gpt-4o-2024-08-06,1019,44.0%,3572,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Gemini 2.0 Flash (001),rectI5tyXgYuvH0EG,gemini-2.0-flash-001,1005,53.0%,3330,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Qwen - qwq - 32b,rec5KU4onLjTJHFwt,QwQ-32B,993,36.4%,2903,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+GPT 4o (2024-11-20),recBH8nhuKthOgM0z,gpt-4o-2024-11-20,991,59.2%,3345,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+deepseek-v3,rechUj0ElCic9WcW3,DeepSeek-V3,979,46.3%,3364,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Qwen-Max (2025-01-25),recgVKznvlzQ3bY1x,qwen-max-2025-01-25,972,44.7%,3544,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Gemini 2.0 Flash Lite (001),recS4gtkwK2fm30xx,gemini-2.0-flash-001,952,41.8%,3279,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+o3-mini (2025-01-31),reczxetOYEutj8E9i,o3-mini-2025-01-31_medium,948,45.3%,3547,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Claude 3.5 Haiku (2024-10-22),recucWbXYlkJaNAE9,claude-3-5-haiku-20241022,925,31.6%,2598,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+o3-mini-high,recfKhRZzLP0tErbw,o3-mini-2025-01-31_high,904,49.8%,3460,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+o1-mini (2024-09-12),rec37yD7Pc9X26N3N,o1-mini-2024-09-12_medium,902,37.0%,2766,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+grok 2 (1212),rec5RRKVm7odMPs5s,grok-2-1212,876,33.1%,3323,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Qwen-Plus (2025-01-25),recmOilpNsYsWo083,qwen-plus-2025-01-25,864,34.9%,3145,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Hermes 3 - Llama 3.1 - 405b,recEmJZgo9we4Gvbq,,859,32.9%,3022,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+GPT 4o Mini (2024-07-18),recomdwrXrYk7c3DC,gpt-4o-mini-2024-07-18,838,18.9%,3373,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Qwen 2.5 - 72b - Instruct,recVqyVZDhqlHr9XP,,834,30.1%,2996,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Mistral Large (24.11),recBU2sDCLz5forZ7,Mistral-Large-Instruct-2411,799,32.4%,3546,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Codestral (25.01),recmDiYUQWgAen6ZW,,778,22.2%,3191,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Qwen-Turbo (2024-11-01),rectUcDcYfrUCX5mX,,764,11.9%,3009,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Hermes 3 - Llama 3.1 - 70b,recJJhXya4gLiyncc,,735,18.7%,3031,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Meta Llama 3.1 - 405b - Instruct,recEvXzuhIbHpVvFr,Llama-3.1-405B-Instruct,722,14.0%,3223,,MCBench Leaderboard,https://mcbench.ai/leaderboard
+Meta Llama 3.3 - 70B - Instruct,recFAZ6EF45TPNorD,Llama-3.3-70B-Instruct,685,16.4%,3306,,MCBench Leaderboard,https://mcbench.ai/leaderboard

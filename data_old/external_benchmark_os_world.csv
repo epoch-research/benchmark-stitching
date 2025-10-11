@@ -1,0 +1,77 @@
+﻿Agent,Model version,Score,Source,Source link,Notes (details),Date added,Trajectories
+OpenAI CUA (200 steps),CUA,38.100,OS World Website,https://os-world.github.io/,,24/1/2025,
+Agent S2 w/ Claude 3.7 (50 steps),,34.500,OS World Website,https://os-world.github.io/,,13/3/2025,https://drive.google.com/drive/folders/18PTnMwgyhxIWTVNLMwf0sbzhvh9AlVqE?usp=drive_link
+Claude 3.7 Sonnet (100 steps),claude-3-7-sonnet-20250219,28.000,OS World Website,https://os-world.github.io/,,24/2/2025,
+Simular Agent S2 (15 steps),,27.000,OS World Website,https://os-world.github.io/,,13/3/2025,https://drive.google.com/drive/folders/18PTnMwgyhxIWTVNLMwf0sbzhvh9AlVqE?usp=drive_link
+Claude 3.7 Sonnet (50 steps),claude-3-7-sonnet-20250219,26.000,OS World Website,https://os-world.github.io/,,24/2/2025,
+UI-TARS-72B-DPO (50 steps),,24.600,OS World Website,https://os-world.github.io/,,21/1/2025,https://drive.google.com/file/d/1vUWlXVenkOc5F1s-z8DdpfU4Y5fUMssr/view?usp=drive_link
+UI-TARS-72B-DPO (15 steps),,22.700,OS World Website,https://os-world.github.io/,,21/1/2025,
+Claude 3.5 Sonnet (50 steps),claude-3-5-sonnet-20240620,22.000,OS World Website,https://os-world.github.io/,,22/10/2024,
+Claude 3.5 Sonnet (new) (100 steps),claude-3-5-sonnet-20241022,21.000,OS World Website,https://os-world.github.io/,,24/2/2025,
+OpenAI CUA (15 steps),CUA,19.700,OS World Website,https://os-world.github.io/,,24/1/2025,
+Claude 3.5 Sonnet (new) (50 steps),claude-3-5-sonnet-20241022,19.500,OS World Website,https://os-world.github.io/,,24/2/2025,
+UI-TARS-72B-SFT (15 steps),,18.800,OS World Website,https://os-world.github.io/,,21/1/2025,
+UI-TARS-7B-DPO (15 steps),,18.700,OS World Website,https://os-world.github.io/,,21/1/2025,
+UI-TARS-7B-SFT (15 steps),,17.700,OS World Website,https://os-world.github.io/,,21/1/2025,
+Aguvis-72B w/ GPT-4o,,17.040,OS World Website,https://os-world.github.io/,,22/11/2024,
+Claude 3.7 Sonnet (15 steps),claude-3-7-sonnet-20250219,15.500,OS World Website,https://os-world.github.io/,,24/12/2024,
+Aria-UI w/ GPT-4o,,15.150,OS World Website,https://os-world.github.io/,,24/12/2024,
+Claude 3.5 Sonnet (15 steps),claude-3-5-sonnet-20240620,14.900,OS World Website,https://os-world.github.io/,,22/10/2024,
+Aguvis-7B w/ GPT-4o,,14.790,OS World Website,https://os-world.github.io/,,22/11/2024,
+OS-Atlas-Base-7B w/ GPT-4o,,14.630,OS World Website,https://os-world.github.io/,,30/10/2024,
+OS-Atlas-Base-4B w/ GPT-4o,,11.650,OS World Website,https://os-world.github.io/,,30/10/2024,
+Aguvis-72B,,10.260,OS World Website,https://os-world.github.io/,,22/11/2024,
+SeeClick w/ GPT-4o,,9.210,OS World Website,https://os-world.github.io/,,30/10/2024,
+Qwen2.5-vl-72B,Qwen2.5-VL-72B-Instruct,8.800,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len = 32k",26/1/2025,
+Ponder&Press w/ GPT-4o,,8.700,OS World Website,https://os-world.github.io/,,2/12/2024,
+CogAgent-9B-20241220,,8.120,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len =",24/12/2024,
+CRADLE w/ GPT-4o,,7.810,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len = 32k",14/6/2024,https://drive.google.com/drive/folders/14_xlL-e0-0INq2O1THbhFKi6Z0bgfwR4?usp=drive_link
+GPT-4 Vision,gpt-4-1106-vision-preview,7.690,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len = 32k",24/5/2024,https://drive.google.com/file/d/1miMp-AR_hOfLUWszGb_aZG2f_Nd66Ntt/view?usp=drive_link
+Gemini-Pro Vision,,5.800,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len = 32k",20/3/2024,https://drive.google.com/file/d/17jgZEjslxIZPC5kuzOq6oTK5EuDiJ-_l/view?usp=drive_link
+GPT-4 Vision (0409),gpt-4-turbo-2024-04-09,5.400,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len = 32k",23/4/2024,https://drive.google.com/drive/folders/1NLsHdLUNZOHsEC5xNZ4e4PHkDC5IELjj?usp=drive_link
+Gemini-Pro-1.5,gemini-1.5-pro-001,5.400,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len = 128k",3/4/2024,https://drive.google.com/drive/folders/1j-YVzEGAGWxXgse75MCnhUCTVuejM76A?usp=drive_link
+GPT-4 Vision (2024-03-20),,5.260,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len = 32k",20/3/2024,
+GPT-4o,gpt-4o-2024-05-13,5.030,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len = 32k",20/5/2024,https://drive.google.com/file/d/1mN12zjCiawfU4k1ifPsLW-hcuzPV7Voz/view?usp=drive_link
+GPT-4o-mini,gpt-4o-mini-2024-07-18,3.770,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len = 128k",17/8/2024,https://drive.google.com/file/d/1Skq_uMcAR08LMDnIpOswjxm5ntbVXm5M/view?usp=drive_link
+InternVL2,,3.330,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len =",17/8/2024,https://drive.google.com/file/d/1KSYs7ZOhEkjBQX5UnMpLkbxZZ6BLhbDm/view?usp=drive_link
+Claude-3-Opus,claude-3-opus-20240229,2.420,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len = 200k",20/3/2024,
+Llava-OneVision,,2.420,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len =",17/8/2024,https://drive.google.com/file/d/1geppLqwV80p66bXdffVBbLayjCkIQ9mk/view?usp=drive_link
+Qwen-vl-Max-0809,,2.420,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len = 32k",10/9/2024,https://drive.google.com/drive/folders/1iBOXZpknCi1Fqzg0fQMG6CZc9NWrwdkf?usp=drive_link
+MiniCPM-V 2.6,,1.880,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len =",17/8/2024,https://drive.google.com/file/d/1T58G_EIr4pWZYJ8plXEWspFHr35g-Nsy/view?usp=drive_link
+CogAgent,,1.110,OS World Website,https://os-world.github.io/,"t=1.0, top-p=0.9
+
+len =",20/3/2024,
+UI-TARS-1.5 (100 steps),,42.500,OS World Website,https://os-world.github.io/,,17/4/2025,https://drive.google.com/file/d/1e7SCYqpxFX2FCGEOhf6jcVvwkx3leIKf/view?usp=drive_link
+Agent S2 w/ Gemini 2.5 (50 steps),,41.400,OS World Website,https://os-world.github.io/,,18/4/2025,https://drive.google.com/drive/folders/18PTnMwgyhxIWTVNLMwf0sbzhvh9AlVqE?usp=drive_link
+UI-TARS-1.5 7B (100 steps),,26.920,OS World Website,https://os-world.github.io/,,17/4/2025,
+Kimi-VL,,8.220,OS World Website,https://os-world.github.io/,,10/4/2025,

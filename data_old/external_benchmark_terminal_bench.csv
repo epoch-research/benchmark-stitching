@@ -1,0 +1,16 @@
+﻿id,Agent,Name,Model version,Accuracy mean,Accuracy SE,Notes,Source,Source link
+recQJgn8smPVLOz3F,Claude Code,claude-3-7-sonnet,claude-3-7-sonnet-20250219,35.2%,1.3%,The choice of thinking effort is made by the Claude code scaffolding,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recHaZf9xmVOj8cxI,Terminus,claude-3-7-sonnet,claude-3-7-sonnet-20250219,30.6%,1.9%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recVIdPAUDakmSij0,Terminus,gpt-4.1,gpt-4.1-2025-04-14,30.3%,2.1%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recV9BNYucqd7iG2f,Terminus,o3,o3-2025-04-16_medium,30.2%,0.9%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recEf1xgRFBHW2DL9,Goose,o4-mini,o4-mini-2025-04-16_medium,27.5%,1.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recX5HvDyy6ZhGNFj,Terminus,gemini-2.5-pro,gemini-2.5-pro-preview-05-06,25.3%,2.8%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recDbDDaq781rDLYy,Codex CLI,o4-mini,o4-mini-2025-04-16_medium,20.0%,1.5%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recRd8hJ5wfQSe3Vi,Terminus,o4-mini,o4-mini-2025-04-16_medium,18.5%,1.4%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recKOBOp12o2sMvxs,Terminus,grok-3-beta,grok-3-beta,17.5%,4.2%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recyscDbMlLslAuHr,Terminus,gemini-2.5-flash,gemini-2.5-flash-preview-04-17,16.8%,1.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recrnEQfyhorGSYUx,Terminus,Llama-4-Maverick-17B,Llama-4-Maverick-17B-128E-Instruct,15.5%,1.7%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recpCwaNamDZITNIF,Codex CLI,codex-mini-latest,codex-mini-2025-05-16,11.3%,1.6%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+reccyI4aWNN41GEYb,Codex CLI,gpt-4.1,gpt-4.1-2025-04-14,8.3%,1.4%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+reci9iwpZzPhCpaQl,Terminus,Qwen3-235B,qwen3-235b-a22b,6.6%,1.4%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+rec49wbTlhSEHbviQ,Terminus,DeepSeek-R1,DeepSeek-R1,5.7%,0.7%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard

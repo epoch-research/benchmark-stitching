@@ -1,0 +1,5 @@
+﻿id,Name,Average score,Model version,Notes,Source,Source link
+recR3uOS0BLHqkwxL,Claude 4 Opus,51%,claude-opus-4-20250514_2K,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+reciPR9ZrmNzGMR41,Claude 4 Sonnet,51%,claude-sonnet-4-20250514_2K,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recZOsBdFIcclcWLC,O3,46%,o3-2025-04-16_medium,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recXizbzd3b0y22vq,Gemini 2.5 Pro Preview 06/05,40%,gemini-2.5-pro-preview-06-05,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai

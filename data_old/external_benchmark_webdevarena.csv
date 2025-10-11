@@ -1,0 +1,26 @@
+﻿Model,UUID,Model version,Arena Score,Score 95% CI,Votes,Date,Source,Source link (site from table),Notes
+Claude 3.7 Sonnet (20250219),recumTXyHTALFh1iH,claude-3-7-sonnet-20250219,1355.76,,6295,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Gemini-2.5-Pro-Exp-03-25,recAROVIoEYunuSj1,gemini-2.5-pro-exp-03-25,1275.96,,5933,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Claude 3.5 Sonnet (20241022),recPRratljctS351K,claude-3-5-sonnet-20241022,1241.59,,22969,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+DeepSeek-V3-0324,recgHWkkshK8nYtfz,DeepSeek-V3-0324,1209.23,,1097,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+DeepSeek-R1,reclY6B2Wp2f59mld,DeepSeek-R1,1201.54,,3760,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+early-grok-3,recfCHpJwlJ1lYx5X,grok-3-beta,1143.70,,6051,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,"Assuming ""early-grok-3"" means beta based on the entry linking to the Grok 3 Beta release announcement"
+o3-mini-high (20250131),reciewGCgzyyNzf2b,o3-mini-2025-01-31_high,1142.10,,2874,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Claude 3.5 Haiku (20241022),rec2HfXnHOGStYCxd,claude-3-5-haiku-20241022,1135.79,,16986,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+o3-mini (20250131),recgqUvke6VOkEmBB,o3-mini-2025-01-31_medium,1095.72,,6294,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,Assuming medium reasoning effort for o3-mini
+Gemini-2.0-Pro-Exp-02-05,rec3yrXg7sjOWAYJD,gemini-2.0-pro-exp-02-05,1093.31,,10938,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+o1 (20241217),recWy0omQqA7DyLpV,o1-2024-12-17_medium,1047.59,,9198,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,Assuming medium reasoning effort for o1-mini
+o1-mini (20240912),recGOQoDUMGxhuJKG,o1-mini-2024-09-12_medium,1044.62,,13745,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,Assuming medium reasoning effort for o1-mini
+Gemini-2.0-Flash-001,rec2ZAMUe9ddSA0jr,gemini-2.0-flash-001,1033.84,,6187,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Gemini-2.0-Flash-Thinking-01-21,receFyTNQKyKKfYxQ,gemini-2.0-flash-thinking-exp-01-21,1032.10,,1064,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Gemini-2.0-Flash-Thinking-1219,recupHAQUUJLEfAKr,gemini-2.0-flash-thinking-exp-1219,1021.87,,8010,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Gemini-Exp-1206,recNzvmfbTQSnSt1P,gemini-exp-1206,1021.00,,12099,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Llama-4-Maverick-17B-128E-Instruct,recpMEwdZMYc7hdfv,Llama-4-Maverick-17B-128E-Instruct-FP8,1006.52,,1134,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Gemini-2.0-Flash-Exp,recpt2SS6EgSsH1Uz,gemini-2.0-flash-exp,982.07,,14485,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Qwen2.5-Max,recIyrfsEqGZ5NqkT,qwen2.5-max,976.62,,8804,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+GPT-4o-2024-11-20,recOXmBp4Cwo69XIV,gpt-4o-2024-11-20,964.00,,17529,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+DeepSeek-V3,recjl6xOWVf3sOVsn,DeepSeek-V3,962.03,,7717,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Qwen2.5-Coder-32B-Instruct,recZqTIAehJCPRyy6,Qwen2.5-Coder-32B-Instruct,902.61,,15800,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Llama-4-Scout-17B-16E-Instruct,recnoUKWcpo8ct7TH,Llama-4-Scout-17B-16E-Instruct,895.26,,461,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Gemini-1.5-Pro-002,recsuGMPbGwVUtzmv,gemini-1.5-pro-002,893.61,,14714,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,
+Llama-3.1-405B-Instruct,recyv7krOldyrXF6M,Llama-3.1-405B-Instruct,810.82,,1117,,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,

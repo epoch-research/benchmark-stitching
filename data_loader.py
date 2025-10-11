@@ -26,13 +26,13 @@ df_balrog = pd.read_csv("data/external_benchmark_balrog.csv")[["Model version", 
 df_balrog = df_balrog.rename(columns={"Model version": "model", "Average progress": "performance", "Source": "source"})
 df_balrog.dropna(inplace=True)
 df_balrog["benchmark"] = "Balrog"
-df_balrog["performance"] = pd.to_numeric(df_balrog["performance"].str.rstrip('%'), errors="raise") / 100
+df_balrog["performance"] = pd.to_numeric(df_balrog["performance"], errors="raise")
 
 df_factorio = pd.read_csv("data/external_benchmark_factorio_learning_environment.csv")[["Model version", "Lab Success %", "Source"]]
 df_factorio = df_factorio.rename(columns={"Model version": "model", "Lab Success %": "performance", "Source": "source"})
 df_factorio.dropna(inplace=True)
 df_factorio["benchmark"] = "Factorio learning environment"
-df_factorio["performance"] = pd.to_numeric(df_factorio["performance"].str.rstrip('%'), errors="raise") / 100
+df_factorio["performance"] = pd.to_numeric(df_factorio["performance"], errors="raise")
 
 df_osworld = pd.read_csv("data/external_benchmark_os_world.csv")[["Model version", "Score", "Source"]]
 df_osworld = df_osworld.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
@@ -44,7 +44,7 @@ df_weirdml = pd.read_csv("data/external_benchmark_weirdml.csv")[["Model version"
 df_weirdml = df_weirdml.rename(columns={"Model version": "model", "Average": "performance", "Source": "source"})
 df_weirdml.dropna(inplace=True)
 df_weirdml["benchmark"] = "WeirdML"
-df_weirdml["performance"] = pd.to_numeric(df_weirdml["performance"].str.rstrip('%'), errors="raise") / 100
+df_weirdml["performance"] = pd.to_numeric(df_weirdml["performance"], errors="raise")
 
 df_trivia = pd.read_csv("data/external_benchmark_triviaqa.csv")[["Model version", "EM", "Source"]]
 df_trivia = df_trivia.rename(columns={"Model version": "model", "EM": "performance", "Source": "source"})
@@ -86,13 +86,13 @@ df_vpct = pd.read_csv("data/external_benchmark_vpct.csv")[["Model version", "Cor
 df_vpct = df_vpct.rename(columns={"Model version": "model", "Correct": "performance", "Source": "source"})
 df_vpct.dropna(inplace=True)
 df_vpct["benchmark"] = "VPCT"
-df_vpct["performance"] = pd.to_numeric(df_vpct["performance"].str.rstrip('%'), errors="raise") / 100
+df_vpct["performance"] = pd.to_numeric(df_vpct["performance"], errors="raise")
 
 df_simple = pd.read_csv("data/external_benchmark_simple_bench.csv")[["Model version", "Score (AVG@5)", "Source"]]
 df_simple = df_simple.rename(columns={"Model version": "model", "Score (AVG@5)": "performance", "Source": "source"})
 df_simple.dropna(inplace=True)
 df_simple["benchmark"] = "SimpleBench"
-df_simple["performance"] = pd.to_numeric(df_simple["performance"].str.rstrip('%'), errors="raise") / 100
+df_simple["performance"] = pd.to_numeric(df_simple["performance"], errors="raise")
 
 df_arc = pd.read_csv("data/external_benchmark_arc_agi.csv")[["Model version", "Score", "Source"]]
 df_arc = df_arc.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
@@ -116,7 +116,7 @@ df_deepresearch = pd.read_csv("data/external_benchmark_deepresearch.csv")[["Mode
 df_deepresearch = df_deepresearch.rename(columns={"Model version": "model", "Average score": "performance", "Source": "source"})
 df_deepresearch.dropna(inplace=True)
 df_deepresearch["benchmark"] = "DeepResearch Bench"
-df_deepresearch["performance"] = pd.to_numeric(df_deepresearch["performance"].str.rstrip('%'), errors="raise") / 100
+df_deepresearch["performance"] = pd.to_numeric(df_deepresearch["performance"], errors="raise")
 
 # pd.read_csv("data/external_benchmark_fictionlivebench.csv") <-- which performance metric?
 
@@ -124,13 +124,13 @@ df_geobench = pd.read_csv("data/external_benchmark_geobench.csv")[["Model versio
 df_geobench = df_geobench.rename(columns={"Model version": "model", "ACW Country %": "performance", "Source": "source"})
 df_geobench.dropna(inplace=True)
 df_geobench["benchmark"] = "GeoBench"
-df_geobench["performance"] = pd.to_numeric(df_geobench["performance"].str.rstrip('%'), errors="raise") / 100
+df_geobench["performance"] = pd.to_numeric(df_geobench["performance"], errors="raise")
 
 df_gsobench = pd.read_csv("data/external_benchmark_gso_bench.csv")[["Model version", "Score OPT@1", "Source"]]
 df_gsobench = df_gsobench.rename(columns={"Model version": "model", "Score OPT@1": "performance", "Source": "source"})
 df_gsobench.dropna(inplace=True)
 df_gsobench["benchmark"] = "GSO-Bench"
-df_gsobench["performance"] = pd.to_numeric(df_gsobench["performance"].str.rstrip('%'), errors="raise") / 100
+df_gsobench["performance"] = pd.to_numeric(df_gsobench["performance"], errors="raise")
 
 df_mcbench = pd.read_csv("data/external_benchmark_mcbench.csv")[["Model version", "Win rate", "Source"]]
 df_mcbench = df_mcbench.rename(columns={"Model version": "model", "Win rate": "performance", "Source": "source"})
@@ -148,13 +148,19 @@ df_terminal = pd.read_csv("data/external_benchmark_terminal_bench.csv")[["Model 
 df_terminal = df_terminal.rename(columns={"Model version": "model", "Accuracy mean": "performance", "Source": "source"})
 df_terminal.dropna(inplace=True)
 df_terminal["benchmark"] = "Terminal Bench"
-df_terminal["performance"] = pd.to_numeric(df_terminal["performance"].str.rstrip('%'), errors="raise") / 100
+df_terminal["performance"] = pd.to_numeric(df_terminal["performance"], errors="raise")
 
 df_videomme = pd.read_csv("data/external_benchmark_videomme.csv")[["Model version", "Overall (no subtitles)", "Source"]]
 df_videomme = df_videomme.rename(columns={"Model version": "model", "Overall (no subtitles)": "performance", "Source": "source"})
 df_videomme.dropna(inplace=True)
 df_videomme["benchmark"] = "VideoMME"
 df_videomme["performance"] = pd.to_numeric(df_videomme["performance"].str.rstrip('%'), errors="raise") / 100
+
+df_metr = pd.read_csv("data/external_benchmark_metr.csv")[["Model version", "average_score", "Source"]]
+df_metr = df_metr.rename(columns={"Model version": "model", "average_score": "performance", "Source": "source"})
+df_metr.dropna(inplace=True)
+df_metr["benchmark"] = "METR"
+df_metr["performance"] = pd.to_numeric(df_metr["performance"], errors="raise")
 
 #########################
 # data processing and filtering
@@ -195,7 +201,8 @@ benchmarks = [
     df_mcbench, # probably not? wasn't able to find anything
     # df_osuniverse, # seems likely very sensitive to the specific agent scaffold, messes up the fit
     df_terminal, # mildly since very recent, e.g. 
-    # df_videomme 
+    # df_videomme,
+    df_metr
 ]
 
 optim_bench = [
