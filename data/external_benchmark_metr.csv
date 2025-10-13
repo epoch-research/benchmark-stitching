@@ -1,0 +1,108 @@
+Model version,Time horizon,Release date,Organization,Country,Training compute (FLOP),Training compute notes,CI_high,CI_low,Source,Source link,average_score,Notes,id
+claude-3-5-sonnet-20240620,18.21683,2024-06-20,Anthropic,United States of America,2.700000000000001e+25,"Blog post by Dario Amodei includes some info on 3.5 Sonnet compute: https://darioamodei.com/on-deepseek-and-export-controls
+""Claude 3.5 Sonnet is a mid-sized model that cost a few $10M's to train (I won't give an exact number). Also, 3.5 Sonnet was not trained in any way that involved a larger or more expensive model (contrary to some rumors).""
+
+Using assumptions about GPU pricing, this lets us estimate compute. https://docs.google.com/spreadsheets/d/1-p-ab6t6dkUM6T7GwnFp85ePTMpZMW7LFY7fW2t8POs/",34.472569,9.492954,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.476797,,rec3I5CcPGjF3Riat
+claude-3-5-sonnet-20241022,28.983512,2024-10-22,Anthropic,United States of America,2.700000000000001e+25,"Blog post by Dario Amodei includes some info on 3.5 Sonnet compute: https://darioamodei.com/on-deepseek-and-export-controls
+""Claude 3.5 Sonnet is a mid-sized model that cost a few $10M's to train (I won't give an exact number). Also, 3.5 Sonnet was not trained in any way that involved a larger or more expensive model (contrary to some rumors).""
+
+Using assumptions about GPU pricing, this lets us estimate compute. https://docs.google.com/spreadsheets/d/1-p-ab6t6dkUM6T7GwnFp85ePTMpZMW7LFY7fW2t8POs/",56.98817,13.345031,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.52701,,recM2JJhzA3vJAZoZ
+claude-3-7-sonnet-20250219_32K,54.226342,2025-02-24,Anthropic,United States of America,3.35e+25,https://docs.google.com/spreadsheets/d/10bhwdVrfHI8tysVIz62ZxtvQ30L-HojYvmU18_b-WIM/edit?gid=0#gid=0,89.82876,27.763038,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.599681,,recqRojHxRU5ySXWq
+claude-3-opus-20240229,6.422825,2024-02-29,Anthropic,United States of America,1.640001e+25,Training compute estimated from benchmark scores.,12.951308,2.743525,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.377459,,recyvUC4eTQ5SK6Gr
+claude-opus-4-1-20250805_32K,105.499169,2025-08-05,Anthropic,United States of America,,,192.232318,53.816764,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.668069,,recuz9bui4PgiPuGH
+claude-opus-4-20250514_32K,79.862937,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,136.369866,42.377009,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.639292,,recjchvjch6vUVmzs
+claude-sonnet-4-5-20250929,113.303764,2025-09-29,Anthropic,United States of America,,,235.506801,52.71992,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.673842,,recwCLGT9Kr3iDcqu
+claude-sonnet-4-20250514_32K,67.705892,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,118.627631,34.401631,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.619725,,recueBmSBs2QlEWPm
+davinci-002,0.14886,,OpenAI,United States of America,3.14e+23,"Table D.1
+https://arxiv.org/abs/2005.14165",0.251337,0.070646,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.161869,,recbmHH5GLQL9jfZn
+DeepSeek-R1,26.932599,2025-01-20,DeepSeek,China,4.020010000000001e+24,"Estimates by Ege Erdil in Gradient Updates:
+https://epoch.ai/gradient-updates/what-went-into-training-deepseek-r1
+""A dataset size of 14.8 trillion tokens is reasonable and in line with other models of this scale. Assuming that’s valid, the pretraining of this model would have required 6 * (37 billion) * (14.8 trillion) = 3e24 FLOP. If we assume DeepSeek’s training cluster consists of H800s with the PCIe form factor, then each should be capable of 1.5e15 FP8 per second, and the implied model FLOP utilization (MFU) of DeepSeek v3’s 55 day training run ends up being around 23%.""
+
+6 FLOP/token/param * 14.8T tokens * 37B active params = 3.29e24 FLOP (pretraining)
+1.2e23 FLOP (post-training)
+6.1e23 FLOP (fine-tuning)
+
+Total compute: 3.29e24 + 1.2e23 + 6.1e23 = 4.02e24",50.97746,13.478936,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.519251,,rectWm0PAizmHcDik
+DeepSeek-R1-0528,31.167847,2025-05-28,DeepSeek,China,4.020010000000001e+24,"Estimates by Ege Erdil in Gradient Updates:
+https://epoch.ai/gradient-updates/what-went-into-training-deepseek-r1
+""A dataset size of 14.8 trillion tokens is reasonable and in line with other models of this scale. Assuming that’s valid, the pretraining of this model would have required 6 * (37 billion) * (14.8 trillion) = 3e24 FLOP. If we assume DeepSeek’s training cluster consists of H800s with the PCIe form factor, then each should be capable of 1.5e15 FP8 per second, and the implied model FLOP utilization (MFU) of DeepSeek v3’s 55 day training run ends up being around 23%.""
+
+6 FLOP/token/param * 14.8T tokens * 37B active params = 3.29e24 FLOP (pretraining)
+1.2e23 FLOP (post-training)
+6.1e23 FLOP (fine-tuning)
+
+Total compute: 3.29e24 + 1.2e23 + 6.1e23 = 4.02e24",64.108861,12.849837,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.537826,,recasKfxLMpd8pTjF
+DeepSeek-V3,18.472532,2024-12-26,DeepSeek,China,3.4078e+24,"""At an economical cost of only 2.664M H800 GPU hours, we complete the pre-training of DeepSeek-V3 on 14.8T tokens, producing the currently strongest open-source base model. The subsequent training stages after pre-training require only 0.1M GPU hours.""
+
+6 * 37B (active params) * 14.8T = 3.2856e24 for pretraining.
+
+We know they trained in FP8. H800s get 1.513e15 FLOP/s in FP8:
+2.688M * 3600 * 1.513e15 * MFU = 3.2856e24
+
+Suggests a MFU of 0.2244 in pre-training. If we assume MFU was the same in post-training, that adds an additional:
+
+0.1M * 3600 * 1.513e15 * 0.2244 = 1.222e23 FLOP from post-training
+
+Total: 3.2856e24 + 1.222e23 = 3.4078e24 FLOP",33.772933,8.967316,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.473627,,rec3j0U1Ecav7Q1FA
+DeepSeek-V3-0324,23.117113,2025-03-24,DeepSeek,China,3.4078e+24,"""At an economical cost of only 2.664M H800 GPU hours, we complete the pre-training of DeepSeek-V3 on 14.8T tokens, producing the currently strongest open-source base model. The subsequent training stages after pre-training require only 0.1M GPU hours.""
+
+6 * 37B (active params) * 14.8T = 3.2856e24 for pretraining.
+
+We know they trained in FP8. H800s get 1.513e15 FLOP/s in FP8:
+2.688M * 3600 * 1.513e15 * MFU = 3.2856e24
+
+Suggests a MFU of 0.2244 in pre-training. If we assume MFU was the same in post-training, that adds an additional:
+
+0.1M * 3600 * 1.513e15 * 0.2244 = 1.222e23 FLOP from post-training
+
+Total: 3.2856e24 + 1.222e23 = 3.4078e24 FLOP",41.333511,11.71071,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.495813,,rec5tXt66EEIgBcLi
+gemini-2.5-pro-preview-06-05,38.734274,2025-06-05,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,69.556192,19.317217,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.5544,,recxHthxDmMulkuth
+gpt-3.5-turbo-instruct,0.604514,2023-09-18,OpenAI,United States of America,,,0.987615,0.233662,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.214611,,rec7jJ3gfq0bIgHN4
+gpt-4-0125-preview,5.366063,2024-01-25,OpenAI,United States of America,2.2e+25,Estimated using benchmark imputation,9.755795,2.802412,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.351726,,recD86WJin9bt0ueq
+gpt-4-0314,5.364045,2023-03-14,OpenAI,United States of America,2.1e+25,"90% CI: 8.2E+24 to 4.4E+25
+
+NOTE: this is a rough estimate based on public information, much less information than most other systems in the database.
+
+Calculation and confidence intervals here: https://colab.research.google.com/drive/1O99z9b1I5O66bT78r9ScslE_nOj5irN9?usp=sharing",9.734091,2.453082,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.361067,,recO1ntpu18mX9GIG
+gpt-4-1106-preview,8.557433,2023-11-06,OpenAI,United States of America,2.2e+25,Estimated using benchmark imputation,16.077141,4.16377,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.404329,,rechSoSit7zTyOpq0
+gpt-4-turbo-2024-04-09,6.567339,2024-04-09,OpenAI,United States of America,2.2e+25,Estimated using benchmark imputation,12.196509,3.215761,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.367357,,recen58457Be84Pud
+gpt-4o-2024-11-20,9.17045,2024-11-20,OpenAI,United States of America,3.8100010000000003e+25,Training compute estimated from benchmark scores.,17.963859,4.224241,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.407636,,recdwVn3QiDENdt6P
+gpt-5-2025-08-07_medium,137.318539,2025-08-07,OpenAI,United States of America,,,271.115115,66.869835,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.696053,,recNwo7dbEyB1crye
+gpt-oss-120b,41.983451,2025-08-05,OpenAI,United States of America,4.94e+24,"""The training run for gpt-oss-120b required 2.1 million H100-hours to complete""
+(2.1e6 hours)*(1,979 H100 FLOP/s)*(30% utilization)*(60*60) = 4.49e24
+They also do post training similar to o3, which we assume adds at least 10% as much compute, so we multiply this estimate by 1.1 to get 4.94e24
+
+",81.505677,18.79454,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.56634,,rec2VBZIfOKcr9NeL
+gpt2-xl,0.039792,2019-11-05,OpenAI,United States of America,1.920000000001e+21,"Estimating based on compute = 6 FLOP/token/param * epochs * parameters * tokens.
+
+40GB dataset is approximately 8B words, or 1/0.75 * 8B = 10.66B tokens.
+
+The number of epochs is not reported, but another paper [1] claims in table 1 that it is 20 or 100 epochs, and another paper [2] claims 12 epochs based on communication with the GPT-2 authors (page 4).
+
+12 epochs is the modal, most credible value. Mean of probability mass is probably around 20 epochs, so calculating from that value:
+
+6 * (40 * 200 million * 1/0.75 * 20) * 1.5 billion parameters = 1.92e21
+https://www.wolframalpha.com/input?i=6+FLOP+*+20+*+%2840+billion+%2F+5+*+%284%2F3%29%29+*+1.5+billion
+
+[1] https://arxiv.org/abs/1906.06669 One Epoch Is All You Need
+[2] https://www.usenix.org/system/files/sec21-carlini-extracting.pdf Extracting Data From Large Language Models
+
+It also appears the model was trained on TPU v3 chips:
+https://huggingface.co/openai-community/gpt2",0.131955,0.001788,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.101046,,rec8JOj4dfN5bKICN
+grok-4-0709,110.075251,2025-07-09,xAI,United States of America,5.0000000000001e+26,"We think that RL relative to pre-compute is between our estimate for o3 (10% of pre-training) and the 100% implied by this slide in the launch ( https://archive.is/f0vJU ). Assuming the same pre-training as Grok 3 (also implied by that slide, and much more consistent) and that Grok 3 used a tenth as much RL, we get:
+
+2 * (grok3/1.1) in the high case (rl is 10% of grok 3, so grok3/1.1 is grok3 precompute, and in this case twice that is grok 4)
+1.1 * (grok3/1.01) in the low case
+The geometric mean is (rounded to one sig fig): 5e26
+",231.836562,48.190843,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.665803,,recBhYPAeAQhBoGGs
+o1-2024-12-17_medium,39.206576,2024-12-17,OpenAI,United States of America,,,84.353717,17.603775,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.55932,,recrH7UpKH2XmiFW8
+o1-preview-2024-09-12,22.221357,2024-09-12,OpenAI,United States of America,,,40.794665,11.621572,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.492955,,recJhENih6N50V43Q
+o3-2025-04-16_medium,91.271355,2025-04-16,OpenAI,United States of America,,,163.132889,45.62758,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.654376,,recFSX9NsirVMms25
+o4-mini-2025-04-16_medium,76.509015,2025-04-16,OpenAI,United States of America,,"We can’t make a precise estimate, but seems unlikely to exceed 10^25 FLOP. We think active parameter count is 10-30B. This would require >55T tokens to reach 10^25 FLOP at the large size, i.e. well beyond 10x overtraining relative to Chinchilla.",151.478027,35.213047,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.639269,,recTsdWFhES9SchXH
+qwen2-72b-instruct,2.24432,2024-06-07,Alibaba,China,3.02e+24,"72 billion params, 7 trillion tokens
+
+6 * 72 billion * 7 trillion ~= 3.02e24",4.830984,0.854468,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.298999,,recIqQ9tqJzeP1sHf
+qwen2.5-72b-instruct,5.165813,2024-09-19,Alibaba,China,7.8e+24,"Training dataset size was 18 trillion
+
+6ND = 6 * 72.7 billion parameters * 18 trillion tokens = 7.8e24",10.325614,2.384633,METR - Measuring AI Ability to Complete Long Tasks,https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,0.357771,,recmXpRGOYoAcTAgQ

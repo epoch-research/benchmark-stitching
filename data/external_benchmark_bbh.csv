@@ -1,90 +1,45 @@
-﻿id,Name,Average,Model version,Shots,Notes,Source,Source link
-recwEiyaFKdx0PezD,Qwen 1.8B,28.2%,Qwen-1_8B,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-rec6aaTYSwDqfD2sO,Qwen 7B,45.0%,Qwen-7B,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recv5qI392enMRudT,Qwen 14B,53.4%,Qwen-14B,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-rec6WR9YbYjnhvHbQ,Gemma 2B,35.2%,gemma-2b,,Couldn't find shot count,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
-recQewDuedNzOm3m5,Gemma 7B,55.1%,gemma-7b,,Couldn't find shot count,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
-rec8po7QMvux1PqYW,Mistral 7B,56.1%,Mistral-7B-v0.1,,Couldn't find shot count,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
-recorz7iAu0wehUWu,LLAMA-2 7B,32.6%,Llama-2-7b,,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
-rec1PIPJMsc2vzPQA,LLAMA-2 13B,39.4%,Llama-2-13b,,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
-rec0HIGEri0gb87de,DeepSeek-V2 Base,78.8%,DeepSeek-V2,3,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
-rec6UJmvJKZ0mSkf7,Qwen2.5 72B Base,79.8%,Qwen2.5-72B,3,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
-rechp4lRfnnkUlMX9,LLaMA-3.1 405B Base,82.9%,Llama-3.1-405B,3,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
-recyTTQiA1OzvdQei,DeepSeek-V3 Base,82.9%,DeepSeek-V3,3,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
-recrxjTojfWuyFdm1,Yi 6B,42.8%,Yi-6B,3,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-recCgyVX0fWUPFOkO,Yi 34B,54.3%,Yi-34B,3,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-rec7clZdHcyLSzBWa,LLaMA-2 13B,39.4%,Llama-2-13b,3,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
-reckPGiU6K2bnS6LD,LLaMA-2 34B,44.1%,Llama-2-34b,3,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
-recBTqkLV3YTdBEKl,Baichuan-2 13B,48.8%,Baichuan-2-13B-Base,3,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
-recKyeOiSeuHe7mjt,QWEN 14B,53.4%,Qwen-14B,3,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
-recAbnFHkWY8M8u4C,Mistral 7B,39.5%,Mistral-7B-v0.1,3,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
-recAL9kUMxLJLFs1G,Gemma 7B,55.1%,gemma-7b,3,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
-recppgx1TV7PJqqoR,Nemotron-4 15B,58.7%,Nemotron-4 15B,3,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
-recw72u6BTbC1nVaC,GPT-4,75.1%,gpt-4-0613,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recUwVGAl716WVpBU,GPT-3.5 Turbo,61.6%,gpt-3.5-turbo-0613,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recbBaZ80LOgi2XOG,LLaMA-7B,32.4%,LLaMA-7B,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-reclRzjJVPPiU3zg8,LLaMA 2-7B,39.2%,Llama-2-7b,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-rechXIS7X6UznLYiO,MPT-7B,35.2%,mpt-7b,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recAQgXvN1LyZOMbb,Falcon-7B,28.8%,falcon-7b,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recSk2YMS6sP9ybZP,ChatGLM 2-6B (base)*,33.7%,chatglm2-6b,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recMowz1c7WAeQP0r,Baichuan 1-7B,32.5%,Baichuan-7B,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recAPbLpHdl6vjC16,Baichuan 2-7B-Base,41.6%,Baichuan-2-7B-Base,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recDxU7yqbO95fPBY,LLaMA-13B,37.9%,LLaMA-13B,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-rec5TUJ5B5b5jcApF,LLaMA 2-13B,47.0%,Llama-2-13b,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recX0LPusfvFRXmeh,Vicuna-13B,43.0%,vicuna-13b-v1.1,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recJrh1T4zl8aWEBa,Chinese-Alpaca-Plus-13B,28.9%,,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recFD1ccg1iQk8TfD,XVERSE-13B,38.1%,,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recR9iM0H794LUNfw,Baichuan 1-13B-Base,43.0%,Baichuan-13B-Base,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recavR8MmJuWQQ4rY,Baichuan 2-13B-Base,48.8%,Baichuan-2-13B-Base,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
-recUKkMoByKnWpuUZ,Phi-3-mini,71.7%,Phi-3-mini-4k-instruct,3,3-shot; CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-recKjdHfv3VjEMtsb,Phi-3-small,79.1%,Phi-3-small-8k-instruct,3,3-shot; CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your PhonePhi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-rec9iYkPYoTR9pzyx,Phi-3-medium,81.4%,Phi-3-medium-128k-instruct,3,3-shot; CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-recQSNSyrXQd8UgOd,Phi-2,59.4%,phi-2,3,3-shot; CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-recnDuyY5Dzi2cIHx,MPT 7B,35.6%,mpt-7b,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recNa6pWGs4Idzlug,MPT 30B,38.0%,mpt-30b,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recY8LrwUj1lJj3Zi,Falcon 7B,28.0%,falcon-7b,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recCuhggo9409cVhu,Falcon 40B,37.1%,falcon-40b,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recSt1c1mDxWjT2kw,ChatGLM2,33.7%,chatglm2-6b,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recGLYH2QJ3KDou88,InternLM 7B,37.0%,internlm-7b,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recnmQ4nbxuvotbeb,InternLM 20B,52.5%,internlm-20b,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recbMXxc5kgkoMubB,Baichuan2 7B,41.6%,Baichuan-2-7B-Base,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recmbmOOCOgqxb1g3,Baichuan2 13B,49.0%,Baichuan-2-13B-Base,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recigmBKoJgg9WY2a,LLaMA 7B,33.5%,LLaMA-7B,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recn0VFcI3UQDghGP,LLaMA 13B,37.9%,LLaMA-13B,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-rec43eD7SvXQ5Dzq4,LLaMA 33B,50.0%,LLaMA-33B,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recSRK6t1MK8dM2dx,LLaMA 65B,58.4%,LLaMA-65B,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-rec1c1obGEgm8UJON,LLaMA 2 34B,44.1%,Llama-2-34b,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recSGabK4Sqv5tGq4,LLaMA 2 70B,64.9%,Llama-2-70b-hf ,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recQpPjUchLLKHnr0,StableBeluga2,69.3%,StableBeluga2,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-recVIooB7cvf68T0j,QWEN 1.8B,28.2%,Qwen-1_8B,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-reckyn9rrrmjmrV6z,QWEN 7B,45.0%,Qwen-7B,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-rec8lvLyj6LfxLcTT,QWEN 14B,53.4%,Qwen-14B,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
-rec9x2hh5bO75waHt,LLaMA 7B,30.3%,LLaMA-7B,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recVjjfDkF3dxSUAL,LLaMA 13B,37.0%,LLaMA-13B,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recsGL3NirdzuPYxz,LLaMA 33B,39.8%,LLaMA-33B,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recEPEBlWR8m0MZrr,LLaMA 65B,43.5%,LLaMA-65B,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recjadyR0KerqJKuo,LLaMA 2 7B,32.6%,Llama-2-7b,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recLcZqVyAA4OEgfQ,LLaMA 2 13B,39.4%,Llama-2-13b,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recatk8RloeAtyCmo,LLaMA 2 34B,44.1%,Llama-2-34b,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recubgr9UF2uUXY3E,LLaMA 2 70B,51.2%,Llama-2-70b-hf ,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recVOjXMkiQCv2yPt,MPT 7B,31.0%,mpt-7b,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recEi33ywW8PezgV3,DeepSeek-V2 Base       ,78.8%,DeepSeek-V2,3,,DeepSeek-V3 Technical Report,http://arxiv.org/abs/2412.19437
-recHEqDIkyl72Zpiw,Qwen2.5 72B Base       ,79.8%,Qwen2.5-72B,3,,DeepSeek-V3 Technical Report,http://arxiv.org/abs/2412.19437
-recBt36OsYvimRxTu,LLaMA-3.1 405B Base    ,82.9%,Llama-3.1-405B,3,,DeepSeek-V3 Technical Report,http://arxiv.org/abs/2412.19437
-rechnyAjkN3CHnI5g,DeepSeek-V3 Base       ,87.5%,DeepSeek-V3,3,,DeepSeek-V3 Technical Report,http://arxiv.org/abs/2412.19437
-recYo1J8Qmz0VOJEw,LLaMA2-Chat 13B,32.9%,Llama-2-13b-chat,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-rece5fh6ERllQI4iK,LLaMA2-Chat 70B,42.4%,Llama-2-70b-chat,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-recbtRKdpDgysDGSC,Baichuan2-Chat 13B,38.8%,Baichuan2-13B-Chat,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-recMoa8pBH75GkNPC,Qwen-Chat 14B,49.7%,Qwen-14B-Chat,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-recMU394COBhaIEAe,InternLM-Chat 20B,42.4%,internlm-chat-20b,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-rechcQwplB1J0oVOb,AquilaChat2 34B,20.1%,,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-recwwBrVHafqCEK3w,Yi-Chat 6B,39.7%,Yi-6B-Chat,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-recL10qlbGM5RuDG7,Yi-Chat 34B,51.4%,Yi-34B-Chat,0,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-recFvpL4cwIM1jkzD,LLaMA2-Chat 13B,58.2%,Llama-2-13b-chat,3,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-recDy6LbjY6SvJbKC,LLaMA2-Chat 70B,58.5%,Llama-2-70b-chat,3,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-recTQ6AnVQI3HzzDR,Baichuan2-Chat 13B,47.2%,Baichuan2-13B-Chat,3,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-recwg8hk8QR2EAEmW,Qwen-Chat 14B,55.0%,Qwen-14B-Chat,3,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-recdeDl0iYyeqCdZf,InternLM-Chat 20B,36.7%,internlm-chat-20b,3,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-reclWJEx2WkhPsO5Q,AquilaChat2 34B,34.3%,,3,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-rec7U0UkrJXKMFZGe,Yi-Chat 6B,47.2%,Yi-6B-Chat,3,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
-recRvnph65VrLPHGb,Yi-Chat 34B,71.7%,Yi-34B-Chat,3,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+﻿id,Name,Model version,Average,Shots,Notes,Source,Source link
+recwEiyaFKdx0PezD,Qwen 1.8B,Qwen-1_8B,28.2%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+rec6aaTYSwDqfD2sO,Qwen 7B,Qwen-7B,45.0%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recv5qI392enMRudT,Qwen 14B,Qwen-14B,53.4%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+rec6WR9YbYjnhvHbQ,Gemma 2B,gemma-2b,35.2%,,Couldn't find shot count,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+recQewDuedNzOm3m5,Gemma 7B,gemma-7b,55.1%,,Couldn't find shot count,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+rec8po7QMvux1PqYW,Mistral 7B,Mistral-7B-v0.1,56.1%,,Couldn't find shot count,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+rec0HIGEri0gb87de,DeepSeek-V2 Base,DeepSeek-V2,78.8%,3,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+rec6UJmvJKZ0mSkf7,Qwen2.5 72B Base,Qwen2.5-72B,79.8%,3,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+rechp4lRfnnkUlMX9,LLaMA-3.1 405B Base,Llama-3.1-405B,82.9%,3,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+recyTTQiA1OzvdQei,DeepSeek-V3 Base,DeepSeek-V3,82.9%,3,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+recrxjTojfWuyFdm1,Yi 6B,Yi-6B,42.8%,3,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+recCgyVX0fWUPFOkO,Yi 34B,Yi-34B,54.3%,3,,Yi: Open Foundation Models by 01.AI,http://arxiv.org/abs/2403.04652
+rec7clZdHcyLSzBWa,Nemotron-4 15B,,58.7%,3,,Nemotron-4 15B Technical Report,http://arxiv.org/abs/2402.16819
+rec6V398aZ6hAK951,Baichuan 1-7B,Baichuan-7B,32.5%,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+rec9y15fqBb8zlOYZ,Baichuan 2-7B-base,Baichuan-2-7B-Base,41.6%,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recv7VW2yn7pMhBky,Baichuan 1-13B-Base,Baichuan-13B-Base,43.2%,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+rec1o4bQfvScUFl1v,Baichuan 2-13B-Base,Baichuan-2-13B-Base,48.2%,3,,Baichuan 2: Open Large-scale Language Models,http://arxiv.org/abs/2309.10305
+recUKkMoByKnWpuUZ,Phi-3-mini,Phi-3-mini-4k-instruct,71.7%,3,3-shot; CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recKjdHfv3VjEMtsb,Phi-3-small,Phi-3-small-8k-instruct,79.1%,3,3-shot; CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your PhonePhi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+rec9iYkPYoTR9pzyx,Phi-3-medium,,81.4%,3,3-shot; CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recQSNSyrXQd8UgOd,Phi-2,phi-2,59.4%,3,3-shot; CoT,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recnDuyY5Dzi2cIHx,MPT 7B,mpt-7b,35.6%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recNa6pWGs4Idzlug,MPT 30B,mpt-30b,38.0%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recY8LrwUj1lJj3Zi,Falcon 7B,falcon-7b,28.0%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recCuhggo9409cVhu,Falcon 40B,falcon-40b,37.1%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recSt1c1mDxWjT2kw,ChatGLM2,,33.7%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recGLYH2QJ3KDou88,InternLM 7B,internlm-7b,37.0%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recnmQ4nbxuvotbeb,InternLM 20B,internlm-20b,52.5%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recigmBKoJgg9WY2a,LLaMA 7B,LLaMA-7B,33.5%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recn0VFcI3UQDghGP,LLaMA 13B,LLaMA-13B,37.9%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+rec43eD7SvXQ5Dzq4,LLaMA 33B,LLaMA-33B,50.0%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recSRK6t1MK8dM2dx,LLaMA 65B,LLaMA-65B,58.4%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+rec1c1obGEgm8UJON,LLaMA 2 34B,Llama-2-34b,44.1%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recSGabK4Sqv5tGq4,LLaMA 2 70B,Llama-2-70b-hf ,64.9%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+recQpPjUchLLKHnr0,StableBeluga2,StableBeluga2,69.3%,3,,Qwen Technical Report,https://arxiv.org/pdf/2309.16609
+rec9x2hh5bO75waHt,LLaMA 7B,LLaMA-7B,30.3%,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recVjjfDkF3dxSUAL,LLaMA 13B,LLaMA-13B,37.0%,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recsGL3NirdzuPYxz,LLaMA 33B,LLaMA-33B,39.8%,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recEPEBlWR8m0MZrr,LLaMA 65B,LLaMA-65B,43.5%,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recjadyR0KerqJKuo,LLaMA 2 7B,Llama-2-7b,32.6%,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recLcZqVyAA4OEgfQ,LLaMA 2 13B,Llama-2-13b,39.4%,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recatk8RloeAtyCmo,LLaMA 2 34B,Llama-2-34b,44.1%,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recubgr9UF2uUXY3E,LLaMA 2 70B,Llama-2-70b-hf ,51.2%,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
+recVOjXMkiQCv2yPt,MPT 7B,mpt-7b,31.0%,3,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288

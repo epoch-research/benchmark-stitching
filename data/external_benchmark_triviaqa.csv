@@ -1,116 +1,36 @@
-﻿id,Name,EM,Model version,Shots,Notes,Source,Source link
-recTmyjydTD3zEmrN,Claude 2,87.5%,claude-2.0,5,,Model Card and Evaluations for Claude Models,https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/claude-2-model-card.pdf
-rec2o8utHtyekSr2n,Claude instant,78.9%,claude-instant-1.1,5,,Model Card and Evaluations for Claude Models,https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/claude-2-model-card.pdf
-recLawKW7ayTST6hX,GPT-4-0613,84.8%,gpt-4-0613,,,PapersWithCode,https://paperswithcode.com/sota/question-answering-on-triviaqa
-recqOhSu3mm8qtu8u,Claude 1.3,86.7%,claude-1.3,5,,Model Card and Evaluations for Claude Models,https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/claude-2-model-card.pdf
-rec2eB4hK2TZtrSFg,PaLM 2-L,86.1%,PaLM 2-L,1,,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
-recSXmx6Jt3xz96O1,LLaMA 2 70B,85.0%,Llama-2-70b-hf ,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288v2
-reczS1Jlz0DzFtnq1,PaLM 2-M,81.7%,PaLM 2-M,1,,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
-recjb3O3PZmDHTwPt,PaLM-540B,76.9%,PaLM 540B,0,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
-recrfwOWCS1C7TstM,PaLM-540B,81.4%,PaLM 540B,1,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
-recQGR1k0JWfvm4YO,PaLM-540B,81.4%,PaLM 540B,few,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
-rec1H51pEEne0IdGs,PaLM 2-S,75.2%,PaLM 2-S,1,,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
-rech95qTb390zRaA1,GPT-3,71.2%,text-davinci-001,few,,Language Models are Few-Shot Learners,https://arxiv.org/pdf/2005.14165v4
-rec80FIbMEIFtngNq,GPT-3,68.0%,text-davinci-001,1,,Language Models are Few-Shot Learners,https://arxiv.org/pdf/2005.14165v4
-recjbZ5iX41fMNKTS,GPT-3,64.3%,text-davinci-001,0,,Language Models are Few-Shot Learners,https://arxiv.org/pdf/2005.14165v4
-recLZAYwaYmir4fkG,Gemma 2B,53.2%,gemma-2b,5,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
-recUuVZqNjnF8nZ5p,Gemma 7B,63.4%,gemma-7b,5,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
-recWGZr0UHYNvgMbt,Mistral 7B,62.5%,Mistral-7B-v0.1,5,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
-rec3x5YjE2OF68lfJ,LLaMA-2 7B,72.1%,Llama-2-7b,5,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
-recFncBMpsvN2mFPe,LLaMA-2 13B,79.6%,Llama-2-13b,5,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
-recvyWDwCUBlqF0P5,DeepSeek-V2 Base,80.0%,DeepSeek-V2,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
-rec53JZuaKLqzEwju,Qwen2.5 72B Base,71.9%,Qwen2.5-72B,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
-rec9b6hIEDSUXwyOk,DeepSeek-V3 Base,82.9%,DeepSeek-V3,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
-recNrDeTdobewAoHU,LLaMA-3.1 405B Base,82.7%,Llama-3.1-405B,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
-recXplA8GrPMhfKW1,Phi-3-mini,64.0%,Phi-3-mini-4k-instruct,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-recXHoTSIBIjrb2hr,Phi-3-small,58.1%,Phi-3-small-8k-instruct,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-recLjsOhngDpVoxi4,Phi-3-medium,73.9%,Phi-3-medium-128k-instruct,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-recJZ6lcpMRWGlYfC,Phi-2,45.2%,phi-2,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-reccS3oFHW9PBkukw,Mistral 7b             ,75.2%,Mistral-7B-v0.1,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-recxcFhfalF9shRhu,Gemma 7b               ,72.3%,gemma-7b,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-recdU5vKsuTRE1e60,Llama-3-In 8b          ,67.7%,Meta-Llama-3-8B-Instruct,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-recX29PfnrbG9x67s,Mixtral 8x7b           ,82.2%,Mixtral-8x7B-v0.1,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-rec9zhI3QCvrHtHw2,GPT-3.5 version 1106   ,85.8%,gpt-3.5-turbo-1106,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
-rec9QQGCXZgygnfBz,GPT-3 (175B),64.3%,text-davinci-001,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recpfngtEfxU1D6zc,GLaM,71.3%,GLaM (MoE),0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recEreiw1NzbvJYEK,GPT-3 (175B),68.0%,text-davinci-001,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-rec5nxJnKiiqNIm4u,GLaM,75.8%,GLaM (MoE),1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recPrYWrsvsjKbhpk,GPT-3,71.2%,text-davinci-001,64,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recTPeBzo4moFIytC,Gopher,57.1%,Gopher (280B),64,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recMagk4MHW8hCgKS,GLaM,75.8%,GLaM (MoE),1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
-recTEzt7DQe7MTvSz,GPT-3,64.3%,text-davinci-001,0,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
-recbxIZpvmvJV4tOs,GPT-3,68.0%,text-davinci-001,1,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
-recNaxMPrhoe9tttx,GPT-3,71.2%,text-davinci-001,few,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
-recxHPOudfnEYsSKo,MPT 7B,55.7%,mpt-7b,0,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recZdKly7cWCpB6z4,MPT 30B,68.0%,mpt-30b,0,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recSAMMSyXiWsKmQM,Falcon 7B,52.6%,falcon-7b,0,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recSSBi5NOmlpF1Wf,Falcon 40B,74.6%,falcon-40b,0,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recCLEbg8Fr5L4iUB,LLAMA 1 7B,63.3%,LLaMA-7B,0,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-rec2WVnSxDCxf1TaT,LLAMA 1 13B,70.1%,LLaMA-13B,0,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-rectI7ZO1EbE1psOu,LLAMA 1 33B,78.7%,LLaMA-33B,0,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recvGyvO0ekg8Xnyf,LLAMA 1 65B,81.7%,LLaMA-65B,0,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-rec3QdcfMo7naAw5B,LLAMA 2 7B,65.8%,Llama-2-7b,0,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recCxf9PmXq2B1Tgv,LLAMA 2 13B,73.1%,Llama-2-13b,0,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recQWr69MKaXBNEOe,LLAMA 2 34B,81.0%,Llama-2-34b,0,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recBs16PqLYX6M8Ct,LLAMA 2 70B,82.4%,Llama-2-70b-hf ,0,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recF1NDi4Po3tFG0O,MPT 7B,59.6%,mpt-7b,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recJwCErRtLEN58c3,MPT 30B,71.3%,mpt-30b,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recq3CUWtharnjJU3,Falcon 7B,56.8%,falcon-7b,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recMXULQHaMWEPQi9,Falcon 40B,78.6%,falcon-40b,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-rec8GQLFVuPKD6gyb,LLAMA 1 7B,67.4%,LLaMA-7B,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recRwFCEXvySQabBx,LLAMA 1 13B,74.4%,LLaMA-13B,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-rec8onltex0qQybgU,LLAMA 1 33B,80.7%,LLaMA-33B,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-rec9BGXGx4cOBdEgJ,LLAMA 1 65B,84.5%,LLaMA-65B,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recCatGFAGRahbmdQ,LLAMA 2 7B,68.9%,Llama-2-7b,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recbu9TKWP3KR1Zlu,LLAMA 2 13B,77.2%,Llama-2-13b,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recDUk2ykCxMIEdvS,LLAMA 2 34B,83.3%,Llama-2-34b,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recu7hSGTkBIUK6uz,LLAMA 2 70B,85.0%,Llama-2-70b-hf ,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recAg3ij56SMsYKCs,MPT 7B,61.2%,mpt-7b,5,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-rec1R50MzTdbjFMas,MPT 30B,73.3%,mpt-30b,5,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-rec432VRSzNpUr2vd,Falcon 7B,64.6%,falcon-7b,5,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recaRROdzmQnlf6Ri,Falcon 40B,79.9%,falcon-40b,5,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-reclnkTiXtySsU5iU,LLAMA 1 7B,70.4%,LLaMA-7B,5,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recxTxb1Z8P7JOZv9,LLAMA 1 13B,77.1%,LLaMA-13B,5,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-rec4UT13sFHK39weH,LLAMA 1 33B,83.8%,LLaMA-33B,5,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recpk7XDG6nKdNpIg,LLAMA 1 65B,85.9%,LLaMA-65B,5,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recB9XYISuhZ0mvnt,LLAMA 2 7B,72.1%,Llama-2-7b,5,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recMqqlRlGjkDv2qu,LLAMA 2 13B,79.6%,Llama-2-13b,5,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recJdaeqGegzSAa4P,LLAMA 2 34B,84.5%,Llama-2-34b,5,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recaPm1UihmalxzSJ,LLAMA 2 70B,87.6%,Llama-2-70b-hf ,5,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-rechg030AkzmiWBU4,MPT 7B,61.6%,mpt-7b,64,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-reccDYpXS53UyENQM,MPT 30B,73.6%,mpt-30b,64,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recOKNmFGqwz432S7,Falcon 7B,61.1%,falcon-7b,64,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recr4IlXlA3vTmsO5,Falcon 40B,79.6%,falcon-40b,64,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recm141PCpwLC6YtJ,LLAMA 1 7B,71.0%,LLaMA-7B,64,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recb5fYdoFf6gvCeq,LLAMA 1 13B,77.9%,LLaMA-13B,64,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recbxBZXIp802OvtJ,LLAMA 1 33B,83.6%,LLaMA-33B,64,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recWNmgYCvQokgf0f,LLAMA 1 65B,86.0%,LLaMA-65B,64,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recx2RC7OcrgdI4q1,LLAMA 2 7B,73.7%,Llama-2-7b,64,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recp8ob2tSNVHQ3xu,LLAMA 2 13B,79.4%,Llama-2-13b,64,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-rec7vgP607mIOWpG9,LLAMA 2 34B,84.6%,Llama-2-34b,64,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-recrVtUWFAXNf8Px7,LLAMA 2 70B,87.5%,Llama-2-70b-hf ,64,,Llama 2: Open Foundation and Fine-Tuned Chat Models,http://arxiv.org/abs/2307.09288
-rec7K8WKjBBVw4Nsp,Gopher 280B,43.5%,Gopher (280B),0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recFzzrC4aa3N4f2U,Chinchilla 70B,55.4%,Chinchilla (70B),0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-rec8VC85NYcvUmEEb,LLaMA 7B,50.0%,LLaMA-7B,0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recaX2Uhmvyw9wvhN,LLaMA 13B,56.6%,LLaMA-13B,0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recpBHyQn5yoic5UD,LLaMA 33B,65.1%,LLaMA-33B,0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recH0bUglM0szsv3e,LLaMA 65B,68.2%,LLaMA-65B,0,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-rec2LNih9QFLaecPj,LLaMA 7B,53.4%,LLaMA-7B,1,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-rec5ASfpNuRqmCRrk,LLaMA 13B,60.5%,LLaMA-13B,1,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recGlW4KYaVMMt6p6,LLaMA 33B,67.9%,LLaMA-33B,1,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recys1yf6UaLOaiii,LLaMA 65B,71.6%,LLaMA-65B,1,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recYzKbqStsGq5bEP,Gopher 280B,57.0%,Gopher (280B),5,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recwZkD2OfndyATZ9,Chinchilla 70B,64.1%,Chinchilla (70B),5,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-rec5trLGrVUUU8h9s,LLaMA 7B,56.3%,LLaMA-7B,5,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recJV7XYKa7kWSPU1,LLaMA 13B,63.1%,LLaMA-13B,5,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recwHiE8DvowuL4XI,LLaMA 33B,69.9%,LLaMA-33B,5,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recglHj9DVjwTu3Zp,LLaMA 65B,72.6%,LLaMA-65B,5,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recHEkMoe2cRJB06H,Gopher 280B,57.2%,Gopher (280B),64,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recOh6y9PPVkfB63f,Chinchilla 70B,64.6%,Chinchilla (70B),64,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recGEjtYDWobf8nrj,LLaMA 7B,57.6%,LLaMA-7B,64,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recJ8krqb6kapQNSk,LLaMA 13B,64.0%,LLaMA-13B,64,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recnsnupizKu5Yg1D,LLaMA 33B,70.4%,LLaMA-33B,64,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-rec5qM6IHhVkLP5Mw,LLaMA 65B,73.0%,LLaMA-65B,64,,LLaMA: Open and Efficient Foundation Language Models,http://arxiv.org/abs/2302.13971
-recEiFOxxUkVpTMNz,Gopher 280B,57.1%,Gopher (280B),64,,"Scaling Language Models: Methods, Analysis & Insights from Training Gopher",http://arxiv.org/abs/2112.11446
-recit7IX6ZlepTNtS,Claude Instant 1.1,78.9%,claude-instant-1.1,5,,Releasing Claude Instant 1.2,https://www.anthropic.com/news/releasing-claude-instant-1-2
-recEOw6eMJ9XwFZTY,Claude Instant 1.2,78.7%,claude-instant-1.2,5,,Releasing Claude Instant 1.2,https://www.anthropic.com/news/releasing-claude-instant-1-2
+﻿id,Name,Model version,EM,Shots,Notes,Source,Source link
+recTmyjydTD3zEmrN,Claude 2,claude-2.0,87.5%,5,,Model Card and Evaluations for Claude Models,https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/claude-2-model-card.pdf
+rec2o8utHtyekSr2n,Claude instant,,78.9%,5,,Model Card and Evaluations for Claude Models,https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/claude-2-model-card.pdf
+recLawKW7ayTST6hX,GPT-4-0613,gpt-4-0613,84.8%,,,PapersWithCode,https://paperswithcode.com/sota/question-answering-on-triviaqa
+recqOhSu3mm8qtu8u,Claude 1.3,claude-1.3,86.7%,5,,Model Card and Evaluations for Claude Models,https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/claude-2-model-card.pdf
+rec2eB4hK2TZtrSFg,PaLM 2-L,PaLM 2-L,86.1%,1,,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
+recSXmx6Jt3xz96O1,LLaMA 2 70B,Llama-2-70b-hf ,85.0%,1,,Llama 2: Open Foundation and Fine-Tuned Chat Models,https://arxiv.org/pdf/2307.09288v2
+reczS1Jlz0DzFtnq1,PaLM 2-M,PaLM 2-M,81.7%,1,,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
+recjb3O3PZmDHTwPt,PaLM-540B,PaLM 540B,76.9%,0,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
+recrfwOWCS1C7TstM,PaLM-540B,PaLM 540B,81.4%,1,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
+recQGR1k0JWfvm4YO,PaLM-540B,PaLM 540B,81.4%,few,,PaLM: Scaling Language Modeling with Pathways,https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf
+rec1H51pEEne0IdGs,PaLM 2-S,PaLM 2-S,75.2%,1,,PaLM 2 Technical Report,https://arxiv.org/pdf/2305.10403
+rech95qTb390zRaA1,GPT-3,text-davinci-001,71.2%,few,,Language Models are Few-Shot Learners,https://arxiv.org/pdf/2005.14165v4
+rec80FIbMEIFtngNq,GPT-3,text-davinci-001,68.0%,1,,Language Models are Few-Shot Learners,https://arxiv.org/pdf/2005.14165v4
+recjbZ5iX41fMNKTS,GPT-3,text-davinci-001,64.3%,0,,Language Models are Few-Shot Learners,https://arxiv.org/pdf/2005.14165v4
+recLZAYwaYmir4fkG,Gemma 2B,gemma-2b,53.2%,5,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+recUuVZqNjnF8nZ5p,Gemma 7B,gemma-7b,63.4%,5,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+rec3x5YjE2OF68lfJ,LLaMA-2 7B,Llama-2-7b,72.1%,5,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+recFncBMpsvN2mFPe,LLaMA-2 13B,Llama-2-13b,79.6%,5,,Gemma: Open Models Based on Gemini Research and Technology,https://arxiv.org/pdf/2403.08295
+recvyWDwCUBlqF0P5,DeepSeek-V2 Base,DeepSeek-V2,80.0%,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+rec53JZuaKLqzEwju,Qwen2.5 72B Base,Qwen2.5-72B,71.9%,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+rec9b6hIEDSUXwyOk,DeepSeek-V3 Base,DeepSeek-V3,82.9%,5,,DeepSeek-V3 Technical Report,https://arxiv.org/pdf/2412.19437
+recXplA8GrPMhfKW1,Phi-3-mini,Phi-3-mini-4k-instruct,64.0%,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recXHoTSIBIjrb2hr,Phi-3-small,Phi-3-small-8k-instruct,58.1%,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recLjsOhngDpVoxi4,Phi-3-medium,,73.9%,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+recJZ6lcpMRWGlYfC,Phi-2,phi-2,45.2%,5,,Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone,http://arxiv.org/abs/2404.14219
+rec9QQGCXZgygnfBz,GPT-3 (175B),text-davinci-001,64.3%,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recpfngtEfxU1D6zc,GLaM,GLaM (MoE),71.3%,0,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recEreiw1NzbvJYEK,GPT-3 (175B),text-davinci-001,68.0%,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+rec5nxJnKiiqNIm4u,GLaM,GLaM (MoE),75.8%,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recPrYWrsvsjKbhpk,GPT-3,text-davinci-001,71.2%,64,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recTPeBzo4moFIytC,Gopher,Gopher (280B),57.1%,64,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recMagk4MHW8hCgKS,GLaM,GLaM (MoE),75.8%,1,,GLaM: Efficient Scaling of Language Models with Mixture-of-Experts,http://arxiv.org/abs/2112.06905
+recTEzt7DQe7MTvSz,GPT-3,text-davinci-001,64.3%,0,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
+recbxIZpvmvJV4tOs,GPT-3,text-davinci-001,68.0%,1,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165
+recNaxMPrhoe9tttx,GPT-3,text-davinci-001,71.2%,few,,Language Models are Few-Shot Learners,http://arxiv.org/abs/2005.14165

@@ -1,10 +1,33 @@
-﻿id,Model version,Tools,Production score,Lab Success %,Milestones,Automation,Most complex item,Date added,Cost,Source,Source link (site from table),Notes
-recM8yCK8gpP0f9t1,claude-3-5-sonnet-20240620,None,293206,21.9%,30,13,plastic-bar,6/3/2025,$573.790,Factorio Learning Environment Leaderboard,https://jackhopkins.github.io/factorio-learning-environment/leaderboard/,
-recLCw8Fe3aGckwa1,gemini-2.0-flash-02-05,None,115782,13.0%,20,6,iron-gear-wheel,6/3/2025,$25.450,Factorio Learning Environment Leaderboard,https://jackhopkins.github.io/factorio-learning-environment/leaderboard/,
-recOHRTbZ4qzHivab,gpt-4o-2024-11-20,None,87599,16.6%,30,9,plastic-bar,6/3/2025,$356.505,Factorio Learning Environment Leaderboard,https://jackhopkins.github.io/factorio-learning-environment/leaderboard/,
-recSofqqLH2kQXHkd,Llama-3.3-70B-Instruct,None,54998,5.2%,16,4,iron-plate,6/3/2025,$6.895,Factorio Learning Environment Leaderboard,https://jackhopkins.github.io/factorio-learning-environment/leaderboard/,
-reci6abLRqErOAEvd,DeepSeek-V3,None,48585,15.1%,22,7,plastic-bar,6/3/2025,$115.995,Factorio Learning Environment Leaderboard,https://jackhopkins.github.io/factorio-learning-environment/leaderboard/,
-rec6lE8Gz606RB8oP,gpt-4o-mini-2024-07-18,None,26756,4.2%,14,4,iron-plate,6/3/2025,$28.450,Factorio Learning Environment Leaderboard,https://jackhopkins.github.io/factorio-learning-environment/leaderboard/,
-rech5IPmXMLBpbpcN,gemini-2.5-pro-exp-03-25,None,,18.4%,,,,8/5/2025,,FLE v0.2 release notes,https://jackhopkins.github.io/factorio-learning-environment/release.0.2.0,
-recMdFyhIap9Qd5gs,claude-3-7-sonnet-20250219,None,,29.1%,,,,8/5/2025,,FLE v0.2 release notes,https://jackhopkins.github.io/factorio-learning-environment/release.0.2.0,
-recgMIbSZzrOwD1Cw,claude-3-5-sonnet-20240620,Reflection,,28.1%,,,,8/5/2025,,FLE v0.2 release notes,https://jackhopkins.github.io/factorio-learning-environment/release.0.2.0,
+Model version,Tools,Production score,Release date,Organization,Country,Training compute (FLOP),Training compute notes,Lab Success %,Milestones,Automation,Most complex item,Date added,Cost,Source,Source link (site from table),Notes,id
+claude-3-5-sonnet-20240620,None,293206.0,2024-06-20,Anthropic,United States of America,2.700000000000001e+25,"Blog post by Dario Amodei includes some info on 3.5 Sonnet compute: https://darioamodei.com/on-deepseek-and-export-controls
+""Claude 3.5 Sonnet is a mid-sized model that cost a few $10M's to train (I won't give an exact number). Also, 3.5 Sonnet was not trained in any way that involved a larger or more expensive model (contrary to some rumors).""
+
+Using assumptions about GPU pricing, this lets us estimate compute. https://docs.google.com/spreadsheets/d/1-p-ab6t6dkUM6T7GwnFp85ePTMpZMW7LFY7fW2t8POs/",0.219,30.0,13.0,plastic-bar,2025-03-06,573.79,Factorio Learning Environment Leaderboard,https://jackhopkins.github.io/factorio-learning-environment/leaderboard/,,recM8yCK8gpP0f9t1
+gemini-2.0-flash-02-05,None,115782.0,2025-02-05,"Google DeepMind,Google","United States of America,Germany,Switzerland,Multinational,United Kingdom of Great Britain and Northern Ireland",,"""We used Trillium TPUs to train the new Gemini 2.0, Google’s most capable AI model yet"" according to https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga",0.13,20.0,6.0,iron-gear-wheel,2025-03-06,25.45,Factorio Learning Environment Leaderboard,https://jackhopkins.github.io/factorio-learning-environment/leaderboard/,,recLCw8Fe3aGckwa1
+gpt-4o-2024-11-20,None,87599.0,2024-11-20,OpenAI,United States of America,3.8100010000000003e+25,Training compute estimated from benchmark scores.,0.166,30.0,9.0,plastic-bar,2025-03-06,356.505,Factorio Learning Environment Leaderboard,https://jackhopkins.github.io/factorio-learning-environment/leaderboard/,,recOHRTbZ4qzHivab
+Llama-3.3-70B-Instruct,None,54998.0,2024-12-06,Meta AI,United States of America,6.8649768e+24,"6ND = 6 FLOP / parameter / token * 70*10^9 parameters * 15*10^12 tokens = 6.3e+24 FLOP
+
+7000000 GPU-hours * 3600 sec / hour * 989500000000000 FLOP / second * 0.3 [assumed utilization]= 7.48062e+24 FLOP
+
+sqrt(7.48062e+24*6.3e+24) = 6.8649768e+24",0.052,16.0,4.0,iron-plate,2025-03-06,6.895,Factorio Learning Environment Leaderboard,https://jackhopkins.github.io/factorio-learning-environment/leaderboard/,,recSofqqLH2kQXHkd
+DeepSeek-V3,None,48585.0,2024-12-26,DeepSeek,China,3.4078e+24,"""At an economical cost of only 2.664M H800 GPU hours, we complete the pre-training of DeepSeek-V3 on 14.8T tokens, producing the currently strongest open-source base model. The subsequent training stages after pre-training require only 0.1M GPU hours.""
+
+6 * 37B (active params) * 14.8T = 3.2856e24 for pretraining.
+
+We know they trained in FP8. H800s get 1.513e15 FLOP/s in FP8:
+2.688M * 3600 * 1.513e15 * MFU = 3.2856e24
+
+Suggests a MFU of 0.2244 in pre-training. If we assume MFU was the same in post-training, that adds an additional:
+
+0.1M * 3600 * 1.513e15 * 0.2244 = 1.222e23 FLOP from post-training
+
+Total: 3.2856e24 + 1.222e23 = 3.4078e24 FLOP",0.151,22.0,7.0,plastic-bar,2025-03-06,115.995,Factorio Learning Environment Leaderboard,https://jackhopkins.github.io/factorio-learning-environment/leaderboard/,,reci6abLRqErOAEvd
+gpt-4o-mini-2024-07-18,None,26756.0,2024-07-18,OpenAI,United States of America,7.360010000000001e+24,"Training compute estimated from benchmark scores.
+
+90% CI [3.23e+24, 2.05e+25]",0.042,14.0,4.0,iron-plate,2025-03-06,28.45,Factorio Learning Environment Leaderboard,https://jackhopkins.github.io/factorio-learning-environment/leaderboard/,,rec6lE8Gz606RB8oP
+gemini-2.5-pro-exp-03-25,None,,2025-03-25,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.184,,,,2025-05-08,,FLE v0.2 release notes,https://jackhopkins.github.io/factorio-learning-environment/release.0.2.0,,rech5IPmXMLBpbpcN
+claude-3-7-sonnet-20250219,None,,2025-02-24,Anthropic,United States of America,3.35e+25,https://docs.google.com/spreadsheets/d/10bhwdVrfHI8tysVIz62ZxtvQ30L-HojYvmU18_b-WIM/edit?gid=0#gid=0,0.291,,,,2025-05-08,,FLE v0.2 release notes,https://jackhopkins.github.io/factorio-learning-environment/release.0.2.0,,recMdFyhIap9Qd5gs
+claude-3-5-sonnet-20240620,Reflection,,2024-06-20,Anthropic,United States of America,2.700000000000001e+25,"Blog post by Dario Amodei includes some info on 3.5 Sonnet compute: https://darioamodei.com/on-deepseek-and-export-controls
+""Claude 3.5 Sonnet is a mid-sized model that cost a few $10M's to train (I won't give an exact number). Also, 3.5 Sonnet was not trained in any way that involved a larger or more expensive model (contrary to some rumors).""
+
+Using assumptions about GPU pricing, this lets us estimate compute. https://docs.google.com/spreadsheets/d/1-p-ab6t6dkUM6T7GwnFp85ePTMpZMW7LFY7fW2t8POs/",0.281,,,,2025-05-08,,FLE v0.2 release notes,https://jackhopkins.github.io/factorio-learning-environment/release.0.2.0,,recgMIbSZzrOwD1Cw

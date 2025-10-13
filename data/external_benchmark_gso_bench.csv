@@ -1,8 +1,16 @@
-﻿id,Model version,Scaffold,Score OPT@1,Score OPT@10,Notes,Source,Source link
-recyrQ4JUWjfKS1xR,o3-2025-04-16_high,OpenHands,8.8%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
-recCMHpSUHUw7MhjQ,claude-sonnet-4-20250514,OpenHands,4.9%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
-recTAzfnTtfeArFqk,claude-3-5-sonnet-20241022,OpenHands,4.6%,15.7%,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
-recoExXWLABCrn50A,claude-3-7-sonnet-20250219,OpenHands,3.8%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
-recq2Mzz81PDsAp4v,o4-mini-2025-04-16_high,OpenHands,3.6%,12.7%,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
-recmNBNhajAOofv1Q,o3-mini-2025-01-31_high,OpenHands,1.3%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
-recSbAXRQhrp0eicx,gpt-4o-2024-11-20,OpenHands,0.0%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
+Model version,Scaffold,Score OPT@1,Release date,Organization,Country,Training compute (FLOP),Training compute notes,Score OPT@10,Notes,Source,Source link,id
+o3-2025-04-16_high,OpenHands,0.088,2025-04-16,OpenAI,United States of America,,,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html,recyrQ4JUWjfKS1xR
+claude-opus-4-20250514,OpenHands,0.069,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html,recth4YmbJGhtEeae
+gpt-5-2025-08-07_high,OpenHands,0.069,2025-08-07,OpenAI,United States of America,,,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html,recXbtm7TgBsNVAJQ
+claude-sonnet-4-20250514,OpenHands,0.049,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html,recCMHpSUHUw7MhjQ
+claude-sonnet-4-20250514,OpenHands,0.049,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html,reccmXojGYu62lm8p
+Kimi-K2-Instruct,OpenHands,0.049,2025-07-12,Moonshot,China,2.976e+24,6 FLOP / parameter / token * 32 * 10^9 activated parameters * 15.5 * 10^12 tokens = 2.976e+24 FLOP,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html,recslQxYG0KdpDtzW
+Qwen3-Coder-480B-A35B-Instruct,OpenHands,0.049,2025-07-31,Alibaba,China,1.575e+24,6 FLOP / parameter / token * 35 * 10^9 active parameters * 7.5 * 10^12 tokens = 1.575e+24 FLOP`,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html,rechj9ltkUUfx20ya
+claude-3-5-sonnet-20241022,OpenHands,0.046,2024-10-22,Anthropic,United States of America,2.700000000000001e+25,"Blog post by Dario Amodei includes some info on 3.5 Sonnet compute: https://darioamodei.com/on-deepseek-and-export-controls
+""Claude 3.5 Sonnet is a mid-sized model that cost a few $10M's to train (I won't give an exact number). Also, 3.5 Sonnet was not trained in any way that involved a larger or more expensive model (contrary to some rumors).""
+
+Using assumptions about GPU pricing, this lets us estimate compute. https://docs.google.com/spreadsheets/d/1-p-ab6t6dkUM6T7GwnFp85ePTMpZMW7LFY7fW2t8POs/",0.157,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html,recTAzfnTtfeArFqk
+claude-3-7-sonnet-20250219,OpenHands,0.038,2025-02-24,Anthropic,United States of America,3.35e+25,https://docs.google.com/spreadsheets/d/10bhwdVrfHI8tysVIz62ZxtvQ30L-HojYvmU18_b-WIM/edit?gid=0#gid=0,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html,recoExXWLABCrn50A
+o4-mini-2025-04-16_high,OpenHands,0.036,2025-04-16,OpenAI,United States of America,,"We can’t make a precise estimate, but seems unlikely to exceed 10^25 FLOP. We think active parameter count is 10-30B. This would require >55T tokens to reach 10^25 FLOP at the large size, i.e. well beyond 10x overtraining relative to Chinchilla.",0.127,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html,recq2Mzz81PDsAp4v
+o3-mini-2025-01-31_high,OpenHands,0.013,2025-01-31,OpenAI,United States of America,,"We can’t make a precise estimate, but seems unlikely to exceed 10^25 FLOP. We think active parameter count is 10-30B. This would require >55T tokens to reach 10^25 FLOP at the large size, i.e. well beyond 10x overtraining relative to Chinchilla.",,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html,recmNBNhajAOofv1Q
+gpt-4o-2024-11-20,OpenHands,0.0,2024-11-20,OpenAI,United States of America,3.8100010000000003e+25,Training compute estimated from benchmark scores.,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html,recSbAXRQhrp0eicx

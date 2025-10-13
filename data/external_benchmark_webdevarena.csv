@@ -1,0 +1,130 @@
+Model version,Arena Score,Release date,Organization,Country,Training compute (FLOP),Training compute notes,Score 95% CI,Votes,Last updated,Source,Source link (site from table),Notes,id
+gpt-5-2025-08-07_high,1479.83,2025-08-07,OpenAI,United States of America,,,+7.54 / -11.68,5030,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recQLSl4DM4fz7VAt
+claude-opus-4-1-20250805_16K,1468.17,2025-08-05,Anthropic,United States of America,,,+10.74 / -9.12,3746,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recDCbjVONLP8GhN2
+claude-opus-4-1-20250805,1468.17,2025-08-05,Anthropic,United States of America,,,+10.74 / -9.12,3746,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recxJC6KaFZO5Yo47
+gemini-2.5-pro,1402.91,2025-06-17,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,+6.26 / -7.46,9330,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,rec0jRmpNdEDdrg8X
+DeepSeek-R1-0528,1393.41,2025-05-28,DeepSeek,China,4.020010000000001e+24,"Estimates by Ege Erdil in Gradient Updates:
+https://epoch.ai/gradient-updates/what-went-into-training-deepseek-r1
+""A dataset size of 14.8 trillion tokens is reasonable and in line with other models of this scale. Assuming that’s valid, the pretraining of this model would have required 6 * (37 billion) * (14.8 trillion) = 3e24 FLOP. If we assume DeepSeek’s training cluster consists of H800s with the PCIe form factor, then each should be capable of 1.5e15 FP8 per second, and the implied model FLOP utilization (MFU) of DeepSeek v3’s 55 day training run ends up being around 23%.""
+
+6 FLOP/token/param * 14.8T tokens * 37B active params = 3.29e24 FLOP (pretraining)
+1.2e23 FLOP (post-training)
+6.1e23 FLOP (fine-tuning)
+
+Total compute: 3.29e24 + 1.2e23 + 6.1e23 = 4.02e24",+10.77 / -9.88,4800,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recoxpFCpzEImK5i4
+claude-opus-4-20250514,1383.48,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,+6.02 / -5.18,9238,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recDMjkTx9oZNAOzz
+glm-4.5,1375.48,2025-08-03,"Zhipu AI,Tsinghua University",China,4.42e+24,(6 FLOP/token/parameter) * (23T tokens) * (32B active parameters) = 4.42e24 FLOP,+13.26 / -10.05,3314,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recUrHg93mpJgakI0
+GLM-4.5-Air,1366.85,2025-07-20,,,,,+18.10 / -22.12,1425,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recyD2ZNG4gtW9Y0m
+Qwen3-Coder-480B-A35B-Instruct,1366.06,2025-07-31,Alibaba,China,1.575e+24,6 FLOP / parameter / token * 35 * 10^9 active parameters * 7.5 * 10^12 tokens = 1.575e+24 FLOP`,+6.64 / -6.69,8625,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recT1lwdoUHQkrBMV
+claude-sonnet-4-20250514,1362.15,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,+7.18 / -5.01,10550,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,reciI0uZdChhyGrUw
+DeepSeek-V3.1_thinking,1361.97,2025-08-21,DeepSeek,China,,3.407799999999999e+24 FLOP [base model] + 1.86258e+23 FLOP = 3.594058e+24 FLOP,+17.23 / -17.42,1459,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recGfqSb7DIX51ffo
+claude-3-7-sonnet-20250219,1358.41,2025-02-24,Anthropic,United States of America,3.35e+25,https://docs.google.com/spreadsheets/d/10bhwdVrfHI8tysVIz62ZxtvQ30L-HojYvmU18_b-WIM/edit?gid=0#gid=0,+7.39 / -9.89,7460,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recumTXyHTALFh1iH
+DeepSeek-V3.1,1339.92,2025-08-21,DeepSeek,China,,3.407799999999999e+24 FLOP [base model] + 1.86258e+23 FLOP = 3.594058e+24 FLOP,+18.62 / -15.80,1304,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recoUouxwJTO6jCv1
+qwen3-coder-plus,1331.79,2025-09-23,,,,,+11.85 / -18.16,1956,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recb5Q2Ez7Shxvl2o
+Kimi-K2-Instruct,1316.4,2025-07-12,Moonshot,China,2.976e+24,6 FLOP / parameter / token * 32 * 10^9 activated parameters * 15.5 * 10^12 tokens = 2.976e+24 FLOP,+7.10 / -8.37,7027,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,rec4L4znR9E7Yeb7E
+gemini-2.5-flash,1288.97,2025-06-17,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,,+6.38 / -5.94,9930,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recBICRjNsv9JEKQt
+gpt-4.1-2025-04-14,1252.88,2025-04-14,OpenAI,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,+5.34 / -5.77,11506,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,rec8hNzDMIzA5RXxq
+claude-3-5-sonnet-20241022,1238.14,2024-10-22,Anthropic,United States of America,2.700000000000001e+25,"Blog post by Dario Amodei includes some info on 3.5 Sonnet compute: https://darioamodei.com/on-deepseek-and-export-controls
+""Claude 3.5 Sonnet is a mid-sized model that cost a few $10M's to train (I won't give an exact number). Also, 3.5 Sonnet was not trained in any way that involved a larger or more expensive model (contrary to some rumors).""
+
+Using assumptions about GPU pricing, this lets us estimate compute. https://docs.google.com/spreadsheets/d/1-p-ab6t6dkUM6T7GwnFp85ePTMpZMW7LFY7fW2t8POs/",+6.82 / -4.75,26267,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recPRratljctS351K
+DeepSeek-V3-0324,1207.9,2025-03-24,DeepSeek,China,3.4078e+24,"""At an economical cost of only 2.664M H800 GPU hours, we complete the pre-training of DeepSeek-V3 on 14.8T tokens, producing the currently strongest open-source base model. The subsequent training stages after pre-training require only 0.1M GPU hours.""
+
+6 * 37B (active params) * 14.8T = 3.2856e24 for pretraining.
+
+We know they trained in FP8. H800s get 1.513e15 FLOP/s in FP8:
+2.688M * 3600 * 1.513e15 * MFU = 3.2856e24
+
+Suggests a MFU of 0.2244 in pre-training. If we assume MFU was the same in post-training, that adds an additional:
+
+0.1M * 3600 * 1.513e15 * 0.2244 = 1.222e23 FLOP from post-training
+
+Total: 3.2856e24 + 1.222e23 = 3.4078e24 FLOP",+21.91 / -16.65,1094,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recgHWkkshK8nYtfz
+DeepSeek-R1,1199.38,2025-01-20,DeepSeek,China,4.020010000000001e+24,"Estimates by Ege Erdil in Gradient Updates:
+https://epoch.ai/gradient-updates/what-went-into-training-deepseek-r1
+""A dataset size of 14.8 trillion tokens is reasonable and in line with other models of this scale. Assuming that’s valid, the pretraining of this model would have required 6 * (37 billion) * (14.8 trillion) = 3e24 FLOP. If we assume DeepSeek’s training cluster consists of H800s with the PCIe form factor, then each should be capable of 1.5e15 FP8 per second, and the implied model FLOP utilization (MFU) of DeepSeek v3’s 55 day training run ends up being around 23%.""
+
+6 FLOP/token/param * 14.8T tokens * 37B active params = 3.29e24 FLOP (pretraining)
+1.2e23 FLOP (post-training)
+6.1e23 FLOP (fine-tuning)
+
+Total compute: 3.29e24 + 1.2e23 + 6.1e23 = 4.02e24",+12.46 / -13.38,3755,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,reclY6B2Wp2f59mld
+gpt-4.1-mini-2025-04-14,1192.99,2025-04-14,OpenAI,United States of America,,,+5.98 / -6.90,9064,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recmBglMHLXb6m6s8
+qwen3-235b-a22b,1189.46,2025-04-29,Alibaba,China,4.752e+24,6 FLOP / parameter / token * 22*10^9 active parameters * 36000000000000 tokens = 4.752e+24 FLOP,+6.61 / -7.38,5600,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,reco07u0phmlUKOm4
+o3-2025-04-16_medium,1186.29,2025-04-16,OpenAI,United States of America,,,+6.18 / -8.36,5572,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,rec8Eg2KdgjeEWepd
+mistral-medium-2505,1180.97,2025-05-07,Mistral AI,France,,"Benchmarks match with models like GPT-4o, Mistral's previous largest runs were ~1e25 FLOP scale, so plausibly they might have trained Medium with this much compute.",+8.91 / -8.65,7511,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recT6aoJlcWcMufso
+grok-4-0709,1174.31,2025-07-09,xAI,United States of America,5.0000000000001e+26,"We think that RL relative to pre-compute is between our estimate for o3 (10% of pre-training) and the 100% implied by this slide in the launch ( https://archive.is/f0vJU ). Assuming the same pre-training as Grok 3 (also implied by that slide, and much more consistent) and that Grok 3 used a tenth as much RL, we get:
+
+2 * (grok3/1.1) in the high case (rl is 10% of grok 3, so grok3/1.1 is grok3 precompute, and in this case twice that is grok 4)
+1.1 * (grok3/1.01) in the low case
+The geometric mean is (rounded to one sig fig): 5e26
+",+8.07 / -7.91,7685,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recYBnWjhmTwpsA6r
+grok-code-fast-1,1150.43,2025-08-28,,,,,+15.53 / -11.54,3051,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recwDmrugC0gQr9H9
+grok-3-beta,1143.33,2025-04-09,xAI,United States of America,3.5e+26,"Estimate based on a cluster of 80,000 H100s per the xai website and an estimated training time of approximately three months.
+
+Full estimate here: https://docs.google.com/document/d/1MIUFviULJ3YI_XjyzL8cwG0cBRANKNxVEB4DrUcFiNs/edit?usp=sharing",+8.13 / -10.15,5764,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,"Assuming ""early-grok-3"" means beta based on the entry linking to the Grok 3 Beta release announcement",recfCHpJwlJ1lYx5X
+o3-mini-2025-01-31_high,1136.74,2025-01-31,OpenAI,United States of America,,"We can’t make a precise estimate, but seems unlikely to exceed 10^25 FLOP. We think active parameter count is 10-30B. This would require >55T tokens to reach 10^25 FLOP at the large size, i.e. well beyond 10x overtraining relative to Chinchilla.",+10.80 / -14.07,2979,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,reciewGCgzyyNzf2b
+claude-3-5-haiku-20241022,1133.4,2024-10-22,Anthropic,United States of America,,,+5.02 / -4.89,22213,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,rec2HfXnHOGStYCxd
+MiniMax-M1-80k,1129.49,2025-06-13,MiniMax,China,4.3240062e+24,1.9828799999999997e+24 FLOP [base model compute] + 2.3411262e+24 FLOP [see finetune compute notes] = 4.3240062e+24 FLOP,+9.12 / -10.38,3361,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recev9TLJFdoqesUC
+o4-mini-2025-04-16_medium,1117.79,2025-04-16,OpenAI,United States of America,,"We can’t make a precise estimate, but seems unlikely to exceed 10^25 FLOP. We think active parameter count is 10-30B. This would require >55T tokens to reach 10^25 FLOP at the large size, i.e. well beyond 10x overtraining relative to Chinchilla.",+5.75 / -9.27,8850,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recYYFJaDgK5GBUoy
+gpt-oss-120b,1094.48,2025-08-05,OpenAI,United States of America,4.94e+24,"""The training run for gpt-oss-120b required 2.1 million H100-hours to complete""
+(2.1e6 hours)*(1,979 H100 FLOP/s)*(30% utilization)*(60*60) = 4.49e24
+They also do post training similar to o3, which we assume adds at least 10% as much compute, so we multiply this estimate by 1.1 to get 4.94e24
+
+",+23.57 / -25.21,759,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recG0s6L2oOgmgYjK
+o3-mini-2025-01-31_medium,1092.17,2025-01-31,OpenAI,United States of America,,"We can’t make a precise estimate, but seems unlikely to exceed 10^25 FLOP. We think active parameter count is 10-30B. This would require >55T tokens to reach 10^25 FLOP at the large size, i.e. well beyond 10x overtraining relative to Chinchilla.",+7.71 / -8.63,6369,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,Assuming medium reasoning effort for o3-mini,recgqUvke6VOkEmBB
+gemini-2.0-pro-exp-02-05,1089.73,2025-02-05,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,Flagship model from a leading developer in early 2025; very likely it used >1e25 FLOP.,+6.74 / -6.63,11859,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,rec3yrXg7sjOWAYJD
+o1-2024-12-17_medium,1045.16,2024-12-17,OpenAI,United States of America,,,+7.35 / -8.38,9235,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,Assuming medium reasoning effort for o1-mini,recWy0omQqA7DyLpV
+o1-mini-2024-09-12_medium,1042.57,2024-09-12,OpenAI,United States of America,,"We can’t make a precise estimate, but seems unlikely to exceed 10^25 FLOP. We think active parameter count is 10-30B. This would require >55T tokens to reach 10^25 FLOP at the large size, i.e. well beyond 10x overtraining relative to Chinchilla.",+5.59 / -9.14,13688,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,Assuming medium reasoning effort for o1-mini,recGOQoDUMGxhuJKG
+gemini-2.0-flash-001,1040.25,2025-02-05,"Google DeepMind,Google","United States of America,Germany,Switzerland,Multinational,United Kingdom of Great Britain and Northern Ireland",,"""We used Trillium TPUs to train the new Gemini 2.0, Google’s most capable AI model yet"" according to https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga",+6.51 / -5.14,10498,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,rec2ZAMUe9ddSA0jr
+gemini-2.0-flash-thinking-exp-01-21,1029.8,2025-01-21,"Google DeepMind,Google","United States of America,Germany,Switzerland,Multinational,United Kingdom of Great Britain and Northern Ireland",,,+18.26 / -18.04,1058,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,receFyTNQKyKKfYxQ
+Llama-4-Maverick-17B-128E-Instruct,1027.01,2025-04-05,Meta AI,United States of America,2.244000000001e+24,"22T training tokens per model card:
+
+https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md   
+
+Maverick was trained using co-distillation from Llama 4 Behemoth. It isn't 100% clear that all 22T tokens used distillation, but we assume this for the time being.
+
+Estimating training compute from parameters and tokens:
+Compute = 6 FLOP per token per parameter * 17B active parameters * 22T tokens = 2.244e24 FLOP
+(Implying mean throughput was 262 TFLOPS/GPU, or 13.2% MFU in FP8)
+
+
+The model card also states that Llama 4 Maverick used 2.38M H100-hours.
+The blog post gives a figure of 390 TFLOPS/GPU, but this may have been the utilization rate for Behemoth, or all of the models together. Using this utilization, we have:
+Compute = 390 TFLOP/s * 2.38 million hours = 3.342e24 FLOP
+(This value is higher than the compute implied by parameters and tokens, and suggests utilization may have been lower for Maverick than for Behemoth.)",+7.13 / -8.15,5474,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recpMEwdZMYc7hdfv
+gemini-2.0-flash-exp,980.07,2024-12-11,"Google DeepMind,Google","United States of America,Germany,Switzerland,Multinational,United Kingdom of Great Britain and Northern Ireland",,"""We used Trillium TPUs to train the new Gemini 2.0, Google’s most capable AI model yet"" according to https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga",+5.22 / -6.33,14454,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recpt2SS6EgSsH1Uz
+qwen2.5-max,975.51,2025-01-28,Alibaba,China,,,+7.18 / -6.71,11073,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recIyrfsEqGZ5NqkT
+gpt-4o-2024-11-20,964.0,2024-11-20,OpenAI,United States of America,3.8100010000000003e+25,Training compute estimated from benchmark scores.,+7.06 / -7.60,18601,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recOXmBp4Cwo69XIV
+DeepSeek-V3,959.78,2024-12-26,DeepSeek,China,3.4078e+24,"""At an economical cost of only 2.664M H800 GPU hours, we complete the pre-training of DeepSeek-V3 on 14.8T tokens, producing the currently strongest open-source base model. The subsequent training stages after pre-training require only 0.1M GPU hours.""
+
+6 * 37B (active params) * 14.8T = 3.2856e24 for pretraining.
+
+We know they trained in FP8. H800s get 1.513e15 FLOP/s in FP8:
+2.688M * 3600 * 1.513e15 * MFU = 3.2856e24
+
+Suggests a MFU of 0.2244 in pre-training. If we assume MFU was the same in post-training, that adds an additional:
+
+0.1M * 3600 * 1.513e15 * 0.2244 = 1.222e23 FLOP from post-training
+
+Total: 3.2856e24 + 1.222e23 = 3.4078e24 FLOP",+6.19 / -8.10,7699,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recjl6xOWVf3sOVsn
+Qwen2.5-Coder-32B-Instruct,901.96,2024-11-21,Alibaba,China,1.0725e+24,"Assuming 1 epoch
+
+6ND = 6*32.5 parameters *10^9*5.5*10^12 tokens = 1.0725e+24",+6.29 / -6.15,16199,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recZqTIAehJCPRyy6
+Llama-4-Scout-17B-16E-Instruct,901.96,2025-04-05,Meta AI,United States of America,4.08e+24,"40T training tokens per model card:
+
+https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md  
+
+Estimating training compute from parameters and tokens:
+6 FLOP per token per parameter * 17B active parameters * 40T tokens = 4.08e24 FLOP
+(Implying mean throughput was 227 TFLOPS/GPU, or 11.5% MFU in FP8)
+
+
+The model card also states that Llama 4 Scout used 5.0M H100-hours.
+The blog post gives a figure of 390 TFLOPS/GPU, but this may have been the utilization rate for Behemoth, or all of the models together. Using this utilization, we have:
+Compute = 390 TFLOP/s * 5 million hours = 7.02e24 FLOP
+(This value is higher than the compute implied by parameters and tokens, and suggests utilization may have been lower for Scout than for Behemoth.)",+6.29 / -6.15,16199,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recnoUKWcpo8ct7TH
+gemini-1.5-pro-002,892.56,2024-09-24,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",1.5800010000000001e+25,Training compute imputed from benchmark scores.,+5.57 / -5.42,15159,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recsuGMPbGwVUtzmv
+Llama-3.1-405B-Instruct,809.71,2024-07-23,Meta AI,United States of America,3.8e+25,"Stated in paper.
+
+Also, 6 * 405B * 15.6T training tokens = 3.8e25",+15.78 / -14.71,1117,2025-10-02,WebDev Arena Leaderboard,https://web.lmarena.ai/leaderboard,,recyv7krOldyrXF6M
