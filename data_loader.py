@@ -358,7 +358,7 @@ print("after saturation filter", len(scores_df))
 model_benchmark_counts = scores_df.groupby('model')['benchmark'].nunique()
 
 # Filter out models that are only evaluated on N benchmarks
-models_to_keep = model_benchmark_counts[model_benchmark_counts > 0].index # change number of benchmarks evaluated on, default 1
+models_to_keep = model_benchmark_counts[model_benchmark_counts > 1].index # change number of benchmarks evaluated on, default 1
 scores_df = scores_df[scores_df['model'].isin(models_to_keep)]
 print("after filter num benchmarks", len(scores_df))
 
