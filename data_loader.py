@@ -376,6 +376,12 @@ df_model = df_model.drop(df_model.index[df_model['Model'].eq('Mistral Large')])
 scores_df = scores_df.merge(df_model, on="model")
 print("after merge with model versions", len(scores_df))
 
+# Filter to keep only models from November 2022 onwards (ChatGPT era)
+START_DATE_FILTER = '2022-11-01'
+scores_df['date'] = pd.to_datetime(scores_df['date'], errors='coerce')
+scores_df = scores_df[scores_df['date'] >= pd.to_datetime(START_DATE_FILTER)].copy()
+print(f"after date filter (>= {START_DATE_FILTER})", len(scores_df))
+
 scores_df = scores_df.merge(
     bench_dates[['benchmark', 'benchmark_release_date']],
     on='benchmark',

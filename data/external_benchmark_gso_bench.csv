@@ -1,6 +1,11 @@
 ﻿id,Model version,Scaffold,Score OPT@1,Score OPT@10,Notes,Source,Source link
 recyrQ4JUWjfKS1xR,o3-2025-04-16_high,OpenHands,8.8%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
+recth4YmbJGhtEeae,claude-opus-4-20250514,OpenHands,6.9%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
+recXbtm7TgBsNVAJQ,gpt-5-2025-08-07_high,OpenHands,6.9%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
 recCMHpSUHUw7MhjQ,claude-sonnet-4-20250514,OpenHands,4.9%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
+reccmXojGYu62lm8p,claude-sonnet-4-20250514,OpenHands,4.9%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
+recslQxYG0KdpDtzW,Kimi-K2-Instruct,OpenHands,4.9%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
+rechj9ltkUUfx20ya,Qwen3-Coder-480B-A35B-Instruct,OpenHands,4.9%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
 recTAzfnTtfeArFqk,claude-3-5-sonnet-20241022,OpenHands,4.6%,15.7%,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
 recoExXWLABCrn50A,claude-3-7-sonnet-20250219,OpenHands,3.8%,,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
 recq2Mzz81PDsAp4v,o4-mini-2025-04-16_high,OpenHands,3.6%,12.7%,,GSO Leaderboard,https://gso-bench.github.io/leaderboard.html
