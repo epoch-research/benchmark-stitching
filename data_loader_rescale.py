@@ -95,7 +95,7 @@ df_factorio["benchmark"] = "Factorio learning environment"
 df_factorio["performance"] = pd.to_numeric(df_factorio["performance"], errors="raise")
 
 df_fiction = pd.read_csv("data/external_benchmark_fictionlivebench.csv")[["Model version", "16k token score", "Source"]]
-df_fiction = df_fiction.rename(columns={"Model version": "model_version", "16k token score": "score", "Source": "source"})
+df_fiction = df_fiction.rename(columns={"Model version": "model", "16k token score": "score", "Source": "source"})
 df_fiction["benchmark"] = "Fiction.LiveBench"
 df_fiction["score"] = pd.to_numeric(df_fiction["score"], errors="raise")
 
@@ -106,7 +106,7 @@ df_geobench["benchmark"] = "GeoBench"
 df_geobench["performance"] = pd.to_numeric(df_geobench["performance"], errors="raise")
 
 df_gsm8k = pd.read_csv("data/external_benchmark_gsm8k.csv")[["Model version", "EM", "Source"]]
-df_gsm8k = df_gsm8k.rename(columns={"Model version": "model_version", "EM": "score", "Source": "source"})
+df_gsm8k = df_gsm8k.rename(columns={"Model version": "model", "EM": "score", "Source": "source"})
 df_gsm8k["benchmark"] = "GSM8K"
 df_gsm8k["score"] = pd.to_numeric(df_gsm8k["score"].str.rstrip('%'), errors="raise") / 100
 
@@ -123,17 +123,17 @@ df_hellaswag["benchmark"] = "HellaSwag"
 df_hellaswag["performance"] = pd.to_numeric(df_hellaswag["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_lambada = pd.read_csv("data/external_benchmark_lambada.csv")[["Model version", "Score", "Source"]]
-df_lambada = df_lambada.rename(columns={"Model version": "model_version", "Score": "performance", "Source": "source"})
+df_lambada = df_lambada.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
 df_lambada["benchmark"] = "LAMBADA"
 df_lambada["performance"] = pd.to_numeric(df_lambada["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_lm_writing = pd.read_csv("data/external_benchmark_lech_mazur_writing.csv")[["Model version", "Mean score", "Source"]]
-df_lm_writing = df_lm_writing.rename(columns={"Model version": "model_version", "Mean score": "performance", "Source": "source"})
+df_lm_writing = df_lm_writing.rename(columns={"Model version": "model", "Mean score": "performance", "Source": "source"})
 df_lm_writing["benchmark"] = "Lech Mazur Writing"
 df_lm_writing["performance"] = df_lm_writing["performance"] / 10
 
 df_livebench = pd.read_csv("data/external_benchmark_livebench.csv")[["Model version", "Global average", "Source"]]
-df_livebench = df_livebench.rename(columns={"Model version": "model_version", "Global average": "performance", "Source": "source"})
+df_livebench = df_livebench.rename(columns={"Model version": "model", "Global average": "performance", "Source": "source"})
 df_livebench["benchmark"] = "LiveBench"
 df_livebench["performance"] = df_livebench["performance"] / 100
 
@@ -169,12 +169,12 @@ df_osuniverse["benchmark"] = "OSUniverse"
 df_osuniverse["performance"] = pd.to_numeric(df_osuniverse["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_piqa = pd.read_csv("data/external_benchmark_piqa.csv")[["Model version", "Score", "Source"]]
-df_piqa = df_piqa.rename(columns={"Model version": "model_version", "Score": "performance", "Source": "source"})
+df_piqa = df_piqa.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
 df_piqa["benchmark"] = "PIQA"
 df_piqa["performance"] = pd.to_numeric(df_piqa["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_scienceqa = pd.read_csv("data/external_benchmark_scienceqa.csv")[["Model version", "Score", "Source"]]
-df_scienceqa = df_scienceqa.rename(columns={"Model version": "model_version", "Score": "performance", "Source": "source"})
+df_scienceqa = df_scienceqa.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
 df_scienceqa["benchmark"] = "ScienceQA"
 df_scienceqa["performance"] = pd.to_numeric(df_scienceqa["performance"].str.rstrip('%'), errors="raise") / 100
 
@@ -185,7 +185,7 @@ df_simple["benchmark"] = "SimpleBench"
 df_simple["performance"] = pd.to_numeric(df_simple["performance"], errors="raise")
 
 df_superglue = pd.read_csv("data/external_benchmark_superglue.csv")[["Model version", "Score", "Source"]]
-df_superglue = df_superglue.rename(columns={"Model version": "model_version", "Score": "performance", "Source": "source"})
+df_superglue = df_superglue.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
 df_superglue["benchmark"] = "SuperGLUE"
 df_superglue["performance"] = pd.to_numeric(df_superglue["performance"].str.rstrip('%'), errors="raise") / 100
 
@@ -196,7 +196,7 @@ df_terminal["benchmark"] = "Terminal Bench"
 df_terminal["performance"] = pd.to_numeric(df_terminal["performance"], errors="raise")
 
 df_the_agent_company = pd.read_csv("data/external_benchmark_the_agent_company.csv")[["Model version", "% Resolved", "Source"]]
-df_the_agent_company = df_the_agent_company.rename(columns={"Model version": "model_version", "% Resolved": "performance", "Source": "source"})
+df_the_agent_company = df_the_agent_company.rename(columns={"Model version": "model", "% Resolved": "performance", "Source": "source"})
 df_the_agent_company["benchmark"] = "SuperGLUE"
 df_the_agent_company["performance"] = pd.to_numeric(df_the_agent_company["performance"].str.rstrip('%'), errors="raise") / 100
 
@@ -339,6 +339,68 @@ raw_perf = scores_df['performance'].copy()
 scores_df['performance'] = pd.to_numeric(scores_df['performance'], errors='coerce')
 dropped = scores_df[ raw_perf.notna() & scores_df['performance'].isna() ]
 print("null performances after coercion:", scores_df['performance'].isna().sum())
+
+# Map each benchmark to an expected random-guess baseline r in [0,1].
+# For non-multiple-choice or open-ended tasks we default to r = 0.0.
+random_baseline_map = {
+    # Internal
+    "GPQA diamond": 0.25,  # 4-choice MC
+    "FrontierMath-2025-02-28-Private": 0.0, # Effectively guess-proof (response can be an integer or expression)
+    "MATH level 5": 0.0, # Not MC, uses 
+    # AIME answers are 3-digit integers 000-999; random exact-match ≈ 0.001
+    "OTIS Mock AIME 2024-2025": 0.001,
+    "SWE-Bench verified": 0.0,
+
+    # External
+    "Aider polyglot": 0.0,
+    "ANLI": 1.0/3.0,  # 3-class NLI
+    "ARC-AGI": 0.0,   # not MC; random ≈ 0
+    "ARC AI2": 0.25,  # 4-choice MC
+    "Balrog": 0.0,
+    "BBH": 0.25,      # mostly MC; approximate with 4-choice
+    "BoolQ": 0.5,     # binary
+    "CadEval": 0.0,
+    # CommonsenseQA 2.0 often treated as binary verification; use 0.5
+    "CSQA2": 0.5,
+    "Cybench": 0.0,
+    "DeepResearch Bench": 0.0,
+    "Factorio learning environment": 0.0,
+    "Fiction.LiveBench": 0.0,  # scored rubric; treat random as 0
+    "GeoBench": 0.0,
+    "GSM8K": 0.0,     # exact-match free-form
+    "GSO-Bench": 0.0,
+    "HellaSwag": 0.25,  # 4-choice MC
+    "LAMBADA": 0.0,     # last-token EM; random ≈ 0
+    "Lech Mazur Writing": 0.0,
+    "LiveBench": 0.0,
+    "MMLU": 0.25,       # 4-choice MC
+    "OpenBookQA": 0.25, # 4-choice MC
+    "OSWorld": 0.0,
+    "OSUniverse": 0.0,
+    "PIQA": 0.5,        # 2-choice MC
+    "ScienceQA": 0.25,  # 4-choice MC
+    "SimpleBench": 0.0,
+    # SuperGLUE overall score aggregates varied tasks; use 0.0 as conservative default
+    "SuperGLUE": 0.0,
+    "Terminal Bench": 0.0,
+    "TriviaQA": 0.0,    # EM
+    "VideoMME": 0.25,
+    "VPCT": 0.0,
+    "WeirdML": 0.0,
+    "Winogrande": 0.5,  # binary fill-in-the-blank
+    "METR": 0.0,
+}
+
+# Attach per-row random baseline; default to 0.0 if unknown
+scores_df['random_baseline'] = scores_df['benchmark'].map(random_baseline_map).fillna(0.0)
+
+# Rescale performance so that random guessing -> 0 and perfect -> 1
+# p_rescaled = (p - r) / (1 - r)
+with pd.option_context('mode.use_inf_as_na', True):
+    scores_df['performance'] = (
+        (scores_df['performance'] - scores_df['random_baseline']) /
+        (1.0 - scores_df['random_baseline'])
+    )
 
 unique_benchmarks = scores_df['benchmark'].unique()
 benchmark_to_id = {benchmark: f"b{i+1}" for i, benchmark in enumerate(unique_benchmarks)}
