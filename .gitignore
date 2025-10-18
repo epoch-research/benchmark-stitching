@@ -214,3 +214,6 @@ outputs/
 
 # Claude Code
 .claude/
+
+# Large data files
+data/ai_models/
