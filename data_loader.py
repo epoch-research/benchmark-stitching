@@ -108,7 +108,7 @@ df_geobench["performance"] = pd.to_numeric(df_geobench["performance"], errors="r
 df_gsm8k = pd.read_csv("data/external_benchmark_gsm8k.csv")[["Model version", "EM", "Source"]]
 df_gsm8k = df_gsm8k.rename(columns={"Model version": "model", "EM": "score", "Source": "source"})
 df_gsm8k["benchmark"] = "GSM8K"
-df_gsm8k["score"] = pd.to_numeric(df_gsm8k["score"].str.rstrip('%'), errors="raise") / 100
+df_gsm8k["performance"] = pd.to_numeric(df_gsm8k["score"].str.rstrip('%'), errors="raise") / 100
 
 df_gsobench = pd.read_csv("data/external_benchmark_gso_bench.csv")[["Model version", "Score OPT@1", "Source"]]
 df_gsobench = df_gsobench.rename(columns={"Model version": "model", "Score OPT@1": "performance", "Source": "source"})
