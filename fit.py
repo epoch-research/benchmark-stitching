@@ -2,12 +2,13 @@ import pandas as pd
 import numpy as np
 from data_loader import df_model
 from scipy.optimize import least_squares
+from typing import Optional
 
-def fit_statistical_model(df, 
+def fit_statistical_model(df,
                          anchor_mode="benchmark",  # "benchmark" or "model"
                          # Benchmark anchoring parameters
-                         anchor_benchmark=None, 
-                         anchor_difficulty=None, 
+                         anchor_benchmark=None,
+                         anchor_difficulty=None,
                          anchor_slope=1.0,
                          # Model anchoring parameters
                          anchor_model1=None,
@@ -17,22 +18,24 @@ def fit_statistical_model(df,
                          # Other parameters
                          slope_init=1.0,
                          regularization_strength=0.1,  # NEW: Add L2 regularization
-                         df_model=df_model):
+                         df_model=df_model,
+                         random_state: Optional[object] = None):
     """
     Fit a statistical model with two anchoring modes and L2 regularization.
-    
+
     1. 'benchmark' mode: Anchor on a specific benchmark's difficulty and slope
        - anchor_benchmark: name of the benchmark to anchor
        - anchor_difficulty: fixed difficulty value for the anchor benchmark
        - anchor_slope: fixed slope value for the anchor benchmark
-    
+
     2. 'model' mode: Anchor on two specific models' capabilities
        - anchor_model1: name of the first model to anchor
        - anchor_model1_capability: fixed capability value for the first model
        - anchor_model2: name of the second model to anchor
        - anchor_model2_capability: fixed capability value for the second model
-    
+
     regularization_strength: L2 regularization strength (0 = no regularization, typical: 0.01-0.5)
+    random_state: Optional seed (int) or numpy.random.Generator for reproducible initialization
     """
     
     # ------------------------------------------------------------
@@ -189,19 +192,40 @@ def fit_statistical_model(df,
     # ------------------------------------------------------------
     # 4)  Initial guesses (small random values to avoid numerical issues)
     # ------------------------------------------------------------
-    np.random.seed(42)  # For reproducibility
+    # Use a local RNG to avoid mutating global numpy RNG state.
+    # To preserve legacy behavior for notebooks that don't pass a seed,
+    # replicate the old np.random.seed(42); np.random.randn(...) draws
+    # by using a dedicated RandomState(42).
+    legacy_rng = None
+    rng = None
+    if random_state is None:
+        legacy_rng = np.random.RandomState(42)
+    elif isinstance(random_state, (int, np.integer)):
+        rng = np.random.default_rng(int(random_state))
+    elif isinstance(random_state, np.random.Generator):
+        rng = random_state
+    else:
+        rng = np.random.default_rng()
     
     if anchor_mode == "benchmark":
         # Original: C and D free, one α fixed
-        initial_C     = np.random.randn(num_models) * 0.1
-        initial_D     = np.random.randn(num_benchmarks) * 0.1
+        if legacy_rng is not None:
+            initial_C = legacy_rng.randn(num_models) * 0.1
+            initial_D = legacy_rng.randn(num_benchmarks) * 0.1
+        else:
+            initial_C = rng.normal(0.0, 0.1, size=num_models)
+            initial_D = rng.normal(0.0, 0.1, size=num_benchmarks)
         initial_alpha = np.full(num_benchmarks - 1, slope_init)
         initial_theta = np.concatenate([initial_C, initial_D, initial_alpha])
         
     elif anchor_mode == "model":
         # New: two C fixed, all D and α free
-        initial_C_free = np.random.randn(num_models - 2) * 0.1
-        initial_D      = np.random.randn(num_benchmarks) * 0.1
+        if legacy_rng is not None:
+            initial_C_free = legacy_rng.randn(num_models - 2) * 0.1
+            initial_D      = legacy_rng.randn(num_benchmarks) * 0.1
+        else:
+            initial_C_free = rng.normal(0.0, 0.1, size=num_models - 2)
+            initial_D      = rng.normal(0.0, 0.1, size=num_benchmarks)
         initial_alpha  = np.full(num_benchmarks, slope_init)
         initial_theta  = np.concatenate([initial_C_free, initial_D, initial_alpha])
     

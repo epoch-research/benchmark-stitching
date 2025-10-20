@@ -14,6 +14,7 @@ df_fm_private = epoch_data[epoch_data["benchmark"] == "FrontierMath-2025-02-28-P
 df_math = epoch_data[epoch_data["benchmark"] == "MATH level 5"]
 df_aime = epoch_data[epoch_data["benchmark"] == "OTIS Mock AIME 2024-2025"]
 df_swebenchver = epoch_data[epoch_data["benchmark"] == "SWE-Bench verified"]
+df_fm_tier4 = epoch_data[epoch_data["benchmark"] == "FrontierMath-Tier-4-2025-07-01-Private"]
 
 # external benchmark data
 df_aider = pd.read_csv("data/external_benchmark_aider_polyglot.csv")[["Model version", "Percent correct", "Source"]]
@@ -95,9 +96,10 @@ df_factorio["benchmark"] = "Factorio learning environment"
 df_factorio["performance"] = pd.to_numeric(df_factorio["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_fiction = pd.read_csv("data/external_benchmark_fictionlivebench.csv")[["Model version", "16k token score", "Source"]]
-df_fiction = df_fiction.rename(columns={"Model version": "model_version", "16k token score": "score", "Source": "source"})
+df_fiction = df_fiction.rename(columns={"Model version": "model", "16k token score": "performance", "Source": "source"})
+df_fiction.dropna(inplace=True)
 df_fiction["benchmark"] = "Fiction.LiveBench"
-df_fiction["score"] = pd.to_numeric(df_fiction["score"].str.rstrip('%'), errors="raise") / 100
+df_fiction["performance"] = pd.to_numeric(df_fiction["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_geobench = pd.read_csv("data/external_benchmark_geobench.csv")[["Model version", "ACW Country %", "Source"]]
 df_geobench = df_geobench.rename(columns={"Model version": "model", "ACW Country %": "performance", "Source": "source"})
@@ -106,9 +108,10 @@ df_geobench["benchmark"] = "GeoBench"
 df_geobench["performance"] = pd.to_numeric(df_geobench["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_gsm8k = pd.read_csv("data/external_benchmark_gsm8k.csv")[["Model version", "EM", "Source"]]
-df_gsm8k = df_gsm8k.rename(columns={"Model version": "model_version", "EM": "score", "Source": "source"})
+df_gsm8k = df_gsm8k.rename(columns={"Model version": "model", "EM": "performance", "Source": "source"})
+df_gsm8k.dropna(inplace=True)
 df_gsm8k["benchmark"] = "GSM8K"
-df_gsm8k["score"] = pd.to_numeric(df_gsm8k["score"].str.rstrip('%'), errors="raise") / 100
+df_gsm8k["performance"] = pd.to_numeric(df_gsm8k["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_gsobench = pd.read_csv("data/external_benchmark_gso_bench.csv")[["Model version", "Score OPT@1", "Source"]]
 df_gsobench = df_gsobench.rename(columns={"Model version": "model", "Score OPT@1": "performance", "Source": "source"})
@@ -123,17 +126,20 @@ df_hellaswag["benchmark"] = "HellaSwag"
 df_hellaswag["performance"] = pd.to_numeric(df_hellaswag["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_lambada = pd.read_csv("data/external_benchmark_lambada.csv")[["Model version", "Score", "Source"]]
-df_lambada = df_lambada.rename(columns={"Model version": "model_version", "Score": "performance", "Source": "source"})
+df_lambada = df_lambada.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
+df_lambada.dropna(inplace=True)
 df_lambada["benchmark"] = "LAMBADA"
 df_lambada["performance"] = pd.to_numeric(df_lambada["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_lm_writing = pd.read_csv("data/external_benchmark_lech_mazur_writing.csv")[["Model version", "Mean score", "Source"]]
-df_lm_writing = df_lm_writing.rename(columns={"Model version": "model_version", "Mean score": "performance", "Source": "source"})
+df_lm_writing = df_lm_writing.rename(columns={"Model version": "model", "Mean score": "performance", "Source": "source"})
+df_lm_writing.dropna(inplace=True)
 df_lm_writing["benchmark"] = "Lech Mazur Writing"
 df_lm_writing["performance"] = df_lm_writing["performance"] / 10
 
 df_livebench = pd.read_csv("data/external_benchmark_livebench.csv")[["Model version", "Global average", "Source"]]
-df_livebench = df_livebench.rename(columns={"Model version": "model_version", "Global average": "performance", "Source": "source"})
+df_livebench = df_livebench.rename(columns={"Model version": "model", "Global average": "performance", "Source": "source"})
+df_livebench.dropna(inplace=True)
 df_livebench["benchmark"] = "LiveBench"
 df_livebench["performance"] = df_livebench["performance"] / 100
 
@@ -169,12 +175,14 @@ df_osuniverse["benchmark"] = "OSUniverse"
 df_osuniverse["performance"] = pd.to_numeric(df_osuniverse["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_piqa = pd.read_csv("data/external_benchmark_piqa.csv")[["Model version", "Score", "Source"]]
-df_piqa = df_piqa.rename(columns={"Model version": "model_version", "Score": "performance", "Source": "source"})
+df_piqa = df_piqa.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
+df_piqa.dropna(inplace=True)
 df_piqa["benchmark"] = "PIQA"
 df_piqa["performance"] = pd.to_numeric(df_piqa["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_scienceqa = pd.read_csv("data/external_benchmark_scienceqa.csv")[["Model version", "Score", "Source"]]
-df_scienceqa = df_scienceqa.rename(columns={"Model version": "model_version", "Score": "performance", "Source": "source"})
+df_scienceqa = df_scienceqa.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
+df_scienceqa.dropna(inplace=True)
 df_scienceqa["benchmark"] = "ScienceQA"
 df_scienceqa["performance"] = pd.to_numeric(df_scienceqa["performance"].str.rstrip('%'), errors="raise") / 100
 
@@ -185,7 +193,8 @@ df_simple["benchmark"] = "SimpleBench"
 df_simple["performance"] = pd.to_numeric(df_simple["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_superglue = pd.read_csv("data/external_benchmark_superglue.csv")[["Model version", "Score", "Source"]]
-df_superglue = df_superglue.rename(columns={"Model version": "model_version", "Score": "performance", "Source": "source"})
+df_superglue = df_superglue.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
+df_superglue.dropna(inplace=True)
 df_superglue["benchmark"] = "SuperGLUE"
 df_superglue["performance"] = pd.to_numeric(df_superglue["performance"].str.rstrip('%'), errors="raise") / 100
 
@@ -196,8 +205,9 @@ df_terminal["benchmark"] = "Terminal Bench"
 df_terminal["performance"] = pd.to_numeric(df_terminal["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_the_agent_company = pd.read_csv("data/external_benchmark_the_agent_company.csv")[["Model version", "% Resolved", "Source"]]
-df_the_agent_company = df_the_agent_company.rename(columns={"Model version": "model_version", "% Resolved": "performance", "Source": "source"})
-df_the_agent_company["benchmark"] = "SuperGLUE"
+df_the_agent_company = df_the_agent_company.rename(columns={"Model version": "model", "% Resolved": "performance", "Source": "source"})
+df_the_agent_company.dropna(inplace=True)
+df_the_agent_company["benchmark"] = "The Agent Company"
 df_the_agent_company["performance"] = pd.to_numeric(df_the_agent_company["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_trivia = pd.read_csv("data/external_benchmark_triviaqa.csv")[["Model version", "EM", "Source"]]
@@ -246,6 +256,7 @@ benchmarks = [
     df_fm_private, # not public. but probably OpenAI models have hill climbed on it to some extent. will say that it has been hill-climbed on
     df_math, # minerva https://arxiv.org/abs/2206.14858
     df_aime, # https://openai.com/index/introducing-o3-and-o4-mini/
+    df_fm_tier4,
     df_swebenchver, # definitely optimised for
     df_aider, # https://openai.com/index/gpt-4-1/ so maybe?
     df_anli, 
@@ -429,4 +440,5 @@ print(f"Number of rows after aggregation: {len(scores_df_aggregated)}")
 scores_df = scores_df_aggregated
 
 if __name__ == "__main__":
+    print(df_gsm8k)
     print(scores_df)
