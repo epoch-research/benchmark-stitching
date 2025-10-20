@@ -70,21 +70,27 @@ All analyses save results to `outputs/[analysis_name]/` with:
 See `CLAUDE.md` for comprehensive documentation of the methodology, repository structure, and usage examples.
 
 ## Creating figures and tables
-- Figure 1: Estimated model capabilities and benchmark difficulties over time - `analyze_model_fit.py`
-- Figure 2: top N models and top M benchmarks - `analyze_model_fit.py`
-- Figure 3: 3 year forecast - `analyze_forecasting.py`
-- Figure 4: More forecasts - `analyze_forecasting.py`
-- Figure 5: algorithmic progress - `analyze_algorithmic_progress.py`
-- Figure 6: synthetic data - `software_singularity.ipynb`
-- Figure 7: synthetic data - `software_singularity.ipynb`
-- Figure 8: analyzing data - `analyze_data_exploration.py`
-- Figure 9: estimated distributions of benchmark difficulties and model capabilities - `model_fit.ipynb`
-- Table 3: model estimated capabilities - `model_fit.ipynb`
-- Figure 10: residuals per benchmark - `model_fit.ipynb`
-- Table 4: annual compute efficiency improvements - `algorithmic_progress.ipynb`
-- Table 5: annual estimated capabilities increase at fixed compute budget - `algorithmic_progress.ipynb`
-- Figure 11: Noise structure - `model_fit.ipynb`
-- Figure 12: varying the amount of overlap - `model_fit.ipynb` (did this manually by changing the overlap in `data_loader.py`. The relevant line is `models_to_keep = model_benchmark_counts[model_benchmark_counts > 3].index`, where you change the number.)
-- Figure 13: changing benchmark anchors and showing error bars - `change_anchor.ipynb`
-- Figure 14: benchmark splits - `splitting_benchmarks.ipynb`
-- Table 7: cross validation and other stats - `cross_validation.ipynb`
+- Figure 1: Estimated model capabilities and benchmark difficulties over time, with error bars - `model_fit.ipynb`
+- Figure 2: top N models and top M benchmarks - `model_fit.ipynb`
+- Figure 3: map to METR time horizon - `model_fit.ipynb`
+- Table 1: example capabilities scores - `model_fit.ipynb`
+- Figure 4: optimization pressure - `optimization_pressure.ipynb`
+- Figure 5: SWE bench and geobench - `model_fit.ipynb`
+- Figure 6: 3 year forecast - `predicting_capabilities.ipynb`
+- Figure 7: Forecast validation - `predicting_capabilities.ipynb`
+- Figure 8: capabilities vs log training compute - `algorithmic_progress_new.ipynb`
+- Figure 9: synthetic data and acceleration detection - `software_singularity.ipynb`
+- Figure 10: detecting acceleration in actual data - `predicting_capabilities.ipynb`
+- Figure 11: benchmark overlap - `data_exploration.ipynb`
+- Figure 13: algorithmic progress using the old approach - `algorithmic_progress_new.ipynb`
+- Table 4 and 5: algorithmic progress using the old approach - `algorithmic_progress_new.ipynb`
+- Figure 14: Residuals for synthetic data - `model_fit.ipynb`
+- Figure 15: varying the amount of benchmark overlap - `model_fit.ipynb` (change the overlap in `data_loader.py`)
+- Figure 16: change anchors - `change_anchor.ipynb`
+- Figure 17: splitting benchmarks - `splitting_benchmarks.ipynb`
+- Table 7: cross validation - `cross_validation.ipynb`
+- Updating the stuff with 2019 data (change this in `data_loader.py`)
+- Figure 18: showing that most of our data is very recent - `data_exploration.ipynb`
+- Figure 19: residuals on each benchmark - `model_fit.ipynb`
+- Figure 20: estimated capabilities and difficulties - `model_fit.ipynb` (not necessary?)
+- Table 8: estimated capabilities - `model_fit.ipynb` (not necessary?)
