@@ -490,5 +490,8 @@ print(f"Number of rows after aggregation: {len(scores_df_aggregated)}")
 # Overwrite the original dataframe with the filtered, aggregated one
 scores_df = scores_df_aggregated
 
+# edited to save csv
+scores_df.to_csv('scores_df_final.csv', index=False)
+
 if __name__ == "__main__":
     print(scores_df)
