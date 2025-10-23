@@ -1,5 +1,5 @@
 Model version,Score (AVG@5),Release date,Organization,Country,Training compute (FLOP),Training compute notes,Source,Source link (site from table),Notes,id
-gemini-2.5-pro-preview-06-05,0.624,2025-06-05,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,SimpleBench Leaderboard,https://simple-bench.com/,,recViPEOMOrSB6VKK
+gemini-2.5-pro-preview-06-05,0.624,2025-06-05,Google DeepMind,"United Kingdom of Great Britain and Northern Ireland,United States of America,Multinational",,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,SimpleBench Leaderboard,https://simple-bench.com/,,recViPEOMOrSB6VKK
 grok-4-0709,0.605,2025-07-09,xAI,United States of America,5.0000000000001e+26,"We think that RL relative to pre-compute is between our estimate for o3 (10% of pre-training) and the 100% implied by this slide in the launch ( https://archive.is/f0vJU ). Assuming the same pre-training as Grok 3 (also implied by that slide, and much more consistent) and that Grok 3 used a tenth as much RL, we get:
 
 2 * (grok3/1.1) in the high case (rl is 10% of grok 3, so grok3/1.1 is grok3 precompute, and in this case twice that is grok 4)
@@ -11,7 +11,7 @@ claude-opus-4-20250514_12K,0.588,2025-05-22,Anthropic,United States of America,,
 gpt-5-2025-08-07_high,0.567,2025-08-07,OpenAI,United States of America,,,SimpleBench Leaderboard,https://simple-bench.com/,,recYzgCOm2JdsaO4v
 claude-sonnet-4-5-20250929,0.543,2025-09-29,Anthropic,United States of America,,,SimpleBench Leaderboard,https://simple-bench.com/,,recWdgpLTxKnAX8LL
 o3-2025-04-16_high,0.531,2025-04-16,OpenAI,United States of America,,,SimpleBench Leaderboard,https://simple-bench.com/,,recI5aJlmr2NrvE0V
-gemini-2.5-pro-exp-03-25,0.516,2025-03-25,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,SimpleBench Leaderboard,https://simple-bench.com/,,reccAb0YstbYurrte
+gemini-2.5-pro-exp-03-25,0.516,2025-03-25,Google DeepMind,"United Kingdom of Great Britain and Northern Ireland,United States of America,Multinational",,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,SimpleBench Leaderboard,https://simple-bench.com/,,reccAb0YstbYurrte
 claude-3-7-sonnet-20250219_12K,0.464,2025-02-24,Anthropic,United States of America,3.35e+25,https://docs.google.com/spreadsheets/d/10bhwdVrfHI8tysVIz62ZxtvQ30L-HojYvmU18_b-WIM/edit?gid=0#gid=0,SimpleBench Leaderboard,https://simple-bench.com/,,reckxfqYaBADs0cCf
 claude-sonnet-4-20250514_12K,0.455,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,SimpleBench Leaderboard,https://simple-bench.com/,,recOF5ZoFqZHYxpwD
 claude-3-7-sonnet-20250219,0.449,2025-02-24,Anthropic,United States of America,3.35e+25,https://docs.google.com/spreadsheets/d/10bhwdVrfHI8tysVIz62ZxtvQ30L-HojYvmU18_b-WIM/edit?gid=0#gid=0,SimpleBench Leaderboard,https://simple-bench.com/,,rectGr4imJANQzE34
@@ -30,7 +30,7 @@ https://epoch.ai/gradient-updates/what-went-into-training-deepseek-r1
 
 Total compute: 3.29e24 + 1.2e23 + 6.1e23 = 4.02e24",SimpleBench Leaderboard,https://simple-bench.com/,,rec345Y86bjDNWZmV
 o1-2024-12-17_high,0.401,2024-12-17,OpenAI,United States of America,,,SimpleBench Leaderboard,https://simple-bench.com/,,rec6j46lH0wCisYVL
-DeepSeek-V3.1,0.4,2025-08-21,DeepSeek,China,,3.407799999999999e+24 FLOP [base model] + 1.86258e+23 FLOP = 3.594058e+24 FLOP,SimpleBench Leaderboard,https://simple-bench.com/,,recAiu3FFJglQ0FdI
+DeepSeek-V3.1,0.4,2025-08-21,DeepSeek,China,3.594058e+24,3.407799999999999e+24 FLOP [base model] + 1.86258e+23 FLOP = 3.594058e+24 FLOP,SimpleBench Leaderboard,https://simple-bench.com/,,recAiu3FFJglQ0FdI
 o4-mini-2025-04-16_high,0.387,2025-04-16,OpenAI,United States of America,,"We can’t make a precise estimate, but seems unlikely to exceed 10^25 FLOP. We think active parameter count is 10-30B. This would require >55T tokens to reach 10^25 FLOP at the large size, i.e. well beyond 10x overtraining relative to Chinchilla.",SimpleBench Leaderboard,https://simple-bench.com/,,recodGIOZHwIsosFv
 o1-2024-12-17_medium,0.367,2024-12-17,OpenAI,United States of America,,,SimpleBench Leaderboard,https://simple-bench.com/,,recCGePx18ITu5c6O
 grok-3,0.361,2025-04-09,xAI,United States of America,3.5e+26,"Estimate based on a cluster of 80,000 H100s per the xai website and an estimated training time of approximately three months.
@@ -41,7 +41,7 @@ gpt-4.5-preview-2025-02-27,0.345,2025-02-27,OpenAI,United States of America,2.10
 OpenAI said GPT-4.5 was a “new order of magnitude in compute”, which they could have meant somewhat loosely. But seems quite likely >1e26 based on that statement, plus 4.5's high inference costs, and <5e26 because OpenAI probably didn’t have a substantially >100k H100 cluster in mid-2024.
 
 In the ""Pretraining GPT-4.5"" interview, they state they used multi-cluster training: https://youtu.be/6nJZopACRuQ?si=FFJC-gEmGPZjvoPM&t=617 ",SimpleBench Leaderboard,https://simple-bench.com/,,recNFMYJcGpWOttKB
-gemini-exp-1206,0.311,2024-12-06,"Google DeepMind,Google","United States of America,Germany,Switzerland,Multinational,United Kingdom of Great Britain and Northern Ireland",,"""We used Trillium TPUs to train the new Gemini 2.0, Google’s most capable AI model yet"" according to https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga",SimpleBench Leaderboard,https://simple-bench.com/,,rechDCACKgdAKATMz
+gemini-exp-1206,0.311,2024-12-06,"Google DeepMind,Google","Germany,Switzerland,United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,"""We used Trillium TPUs to train the new Gemini 2.0, Google’s most capable AI model yet"" according to https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga",SimpleBench Leaderboard,https://simple-bench.com/,,rechDCACKgdAKATMz
 qwen3-235b-a22b,0.31,2025-04-29,Alibaba,China,4.752e+24,6 FLOP / parameter / token * 22*10^9 active parameters * 36000000000000 tokens = 4.752e+24 FLOP,SimpleBench Leaderboard,https://simple-bench.com/,,recZifiu78SQWQAFX
 DeepSeek-R1,0.309,2025-01-20,DeepSeek,China,4.020010000000001e+24,"Estimates by Ege Erdil in Gradient Updates:
 https://epoch.ai/gradient-updates/what-went-into-training-deepseek-r1
@@ -52,7 +52,7 @@ https://epoch.ai/gradient-updates/what-went-into-training-deepseek-r1
 6.1e23 FLOP (fine-tuning)
 
 Total compute: 3.29e24 + 1.2e23 + 6.1e23 = 4.02e24",SimpleBench Leaderboard,https://simple-bench.com/,,recVHI1CZTBTCgTmM
-gemini-2.0-flash-thinking-exp-01-21,0.307,2025-01-21,"Google DeepMind,Google","United States of America,Germany,Switzerland,Multinational,United Kingdom of Great Britain and Northern Ireland",,,SimpleBench Leaderboard,https://simple-bench.com/,Assuming later of two experimental versions,recuXcLAsfUz4Bx9u
+gemini-2.0-flash-thinking-exp-01-21,0.307,2025-01-21,"Google DeepMind,Google","Germany,Switzerland,United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,,SimpleBench Leaderboard,https://simple-bench.com/,Assuming later of two experimental versions,recuXcLAsfUz4Bx9u
 Llama-4-Maverick-17B-128E-Instruct,0.277,2025-04-05,Meta AI,United States of America,2.244000000001e+24,"22T training tokens per model card:
 
 https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md   
@@ -84,7 +84,7 @@ Suggests a MFU of 0.2244 in pre-training. If we assume MFU was the same in post-
 0.1M * 3600 * 1.513e15 * 0.2244 = 1.222e23 FLOP from post-training
 
 Total: 3.2856e24 + 1.222e23 = 3.4078e24 FLOP",SimpleBench Leaderboard,https://simple-bench.com/,,rec0QIxD9Dbi1PU3M
-gemini-1.5-pro-002,0.271,2024-09-24,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",1.5800010000000001e+25,Training compute imputed from benchmark scores.,SimpleBench Leaderboard,https://simple-bench.com/,,recJPOyD1j4nEFjGF
+gemini-1.5-pro-002,0.271,2024-09-24,Google DeepMind,"United Kingdom of Great Britain and Northern Ireland,United States of America,Multinational",1.5800010000000001e+25,Training compute imputed from benchmark scores.,SimpleBench Leaderboard,https://simple-bench.com/,,recJPOyD1j4nEFjGF
 gpt-4.1-2025-04-14,0.27,2025-04-14,OpenAI,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,SimpleBench Leaderboard,https://simple-bench.com/,,recXeUQqhdaSXasO2
 Kimi-K2-Instruct,0.263,2025-07-12,Moonshot,China,2.976e+24,6 FLOP / parameter / token * 32 * 10^9 activated parameters * 15.5 * 10^12 tokens = 2.976e+24 FLOP,SimpleBench Leaderboard,https://simple-bench.com/,,recX4og5KAbGbOhwv
 gpt-4-turbo-2024-04-09,0.251,2024-04-09,OpenAI,United States of America,2.2e+25,Estimated using benchmark imputation,SimpleBench Leaderboard,https://simple-bench.com/,,reczQMtVDyVdqr3Fw
@@ -117,10 +117,10 @@ Suggests a MFU of 0.2244 in pre-training. If we assume MFU was the same in post-
 0.1M * 3600 * 1.513e15 * 0.2244 = 1.222e23 FLOP from post-training
 
 Total: 3.2856e24 + 1.222e23 = 3.4078e24 FLOP",SimpleBench Leaderboard,https://simple-bench.com/,,recc5o0Xjz6mlrIKU
-gemini-2.0-flash-exp,0.189,2024-12-11,"Google DeepMind,Google","United States of America,Germany,Switzerland,Multinational,United Kingdom of Great Britain and Northern Ireland",,"""We used Trillium TPUs to train the new Gemini 2.0, Google’s most capable AI model yet"" according to https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga",SimpleBench Leaderboard,https://simple-bench.com/,,recpuJCN7xqjCU4hn
+gemini-2.0-flash-exp,0.189,2024-12-11,"Google DeepMind,Google","Germany,Switzerland,United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,"""We used Trillium TPUs to train the new Gemini 2.0, Google’s most capable AI model yet"" according to https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga",SimpleBench Leaderboard,https://simple-bench.com/,,recpuJCN7xqjCU4hn
 o1-mini-2024-09-12_medium,0.181,2024-09-12,OpenAI,United States of America,,"We can’t make a precise estimate, but seems unlikely to exceed 10^25 FLOP. We think active parameter count is 10-30B. This would require >55T tokens to reach 10^25 FLOP at the large size, i.e. well beyond 10x overtraining relative to Chinchilla.",SimpleBench Leaderboard,https://simple-bench.com/,Assuming medium reasoning effort,recY4JPURbdldMOQR
 gpt-4o-2024-08-06,0.178,2024-08-06,OpenAI,United States of America,3.8100010000000003e+25,Training compute estimated from benchmark scores.,SimpleBench Leaderboard,https://simple-bench.com/,,receDGtlCRZB7DW1z
-c4ai-command-r-plus-08-2024,0.174,2024-08-30,"Cohere,Cohere for AI","Multinational,Canada",,,SimpleBench Leaderboard,https://simple-bench.com/,,recMrDg2K2bDD6w9J
+c4ai-command-r-plus-08-2024,0.174,2024-08-30,"Cohere,Cohere for AI","Canada,Multinational",,,SimpleBench Leaderboard,https://simple-bench.com/,,recMrDg2K2bDD6w9J
 gpt-4o-mini-2024-07-18,0.107,2024-07-18,OpenAI,United States of America,7.360010000000001e+24,"Training compute estimated from benchmark scores.
 
 90% CI [3.23e+24, 2.05e+25]",SimpleBench Leaderboard,https://simple-bench.com/,,recRSFVLtD45NI9Tm

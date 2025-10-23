@@ -1,71 +1,48 @@
-Model version,Agent,Accuracy mean,Release date,Organization,Country,Training compute (FLOP),Training compute notes,Accuracy SE,Notes,Source,Source link,id
-claude-opus-4-1-20250805,Droid,0.588,2025-08-05,Anthropic,United States of America,,,0.009,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,rec9xYW8rLPkSKTrN
-,OB-1,0.567,,,,,,0.006,No model version selected due to there being multiple models,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,rechvU3SZ3Qs8wXWX
-claude-sonnet-4-20250514,Ante,0.548,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.015,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recSKBZK17D2Fn7eq
-gpt-5-2025-08-07_medium,Droid,0.525,2025-08-07,OpenAI,United States of America,,,0.021,Assuming medium reasoning effort,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recrsAFNu9U4SbVfx
-,Warp,0.52,,,,,,0.01,No model version selected due to there being multiple models,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recFWex768BAyAaDV
-claude-sonnet-4-5-20250929,Terminus 2,0.51,2025-09-29,Anthropic,United States of America,,,0.008,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recI91PcJhNrmcSLR
-claude-sonnet-4-20250514,Chatrm,0.493,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.013,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recTrSFpMh1Pvimpg
-gpt-5-2025-08-07_medium,OB-1,0.49,2025-08-07,OpenAI,United States of America,,,0.011,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recTYCZIYKlPJFG2T
-claude-opus-4-20250514,Goose,0.453,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.015,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recSYwcb4O8UFSLcT
-claude-sonnet-4-20250514,Engine Labs,0.448,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.008,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,rec6wmJqssZgjwxpw
-claude-opus-4-1-20250805,Terminus 2,0.438,2025-08-05,Anthropic,United States of America,,,0.014,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recxqFJExYe7BIkUk
-claude-opus-4-20250514,Claude Code,0.432,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.013,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recJ3nXlRqC9WnAG2
-gpt-5-codex,Codex CLI,0.428,2025-09-15,OpenAI,United States of America,,,0.021,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recnFKSgAdCnokANq
-claude-sonnet-4-20250514,Letta,0.425,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.008,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recXLxSONdDMtSY6a
-claude-opus-4-20250514,Goose,0.42,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.013,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,rec0IOb2BpGeKVaId
-claude-sonnet-4-20250514,OpenHands,0.413,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.007,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recWCekkW8mdwUF80
-gpt-5-2025-08-07_medium,Terminus 2,0.413,2025-08-07,OpenAI,United States of America,,,0.011,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recjW2tFsAsHrec3h
-claude-sonnet-4-20250514,Goose,0.413,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.013,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recHy8QKK7PoDySko
-claude-opus-4-1-20250805,Orchestrator,0.405,2025-08-05,Anthropic,United States of America,,,0.003,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recD0mhV1kG0BH8LA
-glm-4.5,Terminus,0.399,2025-08-03,"Zhipu AI,Tsinghua University",China,4.42e+24,(6 FLOP/token/parameter) * (23T tokens) * (32B active parameters) = 4.42e24 FLOP,0.01,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recJ4sPKZxcbLkH3H
-claude-opus-4-20250514,Terminus 2,0.39,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.004,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recbRNdqIyuCL4Ft2
-claude-sonnet-4-20250514,Orchestrator,0.37,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.02,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recvP8nuaZ3GC9dxF
-claude-sonnet-4-20250514,Terminus 2,0.364,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.004,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recakYs6u3cqPpwnu
-claude-sonnet-4-20250514,Claude Code,0.355,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.01,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recSkVDPx6rtq4E2s
-glaive-swe-v1,Terminus,0.353,,,,,,0.007,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recbn7uXZBsVhX3gc
-claude-3-7-sonnet-20250219,Claude Code,0.352,2025-02-24,Anthropic,United States of America,3.35e+25,https://docs.google.com/spreadsheets/d/10bhwdVrfHI8tysVIz62ZxtvQ30L-HojYvmU18_b-WIM/edit?gid=0#gid=0,0.013,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recQJgn8smPVLOz3F
-claude-sonnet-4-20250514,Goose,0.343,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.01,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recqxf2Cu2L8JBwhj
-grok-4-fast,Terminus 2,0.313,2025-09-19,xAI,United States of America,,,0.014,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recf8L7V6uPE6G0zO
-claude-3-7-sonnet-20250219,Terminus,0.306,2025-02-24,Anthropic,United States of America,3.35e+25,https://docs.google.com/spreadsheets/d/10bhwdVrfHI8tysVIz62ZxtvQ30L-HojYvmU18_b-WIM/edit?gid=0#gid=0,0.019,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recHaZf9xmVOj8cxI
-gpt-4.1-2025-04-14,Terminus,0.303,2025-04-14,OpenAI,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.021,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recVIdPAUDakmSij0
-o3-2025-04-16_medium,Terminus,0.302,2025-04-16,OpenAI,United States of America,,,0.009,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recV9BNYucqd7iG2f
-gpt-5-2025-08-07_medium,Terminus,0.3,2025-08-07,OpenAI,United States of America,,,0.009,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recGXLQ2JtOQGxSwC
-o4-mini-2025-04-16_medium,Goose,0.275,2025-04-16,OpenAI,United States of America,,"We can’t make a precise estimate, but seems unlikely to exceed 10^25 FLOP. We think active parameter count is 10-30B. This would require >55T tokens to reach 10^25 FLOP at the large size, i.e. well beyond 10x overtraining relative to Chinchilla.",0.013,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recEf1xgRFBHW2DL9
-gemini-2.5-pro-preview-05-06,Terminus,0.253,2025-05-06,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.028,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recX5HvDyy6ZhGNFj
-o4-mini-2025-04-16_medium,Codex CLI,0.2,2025-04-16,OpenAI,United States of America,,"We can’t make a precise estimate, but seems unlikely to exceed 10^25 FLOP. We think active parameter count is 10-30B. This would require >55T tokens to reach 10^25 FLOP at the large size, i.e. well beyond 10x overtraining relative to Chinchilla.",0.015,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recDbDDaq781rDLYy
-Qwen3-Coder-480B-A35B-Instruct,Orchestrator,0.197,2025-07-31,Alibaba,China,1.575e+24,6 FLOP / parameter / token * 35 * 10^9 active parameters * 7.5 * 10^12 tokens = 1.575e+24 FLOP`,0.02,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recfsmHhxrcp7XSXH
-o4-mini-2025-04-16_medium,Terminus,0.185,2025-04-16,OpenAI,United States of America,,"We can’t make a precise estimate, but seems unlikely to exceed 10^25 FLOP. We think active parameter count is 10-30B. This would require >55T tokens to reach 10^25 FLOP at the large size, i.e. well beyond 10x overtraining relative to Chinchilla.",0.014,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recRd8hJ5wfQSe3Vi
-grok-3-beta,Terminus,0.175,2025-04-09,xAI,United States of America,3.5e+26,"Estimate based on a cluster of 80,000 H100s per the xai website and an estimated training time of approximately three months.
-
-Full estimate here: https://docs.google.com/document/d/1MIUFviULJ3YI_XjyzL8cwG0cBRANKNxVEB4DrUcFiNs/edit?usp=sharing",0.042,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recKOBOp12o2sMvxs
-gemini-2.5-flash-preview-04-17,Terminus,0.168,2025-04-17,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,,0.013,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recyscDbMlLslAuHr
-Llama-4-Maverick-17B-128E-Instruct,Terminus,0.155,2025-04-05,Meta AI,United States of America,2.244000000001e+24,"22T training tokens per model card:
-
-https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md   
-
-Maverick was trained using co-distillation from Llama 4 Behemoth. It isn't 100% clear that all 22T tokens used distillation, but we assume this for the time being.
-
-Estimating training compute from parameters and tokens:
-Compute = 6 FLOP per token per parameter * 17B active parameters * 22T tokens = 2.244e24 FLOP
-(Implying mean throughput was 262 TFLOPS/GPU, or 13.2% MFU in FP8)
-
-
-The model card also states that Llama 4 Maverick used 2.38M H100-hours.
-The blog post gives a figure of 390 TFLOPS/GPU, but this may have been the utilization rate for Behemoth, or all of the models together. Using this utilization, we have:
-Compute = 390 TFLOP/s * 2.38 million hours = 3.342e24 FLOP
-(This value is higher than the compute implied by parameters and tokens, and suggests utilization may have been lower for Maverick than for Behemoth.)",0.017,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recrnEQfyhorGSYUx
-Qwen3-32B,TerminalAgent,0.155,2025-04-29,Alibaba,China,7.0848e+24,6 FLOP / parameter / token * 36 * 10^12 tokens * 32.8  * 10^9 parameters = 7.0848e+24 FLOP,0.011,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recMALFWwwE9SZZ9M
-claude-sonnet-4-20250514,Mini SWE-Agent,0.128,2025-05-22,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.002,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recHId0RMDNk0pJix
-codex-mini-2025-05-16,Codex CLI,0.113,2025-05-16,,,,,0.016,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,recpCwaNamDZITNIF
-gpt-4.1-2025-04-14,Codex CLI,0.083,2025-04-14,OpenAI,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.014,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,reccyI4aWNN41GEYb
-qwen3-235b-a22b,Terminus,0.066,2025-04-29,Alibaba,China,4.752e+24,6 FLOP / parameter / token * 22*10^9 active parameters * 36000000000000 tokens = 4.752e+24 FLOP,0.014,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,reci9iwpZzPhCpaQl
-DeepSeek-R1,Terminus,0.057,2025-01-20,DeepSeek,China,4.020010000000001e+24,"Estimates by Ege Erdil in Gradient Updates:
-https://epoch.ai/gradient-updates/what-went-into-training-deepseek-r1
-""A dataset size of 14.8 trillion tokens is reasonable and in line with other models of this scale. Assuming that’s valid, the pretraining of this model would have required 6 * (37 billion) * (14.8 trillion) = 3e24 FLOP. If we assume DeepSeek’s training cluster consists of H800s with the PCIe form factor, then each should be capable of 1.5e15 FP8 per second, and the implied model FLOP utilization (MFU) of DeepSeek v3’s 55 day training run ends up being around 23%.""
-
-6 FLOP/token/param * 14.8T tokens * 37B active params = 3.29e24 FLOP (pretraining)
-1.2e23 FLOP (post-training)
-6.1e23 FLOP (fine-tuning)
-
-Total compute: 3.29e24 + 1.2e23 + 6.1e23 = 4.02e24",0.007,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard,rec49wbTlhSEHbviQ
+﻿id,Agent,Model version,Accuracy mean,Accuracy SE,Notes,Source,Source link
+recC4qflsnucoRuHB,Ante,claude-sonnet-4-5-20250929,60.3%,1.1%,Unknown thinking token budget,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+rec9xYW8rLPkSKTrN,Droid,claude-opus-4-1-20250805,58.8%,0.9%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+rechvU3SZ3Qs8wXWX,OB-1,,56.7%,0.6%,No model version selected due to there being multiple models,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recSKBZK17D2Fn7eq,Ante,claude-sonnet-4-20250514,54.8%,1.5%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recrsAFNu9U4SbVfx,Droid,gpt-5-2025-08-07_medium,52.5%,2.1%,Assuming medium reasoning effort,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recFWex768BAyAaDV,Warp,,52.0%,1.0%,No model version selected due to there being multiple models,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recI91PcJhNrmcSLR,Terminus 2,claude-sonnet-4-5-20250929,51.0%,0.8%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recTrSFpMh1Pvimpg,Chatrm,claude-sonnet-4-20250514,49.3%,1.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recTYCZIYKlPJFG2T,OB-1,gpt-5-2025-08-07_medium,49.0%,1.1%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recSYwcb4O8UFSLcT,Goose,claude-opus-4-20250514,45.3%,1.5%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+rec6wmJqssZgjwxpw,Engine Labs,claude-sonnet-4-20250514,44.8%,0.8%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recxqFJExYe7BIkUk,Terminus 2,claude-opus-4-1-20250805,43.8%,1.4%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recJ3nXlRqC9WnAG2,Claude Code,claude-opus-4-20250514,43.2%,1.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recnFKSgAdCnokANq,Codex CLI,gpt-5-codex,42.8%,2.1%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recXLxSONdDMtSY6a,Letta,claude-sonnet-4-20250514,42.5%,0.8%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+rec0IOb2BpGeKVaId,Goose,claude-opus-4-20250514,42.0%,1.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recWCekkW8mdwUF80,OpenHands,claude-sonnet-4-20250514,41.3%,0.7%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recjW2tFsAsHrec3h,Terminus 2,gpt-5-2025-08-07_medium,41.3%,1.1%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recHy8QKK7PoDySko,Goose,claude-sonnet-4-20250514,41.3%,1.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recD0mhV1kG0BH8LA,Orchestrator,claude-opus-4-1-20250805,40.5%,0.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recJ4sPKZxcbLkH3H,Terminus,glm-4.5,39.9%,1.0%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recbRNdqIyuCL4Ft2,Terminus 2,claude-opus-4-20250514,39.0%,0.4%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recvP8nuaZ3GC9dxF,Orchestrator,claude-sonnet-4-20250514,37.0%,2.0%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recakYs6u3cqPpwnu,Terminus 2,claude-sonnet-4-20250514,36.4%,0.4%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recSkVDPx6rtq4E2s,Claude Code,claude-sonnet-4-20250514,35.5%,1.0%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recbn7uXZBsVhX3gc,Terminus,glaive-swe-v1,35.3%,0.7%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recQJgn8smPVLOz3F,Claude Code,claude-3-7-sonnet-20250219,35.2%,1.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recqxf2Cu2L8JBwhj,Goose,claude-sonnet-4-20250514,34.3%,1.0%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recf8L7V6uPE6G0zO,Terminus 2,grok-4-fast,31.3%,1.4%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recHaZf9xmVOj8cxI,Terminus,claude-3-7-sonnet-20250219,30.6%,1.9%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recVIdPAUDakmSij0,Terminus,gpt-4.1-2025-04-14,30.3%,2.1%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recV9BNYucqd7iG2f,Terminus,o3-2025-04-16_medium,30.2%,0.9%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recGXLQ2JtOQGxSwC,Terminus,gpt-5-2025-08-07_medium,30.0%,0.9%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recEf1xgRFBHW2DL9,Goose,o4-mini-2025-04-16_medium,27.5%,1.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recX5HvDyy6ZhGNFj,Terminus,gemini-2.5-pro-preview-05-06,25.3%,2.8%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recDbDDaq781rDLYy,Codex CLI,o4-mini-2025-04-16_medium,20.0%,1.5%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recfsmHhxrcp7XSXH,Orchestrator,Qwen3-Coder-480B-A35B-Instruct,19.7%,2.0%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recRd8hJ5wfQSe3Vi,Terminus,o4-mini-2025-04-16_medium,18.5%,1.4%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recKOBOp12o2sMvxs,Terminus,grok-3-beta,17.5%,4.2%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recyscDbMlLslAuHr,Terminus,gemini-2.5-flash-preview-04-17,16.8%,1.3%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recrnEQfyhorGSYUx,Terminus,Llama-4-Maverick-17B-128E-Instruct,15.5%,1.7%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recMALFWwwE9SZZ9M,TerminalAgent,Qwen3-32B,15.5%,1.1%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recHId0RMDNk0pJix,Mini SWE-Agent,claude-sonnet-4-20250514,12.8%,0.2%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+recpCwaNamDZITNIF,Codex CLI,codex-mini-2025-05-16,11.3%,1.6%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+reccyI4aWNN41GEYb,Codex CLI,gpt-4.1-2025-04-14,8.3%,1.4%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+reci9iwpZzPhCpaQl,Terminus,qwen3-235b-a22b,6.6%,1.4%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard
+rec49wbTlhSEHbviQ,Terminus,DeepSeek-R1,5.7%,0.7%,,Terminal-Bench Leaderboard,https://www.tbench.ai/leaderboard

@@ -1,5 +1,5 @@
 Model version,Average,Release date,Organization,Country,Training compute (FLOP),Training compute notes,Shapes easy,Shapes hard,Shuffle easy,Shuffle hard,Digits unsup,Chess winners,Source,Source link (site from table),Notes,id
-gemini-2.5-pro-exp-03-25,0.6105,2025-03-25,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.967,0.3733,0.7983,0.1177,0.8555,0.5509,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recUQwtRRT7gBEfF4
+gemini-2.5-pro-exp-03-25,0.6105,2025-03-25,Google DeepMind,"United Kingdom of Great Britain and Northern Ireland,United States of America,Multinational",,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.967,0.3733,0.7983,0.1177,0.8555,0.5509,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recUQwtRRT7gBEfF4
 gpt-4.5-preview-2025-02-27,0.6026,2025-02-27,OpenAI,United States of America,2.1000001e+26,"Speculative estimate based on GPT-N typically incrementing  by about 100x each version number (https://www.youtube.com/watch?v=6nJZopACRuQ) and 10x each 0.5 version number (https://x.com/karpathy/status/1895213020982472863).
 
 OpenAI said GPT-4.5 was a “new order of magnitude in compute”, which they could have meant somewhat loosely. But seems quite likely >1e26 based on that statement, plus 4.5's high inference costs, and <5e26 because OpenAI probably didn’t have a substantially >100k H100 cluster in mid-2024.
@@ -51,9 +51,9 @@ The model card also states that Llama 4 Maverick used 2.38M H100-hours.
 The blog post gives a figure of 390 TFLOPS/GPU, but this may have been the utilization rate for Behemoth, or all of the models together. Using this utilization, we have:
 Compute = 390 TFLOP/s * 2.38 million hours = 3.342e24 FLOP
 (This value is higher than the compute implied by parameters and tokens, and suggests utilization may have been lower for Maverick than for Behemoth.)",0.6657,0.2127,0.4309,0.1094,0.7035,0.5321,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recCsOoK99tcWi0rk
-gemini-2.0-flash-thinking-exp-01-21,0.439,2025-01-21,"Google DeepMind,Google","United States of America,Germany,Switzerland,Multinational,United Kingdom of Great Britain and Northern Ireland",,,0.5017,0.2153,0.3585,0.1109,0.8641,0.5837,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recXK66wsi3QrE9yH
+gemini-2.0-flash-thinking-exp-01-21,0.439,2025-01-21,"Google DeepMind,Google","Germany,Switzerland,United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,,0.5017,0.2153,0.3585,0.1109,0.8641,0.5837,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recXK66wsi3QrE9yH
 claude-3-5-haiku-20241022,0.4375,2024-10-22,Anthropic,United States of America,,,0.8439,0.2385,0.5223,0.1007,0.4333,0.4866,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recOfPvtqRTU6378x
-gemini-2.0-flash-exp,0.3905,2024-12-11,"Google DeepMind,Google","United States of America,Germany,Switzerland,Multinational,United Kingdom of Great Britain and Northern Ireland",,"""We used Trillium TPUs to train the new Gemini 2.0, Google’s most capable AI model yet"" according to https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga",0.4925,0.2176,0.3874,0.0983,0.6075,0.5398,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recXWmn99nAk8aSQU
+gemini-2.0-flash-exp,0.3905,2024-12-11,"Google DeepMind,Google","Germany,Switzerland,United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,"""We used Trillium TPUs to train the new Gemini 2.0, Google’s most capable AI model yet"" according to https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga",0.4925,0.2176,0.3874,0.0983,0.6075,0.5398,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recXWmn99nAk8aSQU
 QwQ-32B,0.3989,2025-03-05,Alibaba,China,3.51e+24,"Assuming the same dataset size as for Qwen2.5 training (18T tokens):
 
 6ND = 6 * 32500000000 parameters * 18 * 10^12 tokens =  3.51 × 10^24
@@ -89,13 +89,13 @@ sqrt(7.48062e+24*6.3e+24) = 6.8649768e+24",0.4086,0.2085,0.0986,0.0252,0.2235,0.
 llama3.1:405b-instruct-q4_K_M,0.23,2024-07-23,Meta AI,United States of America,3.8e+25,"Stated in paper.
 
 Also, 6 * 405B * 15.6T training tokens = 3.8e25",0.4191,0.1941,0.0519,0.0227,0.3185,0.374,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recWYhndFI4OzI4Nd
-phi4:14b-q8_0,0.1316,2025-02-26,Microsoft Research,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",9.3202015e+23,"6ND = 6* 14*10^9 parameters * 10*10^12 tokens = 8.4e+23 FLOP
+phi4:14b-q8_0,0.1316,2025-02-26,Microsoft Research,"United Kingdom of Great Britain and Northern Ireland,United States of America,Multinational",9.3202015e+23,"6ND = 6* 14*10^9 parameters * 10*10^12 tokens = 8.4e+23 FLOP
 
 989500000000000 FLOP / sec [assumed bf16 precision] * 1920 GPUs * 504 hours * 3600 sec / hour * 0.3 [assumed utilization] = 1.0341209e+24 FLOP
 
 geometric mean
 sqrt(8.4e+23 * 1.0341209e+24) = 9.3202015e+23",0.2648,0.0573,0.033,0.0244,0.1292,0.2808,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recdsdLfHcKRgzEfc
-gemma-3-27b-it,0.1314,2025-03-12,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",2.268e+24,6ND =  6 * 27B parameters * 14T training tokens = 2.268 × 10^24 FLOP,0.3275,0.2095,0.0087,0.0074,0.0,0.2354,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,rectS5Shei0prMgIC
+gemma-3-27b-it,0.1314,2025-03-12,Google DeepMind,"United Kingdom of Great Britain and Northern Ireland,United States of America,Multinational",2.268e+24,6ND =  6 * 27B parameters * 14T training tokens = 2.268 × 10^24 FLOP,0.3275,0.2095,0.0087,0.0074,0.0,0.2354,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,rectS5Shei0prMgIC
 Llama-4-Scout-17B-16E-Instruct,0.0831,2025-04-05,Meta AI,United States of America,4.08e+24,"40T training tokens per model card:
 
 https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md  
@@ -125,8 +125,8 @@ o4-mini-2025-04-16_high,0.5968,2025-04-16,OpenAI,United States of America,,"We c
 o3-2025-04-16_high,0.5513,2025-04-16,OpenAI,United States of America,,,0.964,0.3564,0.3616,0.2081,0.7208,0.6968,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recD4MjR9Ux0GmeL1
 gpt-4.1-mini-2025-04-14,0.5283,2025-04-14,OpenAI,United States of America,,,0.9343,0.2956,0.5607,0.1183,0.6884,0.5727,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recKaBcRnjzzUJl47
 gpt-4.1-2025-04-14,0.492,2025-04-14,OpenAI,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,0.9197,0.2909,0.3389,0.1291,0.6915,0.5819,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recrlD722CGKruqnK
-gemini-2.0-pro-exp-02-05,0.3803,2025-02-05,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,Flagship model from a leading developer in early 2025; very likely it used >1e25 FLOP.,0.4741,0.2205,0.3953,0.1133,0.5715,0.5071,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,rec69iM4Ha8AzXt4y
-gemma2:27b-instruct-q8_0,0.053,2024-06-27,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",2.106e+24,"""For the 27B model, we train on an 8x24x32 configuration of
+gemini-2.0-pro-exp-02-05,0.3803,2025-02-05,Google DeepMind,"United Kingdom of Great Britain and Northern Ireland,United States of America,Multinational",,Flagship model from a leading developer in early 2025; very likely it used >1e25 FLOP.,0.4741,0.2205,0.3953,0.1133,0.5715,0.5071,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,rec69iM4Ha8AzXt4y
+gemma2:27b-instruct-q8_0,0.053,2024-06-27,Google DeepMind,"United Kingdom of Great Britain and Northern Ireland,United States of America,Multinational",2.106e+24,"""For the 27B model, we train on an 8x24x32 configuration of
 TPUv5p, totaling 6144 chips""
 
 trained on 13T tokens
@@ -138,7 +138,7 @@ grok-3-beta,0.5208,2025-04-09,xAI,United States of America,3.5e+26,"Estimate bas
 
 Full estimate here: https://docs.google.com/document/d/1MIUFviULJ3YI_XjyzL8cwG0cBRANKNxVEB4DrUcFiNs/edit?usp=sharing",0.8913,0.2983,0.5432,0.1174,0.7067,0.5679,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recGwatEW47Wbg7QZ
 grok-3-mini-beta_high,0.4767,2025-04-09,xAI,United States of America,,,0.8818,0.2889,0.23,0.1158,0.7871,0.5569,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recFwPHYLxAhmdwVM
-gemini-2.5-flash-preview-04-17 (16K thinking),0.5376,2025-04-17,Google DeepMind,"United States of America,Multinational,United Kingdom of Great Britain and Northern Ireland",,,0.9373,0.2458,0.4907,0.1165,0.8918,0.5436,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recXqjqFSxTyqQtYl
+gemini-2.5-flash-preview-04-17 (16K thinking),0.5376,2025-04-17,Google DeepMind,"United Kingdom of Great Britain and Northern Ireland,United States of America,Multinational",,,0.9373,0.2458,0.4907,0.1165,0.8918,0.5436,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recXqjqFSxTyqQtYl
 qwen3-235b-a22b,0.4587,2025-04-29,Alibaba,China,4.752e+24,6 FLOP / parameter / token * 22*10^9 active parameters * 36000000000000 tokens = 4.752e+24 FLOP,0.8856,0.2477,0.4293,0.117,0.5185,0.5544,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recFYQqZhHVHmK3tP
 Qwen3-30B-A3B,0.4106,2025-04-29,Alibaba,China,6.48e+23,6 FLOP / parameter / token * 3*10^9 active parameters * 36000000000000 tokens = 6.48e+23 FLOP,0.6387,0.2187,0.4445,0.1146,0.5261,0.5208,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recJ2GwkUjFaSk2YZ
 gpt-3.5-turbo-0125,0.0507,2024-01-25,OpenAI,United States of America,,,0.1577,0.1103,0.0,0.0,0.0,0.0363,WeirdML Leaderboard,https://htihle.github.io/weirdml.html,,recLgPsE0HB86Q1hn
