@@ -11,6 +11,7 @@ epoch_data["source"] = "Epoch evaluations"
 
 df_gpqa = epoch_data[epoch_data["benchmark"] == "GPQA diamond"]
 df_fm_private = epoch_data[epoch_data["benchmark"] == "FrontierMath-2025-02-28-Private"]
+df_fm_tier4 = epoch_data[epoch_data["benchmark"] == "FrontierMath-Tier-4-2025-07-01-Private"]
 df_math = epoch_data[epoch_data["benchmark"] == "MATH level 5"]
 df_aime = epoch_data[epoch_data["benchmark"] == "OTIS Mock AIME 2024-2025"]
 df_swebenchver = epoch_data[epoch_data["benchmark"] == "SWE-Bench verified"]
@@ -97,7 +98,7 @@ df_factorio["performance"] = pd.to_numeric(df_factorio["performance"], errors="r
 df_fiction = pd.read_csv("data/external_benchmark_fictionlivebench.csv")[["Model version", "16k token score", "Source"]]
 df_fiction = df_fiction.rename(columns={"Model version": "model", "16k token score": "score", "Source": "source"})
 df_fiction["benchmark"] = "Fiction.LiveBench"
-df_fiction["score"] = pd.to_numeric(df_fiction["score"], errors="raise")
+df_fiction["performance"] = pd.to_numeric(df_fiction["score"], errors="raise")
 
 df_geobench = pd.read_csv("data/external_benchmark_geobench.csv")[["Model version", "ACW Country %", "Source"]]
 df_geobench = df_geobench.rename(columns={"Model version": "model", "ACW Country %": "performance", "Source": "source"})
@@ -108,7 +109,7 @@ df_geobench["performance"] = pd.to_numeric(df_geobench["performance"], errors="r
 df_gsm8k = pd.read_csv("data/external_benchmark_gsm8k.csv")[["Model version", "EM", "Source"]]
 df_gsm8k = df_gsm8k.rename(columns={"Model version": "model", "EM": "score", "Source": "source"})
 df_gsm8k["benchmark"] = "GSM8K"
-df_gsm8k["score"] = pd.to_numeric(df_gsm8k["score"].str.rstrip('%'), errors="raise") / 100
+df_gsm8k["performance"] = pd.to_numeric(df_gsm8k["score"].str.rstrip('%'), errors="raise") / 100
 
 df_gsobench = pd.read_csv("data/external_benchmark_gso_bench.csv")[["Model version", "Score OPT@1", "Source"]]
 df_gsobench = df_gsobench.rename(columns={"Model version": "model", "Score OPT@1": "performance", "Source": "source"})
@@ -193,7 +194,7 @@ df_terminal = pd.read_csv("data/external_benchmark_terminal_bench.csv")[["Model 
 df_terminal = df_terminal.rename(columns={"Model version": "model", "Accuracy mean": "performance", "Source": "source"})
 df_terminal.dropna(inplace=True)
 df_terminal["benchmark"] = "Terminal Bench"
-df_terminal["performance"] = pd.to_numeric(df_terminal["performance"], errors="raise")
+df_terminal["performance"] = pd.to_numeric(df_terminal["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_the_agent_company = pd.read_csv("data/external_benchmark_the_agent_company.csv")[["Model version", "% Resolved", "Source"]]
 df_the_agent_company = df_the_agent_company.rename(columns={"Model version": "model", "% Resolved": "performance", "Source": "source"})
@@ -250,6 +251,7 @@ df_metr["performance"] = pd.to_numeric(df_metr["performance"], errors="raise")
 benchmarks = [
     df_gpqa, # https://www.anthropic.com/news/claude-3-5-sonnet specifically GPQA diamond
     df_fm_private, # not public. but probably OpenAI models have hill climbed on it to some extent. will say that it has been hill-climbed on
+    df_fm_tier4,
     df_math, # minerva https://arxiv.org/abs/2206.14858
     df_aime, # https://openai.com/index/introducing-o3-and-o4-mini/
     df_swebenchver, # definitely optimised for
@@ -451,6 +453,10 @@ scores_df = scores_df.merge(
 )
 scores_df['benchmark_release_date'] = pd.to_datetime(scores_df['benchmark_release_date'])
 print("after merge with benchmark dates", len(scores_df))
+
+# Filter out models that were released before 2023
+scores_df = scores_df[scores_df['date'] >= '2023-01-01']
+print("after filtering on benchmark date", len(scores_df))
 
 print(f"Original number of rows: {len(scores_df)}")
 # Group by model and benchmark, then apply the aggregation.
