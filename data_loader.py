@@ -342,6 +342,68 @@ scores_df['performance'] = pd.to_numeric(scores_df['performance'], errors='coerc
 dropped = scores_df[ raw_perf.notna() & scores_df['performance'].isna() ]
 print("null performances after coercion:", scores_df['performance'].isna().sum())
 
+# Map each benchmark to an expected random-guess baseline r in [0,1].
+# For non-multiple-choice or open-ended tasks we default to r = 0.0.
+random_baseline_map = {
+    # Internal
+    "GPQA diamond": 0.25,  # 4-choice MC
+    "FrontierMath-2025-02-28-Private": 0.0, # Effectively guess-proof (response can be an integer or expression)
+    "MATH level 5": 0.0, # Not MC, uses 
+    # AIME answers are 3-digit integers 000-999; random exact-match ≈ 0.001
+    "OTIS Mock AIME 2024-2025": 0.001,
+    "SWE-Bench verified": 0.0,
+
+    # External
+    "Aider polyglot": 0.0,
+    "ANLI": 1.0/3.0,  # 3-class NLI
+    "ARC-AGI": 0.0,   # not MC; random ≈ 0
+    "ARC AI2": 0.25,  # 4-choice MC
+    "Balrog": 0.0,
+    "BBH": 0.25,      # mostly MC; approximate with 4-choice
+    "BoolQ": 0.5,     # binary
+    "CadEval": 0.0,
+    # CommonsenseQA 2.0 often treated as binary verification; use 0.5
+    "CSQA2": 0.5,
+    "Cybench": 0.0,
+    "DeepResearch Bench": 0.0,
+    "Factorio learning environment": 0.0,
+    "Fiction.LiveBench": 0.0,  # scored rubric; treat random as 0
+    "GeoBench": 0.0,
+    "GSM8K": 0.0,     # exact-match free-form
+    "GSO-Bench": 0.0,
+    "HellaSwag": 0.25,  # 4-choice MC
+    "LAMBADA": 0.0,     # last-token EM; random ≈ 0
+    "Lech Mazur Writing": 0.0,
+    "LiveBench": 0.0,
+    "MMLU": 0.25,       # 4-choice MC
+    "OpenBookQA": 0.25, # 4-choice MC
+    "OSWorld": 0.0,
+    "OSUniverse": 0.0,
+    "PIQA": 0.5,        # 2-choice MC
+    "ScienceQA": 0.25,  # 4-choice MC
+    "SimpleBench": 0.0,
+    # SuperGLUE overall score aggregates varied tasks; use 0.0 as conservative default
+    "SuperGLUE": 0.0,
+    "Terminal Bench": 0.0,
+    "TriviaQA": 0.0,    # EM
+    "VideoMME": 0.25,
+    "VPCT": 0.0,
+    "WeirdML": 0.0,
+    "Winogrande": 0.5,  # binary fill-in-the-blank
+    "METR": 0.0,
+}
+
+# Attach per-row random baseline; default to 0.0 if unknown
+scores_df['random_baseline'] = scores_df['benchmark'].map(random_baseline_map).fillna(0.0)
+
+# Rescale performance so that random guessing -> 0 and perfect -> 1
+# p_rescaled = (p - r) / (1 - r)
+with pd.option_context('mode.use_inf_as_na', True):
+    scores_df['performance'] = (
+        (scores_df['performance'] - scores_df['random_baseline']) /
+        (1.0 - scores_df['random_baseline'])
+    )
+
 unique_benchmarks = scores_df['benchmark'].unique()
 benchmark_to_id = {benchmark: f"b{i+1}" for i, benchmark in enumerate(unique_benchmarks)}
 
@@ -392,6 +454,10 @@ scores_df = scores_df.merge(
 scores_df['benchmark_release_date'] = pd.to_datetime(scores_df['benchmark_release_date'])
 print("after merge with benchmark dates", len(scores_df))
 
+# Filter out models that were released before 2023
+scores_df = scores_df[scores_df['date'] >= '2023-01-01']
+print("after filtering on benchmark date", len(scores_df))
+
 print(f"Original number of rows: {len(scores_df)}")
 # Group by model and benchmark, then apply the aggregation.
 # We use gmean for the performance score and keep the 'first' value for metadata columns.
@@ -429,6 +495,9 @@ print(f"Number of rows after aggregation: {len(scores_df_aggregated)}")
 
 # Overwrite the original dataframe with the filtered, aggregated one
 scores_df = scores_df_aggregated
+
+# edited to save csv
+scores_df.to_csv('outputs/scores_df_final.csv', index=False)
 
 if __name__ == "__main__":
     print(scores_df)

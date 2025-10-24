@@ -1,6 +1,6 @@
 # run_eci_in_play_confidence_bars.py
 
-# RUN DATA_LOADER_RESCALE.PY FIRST!
+# RUN DATA_LOADER.PY FIRST!
 # it will produce scores_df_final.csv, which you need
 # fit.py should be in the same directory
 
