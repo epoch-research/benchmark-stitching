@@ -17,7 +17,13 @@ import matplotlib.patches as mpatches
 from datetime import datetime, timedelta
 from fit import fit_statistical_model
 
-CSV_PATH = "scores_df_final.csv"
+CSV_PATH = "outputs/scores_df_final.csv"
+SVG_OUTPUT_PATH = "eci_in_play.svg"
+ANNOTATION_MODELS = {
+    "gpt-5-2025-08-07_medium",
+    "claude-3-5-sonnet-20240620",
+    "gpt-4-0314",
+}
 
 # here you can edit benchmarks, names are in scores_df_final.csv
 BENCHMARKS_TO_SHOW = ("TriviaQA", "GPQA diamond", "FrontierMath-2025-02-28-Private")
@@ -144,6 +150,32 @@ def main():
     # Scatter the filtered models
     ax.scatter(models["_dt"], models["estimated_capability"], s=20, alpha=0.7, zorder=3)
 
+    annotated = models.loc[
+        models["model"].isin(ANNOTATION_MODELS) & models["_dt"].notna(),
+        ["model", "_dt", "estimated_capability"]
+    ]
+    if not annotated.empty:
+        # draw hollow markers for annotated points so labels are easier to read
+        ax.scatter(
+            annotated["_dt"],
+            annotated["estimated_capability"],
+            s=60,
+            facecolors="none",
+            edgecolors="black",
+            linewidths=1.2,
+            zorder=5,
+        )
+        for _, row in annotated.iterrows():
+            ax.annotate(
+                row["model"],
+                xy=(row["_dt"], row["estimated_capability"]),
+                xytext=(6, 6),
+                textcoords="offset points",
+                fontsize=8,
+                fontweight="bold",
+                zorder=6,
+            )
+
     # nice date formatting
     ax.xaxis.set_major_locator(mdates.AutoDateLocator())
     ax.xaxis.set_major_formatter(mdates.ConciseDateFormatter(ax.xaxis.get_major_locator()))
@@ -161,6 +193,7 @@ def main():
     ax.set_title("Benchmarks ‘in play’ (10–90%) as vertical bars at avg model date; models filtered to ≥ 2023-01-01")
     ax.grid(True, linestyle=":", linewidth=0.5)
     fig.tight_layout()
+    fig.savefig(SVG_OUTPUT_PATH, format="svg")
     plt.show()
 
 if __name__ == "__main__":
