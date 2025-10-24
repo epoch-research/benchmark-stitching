@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from data_loader_rescale import df_model
+from data_loader import df_model
 from scipy.optimize import least_squares
 
 def fit_statistical_model(df, 
