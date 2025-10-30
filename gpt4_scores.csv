@@ -1,5 +1,0 @@
-,model_id,benchmark_id,performance,benchmark,benchmark_release_date,optimized,is_math,is_coding,model,date,source
-229,m15,b1,0.307,GPQA diamond,2023-11-20,True,False,False,gpt-4-0613,2023-06-13,Epoch evaluations
-230,m15,b21,0.8240000000000001,MMLU,2020-09-07,True,False,False,gpt-4-0613,2023-06-13,Stanford CRFM Leaderboard
-231,m15,b27,0.848,TriviaQA,2017-05-09,True,False,False,gpt-4-0613,2023-06-13,PapersWithCode
-232,m15,b3,0.23,MATH level 5,2021-03-05,True,True,False,gpt-4-0613,2023-06-13,Epoch evaluations
