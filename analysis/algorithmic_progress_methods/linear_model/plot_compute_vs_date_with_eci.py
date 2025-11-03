@@ -345,9 +345,22 @@ def add_eci_contours(ax, df_plot, model, eci_levels=None, bootstrap_results=None
     if eci_levels is None:
         eci_min = df_plot['estimated_capability'].min()
         eci_max = df_plot['estimated_capability'].max()
-        # Create nice round numbers with much wider spacing (every 5.0)
-        eci_levels = np.arange(np.floor(eci_min / 5) * 5,
-                               np.ceil(eci_max / 5) * 5 + 5, 5.0)
+        eci_range = eci_max - eci_min
+
+        # Choose spacing based on range
+        if eci_range > 10:
+            spacing = 2.0
+        elif eci_range > 5:
+            spacing = 1.0
+        elif eci_range > 2:
+            spacing = 0.5
+        else:
+            spacing = 0.2
+
+        # Create nice round numbers with appropriate spacing
+        eci_levels = np.arange(np.floor(eci_min / spacing) * spacing,
+                               np.ceil(eci_max / spacing) * spacing + spacing, spacing)
+        print(f"Creating {len(eci_levels)} contour levels from {eci_levels.min():.2f} to {eci_levels.max():.2f} with spacing {spacing}")
 
     # If bootstrap results provided, add uncertainty bands for contours
     if bootstrap_results is not None:
@@ -375,6 +388,11 @@ def add_eci_contours(ax, df_plot, model, eci_levels=None, bootstrap_results=None
                                        alpha=0.2, linewidths=1, linestyles='--', zorder=1)
 
     # Plot main contours with much higher visibility
+    print(f"Plotting contours with {len(eci_levels)} levels")
+    print(f"Date mesh shape: {Date_obj_mesh.shape}, range: {Date_obj_mesh.min()} to {Date_obj_mesh.max()}")
+    print(f"Compute mesh shape: {Compute_mesh.shape}, range: {Compute_mesh.min():.2e} to {Compute_mesh.max():.2e}")
+    print(f"ECI grid shape: {ECI_grid.shape}, range: {ECI_grid.min():.2f} to {ECI_grid.max():.2f}")
+
     contours = ax.contour(Date_obj_mesh, Compute_mesh, ECI_grid,
                           levels=eci_levels, colors='black', alpha=0.8,
                           linewidths=2.5, linestyles='-', zorder=2)
@@ -384,6 +402,7 @@ def add_eci_contours(ax, df_plot, model, eci_levels=None, bootstrap_results=None
               colors='black', inline_spacing=10,
               use_clabeltext=True)
 
+    print(f"Contours plotted successfully")
     return contours
 
 
