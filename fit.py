@@ -1,10 +1,12 @@
+from typing import Optional
+
 import pandas as pd
 import numpy as np
 from data_loader import df_model
 from scipy.optimize import least_squares
 
 def fit_statistical_model(df, 
-                         anchor_mode="benchmark",  # "benchmark" or "model"
+                         anchor_mode="benchmark",  # "benchmark", "model", or "global_constraints"
                          # Benchmark anchoring parameters
                          anchor_benchmark=None, 
                          anchor_difficulty=None, 
@@ -20,9 +22,13 @@ def fit_statistical_model(df,
                          df_model=df_model,
                          # Standard error / CI options
                          compute_standard_errors: bool = True,
-                         ci_level: float = 0.90):
+                         ci_level: float = 0.90,
+                         cov_regularization: float = 1e-6,
+                         performance_clip_eps: float = 1e-3,
+                         bootstrap_samples: int = 100,
+                         bootstrap_seed: Optional[int] = 12345):
     """
-    Fit a statistical model with two anchoring modes and L2 regularization.
+    Fit a statistical model with multiple anchoring modes and L2 regularization.
     
     1. 'benchmark' mode: Anchor on a specific benchmark's difficulty and slope
        - anchor_benchmark: name of the benchmark to anchor
@@ -36,8 +42,26 @@ def fit_statistical_model(df,
        - anchor_model2_capability: fixed capability value for the second model
     
     regularization_strength: L2 regularization strength (0 = no regularization, typical: 0.01-0.5)
+    performance_clip_eps: clamp raw benchmark performances to [eps, 1-eps] to avoid 0/1 extremes
+    compute_standard_errors: if True, estimate uncertainty via bootstrap resampling
+    bootstrap_samples: number of bootstrap resamples to draw for confidence intervals (default 200)
+    bootstrap_seed: random seed controlling bootstrap resampling
+    cov_regularization: retained for backwards compatibility; ignored by bootstrap workflow
+
+    Additional anchoring mode:
+    3. 'global_constraints' mode: Enforce that benchmark difficulties sum to 0 and
+       the geometric mean of benchmark slopes equals 1. No explicit anchor benchmark/model.
+
+    Bootstrap-derived uncertainty metrics are attached to the returned DataFrames
+    under columns prefixed with ``bootstrap_`` for easier interpretation.
     """
-    
+    # Defensive copy so we can clip without mutating caller data
+    df = df.copy()
+
+    if bootstrap_samples < 0:
+        raise ValueError("bootstrap_samples must be non-negative")
+    bootstrap_samples = int(bootstrap_samples)
+
     # ------------------------------------------------------------
     # 1)  Mappings & data arrays
     # ------------------------------------------------------------
@@ -48,9 +72,10 @@ def fit_statistical_model(df,
         raise ValueError("Performance data contains infinite values")
     if (df["performance"] < 0).any() or (df["performance"] > 1).any():
         print(f"Warning: Performance scores outside [0,1] range. Min: {df['performance'].min()}, Max: {df['performance'].max()}")
-        # Clip to valid range
-        df = df.copy()
-        df["performance"] = df["performance"].clip(0.001, 0.999)
+    # Clip to avoid exactly 0/1 which cause degenerate slopes / difficulties
+    if performance_clip_eps > 0:
+        eps = performance_clip_eps
+        df["performance"] = df["performance"].clip(eps, 1 - eps)
     
     valid_model_ids   = df["model_id"].unique()
     benchmark_ids     = df["benchmark_id"].unique()
@@ -106,8 +131,11 @@ def fit_statistical_model(df,
         anchor_model_indices = tuple(sorted([anchor_model1_idx, anchor_model2_idx]))
         anchor_bench_idx = None
         
+    elif anchor_mode == "global_constraints":
+        anchor_bench_idx = None
+        anchor_model_indices = None
     else:
-        raise ValueError(f"anchor_mode must be 'benchmark' or 'model', got '{anchor_mode}'")
+        raise ValueError(f"anchor_mode must be 'benchmark', 'model', or 'global_constraints', got '{anchor_mode}'")
     
     # ------------------------------------------------------------
     # 3)  Helpers
@@ -153,8 +181,28 @@ def fit_statistical_model(df,
                 else:
                     C[i] = C_free[free_idx]
                     free_idx += 1
-        
+        elif anchor_mode == "global_constraints":
+            C = params[:num_models]
+            D_raw = params[num_models : num_models + num_benchmarks]
+            log_alpha_raw = params[num_models + num_benchmarks :]
+
+            # Enforce sum(D) = 0 via centering
+            D_centered = D_raw - np.mean(D_raw)
+            # Enforce geometric mean(alpha) = 1 via centered log-slopes
+            log_alpha_centered = log_alpha_raw - np.mean(log_alpha_raw)
+            alpha = np.exp(log_alpha_centered)
+            return C, D_centered, alpha
+
         return C, D, alpha
+
+    def finalize_parameters(theta: np.ndarray):
+        """Convert optimizer output into anchored parameter vectors."""
+        C_hat, D_hat, alpha_hat = split_params(theta)
+        if anchor_mode == "benchmark":
+            shift = D_hat[anchor_bench_idx] - anchor_difficulty
+            C_hat = C_hat - shift
+            D_hat = D_hat - shift
+        return C_hat, D_hat, alpha_hat
     
     def residuals(params, model_idx, bench_idx, y):
         C, D, alpha = split_params(params)
@@ -172,7 +220,7 @@ def fit_statistical_model(df,
                     np.sum(D**2) + 
                     np.sum(alpha[alpha != anchor_slope]**2)
                 ) / (num_models + num_benchmarks + num_benchmarks - 1)
-            else:  # model mode
+            elif anchor_mode == "model":
                 # Two C values are fixed, all D and α are free
                 free_C_mask = np.ones(num_models, dtype=bool)
                 free_C_mask[list(anchor_model_indices)] = False
@@ -181,6 +229,13 @@ def fit_statistical_model(df,
                     np.sum(D**2) + 
                     np.sum(alpha**2)
                 ) / (num_models - 2 + num_benchmarks + num_benchmarks)
+            else:  # global_constraints mode
+                # Regularize centered parameters to discourage drift
+                reg_term = regularization_strength * (
+                    np.sum(C**2) +
+                    np.sum(D**2) +
+                    np.sum(np.log(alpha)**2)
+                ) / (num_models + num_benchmarks + num_benchmarks)
             
             # Add regularization as additional residuals (simpler approach)
             # Just append a single regularization term scaled appropriately
@@ -207,6 +262,12 @@ def fit_statistical_model(df,
         initial_D      = np.random.randn(num_benchmarks) * 0.1
         initial_alpha  = np.full(num_benchmarks, slope_init)
         initial_theta  = np.concatenate([initial_C_free, initial_D, initial_alpha])
+    elif anchor_mode == "global_constraints":
+        initial_C = np.random.randn(num_models) * 0.1
+        initial_D_raw = np.random.randn(num_benchmarks) * 0.1
+        # Work in log-space for slopes to guarantee positivity after exponentiation
+        initial_log_alpha_raw = np.full(num_benchmarks, np.log(slope_init))
+        initial_theta = np.concatenate([initial_C, initial_D_raw, initial_log_alpha_raw])
     
     # ------------------------------------------------------------
     # 5)  Set bounds to prevent extreme values
@@ -223,7 +284,7 @@ def fit_statistical_model(df,
             np.full(num_benchmarks, 10),
             np.full(num_benchmarks - 1, 10)
         ])
-    else:  # model mode
+    elif anchor_mode == "model":
         lower_bounds = np.concatenate([
             np.full(num_models - 2, -10),
             np.full(num_benchmarks, -10),
@@ -233,6 +294,17 @@ def fit_statistical_model(df,
             np.full(num_models - 2, 10),
             np.full(num_benchmarks, 10),
             np.full(num_benchmarks, 10)
+        ])
+    else:  # global_constraints mode
+        lower_bounds = np.concatenate([
+            np.full(num_models, -10),
+            np.full(num_benchmarks, -10),
+            np.full(num_benchmarks, -5)
+        ])
+        upper_bounds = np.concatenate([
+            np.full(num_models, 10),
+            np.full(num_benchmarks, 10),
+            np.full(num_benchmarks, 5)
         ])
     
     # ------------------------------------------------------------
@@ -251,117 +323,79 @@ def fit_statistical_model(df,
     # 7)  Recover full parameter vectors
     # ------------------------------------------------------------
     theta_hat = result.x
-    
-    if anchor_mode == "benchmark":
-        # Original extraction logic
-        C_hat          = theta_hat[:num_models]
-        D_hat          = theta_hat[num_models : num_models + num_benchmarks]
-        alpha_free_hat = theta_hat[num_models + num_benchmarks :]
-        alpha_hat      = np.insert(alpha_free_hat, anchor_bench_idx, anchor_slope)
-        
-        # Shift to match anchor difficulty
-        shift = D_hat[anchor_bench_idx] - anchor_difficulty
-        C_hat -= shift
-        D_hat -= shift
-        
-    elif anchor_mode == "model":
-        # New extraction logic
-        C_hat, D_hat, alpha_hat = split_params(theta_hat)
-        # No shifting needed - model capabilities are already anchored
+    C_hat, D_hat, alpha_hat = finalize_parameters(theta_hat)
 
     # ------------------------------------------------------------
-    # 7.5)  Optional: standard errors and CIs from Jacobian
+    # 7.5)  Optional: bootstrap confidence intervals
     # ------------------------------------------------------------
     se_C = se_D = se_alpha = None
-    if compute_standard_errors and result.jac is not None:
-        try:
-            # Use only the data residuals (exclude the single appended regularization residual)
-            n_obs = observed_scores.shape[0]
-            J_full = result.jac
-            J_data = J_full[:n_obs, :]
-            # Residual sum-of-squares from data residuals
-            res_data = result.fun[:n_obs]
-            sse = float(np.sum(res_data**2))
-            p = theta_hat.size
-            dof = max(n_obs - p, 1)
-            sigma2 = sse / dof
-            JTJ = J_data.T @ J_data
+    ci_C_low = ci_C_high = None
+    ci_D_low = ci_D_high = None
+    ci_alpha_low = ci_alpha_high = None
+    bootstrap_successes = 0
+
+    if compute_standard_errors and bootstrap_samples and bootstrap_samples > 0:
+        rng = np.random.default_rng(bootstrap_seed)
+        C_samples = []
+        D_samples = []
+        alpha_samples = []
+
+        for _ in range(bootstrap_samples):
+            sample_idx = rng.integers(0, observed_scores.shape[0], size=observed_scores.shape[0])
+            boot_scores = observed_scores[sample_idx]
+            boot_model_idx = model_idx_data[sample_idx]
+            boot_bench_idx = bench_idx_data[sample_idx]
+
             try:
-                cov_theta = sigma2 * np.linalg.inv(JTJ)
-            except np.linalg.LinAlgError:
-                cov_theta = sigma2 * np.linalg.pinv(JTJ)
+                boot_res = least_squares(
+                    residuals,
+                    theta_hat.copy(),
+                    args=(boot_model_idx, boot_bench_idx, boot_scores),
+                    bounds=(lower_bounds, upper_bounds),
+                    method="trf",
+                    verbose=0,
+                )
+            except Exception:
+                continue
 
-            # Helper accessors
-            def var_at(idx):
-                return float(np.clip(cov_theta[idx, idx], 0, np.inf))
+            if not boot_res.success:
+                continue
 
-            def cov_at(i, j):
-                return float(cov_theta[i, j])
+            boot_C, boot_D, boot_alpha = finalize_parameters(boot_res.x)
+            C_samples.append(boot_C)
+            D_samples.append(boot_D)
+            alpha_samples.append(boot_alpha)
 
-            if anchor_mode == "benchmark":
-                # Parameterization in theta: [C (M), D (B), alpha_free (B-1)]
-                idx_C_start = 0
-                idx_D_start = num_models
-                # idx_alpha_free_start = num_models + num_benchmarks  # not needed directly here
+        if C_samples:
+            C_samples_arr = np.vstack(C_samples)
+            D_samples_arr = np.vstack(D_samples)
+            alpha_samples_arr = np.vstack(alpha_samples)
+            bootstrap_successes = C_samples_arr.shape[0]
 
-                # After shifting by D_anchor to match anchor_difficulty, propagate variance:
-                d_anchor_idx_in_theta = idx_D_start + anchor_bench_idx
-                var_D_anchor = var_at(d_anchor_idx_in_theta)
+            if bootstrap_successes < bootstrap_samples:
+                print(
+                    f"Warning: Bootstrap convergence in {bootstrap_successes}/{bootstrap_samples} resamples; using converged fits only."
+                )
 
-                se_C = np.empty(num_models)
-                for i in range(num_models):
-                    var_ci = var_at(idx_C_start + i)
-                    cov_ci_danchor = cov_at(idx_C_start + i, d_anchor_idx_in_theta)
-                    var_new = var_ci + var_D_anchor - 2.0 * cov_ci_danchor
-                    se_C[i] = np.sqrt(max(var_new, 0.0))
-
-                se_D = np.empty(num_benchmarks)
-                for j in range(num_benchmarks):
-                    if j == anchor_bench_idx:
-                        se_D[j] = 0.0  # anchored exactly after shift
-                    else:
-                        var_dj = var_at(idx_D_start + j)
-                        cov_dj_danchor = cov_at(idx_D_start + j, d_anchor_idx_in_theta)
-                        var_new = var_dj + var_D_anchor - 2.0 * cov_dj_danchor
-                        se_D[j] = np.sqrt(max(var_new, 0.0))
-
-                # Slopes: anchored slope fixed, others read from cov directly
-                se_alpha_free = np.sqrt(np.clip(np.diag(cov_theta)[num_models + num_benchmarks :], 0, np.inf))
-                se_alpha = np.insert(se_alpha_free, anchor_bench_idx, 0.0)
-
-            else:  # anchor_mode == "model"
-                # Parameterization in theta: [C_free (M-2), D (B), alpha (B)]
-                idx_C_free_start = 0
-                idx_D_start = num_models - 2
-                idx_alpha_start = num_models - 2 + num_benchmarks
-
-                se_C_free = np.sqrt(np.clip(np.diag(cov_theta)[idx_C_free_start : idx_C_free_start + (num_models - 2)], 0, np.inf))
-                se_D = np.sqrt(np.clip(np.diag(cov_theta)[idx_D_start : idx_D_start + num_benchmarks], 0, np.inf))
-                se_alpha = np.sqrt(np.clip(np.diag(cov_theta)[idx_alpha_start : idx_alpha_start + num_benchmarks], 0, np.inf))
-
-                se_C = np.zeros(num_models)
-                free_idx = 0
-                for i in range(num_models):
-                    if i in anchor_model_indices:
-                        se_C[i] = 0.0
-                    else:
-                        se_C[i] = se_C_free[free_idx]
-                        free_idx += 1
-
-            # CI multiplier (normal approx)
-            if ci_level is not None:
-                if abs(ci_level - 0.90) < 1e-9:
-                    z = 1.6448536269514722
-                else:
-                    # Simple approximation for other levels (Abramowitz-Stegun)
-                    from math import sqrt, log
-                    p = 0.5 + ci_level / 2.0
-                    t = sqrt(-2.0 * log(1.0 - p))
-                    z = t - ((2.515517 + 0.802853*t + 0.010328*t*t) / (1 + 1.432788*t + 0.189269*t*t + 0.001308*t*t*t))
+            if bootstrap_successes > 1:
+                se_C = np.std(C_samples_arr, axis=0, ddof=1)
+                se_D = np.std(D_samples_arr, axis=0, ddof=1)
+                se_alpha = np.std(alpha_samples_arr, axis=0, ddof=1)
             else:
-                z = None
-        except Exception:
-            se_C = se_D = se_alpha = None
+                se_C = np.full(num_models, np.nan)
+                se_D = np.full(num_benchmarks, np.nan)
+                se_alpha = np.full(num_benchmarks, np.nan)
+
+            if ci_level is not None and 0 < ci_level < 1:
+                tail = (1.0 - ci_level) / 2.0
+                ci_C_low = np.quantile(C_samples_arr, tail, axis=0)
+                ci_C_high = np.quantile(C_samples_arr, 1.0 - tail, axis=0)
+                ci_D_low = np.quantile(D_samples_arr, tail, axis=0)
+                ci_D_high = np.quantile(D_samples_arr, 1.0 - tail, axis=0)
+                ci_alpha_low = np.quantile(alpha_samples_arr, tail, axis=0)
+                ci_alpha_high = np.quantile(alpha_samples_arr, 1.0 - tail, axis=0)
+        else:
+            print("Warning: All bootstrap fits failed; skipping confidence interval computation.")
     
     # ------------------------------------------------------------
     # 8)  Pack tidy DataFrames for inspection / downstream use
@@ -388,18 +422,14 @@ def fit_statistical_model(df,
     if df_model is not None:
         model_cap_df = model_cap_df.merge(df_model, on="model", how="left")
 
-    # Attach SEs/CIs if computed
+    # Attach bootstrap summaries if computed
     if se_C is not None:
-        model_cap_df["se_capability"] = se_C
+        model_cap_df["bootstrap_std_capability"] = se_C
+    if ci_C_low is not None and ci_C_high is not None:
+        model_cap_df["bootstrap_ci_lower_capability"] = ci_C_low
+        model_cap_df["bootstrap_ci_upper_capability"] = ci_C_high
         if ci_level is not None:
-            z_mult = 1.6448536269514722 if abs(ci_level - 0.90) < 1e-9 else None
-            if z_mult is None:
-                from math import sqrt, log
-                p = 0.5 + ci_level / 2.0
-                t = sqrt(-2.0 * log(1.0 - p))
-                z_mult = t - ((2.515517 + 0.802853*t + 0.010328*t*t) / (1 + 1.432788*t + 0.189269*t*t + 0.001308*t*t*t))
-            model_cap_df["ci90_low"] = model_cap_df["estimated_capability"] - z_mult * model_cap_df["se_capability"]
-            model_cap_df["ci90_high"] = model_cap_df["estimated_capability"] + z_mult * model_cap_df["se_capability"]
+            model_cap_df["bootstrap_ci_level"] = ci_level
 
     model_capabilities_df = model_cap_df.sort_values(
         "estimated_capability", ascending=False
@@ -435,20 +465,18 @@ def fit_statistical_model(df,
         .merge(bench_dates, on="benchmark_id", how="left")
     )
 
-    if se_D is not None and se_alpha is not None:
-        benchmark_params_df["se_difficulty"] = se_D
-        benchmark_params_df["se_slope"] = se_alpha
+    if se_D is not None:
+        benchmark_params_df["bootstrap_std_difficulty"] = se_D
+    if se_alpha is not None:
+        benchmark_params_df["bootstrap_std_slope"] = se_alpha
+    if ci_D_low is not None and ci_D_high is not None:
+        benchmark_params_df["bootstrap_ci_lower_difficulty"] = ci_D_low
+        benchmark_params_df["bootstrap_ci_upper_difficulty"] = ci_D_high
         if ci_level is not None:
-            z_mult = 1.6448536269514722 if abs(ci_level - 0.90) < 1e-9 else None
-            if z_mult is None:
-                from math import sqrt, log
-                p = 0.5 + ci_level / 2.0
-                t = sqrt(-2.0 * log(1.0 - p))
-                z_mult = t - ((2.515517 + 0.802853*t + 0.010328*t*t) / (1 + 1.432788*t + 0.189269*t*t + 0.001308*t*t*t))
-            benchmark_params_df["ci90_low_difficulty"] = benchmark_params_df["estimated_difficulty"] - z_mult * benchmark_params_df["se_difficulty"]
-            benchmark_params_df["ci90_high_difficulty"] = benchmark_params_df["estimated_difficulty"] + z_mult * benchmark_params_df["se_difficulty"]
-            benchmark_params_df["ci90_low_slope"] = benchmark_params_df["estimated_slope"] - z_mult * benchmark_params_df["se_slope"]
-            benchmark_params_df["ci90_high_slope"] = benchmark_params_df["estimated_slope"] + z_mult * benchmark_params_df["se_slope"]
+            benchmark_params_df["bootstrap_ci_level"] = ci_level
+    if ci_alpha_low is not None and ci_alpha_high is not None:
+        benchmark_params_df["bootstrap_ci_lower_slope"] = ci_alpha_low
+        benchmark_params_df["bootstrap_ci_upper_slope"] = ci_alpha_high
     
     return df, model_capabilities_df, benchmark_params_df
 
