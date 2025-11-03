@@ -198,7 +198,7 @@ df_terminal["performance"] = pd.to_numeric(df_terminal["performance"].str.rstrip
 
 df_the_agent_company = pd.read_csv("data/external_benchmark_the_agent_company.csv")[["Model version", "% Resolved", "Source"]]
 df_the_agent_company = df_the_agent_company.rename(columns={"Model version": "model", "% Resolved": "performance", "Source": "source"})
-df_the_agent_company["benchmark"] = "SuperGLUE"
+df_the_agent_company["benchmark"] = "The Agent Company"
 df_the_agent_company["performance"] = pd.to_numeric(df_the_agent_company["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_trivia = pd.read_csv("data/external_benchmark_triviaqa.csv")[["Model version", "EM", "Source"]]
