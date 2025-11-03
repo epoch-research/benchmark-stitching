@@ -72,12 +72,12 @@ def compute_pareto_frontier_at_release(df):
     return result
 
 
-def load_or_fit_model(cache_file="outputs/fitted_capabilities_cache.pkl",
+def load_or_fit_model(cache_file="outputs/algorithmic_progress_methods/linear_model/fitted_capabilities_cache.pkl",
                       force_refit=False,
                       exclude_distilled=False,
                       include_low_confidence=False,
                       frontier_only=False):
-    """Load ECI scores from data/eci_scores.csv and merge with compute data
+    """Load ECI scores from outputs/model_fit/model_capabilities.csv and merge with compute data
 
     Args:
         cache_file: Path to cache file
@@ -106,11 +106,11 @@ def load_or_fit_model(cache_file="outputs/fitted_capabilities_cache.pkl",
         print(f"Loaded cached data for {len(cached_data['df_plot'])} models")
         return cached_data['df_plot']
 
-    print("Loading ECI scores from data/eci_scores.csv...")
+    print("Loading ECI scores from outputs/model_fit/model_capabilities.csv...")
 
-    # Load ECI scores
-    eci_df = pd.read_csv("data/eci_scores.csv")
-    eci_df = eci_df.rename(columns={'model version': 'model', 'eci': 'estimated_capability'})
+    # Load ECI scores (already has 'estimated_capability' column)
+    eci_df = pd.read_csv("outputs/model_fit/model_capabilities.csv")
+    # Rename 'model' column if it exists, otherwise the data already has the right column names
     print(f"Loaded ECI scores for {len(eci_df)} models")
 
     # Filter out distilled models if requested
@@ -141,7 +141,12 @@ def load_or_fit_model(cache_file="outputs/fitted_capabilities_cache.pkl",
         print(f"Remaining models: {after_count}")
 
     # Prepare capability data
-    eci_df['date_obj'] = pd.to_datetime(eci_df['date'])
+    # The date_obj column already exists in model_capabilities.csv
+    if 'date_obj' not in eci_df.columns:
+        eci_df['date_obj'] = pd.to_datetime(eci_df['date'])
+    else:
+        # Ensure it's datetime type
+        eci_df['date_obj'] = pd.to_datetime(eci_df['date_obj'])
     df_cap = eci_df.copy(deep=True)
 
     # Verify anchor models
@@ -665,9 +670,9 @@ def main():
     # Fit linear predictor with bootstrap
     model, df_plot, bootstrap_results = fit_linear_predictor(df_plot, n_bootstrap=1000)
 
-    # Create output directory
-    output_dir = Path("outputs")
-    output_dir.mkdir(exist_ok=True)
+    # Create output directory (following project structure from LINEAR_NOTES.md)
+    output_dir = Path("outputs/algorithmic_progress_methods/linear_model")
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     # Create uncertainty diagnostic plots
     print("\nCreating uncertainty diagnostic plots...")
@@ -759,10 +764,6 @@ def main():
     plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right')
 
     plt.tight_layout()
-
-    # Save the plot
-    output_dir = Path("outputs")
-    output_dir.mkdir(exist_ok=True)
 
     # Add suffix to filename if excluding distilled models, showing predicted frontier, or frontier-only
     suffix_parts = []
