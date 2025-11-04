@@ -153,7 +153,8 @@ def generate_synthetic_data(
 def estimate_capabilities_from_scores(models, benchmarks, df_scores):
     """
     Estimate model capabilities from synthetic benchmark scores using the same
-    statistical model as the main benchmark stitching analysis
+    statistical model as the main benchmark stitching analysis, with L2 regularization
+    and benchmark anchoring
     """
     # Identify valid models (those with benchmark data)
     valid_model_ids = sorted(df_scores["model_id"].unique())
@@ -168,41 +169,92 @@ def estimate_capabilities_from_scores(models, benchmarks, df_scores):
     benchmark_ids_for_data = df_scores["benchmark_id"].values.astype(int)
     observed_scores = df_scores["performance"].values
 
-    def logistic(x):
-        return 1 / (1 + np.exp(-x))
+    # Anchor setup: Use first benchmark as anchor (similar to Winogrande in real data)
+    anchor_benchmark_idx = 0
+    anchor_difficulty = 0
+    anchor_slope = 1.0
+    regularization_strength = 0.1
 
-    def residuals(params, model_idx_for_data, benchmark_ids_for_data, observed_scores):
-        # Unpack parameters: capabilities, difficulties, slopes
+    def logistic(x):
+        # Clip to prevent overflow
+        x_clipped = np.clip(x, -500, 500)
+        return 1 / (1 + np.exp(-x_clipped))
+
+    def split_params(params):
+        """Break parameter vector into C, D, and alpha with anchor slope fixed"""
         C = params[:num_valid_models]
         D = params[num_valid_models : num_valid_models + num_benchmarks]
-        alpha = params[num_valid_models + num_benchmarks :]
+        alpha_free = params[num_valid_models + num_benchmarks :]
+        # Insert the fixed anchor slope
+        alpha = np.insert(alpha_free, anchor_benchmark_idx, anchor_slope)
+        return C, D, alpha
+
+    def residuals(params, model_idx_for_data, benchmark_ids_for_data, observed_scores):
+        C, D, alpha = split_params(params)
 
         c_vals = C[model_idx_for_data]
         d_vals = D[benchmark_ids_for_data]
         alpha_vals = alpha[benchmark_ids_for_data]
 
         preds = logistic(alpha_vals * (c_vals - d_vals))
-        return preds - observed_scores
+        residuals = preds - observed_scores
 
-    # Initial parameter guesses
-    initial_C = np.zeros(num_valid_models)
-    initial_D = np.zeros(num_benchmarks)
-    initial_alpha = np.ones(num_benchmarks)
+        # Add L2 regularization
+        if regularization_strength > 0:
+            reg_term = regularization_strength * (
+                np.sum(C**2) +
+                np.sum(D**2) +
+                np.sum(alpha[alpha != anchor_slope]**2)
+            ) / (num_valid_models + num_benchmarks + num_benchmarks - 1)
+
+            reg_penalty = np.sqrt(reg_term) if reg_term > 0 else 0
+            return np.append(residuals, reg_penalty)
+
+        return residuals
+
+    # Initial parameter guesses (one fewer alpha since anchor is fixed)
+    np.random.seed(42)
+    initial_C = np.random.randn(num_valid_models) * 0.1
+    initial_D = np.random.randn(num_benchmarks) * 0.1
+    initial_alpha = np.ones(num_benchmarks - 1)  # One fewer because anchor is fixed
     initial_params = np.concatenate([initial_C, initial_D, initial_alpha])
+
+    # Set bounds to prevent extreme values
+    lower_bounds = np.concatenate([
+        np.full(num_valid_models, -10),
+        np.full(num_benchmarks, -10),
+        np.full(num_benchmarks - 1, 0.1)
+    ])
+    upper_bounds = np.concatenate([
+        np.full(num_valid_models, 10),
+        np.full(num_benchmarks, 10),
+        np.full(num_benchmarks - 1, 10)
+    ])
 
     # Fit the model
     result = least_squares(
         residuals,
         initial_params,
         args=(model_idx_for_data, benchmark_ids_for_data, observed_scores),
+        bounds=(lower_bounds, upper_bounds),
+        method="trf",
     )
 
-    estimated_params = result.x
-    estimated_C = estimated_params[:num_valid_models]
+    # Recover full parameter vectors
+    theta_hat = result.x
+    C_hat = theta_hat[:num_valid_models]
+    D_hat = theta_hat[num_valid_models : num_valid_models + num_benchmarks]
+    alpha_free_hat = theta_hat[num_valid_models + num_benchmarks :]
+    alpha_hat = np.insert(alpha_free_hat, anchor_benchmark_idx, anchor_slope)
+
+    # Shift to match anchor difficulty
+    shift = D_hat[anchor_benchmark_idx] - anchor_difficulty
+    C_hat -= shift
+    D_hat -= shift
 
     # Create DataFrame with estimated capabilities
     fitted_C_df = pd.DataFrame(
-        {"model_id": valid_model_ids, "unaligned_C": estimated_C}
+        {"model_id": valid_model_ids, "unaligned_C": C_hat}
     )
 
     # Merge with true capabilities and align
