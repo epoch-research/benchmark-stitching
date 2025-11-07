@@ -383,6 +383,8 @@ scores_df = scores_df[['benchmark_id', 'benchmark', 'model_id', 'model', 'perfor
 df_model = pd.read_csv("data/model_versions.csv")[["id", "Model", "Version release date"]]
 df_model = df_model.rename(columns={"id": "model", "Version release date": "date"})
 df_model.loc[df_model["model"] == "gemini-exp-1206","date"] = "2024-12-06" # typo, in the benchmark it says 2025-12-06 which is impossible. to be updated.
+df_model.loc[df_model['model'] == 'LLaMA-13B', 'date'] = '2023-02-24' # inconsistent with the other LLaMA models, need to fix
+df_model.loc[df_model['model'] == 'LLaMA-33B', 'date'] = '2023-02-24' # inconsistent with the other LLaMA models, need to fix
 df_model = df_model.drop(df_model.index[df_model['Model'].eq('Mistral Large')])
 scores_df = scores_df.merge(df_model, on="model")
 print("after merge with model versions", len(scores_df))
