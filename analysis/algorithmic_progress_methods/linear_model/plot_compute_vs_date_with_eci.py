@@ -76,7 +76,8 @@ def load_or_fit_model(cache_file="outputs/algorithmic_progress_methods/linear_mo
                       force_refit=False,
                       exclude_distilled=False,
                       include_low_confidence=False,
-                      frontier_only=False):
+                      frontier_only=False,
+                      use_website_data=False):
     """Load ECI scores from outputs/model_fit/model_capabilities.csv and merge with compute data
 
     Args:
@@ -85,6 +86,7 @@ def load_or_fit_model(cache_file="outputs/algorithmic_progress_methods/linear_mo
         exclude_distilled: If True, exclude distilled models from analysis
         include_low_confidence: If True, also exclude low-confidence distilled models
         frontier_only: If True, only include models on Pareto frontier at release
+        use_website_data: If True, load from data/website/epoch_capabilities_index.csv instead
     """
     # Use different cache file if excluding distilled models or frontier-only
     suffix_parts = []
@@ -92,6 +94,8 @@ def load_or_fit_model(cache_file="outputs/algorithmic_progress_methods/linear_mo
         suffix_parts.append("no_distilled_all" if include_low_confidence else "no_distilled")
     if frontier_only:
         suffix_parts.append("frontier_only")
+    if use_website_data:
+        suffix_parts.append("website")
 
     if suffix_parts:
         suffix = "_" + "_".join(suffix_parts)
@@ -106,75 +110,132 @@ def load_or_fit_model(cache_file="outputs/algorithmic_progress_methods/linear_mo
         print(f"Loaded cached data for {len(cached_data['df_plot'])} models")
         return cached_data['df_plot']
 
-    print("Loading ECI scores from outputs/model_fit/model_capabilities.csv...")
+    # Load ECI scores based on data source
+    if use_website_data:
+        print("Loading data from data/website/epoch_capabilities_index.csv...")
+        eci_df = pd.read_csv("data/website/epoch_capabilities_index.csv")
 
-    # Load ECI scores (already has 'estimated_capability' column)
-    eci_df = pd.read_csv("outputs/model_fit/model_capabilities.csv")
-    # Rename 'model' column if it exists, otherwise the data already has the right column names
-    print(f"Loaded ECI scores for {len(eci_df)} models")
-
-    # Filter out distilled models if requested
-    if exclude_distilled:
-        print("\nFiltering out distilled models...")
-        distilled_df = pd.read_csv("data/distilled_models.csv")
-
-        # Determine which confidence levels to exclude
-        if include_low_confidence:
-            confidence_levels = ['high', 'medium', 'low']
-            print("  Excluding: high, medium, AND low confidence distilled models")
-        else:
-            confidence_levels = ['high', 'medium']
-            print("  Excluding: high and medium confidence distilled models only")
-
-        distilled_models = distilled_df[
-            (distilled_df['distilled'] == True) &
-            (distilled_df['confidence'].isin(confidence_levels))
-        ]['model'].tolist()
-
-        before_count = len(eci_df)
-        eci_df = eci_df[~eci_df['model'].isin(distilled_models)]
-        after_count = len(eci_df)
-
-        print(f"Excluded {before_count - after_count} distilled models "
-              f"({before_count - after_count} / {before_count} = "
-              f"{100 * (before_count - after_count) / before_count:.1f}%)")
-        print(f"Remaining models: {after_count}")
-
-    # Prepare capability data
-    # The date_obj column already exists in model_capabilities.csv
-    if 'date_obj' not in eci_df.columns:
-        eci_df['date_obj'] = pd.to_datetime(eci_df['date'])
-    else:
-        # Ensure it's datetime type
-        eci_df['date_obj'] = pd.to_datetime(eci_df['date_obj'])
-    df_cap = eci_df.copy(deep=True)
-
-    # Verify anchor models
-    anchor_models = df_cap[df_cap['model'].isin([
-        'claude-3-5-sonnet-20240620', 'gpt-5-2025-08-07_medium'])]
-    if len(anchor_models) > 0:
-        print("\nAnchor models in ECI data:")
-        for _, row in anchor_models.iterrows():
-            print(f"  {row['model']}: ECI={row['estimated_capability']:.1f}")
-
-    # Load compute data and merge
-    try:
-        pcd_dataset = pd.read_csv("data/all_ai_models.csv")[
-            ["Model", "Training compute (FLOP)", "Parameters",
-             "Training dataset size (datapoints)"]
-        ]
-        columns = {
-            "Training compute (FLOP)": "compute",
-            "Parameters": "parameters",
-            "Training dataset size (datapoints)": "data"
+        # Rename columns to match expected format
+        column_mapping = {
+            'Model version': 'model',
+            'ECI Score': 'estimated_capability',
+            'Release date': 'date',
+            'Training compute (FLOP)': 'compute'
         }
-        pcd_dataset = pcd_dataset.rename(columns=columns)
+        eci_df = eci_df.rename(columns=column_mapping)
 
-        df_cap = df_cap.merge(pcd_dataset, on="Model", how="left")
-        print(f"Merged compute data: {df_cap['compute'].notna().sum()} models have compute info")
-    except Exception as e:
-        print(f"Error: Could not load compute data: {e}")
-        return None
+        # Parse date and create Model column for consistency
+        eci_df['date_obj'] = pd.to_datetime(eci_df['date'])
+        eci_df['Model'] = eci_df['model']
+
+        print(f"Loaded {len(eci_df)} models from website data")
+
+        # Filter out distilled models if requested
+        if exclude_distilled:
+            print("\nFiltering out distilled models...")
+            distilled_df = pd.read_csv("data/distilled_models.csv")
+
+            # Determine which confidence levels to exclude
+            if include_low_confidence:
+                confidence_levels = ['high', 'medium', 'low']
+                print("  Excluding: high, medium, AND low confidence distilled models")
+            else:
+                confidence_levels = ['high', 'medium']
+                print("  Excluding: high and medium confidence distilled models only")
+
+            distilled_models = distilled_df[
+                (distilled_df['distilled'] == True) &
+                (distilled_df['confidence'].isin(confidence_levels))
+            ]['model'].tolist()
+
+            before_count = len(eci_df)
+            eci_df = eci_df[~eci_df['model'].isin(distilled_models)]
+            after_count = len(eci_df)
+
+            print(f"Excluded {before_count - after_count} distilled models "
+                  f"({before_count - after_count} / {before_count} = "
+                  f"{100 * (before_count - after_count) / before_count:.1f}%)")
+            print(f"Remaining models: {after_count}")
+
+        df_cap = eci_df.copy(deep=True)
+
+        # Verify anchor models
+        anchor_models = df_cap[df_cap['model'].isin([
+            'claude-3-5-sonnet-20240620', 'gpt-5-2025-08-07_medium'])]
+        if len(anchor_models) > 0:
+            print("\nAnchor models in website data:")
+            for _, row in anchor_models.iterrows():
+                print(f"  {row['model']}: ECI={row['estimated_capability']:.1f}")
+
+        print(f"Compute data from website: {df_cap['compute'].notna().sum()} models have compute info")
+
+    else:
+        print("Loading ECI scores from outputs/model_fit/model_capabilities.csv...")
+        eci_df = pd.read_csv("outputs/model_fit/model_capabilities.csv")
+        print(f"Loaded ECI scores for {len(eci_df)} models")
+
+        # Filter out distilled models if requested
+        if exclude_distilled:
+            print("\nFiltering out distilled models...")
+            distilled_df = pd.read_csv("data/distilled_models.csv")
+
+            # Determine which confidence levels to exclude
+            if include_low_confidence:
+                confidence_levels = ['high', 'medium', 'low']
+                print("  Excluding: high, medium, AND low confidence distilled models")
+            else:
+                confidence_levels = ['high', 'medium']
+                print("  Excluding: high and medium confidence distilled models only")
+
+            distilled_models = distilled_df[
+                (distilled_df['distilled'] == True) &
+                (distilled_df['confidence'].isin(confidence_levels))
+            ]['model'].tolist()
+
+            before_count = len(eci_df)
+            eci_df = eci_df[~eci_df['model'].isin(distilled_models)]
+            after_count = len(eci_df)
+
+            print(f"Excluded {before_count - after_count} distilled models "
+                  f"({before_count - after_count} / {before_count} = "
+                  f"{100 * (before_count - after_count) / before_count:.1f}%)")
+            print(f"Remaining models: {after_count}")
+
+        # Prepare capability data
+        # The date_obj column already exists in model_capabilities.csv
+        if 'date_obj' not in eci_df.columns:
+            eci_df['date_obj'] = pd.to_datetime(eci_df['date'])
+        else:
+            # Ensure it's datetime type
+            eci_df['date_obj'] = pd.to_datetime(eci_df['date_obj'])
+        df_cap = eci_df.copy(deep=True)
+
+        # Verify anchor models
+        anchor_models = df_cap[df_cap['model'].isin([
+            'claude-3-5-sonnet-20240620', 'gpt-5-2025-08-07_medium'])]
+        if len(anchor_models) > 0:
+            print("\nAnchor models in ECI data:")
+            for _, row in anchor_models.iterrows():
+                print(f"  {row['model']}: ECI={row['estimated_capability']:.1f}")
+
+        # Load compute data and merge
+        try:
+            pcd_dataset = pd.read_csv("data/all_ai_models.csv")[
+                ["Model", "Training compute (FLOP)", "Parameters",
+                 "Training dataset size (datapoints)"]
+            ]
+            columns = {
+                "Training compute (FLOP)": "compute",
+                "Parameters": "parameters",
+                "Training dataset size (datapoints)": "data"
+            }
+            pcd_dataset = pcd_dataset.rename(columns=columns)
+
+            df_cap = df_cap.merge(pcd_dataset, on="Model", how="left")
+            print(f"Merged compute data: {df_cap['compute'].notna().sum()} models have compute info")
+        except Exception as e:
+            print(f"Error: Could not load compute data: {e}")
+            return None
 
     # Filter to only models with complete data FOR PLOTTING
     df_plot = df_cap.dropna(subset=['date_obj', 'compute', 'estimated_capability'])
@@ -502,13 +563,15 @@ def add_predicted_frontiers(ax, df_plot, model, frequency='MS'):
 
 def plot_uncertainty_diagnostics(df_plot, bootstrap_results, output_dir,
                                 exclude_distilled=False, include_low_confidence=False,
-                                frontier_only=False):
+                                frontier_only=False, use_website_data=False):
     """Create diagnostic plots for bootstrap uncertainty"""
     suffix_parts = []
     if exclude_distilled:
         suffix_parts.append("no_distilled_all" if include_low_confidence else "no_distilled")
     if frontier_only:
         suffix_parts.append("frontier_only")
+    if use_website_data:
+        suffix_parts.append("website")
 
     suffix = "_" + "_".join(suffix_parts) if suffix_parts else ""
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
@@ -668,6 +731,8 @@ def main():
                        help='Show the Pareto frontier predicted by the linear model for each month')
     parser.add_argument('--frontier-only', action='store_true',
                        help='Only include models that were on the Pareto frontier at their release date')
+    parser.add_argument('--use-website-data', action='store_true',
+                       help='Use data from data/website/epoch_capabilities_index.csv instead of outputs/model_fit/model_capabilities.csv')
     args = parser.parse_args()
 
     # Validate arguments
@@ -679,7 +744,8 @@ def main():
         force_refit=args.force_refit,
         exclude_distilled=args.exclude_distilled,
         include_low_confidence=args.include_low_confidence,
-        frontier_only=args.frontier_only
+        frontier_only=args.frontier_only,
+        use_website_data=args.use_website_data
     )
 
     if df_plot is None:
@@ -697,7 +763,7 @@ def main():
     print("\nCreating uncertainty diagnostic plots...")
     plot_uncertainty_diagnostics(df_plot, bootstrap_results, output_dir,
                                 args.exclude_distilled, args.include_low_confidence,
-                                args.frontier_only)
+                                args.frontier_only, args.use_website_data)
 
     # Create the main plot
     fig, ax = plt.subplots(figsize=(14, 9))
@@ -765,6 +831,8 @@ def main():
             title_suffix_parts.append('excluding distilled models')
     if args.frontier_only:
         title_suffix_parts.append('frontier models only')
+    if args.use_website_data:
+        title_suffix_parts.append('website data')
 
     title_suffix = ' (' + ', '.join(title_suffix_parts) + ')' if title_suffix_parts else ''
 
@@ -792,6 +860,8 @@ def main():
         suffix_parts.append("predicted_frontier")
     if args.frontier_only:
         suffix_parts.append("frontier_only")
+    if args.use_website_data:
+        suffix_parts.append("website")
 
     suffix = "_" + "_".join(suffix_parts) if suffix_parts else ""
     output_path = output_dir / f"compute_vs_date_with_eci{suffix}.png"
