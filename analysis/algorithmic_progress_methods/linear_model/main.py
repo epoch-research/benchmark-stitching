@@ -47,6 +47,8 @@ def main():
                        help='Show the Pareto frontier predicted by the linear model for each month')
     parser.add_argument('--frontier-only', action='store_true',
                        help='Only include models that were on the Pareto frontier at their release date')
+    parser.add_argument('--label-points', action='store_true',
+                       help='Label data points with ECI values')
 
     args = parser.parse_args()
 
@@ -94,6 +96,7 @@ def main():
     plot_main_figure(
         df_plot, model, bootstrap_results, output_dir,
         show_predicted_frontier=args.show_predicted_frontier,
+        label_points=args.label_points,
         exclude_distilled=args.exclude_distilled,
         include_low_confidence=args.include_low_confidence,
         frontier_only=args.frontier_only,

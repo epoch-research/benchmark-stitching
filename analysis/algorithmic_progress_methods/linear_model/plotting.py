@@ -374,7 +374,7 @@ def plot_uncertainty_diagnostics(df_plot, bootstrap_results, output_dir,
 
 
 def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
-                    show_predicted_frontier=False,
+                    show_predicted_frontier=False, label_points=False,
                     exclude_distilled=False, include_low_confidence=False,
                     frontier_only=False, use_website_data=False):
     """Create the main compute vs date plot with ECI contours.
@@ -385,6 +385,7 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
         bootstrap_results: Dict with bootstrap results
         output_dir: Path to output directory
         show_predicted_frontier: Whether to show predicted Pareto frontiers
+        label_points: Whether to label data points with ECI values
         exclude_distilled: Whether distilled models were excluded
         include_low_confidence: Whether low-confidence distilled models were excluded
         frontier_only: Whether only frontier models were included
@@ -421,19 +422,20 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
     if show_predicted_frontier:
         add_predicted_frontiers(ax, df_plot, model, frequency='MS')
 
-    # Add ECI labels to each point
-    for _, row in df_plot.iterrows():
-        ax.annotate(
-            f"{row['estimated_capability']:.2f}",
-            xy=(row['date_obj'], row['compute']),
-            xytext=(3, 3),
-            textcoords='offset points',
-            fontsize=7,
-            alpha=0.8,
-            bbox=dict(boxstyle='round,pad=0.3', facecolor='white',
-                     edgecolor='none', alpha=0.7),
-            zorder=4
-        )
+    # Add ECI labels to each point if requested
+    if label_points:
+        for _, row in df_plot.iterrows():
+            ax.annotate(
+                f"{row['estimated_capability']:.2f}",
+                xy=(row['date_obj'], row['compute']),
+                xytext=(3, 3),
+                textcoords='offset points',
+                fontsize=7,
+                alpha=0.8,
+                bbox=dict(boxstyle='round,pad=0.3', facecolor='white',
+                         edgecolor='none', alpha=0.7),
+                zorder=4
+            )
 
     # Format y-axis as log scale
     ax.set_yscale('log')

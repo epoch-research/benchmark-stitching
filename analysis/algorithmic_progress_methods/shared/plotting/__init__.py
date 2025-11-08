@@ -24,6 +24,11 @@ from .diagnostics import (
     plot_coefficient_correlation
 )
 
+from .unified_plots import (
+    plot_compute_vs_date_with_regressions,
+    plot_compute_vs_date_scatter_only
+)
+
 __all__ = [
     'setup_date_axis',
     'apply_plot_style',
@@ -36,5 +41,7 @@ __all__ = [
     'plot_coefficient_distributions',
     'plot_prediction_uncertainty',
     'plot_residuals_with_ci',
-    'plot_coefficient_correlation'
+    'plot_coefficient_correlation',
+    'plot_compute_vs_date_with_regressions',
+    'plot_compute_vs_date_scatter_only'
 ]

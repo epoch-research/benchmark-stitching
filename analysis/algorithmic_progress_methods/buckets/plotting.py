@@ -12,7 +12,7 @@ import matplotlib.dates as mdates
 from shared.plotting import (
     setup_date_axis, apply_plot_style, save_figure,
     plot_histogram_with_stats, plot_bootstrap_distribution,
-    plot_multiplier_distribution
+    plot_multiplier_distribution, plot_compute_vs_date_with_regressions
 )
 
 
@@ -155,21 +155,26 @@ def plot_capability_gains_results(results_df, bucket_data, output_dir, suffix=""
 
 
 def plot_all_bucket_regressions(df, results_df, bucket_data, output_dir, suffix="", label_points=False):
-    """Plot all bucket regression lines on a single plot."""
+    """Plot all bucket regression lines on a single plot using unified plotting."""
     if len(results_df) == 0 or len(bucket_data) == 0:
         print("No results to plot for all bucket regressions")
         return
 
     fig, ax = plt.subplots(figsize=(14, 10))
 
-    date_min = df['date_obj'].min()
-    date_max = df['date_obj'].max()
-    date_range = pd.date_range(date_min, date_max, periods=100)
-    date_numeric = (date_range - pd.Timestamp('2020-01-01')).total_seconds() / (365.25 * 24 * 3600)
+    # Prepare data for unified plotting function
+    # Combine all SOTA points with bucket information
+    all_df_parts = []
+    for bucket_info in bucket_data:
+        df_sota = bucket_info['df_sota'].copy()
+        df_sota['bucket_center'] = bucket_info['bucket_center']
+        all_df_parts.append(df_sota)
 
-    colors = plt.cm.viridis(np.linspace(0, 1, len(bucket_data)))
+    df_combined = pd.concat(all_df_parts, ignore_index=True)
 
-    for i, (bucket_info, color) in enumerate(zip(bucket_data, colors)):
+    # Prepare regression line data
+    regression_lines = []
+    for bucket_info in bucket_data:
         bucket_center = bucket_info['bucket_center']
         df_sota = bucket_info['df_sota']
         bootstrap_results = bucket_info['bootstrap_results']
@@ -177,38 +182,34 @@ def plot_all_bucket_regressions(df, results_df, bucket_data, output_dir, suffix=
         slope = result_row['slope_oom_per_year']
         intercept = result_row['intercept']
 
-        log_compute_fit = slope * date_numeric + intercept
-        ax.plot(date_range, log_compute_fit, color=color, linewidth=2.5, alpha=0.8,
-               label=f'ECI={bucket_center:.2f}: {-slope:.3f} OOMs/yr ({10**(-slope):.1f}× reduction)')
+        # Create label with reduction info
+        reduction_multiplier = 10**(-slope)
+        label = (f'ECI={bucket_center:.2f}: {-slope:.3f} OOMs/yr '
+                f'({reduction_multiplier:.1f}× reduction)')
 
-        # Bootstrap uncertainty
-        slope_ci = bootstrap_results['slope_ci']
-        intercept_mean = bootstrap_results['intercept_mean']
-        log_compute_ci_lower = slope_ci[0] * date_numeric + intercept_mean
-        log_compute_ci_upper = slope_ci[1] * date_numeric + intercept_mean
-        ax.fill_between(date_range, log_compute_ci_lower, log_compute_ci_upper,
-                       color=color, alpha=0.15)
+        regression_lines.append({
+            'slope': slope,
+            'intercept': intercept,
+            'label': label,
+            'df_sota': df_sota,
+            'bootstrap_slopes': bootstrap_results['slopes'],
+            'bootstrap_intercepts': np.full(len(bootstrap_results['slopes']),
+                                           bootstrap_results['intercept_mean'])
+        })
 
-        ax.scatter(df_sota['date_obj'], df_sota['log_compute'],
-                  color=color, s=80, alpha=0.7, edgecolors='black', linewidth=0.5, zorder=3)
-
-        if label_points:
-            for _, row in df_sota.iterrows():
-                ax.annotate(f"{row['model']}\nECI={row['estimated_capability']:.2f}",
-                           xy=(row['date_obj'], row['log_compute']),
-                           xytext=(5, 5), textcoords='offset points',
-                           fontsize=7, alpha=0.8,
-                           bbox=dict(boxstyle='round,pad=0.3', facecolor=color, alpha=0.3, edgecolor='none'))
-
-    setup_date_axis(ax)
-    apply_plot_style(ax,
-                    title='Compute Reduction at Fixed Capability Levels\nAll ECI Buckets with Bootstrap Uncertainty (95% CI)',
-                    xlabel='Release Date', ylabel='log₁₀(Training Compute)',
-                    legend=True, legend_kwargs={'fontsize': 9, 'ncol': 1})
+    # Use unified plotting function
+    plot_compute_vs_date_with_regressions(
+        ax, df_combined, regression_lines,
+        label_points=label_points,
+        label_format='box',
+        colormap='viridis',
+        title='Compute Reduction at Fixed Capability Levels\nAll ECI Buckets',
+        show_uncertainty=False
+    )
 
     plt.tight_layout()
     save_figure(fig, output_dir / f"all_bucket_regressions_compute_reduction{suffix}")
-    print(f"\nAll bucket regressions plot saved")
+    print("\nAll bucket regressions plot saved")
     plt.close()
 
 
@@ -233,6 +234,7 @@ def plot_bootstrap_distributions(results_df, bucket_data, output_dir, suffix="")
               label=f'Mean: {-slopes.mean():.3f} OOMs/yr')
     apply_plot_style(ax, title='Compute Reduction with 95% Bootstrap CI\n(All ECI Buckets)',
                     xlabel='Bucket Index', ylabel='Compute Reduction (OOMs/year)', legend=True)
+    ax.set_ylim(0, 10)
 
     # 2. Combined bootstrap distribution
     ax = axes[0, 1]
@@ -244,12 +246,15 @@ def plot_bootstrap_distributions(results_df, bucket_data, output_dir, suffix="")
     plot_bootstrap_distribution(ax, all_bootstrap_slopes,
                                xlabel='Compute Reduction (OOMs/year)',
                                title='Pooled Bootstrap Distribution\n(All Buckets Combined)')
+    ax.set_xlim(0, 10)
 
     # 3. Compute reduction as multiplier
     ax = axes[1, 0]
     plot_multiplier_distribution(ax, all_bootstrap_slopes,
                                 xlabel='Compute Reduction Multiplier (×/year)',
                                 title='Algorithmic Progress as Compute Multiplier\n(1 year = X× more compute)')
+    # Set reasonable x-axis limit (10^0 to 10^10 = 1x to 10 billion x)
+    ax.set_xlim(1, 10**10)
 
     # 4. Slope vs bucket center
     ax = axes[1, 1]
@@ -264,6 +269,7 @@ def plot_bootstrap_distributions(results_df, bucket_data, output_dir, suffix="")
               label=f'Mean: {-slopes.mean():.3f} OOMs/yr')
     apply_plot_style(ax, title='Compute Reduction vs Capability Level\n(with 95% Bootstrap CI)',
                     xlabel='ECI Bucket Center', ylabel='Compute Reduction (OOMs/year)', legend=True)
+    ax.set_ylim(0, 10)
 
     plt.tight_layout()
     save_figure(fig, output_dir / f"bootstrap_distributions_compute_reduction{suffix}")
@@ -299,15 +305,28 @@ def plot_bucket_size_sensitivity(compute_reduction_df, capability_gains_df, outp
 
     fig, axes = plt.subplots(2, 2, figsize=(16, 12))
 
-    # 1. Compute reduction: mean slope vs bucket size
+    # 1. Compute reduction: mean, median, std vs bucket size
     if len(compute_reduction_df) > 0:
         ax = axes[0, 0]
         # Convert slopes to compute reduction multipliers
-        compute_reductions = 10**(-compute_reduction_df['mean_slope'])
-        ax.plot(compute_reduction_df['bucket_size'], compute_reductions,
-                'o-', markersize=10, linewidth=2.5, color='steelblue')
-        ax.axhline(compute_reductions.mean(), color='red', linestyle='--',
-                   linewidth=2, alpha=0.7, label=f'Mean: {compute_reductions.mean():.1f}× per year')
+        mean_reductions = 10**(-compute_reduction_df['mean_slope'])
+        median_reductions = 10**(-compute_reduction_df['median_slope'])
+        std_reductions = compute_reduction_df['std_slope']
+
+        # Plot mean and median
+        ax.plot(compute_reduction_df['bucket_size'], mean_reductions,
+                'o-', markersize=10, linewidth=2.5, color='steelblue', label='Mean')
+        ax.plot(compute_reduction_df['bucket_size'], median_reductions,
+                's-', markersize=10, linewidth=2.5, color='forestgreen', label='Median')
+
+        # Add shaded region for ±1 standard deviation around mean
+        mean_slopes = compute_reduction_df['mean_slope']
+        upper_reductions = 10**(-(mean_slopes - std_reductions))
+        lower_reductions = 10**(-(mean_slopes + std_reductions))
+        ax.fill_between(compute_reduction_df['bucket_size'],
+                        lower_reductions, upper_reductions,
+                        alpha=0.2, color='steelblue', label='±1 Std Dev')
+
         apply_plot_style(ax,
                         title='Compute Reduction vs ECI Bucket Size',
                         xlabel='ECI Bucket Size (capability units)',
@@ -320,24 +339,36 @@ def plot_bucket_size_sensitivity(compute_reduction_df, capability_gains_df, outp
     if len(compute_reduction_df) > 0:
         ax = axes[0, 1]
         ax.plot(compute_reduction_df['bucket_size'], compute_reduction_df['n_buckets'],
-                'o-', markersize=10, linewidth=2.5, color='steelblue', label='Buckets')
+                'o-', markersize=10, linewidth=2.5, color='steelblue', label='Number of Buckets')
         ax.plot(compute_reduction_df['bucket_size'], compute_reduction_df['total_models'],
-                's-', markersize=10, linewidth=2.5, color='orange', label='SOTA models', alpha=0.7)
+                's-', markersize=10, linewidth=2.5, color='orange',
+                label='Total Models Used in Regression\n(SOTA in compute efficiency)', alpha=0.7)
         apply_plot_style(ax,
-                        title='Bucket Count & SOTA Models vs ECI Bucket Size',
+                        title='Data Coverage vs ECI Bucket Size',
                         xlabel='ECI Bucket Size (capability units)',
                         ylabel='Count',
                         legend=True)
         ax.grid(True, alpha=0.3)
 
-    # 3. Capability gains: mean slope vs bucket size
+    # 3. Capability gains: mean, median, std vs bucket size
     if len(capability_gains_df) > 0:
         ax = axes[1, 0]
-        ax.plot(capability_gains_df['bucket_size'], capability_gains_df['mean_slope'],
-                'o-', markersize=10, linewidth=2.5, color='forestgreen')
-        ax.axhline(capability_gains_df['mean_slope'].mean(), color='red', linestyle='--',
-                   linewidth=2, alpha=0.7,
-                   label=f'Mean: {capability_gains_df["mean_slope"].mean():.2f} ECI/year')
+        mean_gains = capability_gains_df['mean_slope']
+        median_gains = capability_gains_df['median_slope']
+        std_gains = capability_gains_df['std_slope']
+
+        # Plot mean and median
+        ax.plot(capability_gains_df['bucket_size'], mean_gains,
+                'o-', markersize=10, linewidth=2.5, color='steelblue', label='Mean')
+        ax.plot(capability_gains_df['bucket_size'], median_gains,
+                's-', markersize=10, linewidth=2.5, color='forestgreen', label='Median')
+
+        # Add shaded region for ±1 standard deviation around mean
+        ax.fill_between(capability_gains_df['bucket_size'],
+                        mean_gains - std_gains,
+                        mean_gains + std_gains,
+                        alpha=0.2, color='steelblue', label='±1 Std Dev')
+
         apply_plot_style(ax,
                         title='Capability Gain vs Compute Bucket Size',
                         xlabel='Compute Bucket Size (log₁₀(FLOP) units)',
@@ -349,11 +380,12 @@ def plot_bucket_size_sensitivity(compute_reduction_df, capability_gains_df, outp
     if len(capability_gains_df) > 0:
         ax = axes[1, 1]
         ax.plot(capability_gains_df['bucket_size'], capability_gains_df['n_buckets'],
-                'o-', markersize=10, linewidth=2.5, color='forestgreen', label='Buckets')
+                'o-', markersize=10, linewidth=2.5, color='forestgreen', label='Number of Buckets')
         ax.plot(capability_gains_df['bucket_size'], capability_gains_df['total_models'],
-                's-', markersize=10, linewidth=2.5, color='orange', label='SOTA models', alpha=0.7)
+                's-', markersize=10, linewidth=2.5, color='orange',
+                label='Total Models Used in Regression\n(SOTA in capability)', alpha=0.7)
         apply_plot_style(ax,
-                        title='Bucket Count & SOTA Models vs Compute Bucket Size',
+                        title='Data Coverage vs Compute Bucket Size',
                         xlabel='Compute Bucket Size (log₁₀(FLOP) units)',
                         ylabel='Count',
                         legend=True)
