@@ -34,6 +34,7 @@ from plotting import (
     plot_capability_gains_results,
     plot_all_bucket_regressions,
     plot_bootstrap_distributions,
+    plot_bucket_size_sensitivity,
     save_results
 )
 
@@ -120,6 +121,10 @@ def main():
             cr_df.to_csv(output_dir / f"bucket_size_sensitivity_compute_reduction{suffix}.csv", index=False)
         if len(cg_df) > 0:
             cg_df.to_csv(output_dir / f"bucket_size_sensitivity_capability_gains{suffix}.csv", index=False)
+
+        # Create sensitivity plot
+        print("\nCreating bucket size sensitivity plot...")
+        plot_bucket_size_sensitivity(cr_df, cg_df, output_dir, suffix)
 
         print("\n" + "="*70)
         print("SENSITIVITY ANALYSIS COMPLETE")

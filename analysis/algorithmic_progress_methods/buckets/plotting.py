@@ -282,3 +282,84 @@ def save_results(compute_reduction_df, capability_gains_df, output_dir, suffix="
         output_path = output_dir / f"capability_gains_results{suffix}.csv"
         capability_gains_df.to_csv(output_path, index=False)
         print(f"Capability gains results saved to: {output_path}")
+
+
+def plot_bucket_size_sensitivity(compute_reduction_df, capability_gains_df, output_dir, suffix=""):
+    """Create visualization showing how results vary with bucket size.
+
+    Args:
+        compute_reduction_df: DataFrame with sensitivity results for compute reduction
+        capability_gains_df: DataFrame with sensitivity results for capability gains
+        output_dir: Directory to save plots
+        suffix: Filename suffix
+    """
+    if len(compute_reduction_df) == 0 and len(capability_gains_df) == 0:
+        print("No sensitivity data to plot")
+        return
+
+    fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+
+    # 1. Compute reduction: mean slope vs bucket size
+    if len(compute_reduction_df) > 0:
+        ax = axes[0, 0]
+        # Convert slopes to compute reduction multipliers
+        compute_reductions = 10**(-compute_reduction_df['mean_slope'])
+        ax.plot(compute_reduction_df['bucket_size'], compute_reductions,
+                'o-', markersize=10, linewidth=2.5, color='steelblue')
+        ax.axhline(compute_reductions.mean(), color='red', linestyle='--',
+                   linewidth=2, alpha=0.7, label=f'Mean: {compute_reductions.mean():.1f}× per year')
+        apply_plot_style(ax,
+                        title='Compute Reduction vs ECI Bucket Size',
+                        xlabel='ECI Bucket Size (capability units)',
+                        ylabel='Compute Reduction (× per year)',
+                        legend=True)
+        ax.set_yscale('log')
+        ax.grid(True, which='both', alpha=0.3)
+
+    # 2. Compute reduction: number of buckets vs bucket size
+    if len(compute_reduction_df) > 0:
+        ax = axes[0, 1]
+        ax.plot(compute_reduction_df['bucket_size'], compute_reduction_df['n_buckets'],
+                'o-', markersize=10, linewidth=2.5, color='steelblue', label='Buckets')
+        ax.plot(compute_reduction_df['bucket_size'], compute_reduction_df['total_models'],
+                's-', markersize=10, linewidth=2.5, color='orange', label='SOTA models', alpha=0.7)
+        apply_plot_style(ax,
+                        title='Bucket Count & SOTA Models vs ECI Bucket Size',
+                        xlabel='ECI Bucket Size (capability units)',
+                        ylabel='Count',
+                        legend=True)
+        ax.grid(True, alpha=0.3)
+
+    # 3. Capability gains: mean slope vs bucket size
+    if len(capability_gains_df) > 0:
+        ax = axes[1, 0]
+        ax.plot(capability_gains_df['bucket_size'], capability_gains_df['mean_slope'],
+                'o-', markersize=10, linewidth=2.5, color='forestgreen')
+        ax.axhline(capability_gains_df['mean_slope'].mean(), color='red', linestyle='--',
+                   linewidth=2, alpha=0.7,
+                   label=f'Mean: {capability_gains_df["mean_slope"].mean():.2f} ECI/year')
+        apply_plot_style(ax,
+                        title='Capability Gain vs Compute Bucket Size',
+                        xlabel='Compute Bucket Size (log₁₀(FLOP) units)',
+                        ylabel='Capability Gain (ECI units per year)',
+                        legend=True)
+        ax.grid(True, alpha=0.3)
+
+    # 4. Capability gains: number of buckets vs bucket size
+    if len(capability_gains_df) > 0:
+        ax = axes[1, 1]
+        ax.plot(capability_gains_df['bucket_size'], capability_gains_df['n_buckets'],
+                'o-', markersize=10, linewidth=2.5, color='forestgreen', label='Buckets')
+        ax.plot(capability_gains_df['bucket_size'], capability_gains_df['total_models'],
+                's-', markersize=10, linewidth=2.5, color='orange', label='SOTA models', alpha=0.7)
+        apply_plot_style(ax,
+                        title='Bucket Count & SOTA Models vs Compute Bucket Size',
+                        xlabel='Compute Bucket Size (log₁₀(FLOP) units)',
+                        ylabel='Count',
+                        legend=True)
+        ax.grid(True, alpha=0.3)
+
+    plt.tight_layout()
+    save_figure(fig, output_dir / f"bucket_size_sensitivity{suffix}")
+    print(f"\nBucket size sensitivity plot saved to: {output_dir / f'bucket_size_sensitivity{suffix}.png'}")
+    plt.close()
