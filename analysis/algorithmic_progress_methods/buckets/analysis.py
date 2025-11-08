@@ -345,16 +345,16 @@ def bucket_size_sensitivity_analysis(df, eci_bucket_sizes=None, compute_bucket_s
     # Compute bucket sizes from data if not provided
     if eci_bucket_sizes is None:
         eci_range = df['estimated_capability'].max() - df['estimated_capability'].min()
-        # Test bucket sizes from 10% to 50% of the range
-        eci_bucket_sizes = np.linspace(0.1 * eci_range, 0.5 * eci_range, n_bucket_sizes)
+        # Test bucket sizes from 5% to 50% of the range
+        eci_bucket_sizes = np.linspace(0.05 * eci_range, 0.5 * eci_range, n_bucket_sizes)
         print(f"\nECI range: {df['estimated_capability'].min():.2f} to {df['estimated_capability'].max():.2f}")
         print(f"ECI total range: {eci_range:.2f}")
         print(f"Auto-computed ECI bucket sizes: {[f'{x:.2f}' for x in eci_bucket_sizes]}")
 
     if compute_bucket_sizes is None:
         log_compute_range = df['log_compute'].max() - df['log_compute'].min()
-        # Test bucket sizes from 10% to 50% of the range
-        compute_bucket_sizes = np.linspace(0.1 * log_compute_range, 0.5 * log_compute_range, n_bucket_sizes)
+        # Test bucket sizes from 5% to 50% of the range
+        compute_bucket_sizes = np.linspace(0.05 * log_compute_range, 0.5 * log_compute_range, n_bucket_sizes)
         print(f"\nlog₁₀(Compute) range: {df['log_compute'].min():.2f} to {df['log_compute'].max():.2f}")
         print(f"log₁₀(Compute) total range: {log_compute_range:.2f}")
         print(f"Auto-computed compute bucket sizes: {[f'{x:.2f}' for x in compute_bucket_sizes]}")
