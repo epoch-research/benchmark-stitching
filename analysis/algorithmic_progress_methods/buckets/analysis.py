@@ -17,6 +17,26 @@ from shared.data_loading import load_model_capabilities_and_compute
 from shared.bootstrap import bootstrap_scipy_regression
 
 
+def generate_bucket_centers(range_min, range_max, bucket_size):
+    """Return bucket centers that fully cover the observed range.
+
+    np.arange excludes the stop value, so we extend the stop far enough to ensure
+    the final bucket includes range_max and backfill a single center when the
+    data are narrower than the bucket width.
+    """
+    if bucket_size <= 0:
+        raise ValueError("bucket_size must be positive")
+
+    start = range_min + bucket_size / 2
+    stop = range_max + bucket_size / 2 + np.finfo(float).eps
+    centers = np.arange(start, stop, bucket_size)
+
+    if len(centers) == 0:
+        centers = np.array([(range_min + range_max) / 2])
+
+    return centers
+
+
 def find_sota_in_compute_efficiency_at_release(df_bucket):
     """Identify models that were SOTA in compute efficiency at their release date.
 
@@ -98,12 +118,7 @@ def analyze_compute_reduction(df, bucket_size_oom=0.3, min_models_per_bucket=3, 
     eci_min = df['estimated_capability'].min()
     eci_max = df['estimated_capability'].max()
 
-    # Create bucket centers
-    bucket_centers = np.arange(
-        eci_min + bucket_size_oom/2,
-        eci_max,
-        bucket_size_oom
-    )
+    bucket_centers = generate_bucket_centers(eci_min, eci_max, bucket_size_oom)
 
     results = []
     bucket_data = []
@@ -218,12 +233,7 @@ def analyze_capability_gains(df, bucket_size_oom=0.3, min_models_per_bucket=3, n
     log_compute_min = df['log_compute'].min()
     log_compute_max = df['log_compute'].max()
 
-    # Create bucket centers
-    bucket_centers = np.arange(
-        log_compute_min + bucket_size_oom/2,
-        log_compute_max,
-        bucket_size_oom
-    )
+    bucket_centers = generate_bucket_centers(log_compute_min, log_compute_max, bucket_size_oom)
 
     results = []
     bucket_data = []
@@ -369,7 +379,7 @@ def bucket_size_sensitivity_analysis(df, eci_bucket_sizes=None, compute_bucket_s
                 'median_slope': results_df['slope_oom_per_year'].median(),
                 'std_slope': results_df['slope_oom_per_year'].std(),
                 'n_buckets': len(results_df),
-                'total_models': results_df['n_models_sota'].sum()
+                'total_models': results_df['n_models_total'].sum()
             })
 
     # Sweep over compute bucket sizes for capability gains
@@ -392,7 +402,7 @@ def bucket_size_sensitivity_analysis(df, eci_bucket_sizes=None, compute_bucket_s
                 'median_slope': results_df['slope_eci_per_year'].median(),
                 'std_slope': results_df['slope_eci_per_year'].std(),
                 'n_buckets': len(results_df),
-                'total_models': results_df['n_models_sota'].sum()
+                'total_models': results_df['n_models_total'].sum()
             })
 
     return pd.DataFrame(compute_reduction_results), pd.DataFrame(capability_gains_results)
