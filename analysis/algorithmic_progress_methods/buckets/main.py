@@ -18,6 +18,7 @@ from shared.data_loading import load_model_capabilities_and_compute
 from shared.cli_utils import (
     add_distilled_filter_args,
     add_data_source_args,
+    add_date_filter_args,
     validate_distilled_args,
     generate_output_suffix,
     create_output_directory,
@@ -55,6 +56,7 @@ def main():
 
     add_distilled_filter_args(parser)
     add_data_source_args(parser)
+    add_date_filter_args(parser)
 
     parser.add_argument('--sweep-bucket-sizes', action='store_true',
                        help='Perform sensitivity analysis by sweeping over bucket sizes')
@@ -69,7 +71,7 @@ def main():
     parser.add_argument('--run-hierarchical-median', action='store_true',
                        help='Estimate pooled median compute reduction via hierarchical model and plot diagnostics')
     parser.add_argument('--hierarchical-bucket-sizes', type=str, default=None,
-                       help='Comma-separated ECI bucket sizes for the hierarchical sweep (default: auto 5%-25% of range)')
+                       help='Comma-separated ECI bucket sizes for the hierarchical sweep (default: auto 5%%-25%% of range)')
     parser.add_argument('--hierarchical-n-bucket-sizes', type=int, default=20,
                        help='Number of auto-generated bucket sizes for the hierarchical sweep')
     parser.add_argument('--hierarchical-min-models', type=int, default=None,
@@ -105,7 +107,8 @@ def main():
     df = load_model_capabilities_and_compute(
         use_website_data=args.use_website_data,
         exclude_distilled=args.exclude_distilled,
-        include_low_confidence=args.include_low_confidence
+        include_low_confidence=args.include_low_confidence,
+        min_release_date=args.min_release_date
     )
 
     if df is None or len(df) == 0:
@@ -117,14 +120,16 @@ def main():
         "buckets",
         exclude_distilled=args.exclude_distilled,
         include_low_confidence=args.include_low_confidence,
-        use_website_data=args.use_website_data
+        use_website_data=args.use_website_data,
+        min_release_date=args.min_release_date
     )
 
     # Generate suffix for file names
     suffix = generate_output_suffix(
         exclude_distilled=args.exclude_distilled,
         include_low_confidence=args.include_low_confidence,
-        use_website_data=args.use_website_data
+        use_website_data=args.use_website_data,
+        min_release_date=args.min_release_date
     )
 
     # If sweep mode, run sensitivity analysis
@@ -215,7 +220,8 @@ def main():
             title_suffix = generate_title_suffix(
                 exclude_distilled=args.exclude_distilled,
                 include_low_confidence=args.include_low_confidence,
-                use_website_data=args.use_website_data
+                use_website_data=args.use_website_data,
+                min_release_date=args.min_release_date
             )
             plot_path = generate_hierarchical_plots(
                 summary_path=hier_results["summary_path"],

@@ -210,7 +210,8 @@ def add_predicted_frontiers(ax, df_plot, model, frequency='MS'):
 
 def plot_uncertainty_diagnostics(df_plot, bootstrap_results, output_dir,
                                 exclude_distilled=False, include_low_confidence=False,
-                                frontier_only=False, use_website_data=False):
+                                frontier_only=False, use_website_data=False,
+                                min_release_date=None):
     """Create diagnostic plots for bootstrap uncertainty.
 
     Args:
@@ -221,6 +222,7 @@ def plot_uncertainty_diagnostics(df_plot, bootstrap_results, output_dir,
         include_low_confidence: Whether low-confidence distilled models were excluded
         frontier_only: Whether only frontier models were included
         use_website_data: Whether website data was used
+        min_release_date: Minimum release date filter (if applied)
     """
     suffix_parts = []
     if exclude_distilled:
@@ -229,6 +231,8 @@ def plot_uncertainty_diagnostics(df_plot, bootstrap_results, output_dir,
         suffix_parts.append("frontier_only")
     if use_website_data:
         suffix_parts.append("website")
+    if min_release_date:
+        suffix_parts.append(f"from_{min_release_date}")
 
     suffix = "_" + "_".join(suffix_parts) if suffix_parts else ""
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
@@ -376,7 +380,8 @@ def plot_uncertainty_diagnostics(df_plot, bootstrap_results, output_dir,
 def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
                     show_predicted_frontier=False, label_points=False,
                     exclude_distilled=False, include_low_confidence=False,
-                    frontier_only=False, use_website_data=False):
+                    frontier_only=False, use_website_data=False,
+                    min_release_date=None):
     """Create the main compute vs date plot with ECI contours.
 
     Args:
@@ -390,6 +395,7 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
         include_low_confidence: Whether low-confidence distilled models were excluded
         frontier_only: Whether only frontier models were included
         use_website_data: Whether website data was used
+        min_release_date: Minimum release date filter (if applied)
     """
     # Create the main plot
     fig, ax = plt.subplots(figsize=(14, 9))
@@ -425,8 +431,11 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
     # Add ECI labels to each point if requested
     if label_points:
         for _, row in df_plot.iterrows():
+            # Use 'Model' if available, otherwise fall back to 'model'
+            model_name = row.get('Model', row.get('model', 'Unknown'))
+            label_text = f"{model_name}\n{row['estimated_capability']:.2f}"
             ax.annotate(
-                f"{row['estimated_capability']:.2f}",
+                label_text,
                 xy=(row['date_obj'], row['compute']),
                 xytext=(3, 3),
                 textcoords='offset points',
@@ -460,6 +469,8 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
         title_suffix_parts.append('frontier models only')
     if use_website_data:
         title_suffix_parts.append('website data')
+    if min_release_date:
+        title_suffix_parts.append(f'models from {min_release_date}+')
 
     title_suffix = ' (' + ', '.join(title_suffix_parts) + ')' if title_suffix_parts else ''
 
@@ -489,6 +500,8 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
         suffix_parts.append("frontier_only")
     if use_website_data:
         suffix_parts.append("website")
+    if min_release_date:
+        suffix_parts.append(f"from_{min_release_date}")
 
     suffix = "_" + "_".join(suffix_parts) if suffix_parts else ""
     output_path = output_dir / f"compute_vs_date_with_eci{suffix}.png"

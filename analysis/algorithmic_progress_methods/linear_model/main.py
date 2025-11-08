@@ -17,12 +17,13 @@ import argparse
 from shared.cli_utils import (
     add_distilled_filter_args,
     add_data_source_args,
+    add_date_filter_args,
     validate_distilled_args,
     create_output_directory
 )
 
 from analysis import (
-    load_or_fit_model,
+    load_and_filter_data,
     fit_linear_predictor
 )
 
@@ -40,9 +41,8 @@ def main():
 
     add_distilled_filter_args(parser)
     add_data_source_args(parser)
+    add_date_filter_args(parser)
 
-    parser.add_argument('--force-refit', action='store_true',
-                       help='Force refitting (ignore cache)')
     parser.add_argument('--show-predicted-frontier', action='store_true',
                        help='Show the Pareto frontier predicted by the linear model for each month')
     parser.add_argument('--frontier-only', action='store_true',
@@ -58,13 +58,13 @@ def main():
     except argparse.ArgumentTypeError as e:
         parser.error(str(e))
 
-    # Load or fit model (use cache by default)
-    df_plot = load_or_fit_model(
-        force_refit=args.force_refit,
+    # Load and filter data
+    df_plot = load_and_filter_data(
         exclude_distilled=args.exclude_distilled,
         include_low_confidence=args.include_low_confidence,
         frontier_only=args.frontier_only,
-        use_website_data=args.use_website_data
+        use_website_data=args.use_website_data,
+        min_release_date=args.min_release_date
     )
 
     if df_plot is None:
@@ -80,7 +80,8 @@ def main():
         exclude_distilled=args.exclude_distilled,
         include_low_confidence=args.include_low_confidence,
         frontier_only=args.frontier_only,
-        use_website_data=args.use_website_data
+        use_website_data=args.use_website_data,
+        min_release_date=args.min_release_date
     )
 
     # Create uncertainty diagnostic plots
@@ -88,7 +89,8 @@ def main():
     plot_uncertainty_diagnostics(
         df_plot, bootstrap_results, output_dir,
         args.exclude_distilled, args.include_low_confidence,
-        args.frontier_only, args.use_website_data
+        args.frontier_only, args.use_website_data,
+        args.min_release_date
     )
 
     # Create main plot
@@ -100,7 +102,8 @@ def main():
         exclude_distilled=args.exclude_distilled,
         include_low_confidence=args.include_low_confidence,
         frontier_only=args.frontier_only,
-        use_website_data=args.use_website_data
+        use_website_data=args.use_website_data,
+        min_release_date=args.min_release_date
     )
 
     # Print summary statistics

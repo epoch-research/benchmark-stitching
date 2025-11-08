@@ -98,6 +98,32 @@ def filter_distilled_models(df, exclude_distilled=False, include_low_confidence=
     return df
 
 
+def filter_by_release_date(df, min_release_date=None):
+    """Filter models by release date.
+
+    Args:
+        df: DataFrame with 'date_obj' column
+        min_release_date: Minimum release date (string in YYYY-MM-DD format or datetime)
+
+    Returns:
+        Filtered DataFrame
+    """
+    if min_release_date is None:
+        return df
+
+    print(f"\nFiltering models released on or after {min_release_date}...")
+    min_date_obj = pd.to_datetime(min_release_date)
+
+    before_count = len(df)
+    df = df[df['date_obj'] >= min_date_obj].copy()
+    after_count = len(df)
+
+    print(f"Excluded {before_count - after_count} models released before {min_release_date}")
+    print(f"Remaining models: {after_count}")
+
+    return df
+
+
 def merge_compute_data(df, compute_csv="data/all_ai_models.csv"):
     """Merge compute data from PCD dataset.
 
@@ -170,7 +196,8 @@ def prepare_for_analysis(df, reference_date='2020-01-01'):
 def load_model_capabilities_and_compute(use_website_data=False,
                                        exclude_distilled=False,
                                        include_low_confidence=False,
-                                       filter_complete=True):
+                                       filter_complete=True,
+                                       min_release_date=None):
     """Load ECI scores and merge with compute data.
 
     This is the main entry point for loading data for algorithmic progress analysis.
@@ -180,6 +207,7 @@ def load_model_capabilities_and_compute(use_website_data=False,
         exclude_distilled: If True, exclude distilled models
         include_low_confidence: If True, also exclude low-confidence distilled models
         filter_complete: If True, only return models with complete data
+        min_release_date: If provided, only include models released on or after this date
 
     Returns:
         DataFrame with all necessary columns for analysis, or None on error
@@ -190,6 +218,9 @@ def load_model_capabilities_and_compute(use_website_data=False,
 
         # Filter distilled models if requested
         eci_df = filter_distilled_models(eci_df, exclude_distilled, include_low_confidence)
+
+        # Filter by release date if requested
+        eci_df = filter_by_release_date(eci_df, min_release_date)
 
         # Verify anchor models if present
         anchor_models = eci_df[eci_df['model'].isin([
@@ -207,6 +238,9 @@ def load_model_capabilities_and_compute(use_website_data=False,
 
         # Filter distilled models if requested
         eci_df = filter_distilled_models(eci_df, exclude_distilled, include_low_confidence)
+
+        # Filter by release date if requested
+        eci_df = filter_by_release_date(eci_df, min_release_date)
 
         # Verify anchor models
         anchor_models = eci_df[eci_df['model'].isin([

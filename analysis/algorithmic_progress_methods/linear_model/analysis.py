@@ -11,7 +11,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
-import pickle
 
 from shared.data_loading import load_model_capabilities_and_compute, prepare_for_analysis
 from shared.bootstrap import bootstrap_linear_regression, compute_tradeoff_from_coefficients
@@ -54,53 +53,30 @@ def compute_pareto_frontier_at_release(df):
     return result
 
 
-def load_or_fit_model(cache_file="outputs/algorithmic_progress_methods/linear_model/fitted_capabilities_cache.pkl",
-                      force_refit=False,
-                      exclude_distilled=False,
-                      include_low_confidence=False,
-                      frontier_only=False,
-                      use_website_data=False):
-    """Load ECI scores and merge with compute data, with caching.
+def load_and_filter_data(exclude_distilled=False,
+                         include_low_confidence=False,
+                         frontier_only=False,
+                         use_website_data=False,
+                         min_release_date=None):
+    """Load ECI scores and merge with compute data.
 
     Args:
-        cache_file: Path to cache file
-        force_refit: If True, ignore cache and refit
         exclude_distilled: If True, exclude distilled models
         include_low_confidence: If True, also exclude low-confidence distilled models
         frontier_only: If True, only include models on Pareto frontier at release
         use_website_data: If True, load from website data
+        min_release_date: If provided, only include models released on or after this date
 
     Returns:
         DataFrame with complete data for plotting, or None on error
     """
-    # Adjust cache file based on options
-    suffix_parts = []
-    if exclude_distilled:
-        suffix_parts.append("no_distilled_all" if include_low_confidence else "no_distilled")
-    if frontier_only:
-        suffix_parts.append("frontier_only")
-    if use_website_data:
-        suffix_parts.append("website")
-
-    if suffix_parts:
-        suffix = "_" + "_".join(suffix_parts)
-        cache_file = cache_file.replace(".pkl", f"{suffix}.pkl")
-
-    cache_path = Path(cache_file)
-
-    if cache_path.exists() and not force_refit:
-        print(f"Loading cached model from {cache_path}...")
-        with open(cache_path, 'rb') as f:
-            cached_data = pickle.load(f)
-        print(f"Loaded cached data for {len(cached_data['df_plot'])} models")
-        return cached_data['df_plot']
-
     # Load data
     df = load_model_capabilities_and_compute(
         use_website_data=use_website_data,
         exclude_distilled=exclude_distilled,
         include_low_confidence=include_low_confidence,
-        filter_complete=True
+        filter_complete=True,
+        min_release_date=min_release_date
     )
 
     if df is None:
@@ -120,12 +96,6 @@ def load_or_fit_model(cache_file="outputs/algorithmic_progress_methods/linear_mo
             for _, row in sample_models.iterrows():
                 print(f"  {row['Model']}: ECI={row['estimated_capability']:.2f}, "
                       f"Compute={row['compute']:.2e}, Date={row['date']}")
-
-    # Cache the results
-    cache_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(cache_path, 'wb') as f:
-        pickle.dump({'df_plot': df}, f)
-    print(f"Cached data saved to {cache_path}")
 
     return df
 
