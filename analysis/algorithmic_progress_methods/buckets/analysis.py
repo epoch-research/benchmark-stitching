@@ -29,20 +29,15 @@ def find_sota_in_compute_efficiency_at_release(df_bucket):
     Returns:
         DataFrame of SOTA models
     """
-    df_sorted = df_bucket.sort_values('date_obj').copy()
+    # Sort by date, then compute so the most compute-efficient model for a day comes first
+    df_sorted = df_bucket.sort_values(['date_obj', 'compute']).copy()
     sota_indices = []
+    best_compute_so_far = np.inf
 
     for idx, row in df_sorted.iterrows():
-        # Get all models released on or before this date in the bucket
-        earlier_or_same = df_sorted[df_sorted['date_obj'] <= row['date_obj']]
-
-        # Check if any earlier model had lower or equal compute
-        # (since we're in same ECI bucket, capability is approximately equal)
-        min_compute_so_far = earlier_or_same[earlier_or_same['date_obj'] < row['date_obj']]['compute'].min()
-
-        # If this is the first model or has lower compute than all previous, it's SOTA
-        if pd.isna(min_compute_so_far) or row['compute'] < min_compute_so_far:
+        if row['compute'] < best_compute_so_far:
             sota_indices.append(idx)
+            best_compute_so_far = row['compute']
 
     return df_sorted.loc[sota_indices]
 
@@ -59,19 +54,18 @@ def find_sota_in_capability_at_release(df_bucket):
     Returns:
         DataFrame of SOTA models
     """
-    df_sorted = df_bucket.sort_values('date_obj').copy()
+    # Sort by date, then capability so the most capable model for a day comes first
+    df_sorted = df_bucket.sort_values(
+        ['date_obj', 'estimated_capability'],
+        ascending=[True, False]
+    ).copy()
     sota_indices = []
+    best_capability_so_far = -np.inf
 
     for idx, row in df_sorted.iterrows():
-        # Get all models released on or before this date in the bucket
-        earlier_or_same = df_sorted[df_sorted['date_obj'] <= row['date_obj']]
-
-        # Check if any earlier model had higher or equal capability
-        max_capability_so_far = earlier_or_same[earlier_or_same['date_obj'] < row['date_obj']]['estimated_capability'].max()
-
-        # If this is the first model or has higher capability than all previous, it's SOTA
-        if pd.isna(max_capability_so_far) or row['estimated_capability'] > max_capability_so_far:
+        if row['estimated_capability'] > best_capability_so_far:
             sota_indices.append(idx)
+            best_capability_so_far = row['estimated_capability']
 
     return df_sorted.loc[sota_indices]
 
