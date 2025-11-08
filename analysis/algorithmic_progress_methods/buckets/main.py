@@ -20,7 +20,8 @@ from shared.cli_utils import (
     add_data_source_args,
     validate_distilled_args,
     generate_output_suffix,
-    create_output_directory
+    create_output_directory,
+    generate_title_suffix
 )
 
 from analysis import (
@@ -37,6 +38,8 @@ from plotting import (
     plot_bucket_size_sensitivity,
     save_results
 )
+from hierarchical_median import run as run_hierarchical_median
+from hierarchical_median_visualization import generate_plots as generate_hierarchical_plots
 
 
 def main():
@@ -63,6 +66,32 @@ def main():
                        help='Number of bucket sizes to test in sweep (default: 5)')
     parser.add_argument('--label-points', action='store_true',
                        help='Label data points with model names')
+    parser.add_argument('--run-hierarchical-median', action='store_true',
+                       help='Estimate pooled median compute reduction via hierarchical model and plot diagnostics')
+    parser.add_argument('--hierarchical-bucket-sizes', type=str, default=None,
+                       help='Comma-separated ECI bucket sizes for the hierarchical sweep (default: auto 5%-50% of range)')
+    parser.add_argument('--hierarchical-n-bucket-sizes', type=int, default=5,
+                       help='Number of auto-generated bucket sizes for the hierarchical sweep')
+    parser.add_argument('--hierarchical-min-models', type=int, default=None,
+                       help='Minimum SOTA models per bucket for the hierarchical analysis (default: --min-models)')
+    parser.add_argument('--hierarchical-n-bootstrap', type=int, default=1000,
+                       help='Bootstrap iterations per bucket within the hierarchical analysis')
+    parser.add_argument('--hierarchical-n-iter', type=int, default=20000,
+                       help='Total Gibbs iterations for the hierarchical sampler')
+    parser.add_argument('--hierarchical-burn-in', type=int, default=5000,
+                       help='Burn-in iterations for the hierarchical sampler')
+    parser.add_argument('--hierarchical-thin', type=int, default=10,
+                       help='Thinning factor for retained posterior samples')
+    parser.add_argument('--hierarchical-seed', type=int, default=0,
+                       help='Random seed for the hierarchical sampler')
+    parser.add_argument('--hierarchical-mu-prior-mean', type=float, default=1.0,
+                       help='Prior mean (OOMs/year) for the global compute reduction rate')
+    parser.add_argument('--hierarchical-mu-prior-sd', type=float, default=3.0,
+                       help='Prior standard deviation (OOMs/year) for the global compute reduction rate')
+    parser.add_argument('--hierarchical-tau-prior-alpha', type=float, default=2.0,
+                       help='Inverse-gamma alpha for between-bucket variance prior')
+    parser.add_argument('--hierarchical-tau-prior-beta', type=float, default=0.5,
+                       help='Inverse-gamma beta for between-bucket variance prior')
 
     args = parser.parse_args()
 
@@ -161,6 +190,39 @@ def main():
     print("\nCreating bootstrap distribution plots...")
     plot_bootstrap_distributions(compute_reduction_df, compute_reduction_buckets,
                                 output_dir, suffix)
+
+    if args.run_hierarchical_median:
+        print("\nRunning hierarchical median analysis...")
+        hierarchical_args = argparse.Namespace(
+            bucket_sizes=args.hierarchical_bucket_sizes,
+            n_bucket_sizes=args.hierarchical_n_bucket_sizes,
+            min_models=args.hierarchical_min_models or args.min_models,
+            n_bootstrap=args.hierarchical_n_bootstrap,
+            n_iter=args.hierarchical_n_iter,
+            burn_in=args.hierarchical_burn_in,
+            thin=args.hierarchical_thin,
+            seed=args.hierarchical_seed,
+            mu_prior_mean=args.hierarchical_mu_prior_mean,
+            mu_prior_sd=args.hierarchical_mu_prior_sd,
+            tau_prior_alpha=args.hierarchical_tau_prior_alpha,
+            tau_prior_beta=args.hierarchical_tau_prior_beta,
+            exclude_distilled=args.exclude_distilled,
+            include_low_confidence=args.include_low_confidence,
+            use_website_data=args.use_website_data
+        )
+        hier_results = run_hierarchical_median(hierarchical_args)
+        if hier_results:
+            title_suffix = generate_title_suffix(
+                exclude_distilled=args.exclude_distilled,
+                include_low_confidence=args.include_low_confidence,
+                use_website_data=args.use_website_data
+            )
+            plot_path = generate_hierarchical_plots(
+                summary_path=hier_results["summary_path"],
+                observations_path=hier_results["observations_path"],
+                title_suffix=title_suffix
+            )
+            print(f"Hierarchical diagnostic plots saved to: {plot_path}")
 
     print("\n" + "="*70)
     print("ANALYSIS COMPLETE")
