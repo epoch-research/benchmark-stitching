@@ -10,6 +10,7 @@ testing components from the full software singularity analysis.
 """
 
 import argparse
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
@@ -21,6 +22,82 @@ from sklearn.metrics import r2_score
 # ============================================================================
 # CONFIGURATION
 # ============================================================================
+
+
+@dataclass
+class SimulationConfig:
+    """Fixed parameters used across all analyses.
+
+    These parameters are NOT varied in the parameter sweep and should remain
+    constant unless you're exploring different experimental setups.
+    """
+
+    # ========================================================================
+    # Temporal Parameters
+    # ========================================================================
+    time_range_start: int = 2024
+    """Start year for simulation in sweeps and examples"""
+
+    cutoff_year: int = 2027
+    """Year when acceleration begins"""
+
+    horizon_years: int = 6
+    """Number of years to simulate (time_range_start to time_range_start + horizon_years)"""
+
+    # ========================================================================
+    # Data Generation Parameters
+    # ========================================================================
+    elo_change: float = 3.5
+    """Total capability change over the time range"""
+
+    frac_eval: float = 0.25
+    """Fraction of (model, benchmark) pairs that are evaluated"""
+
+    # ========================================================================
+    # Noise Parameters (base values before noise_multiplier is applied)
+    # ========================================================================
+    base_error_std: float = 0.025
+    """Base standard deviation of noise added to evaluation scores"""
+
+    base_noise_std_model: float = 0.2
+    """Base standard deviation of noise added to model capabilities"""
+
+    base_noise_std_bench: float = 0.2
+    """Base standard deviation of noise added to benchmark difficulties"""
+
+    # ========================================================================
+    # Detection Parameters
+    # ========================================================================
+    detection_threshold: float = 2.0
+    """Minimum slope ratio to declare detection (e.g., 2.0 = detect if ≥2x acceleration)"""
+
+    min_r2: float = 0.6
+    """Minimum R² for piecewise linear fit"""
+
+    scan_resolution: int = 50
+    """Number of candidate breakpoints to test"""
+
+    min_gap_years: float = 0.0
+    """Minimum time after cutoff to start scanning for detection"""
+
+    min_points_after: int = 3
+    """Minimum data points required after breakpoint"""
+
+    # ========================================================================
+    # False Positive Testing Parameters
+    # ========================================================================
+    fpr_num_models: int = 100
+    """Number of models for false positive rate testing"""
+
+    fpr_num_benchmarks: int = 20
+    """Number of benchmarks for false positive rate testing"""
+
+    fpr_time_offset: float = 3.0
+    """Years before cutoff to start false positive test data (cutoff - offset)"""
+
+
+# Global configuration instance
+CONFIG = SimulationConfig()
 
 # Default output directory
 OUTPUT_DIR = Path("outputs/software_singularity")
@@ -35,23 +112,23 @@ RUN_DATA_STORAGE = {}
 
 
 def generate_data(
-    num_models=600,
-    num_benchmarks=30,
-    speedup_factor_model=2,
-    time_range_start=2020,
-    time_range_end=2030,
-    cutoff_year=2027,
-    frac_eval=0.25,
-    error_std=0.025,
-    elo_change=3.5,
+    num_models,
+    num_benchmarks,
+    true_acceleration,
+    time_range_start,
+    time_range_end,
+    cutoff_year,
+    noise_std_model,
+    noise_std_bench,
+    error_std,
+    elo_change=CONFIG.elo_change,
+    frac_eval=CONFIG.frac_eval,
+    frac_accelerate_models=1.0,
     base_model=0,
-    noise_std_model=0.05,
-    noise_std_bench=0.05,
     base_bench=0.5,
     saturation_level=0.05,
     min_alpha=3,
     max_alpha=10,
-    frac_accelerate_models=1.0,
     random_seed=None,
 ):
     """
@@ -60,20 +137,45 @@ def generate_data(
     Models released after cutoff_year can have accelerated capability growth.
     Benchmarks track the frontier, with difficulty scaling over time.
 
-    Parameters:
-    -----------
-    speedup_factor_model : float
+    Required Parameters:
+    -------------------
+    num_models : int
+        Number of models to generate
+    num_benchmarks : int
+        Number of benchmarks to generate
+    true_acceleration : float
         Multiplier for capability growth rate after cutoff (e.g., 2 = 2x faster)
+    time_range_start : float
+        Start year for simulation
+    time_range_end : float
+        End year for simulation
     cutoff_year : float
         Year when acceleration begins
-    frac_accelerate_models : float
-        Fraction of post-cutoff models that accelerate (0-1)
     noise_std_model : float
-        Noise added to model capabilities
+        Standard deviation of noise added to model capabilities
     noise_std_bench : float
-        Noise added to benchmark difficulties
+        Standard deviation of noise added to benchmark difficulties
+    error_std : float
+        Standard deviation of noise added to evaluation scores
+
+    Optional Parameters (with CONFIG defaults):
+    ------------------------------------------
+    elo_change : float
+        Total capability change over time range (default: CONFIG.elo_change)
+    frac_eval : float
+        Fraction of (model, benchmark) pairs evaluated (default: CONFIG.frac_eval)
+    frac_accelerate_models : float
+        Fraction of post-cutoff models that accelerate (default: 1.0)
+    base_model : float
+        Starting capability level (default: 0)
+    base_bench : float
+        Starting difficulty level (default: 0.5)
+    saturation_level : float
+        Exclude scores near 0 or 1 (default: 0.05)
+    min_alpha, max_alpha : float
+        Range for benchmark slope parameters (default: 3, 10)
     random_seed : int or None
-        Random seed for reproducibility. If None, uses current numpy random state.
+        Random seed for reproducibility (default: None)
 
     Returns:
     --------
@@ -103,7 +205,7 @@ def generate_data(
             accelerate_mask,
             # Accelerated: baseline until cutoff, then faster slope
             slope_model * (cutoff_year - time_range_start)
-            + speedup_factor_model * slope_model * (model_times - cutoff_year),
+            + true_acceleration * slope_model * (model_times - cutoff_year),
             # Normal: same slope the whole time
             slope_model * (model_times - time_range_start),
         )
@@ -363,11 +465,11 @@ def detect_acceleration_sequential(
     x,
     y,
     cutoff_year,
-    min_acceleration=2.0,
-    min_r2=0.6,
-    min_gap_years=0.0,
-    scan_resolution=50,
-    min_points_after=3,
+    detection_threshold=CONFIG.detection_threshold,
+    min_r2=CONFIG.min_r2,
+    min_gap_years=CONFIG.min_gap_years,
+    scan_resolution=CONFIG.scan_resolution,
+    min_points_after=CONFIG.min_points_after,
     verbose=False,
 ):
     """
@@ -375,7 +477,7 @@ def detect_acceleration_sequential(
 
     Scans from cutoff_year onwards and returns the first breakpoint where:
     1. The piecewise fit has R² >= min_r2
-    2. The slope ratio (slope2/slope1) >= min_acceleration
+    2. The slope ratio (slope2/slope1) >= detection_threshold
     3. The breakpoint is >= cutoff_year + min_gap_years
     4. At least min_points_after data points exist after the breakpoint
 
@@ -422,7 +524,7 @@ def detect_acceleration_sequential(
         ratio = result["slope2"] / result["slope1"]
 
         # Check detection criteria
-        if result["r2"] >= min_r2 and ratio >= min_acceleration:
+        if result["r2"] >= min_r2 and ratio >= detection_threshold:
             if verbose:
                 print(f"  ✓ DETECTED at breakpoint {bp:.3f}")
                 print(f"    Slope before: {result['slope1']:.4f}")
@@ -451,11 +553,11 @@ def estimate_detection_for_single_trajectory(
     benchmarks_df,
     scores_df,
     cutoff_year,
-    acceleration_factor=2.0,
-    min_r2=0.6,
-    min_gap_years=0.0,
-    scan_resolution=50,
-    min_points_after=3,
+    detection_threshold=CONFIG.detection_threshold,
+    min_r2=CONFIG.min_r2,
+    min_gap_years=CONFIG.min_gap_years,
+    scan_resolution=CONFIG.scan_resolution,
+    min_points_after=CONFIG.min_points_after,
     verbose=True,
 ):
     """
@@ -519,7 +621,7 @@ def estimate_detection_for_single_trajectory(
         print(f"\n  Temporal Detection Simulation")
         print(f"  Cutoff year: {cutoff_year:.2f}")
         print(f"  Testing {len(checkpoint_times)} time checkpoints")
-        print(f"  Looking for {acceleration_factor}x acceleration\n")
+        print(f"  Looking for {detection_threshold}x acceleration\n")
 
     # Incrementally reveal data and check for detection at each time point
     for current_time in checkpoint_times:
@@ -550,7 +652,7 @@ def estimate_detection_for_single_trajectory(
             x,
             y,
             cutoff_year=cutoff_year,
-            min_acceleration=acceleration_factor,
+            detection_threshold=detection_threshold,
             min_r2=min_r2,
             min_gap_years=min_gap_years,
             scan_resolution=scan_resolution,
@@ -602,13 +704,14 @@ def estimate_detection_for_single_trajectory(
 def run_detection_sweep(
     models_per_year_list,
     benchmarks_per_year_list,
-    acceleration_factors,
+    true_accelerations,
     noise_multipliers,
+    frac_accelerate_models_list,
     n_simulations=5,
-    time_range_start=2024,
-    horizon_years=6,
-    cutoff_year=2027,
-    detection_threshold=2.0,
+    time_range_start=CONFIG.time_range_start,
+    horizon_years=CONFIG.horizon_years,
+    cutoff_year=CONFIG.cutoff_year,
+    detection_threshold=CONFIG.detection_threshold,
     random_seed_base=42,
     store_runs=True,
 ):
@@ -620,6 +723,7 @@ def run_detection_sweep(
     - Benchmark release rates (benchmarks per year)
     - True acceleration factors (2x, 3x, etc.)
     - Noise multipliers (1x, 2x, etc.)
+    - Acceleration model fractions (fraction of post-cutoff models that accelerate)
 
     For each combination, runs multiple simulations and computes:
     - Detection success rate
@@ -627,8 +731,8 @@ def run_detection_sweep(
 
     Returns:
     --------
-    DataFrame with columns: models_per_year, benchmarks_per_year, accel_factor,
-                           noise_multiplier, detected_fraction, mean_years_to_detect, ...
+    DataFrame with columns: models_per_year, benchmarks_per_year, true_accel,
+                           noise_multiplier, frac_accelerate_models, detected_fraction, mean_years_to_detect, ...
     """
     global RUN_DATA_STORAGE
     if store_runs:
@@ -638,8 +742,9 @@ def run_detection_sweep(
     total_runs = (
         len(models_per_year_list)
         * len(benchmarks_per_year_list)
-        * len(acceleration_factors)
+        * len(true_accelerations)
         * len(noise_multipliers)
+        * len(frac_accelerate_models_list)
         * n_simulations
     )
     run_idx = 0
@@ -649,102 +754,100 @@ def run_detection_sweep(
 
     for models_per_year in models_per_year_list:
         for benchmarks_per_year in benchmarks_per_year_list:
-            for accel_factor in acceleration_factors:
+            for true_accel in true_accelerations:
                 for noise_mult in noise_multipliers:
+                    for frac_accelerate_models in frac_accelerate_models_list:
 
-                    detection_times = []
-                    detections = []
+                        detection_times = []
+                        detections = []
 
-                    for sim_idx in range(n_simulations):
-                        run_idx += 1
+                        for sim_idx in range(n_simulations):
+                            run_idx += 1
 
-                        # Set random seed for reproducibility
-                        seed = random_seed_base + run_idx
+                            # Set random seed for reproducibility
+                            seed = random_seed_base + run_idx
 
-                        # Generate synthetic data
-                        num_models = int(models_per_year * horizon_years)
-                        num_benchmarks = int(benchmarks_per_year * horizon_years)
+                            # Generate synthetic data
+                            num_models = int(models_per_year * horizon_years)
+                            num_benchmarks = int(benchmarks_per_year * horizon_years)
 
-                        # Apply noise multiplier to base noise parameters
-                        base_error_std = 0.025
-                        base_noise_std_model = 0.2
-                        base_noise_std_bench = 0.2
+                            # Apply noise multiplier to base noise parameters from CONFIG
+                            models_df, benchmarks_df, scores_df = generate_data(
+                                num_models=num_models,
+                                num_benchmarks=num_benchmarks,
+                                true_acceleration=true_accel,
+                                time_range_start=time_range_start,
+                                time_range_end=time_range_start + horizon_years,
+                                cutoff_year=cutoff_year,
+                                error_std=CONFIG.base_error_std * noise_mult,
+                                noise_std_model=CONFIG.base_noise_std_model
+                                * noise_mult,
+                                noise_std_bench=CONFIG.base_noise_std_bench
+                                * noise_mult,
+                                frac_accelerate_models=frac_accelerate_models,
+                                random_seed=seed,
+                            )
 
-                        models_df, benchmarks_df, scores_df = generate_data(
-                            num_models=num_models,
-                            num_benchmarks=num_benchmarks,
-                            speedup_factor_model=accel_factor,
-                            time_range_start=time_range_start,
-                            time_range_end=time_range_start + horizon_years,
-                            cutoff_year=cutoff_year,
-                            frac_eval=0.25,
-                            error_std=base_error_std * noise_mult,
-                            elo_change=3.5,
-                            noise_std_model=base_noise_std_model * noise_mult,
-                            noise_std_bench=base_noise_std_bench * noise_mult,
-                            frac_accelerate_models=1.0,
-                            random_seed=seed,
-                        )
+                            # Estimate capabilities
+                            df_est = estimated_capabilities(
+                                models_df, benchmarks_df, scores_df
+                            )
 
-                        # Estimate capabilities
-                        df_est = estimated_capabilities(
-                            models_df, benchmarks_df, scores_df
-                        )
+                            # Estimate detection
+                            result = estimate_detection_for_single_trajectory(
+                                models_df,
+                                benchmarks_df,
+                                scores_df,
+                                cutoff_year=cutoff_year,
+                                detection_threshold=detection_threshold,
+                                verbose=False,
+                            )
 
-                        # Estimate detection
-                        result = estimate_detection_for_single_trajectory(
-                            models_df,
-                            benchmarks_df,
-                            scores_df,
-                            cutoff_year=cutoff_year,
-                            acceleration_factor=detection_threshold,
-                            verbose=False,
-                        )
+                            # Store run data if requested
+                            if store_runs:
+                                RUN_DATA_STORAGE[run_idx] = {
+                                    "models_df": models_df.copy(),
+                                    "benchmarks_df": benchmarks_df.copy(),
+                                    "scores_df": scores_df.copy(),
+                                    "df_est": df_est.copy(),
+                                    "result": result.copy(),
+                                    "params": {
+                                        "models_per_year": models_per_year,
+                                        "benchmarks_per_year": benchmarks_per_year,
+                                        "true_accel": true_accel,
+                                        "noise_multiplier": noise_mult,
+                                        "frac_accelerate_models": frac_accelerate_models,
+                                        "sim_idx": sim_idx,
+                                        "seed": seed,
+                                        "cutoff_year": cutoff_year,
+                                    },
+                                }
 
-                        # Store run data if requested
-                        if store_runs:
-                            RUN_DATA_STORAGE[run_idx] = {
-                                "models_df": models_df.copy(),
-                                "benchmarks_df": benchmarks_df.copy(),
-                                "scores_df": scores_df.copy(),
-                                "df_est": df_est.copy(),
-                                "result": result.copy(),
-                                "params": {
-                                    "models_per_year": models_per_year,
-                                    "benchmarks_per_year": benchmarks_per_year,
-                                    "accel_factor": accel_factor,
-                                    "noise_multiplier": noise_mult,
-                                    "sim_idx": sim_idx,
-                                    "seed": seed,
-                                    "cutoff_year": cutoff_year,
-                                },
-                            }
+                            detections.append(result["detected"])
+                            if result["detected"]:
+                                detection_times.append(result["years_to_detect"])
 
-                        detections.append(result["detected"])
-                        if result["detected"]:
-                            detection_times.append(result["years_to_detect"])
-
-                        if run_idx % 10 == 0:
                             print(f"Progress: {run_idx}/{total_runs} runs complete")
 
-                    # Aggregate results for this parameter combination
-                    detected_fraction = np.mean(detections)
-                    mean_detection_time = (
-                        np.mean(detection_times) if detection_times else None
-                    )
+                        # Aggregate results for this parameter combination
+                        detected_fraction = np.mean(detections)
+                        mean_detection_time = (
+                            np.mean(detection_times) if detection_times else None
+                        )
 
-                    results.append(
-                        {
-                            "models_per_year": models_per_year,
-                            "benchmarks_per_year": benchmarks_per_year,
-                            "accel_factor": accel_factor,
-                            "noise_multiplier": noise_mult,
-                            "detected_fraction": detected_fraction,
-                            "mean_years_to_detect": mean_detection_time,
-                            "n_detected": sum(detections),
-                            "n_total": n_simulations,
-                        }
-                    )
+                        results.append(
+                            {
+                                "models_per_year": models_per_year,
+                                "benchmarks_per_year": benchmarks_per_year,
+                                "true_accel": true_accel,
+                                "noise_multiplier": noise_mult,
+                                "frac_accelerate_models": frac_accelerate_models,
+                                "detected_fraction": detected_fraction,
+                                "mean_years_to_detect": mean_detection_time,
+                                "n_detected": sum(detections),
+                                "n_total": n_simulations,
+                            }
+                        )
 
     print(f"\nSweep complete!")
     if store_runs:
@@ -760,12 +863,12 @@ def run_detection_sweep(
 
 def test_false_positive_rate_single(
     n_trials=100,
-    num_models=100,
-    num_benchmarks=20,
-    cutoff_year=2027,
+    num_models=CONFIG.fpr_num_models,
+    num_benchmarks=CONFIG.fpr_num_benchmarks,
+    cutoff_year=CONFIG.cutoff_year,
     observation_years=3.0,
-    acceleration_factor=2.0,
-    min_r2=0.6,
+    detection_threshold=CONFIG.detection_threshold,
+    min_r2=CONFIG.min_r2,
     noise_multiplier=1.0,
     **kwargs,
 ):
@@ -774,33 +877,27 @@ def test_false_positive_rate_single(
 
     This is a helper function used by test_false_positive_rate_sweep.
     """
-    # Base noise parameters (matching parameter sweep)
-    base_error_std = 0.025
-    base_noise_std_model = 0.2
-    base_noise_std_bench = 0.2
-
-    # Apply noise multiplier
-    error_std = base_error_std * noise_multiplier
-    noise_std_model = base_noise_std_model * noise_multiplier
-    noise_std_bench = base_noise_std_bench * noise_multiplier
+    # Apply noise multiplier to base noise parameters from CONFIG
+    error_std = CONFIG.base_error_std * noise_multiplier
+    noise_std_model = CONFIG.base_noise_std_model * noise_multiplier
+    noise_std_bench = CONFIG.base_noise_std_bench * noise_multiplier
 
     false_positives = 0
     detection_times = []
 
     # Calculate time range based on observation window
-    time_range_start = cutoff_year - 3.0  # 3 years before cutoff for baseline
+    time_range_start = cutoff_year - CONFIG.fpr_time_offset
     time_range_end = cutoff_year + observation_years
 
     for trial in range(n_trials):
-        # Generate data with NO acceleration (speedup_factor=1)
+        # Generate data with NO acceleration (true_acceleration=1)
         models_df, benchmarks_df, scores_df = generate_data(
             num_models=num_models,
             num_benchmarks=num_benchmarks,
-            speedup_factor_model=1.0,  # NO ACCELERATION
+            true_acceleration=1.0,  # NO ACCELERATION
             time_range_start=time_range_start,
             time_range_end=time_range_end,
             cutoff_year=cutoff_year,
-            frac_eval=kwargs.get("frac_eval", 0.25),
             error_std=error_std,
             noise_std_model=noise_std_model,
             noise_std_bench=noise_std_bench,
@@ -823,7 +920,7 @@ def test_false_positive_rate_single(
                 x,
                 y,
                 cutoff_year=cutoff_year,
-                min_acceleration=acceleration_factor,
+                detection_threshold=detection_threshold,
                 min_r2=min_r2,
                 scan_resolution=50,
                 verbose=False,
@@ -849,11 +946,11 @@ def test_false_positive_rate_sweep(
     noise_multipliers=[1.0, 2.0],
     observation_years_list=[0.5, 1.0, 2.0, 3.0, 6.0],
     n_trials=100,
-    num_models=100,
-    num_benchmarks=20,
-    cutoff_year=2027,
-    acceleration_factor=2.0,
-    min_r2=0.6,
+    num_models=CONFIG.fpr_num_models,
+    num_benchmarks=CONFIG.fpr_num_benchmarks,
+    cutoff_year=CONFIG.cutoff_year,
+    detection_threshold=CONFIG.detection_threshold,
+    min_r2=CONFIG.min_r2,
     **kwargs,
 ):
     """
@@ -898,7 +995,7 @@ def test_false_positive_rate_sweep(
                 num_benchmarks=num_benchmarks,
                 cutoff_year=cutoff_year,
                 observation_years=obs_years,
-                acceleration_factor=acceleration_factor,
+                detection_threshold=detection_threshold,
                 min_r2=min_r2,
                 noise_multiplier=noise_mult,
                 **kwargs,
@@ -923,12 +1020,12 @@ def test_false_positive_rate_sweep(
 
 def test_false_positive_rate(
     n_trials=100,
-    num_models=100,
-    num_benchmarks=20,
-    cutoff_year=2027,
+    num_models=CONFIG.fpr_num_models,
+    num_benchmarks=CONFIG.fpr_num_benchmarks,
+    cutoff_year=CONFIG.cutoff_year,
     observation_years=3.0,
-    acceleration_factor=2.0,
-    min_r2=0.6,
+    detection_threshold=CONFIG.detection_threshold,
+    min_r2=CONFIG.min_r2,
     noise_std_model=0.4,
     noise_std_bench=0.4,
     **kwargs,
@@ -958,7 +1055,7 @@ def test_false_positive_rate(
     detection_times = []
 
     # Calculate time range based on observation window
-    time_range_start = cutoff_year - 3.0  # 3 years before cutoff for baseline
+    time_range_start = cutoff_year - CONFIG.fpr_time_offset
     time_range_end = cutoff_year + observation_years
 
     print(f"Testing false positive rate ({n_trials} trials, NO acceleration)...")
@@ -967,16 +1064,15 @@ def test_false_positive_rate(
     )
 
     for trial in range(n_trials):
-        # Generate data with NO acceleration (speedup_factor=1)
+        # Generate data with NO acceleration (true_acceleration=1)
         models_df, benchmarks_df, scores_df = generate_data(
             num_models=num_models,
             num_benchmarks=num_benchmarks,
-            speedup_factor_model=1.0,  # NO ACCELERATION
+            true_acceleration=1.0,  # NO ACCELERATION
             time_range_start=time_range_start,
             time_range_end=time_range_end,
             cutoff_year=cutoff_year,
-            frac_eval=kwargs.get("frac_eval", 0.25),
-            error_std=kwargs.get("error_std", 0.025),
+            error_std=kwargs.get("error_std", CONFIG.base_error_std),
             noise_std_model=noise_std_model,
             noise_std_bench=noise_std_bench,
         )
@@ -998,7 +1094,7 @@ def test_false_positive_rate(
                 x,
                 y,
                 cutoff_year=cutoff_year,
-                min_acceleration=acceleration_factor,
+                detection_threshold=detection_threshold,
                 min_r2=min_r2,
                 scan_resolution=50,
                 verbose=False,
@@ -1027,6 +1123,157 @@ def test_false_positive_rate(
 
 
 # ============================================================================
+# SINGLE EXAMPLE RUN
+# ============================================================================
+
+
+def run_single_example(
+    output_dir,
+    models_per_year=30,
+    benchmarks_per_year=10,
+    true_acceleration=4.0,
+    noise_multiplier=1.0,
+    horizon_years=CONFIG.horizon_years,
+    time_range_start=CONFIG.time_range_start,
+    cutoff_year=CONFIG.cutoff_year,
+    detection_threshold=CONFIG.detection_threshold,
+    random_seed=42,
+):
+    """
+    Run a single example configuration with detailed output.
+
+    This demonstrates the acceleration detection process for a typical
+    "normal" parameter configuration from the sweep.
+
+    Parameters:
+    -----------
+    models_per_year : int
+        Model release rate (default: 30 = middle of sweep range)
+    benchmarks_per_year : int
+        Benchmark release rate (default: 10 = middle of sweep range)
+    true_acceleration : float
+        True acceleration factor (default: 4.0 = middle of sweep range)
+    noise_multiplier : float
+        Noise level multiplier (default: 1.0 = standard noise)
+    """
+    print("\n" + "=" * 80)
+    print("SINGLE EXAMPLE RUN: Acceleration Detection")
+    print("=" * 80)
+    print("\nConfiguration:")
+    print(f"  Models per year: {models_per_year}")
+    print(f"  Benchmarks per year: {benchmarks_per_year}")
+    print(f"  True acceleration factor: {true_acceleration}x")
+    print(f"  Noise multiplier: {noise_multiplier}x")
+    print(f"  Time range: {time_range_start} to {time_range_start + horizon_years}")
+    print(f"  Cutoff year (acceleration starts): {cutoff_year}")
+    print(f"  Detection threshold: {detection_threshold}x")
+    print()
+
+    # Calculate data generation parameters
+    num_models = int(models_per_year * horizon_years)
+    num_benchmarks = int(benchmarks_per_year * horizon_years)
+
+    # Generate synthetic data (using CONFIG for base noise parameters)
+    print("Generating synthetic data...")
+    models_df, benchmarks_df, scores_df = generate_data(
+        num_models=num_models,
+        num_benchmarks=num_benchmarks,
+        true_acceleration=true_acceleration,
+        time_range_start=time_range_start,
+        time_range_end=time_range_start + horizon_years,
+        cutoff_year=cutoff_year,
+        error_std=CONFIG.base_error_std * noise_multiplier,
+        noise_std_model=CONFIG.base_noise_std_model * noise_multiplier,
+        noise_std_bench=CONFIG.base_noise_std_bench * noise_multiplier,
+        random_seed=random_seed,
+    )
+
+    print(f"  Generated {len(models_df)} models")
+    print(f"  Generated {len(benchmarks_df)} benchmarks")
+    print(f"  Generated {len(scores_df)} evaluation scores")
+    print(f"  Models with acceleration: {models_df['accelerated'].sum()}")
+    print()
+
+    # Estimate capabilities
+    print("Estimating model capabilities from benchmark scores...")
+    df_est = estimated_capabilities(models_df, benchmarks_df, scores_df, verbose=True)
+    print(f"  Estimated capabilities for {len(df_est)} models")
+    print()
+
+    # Run temporal detection
+    print("Running temporal acceleration detection...")
+    result = estimate_detection_for_single_trajectory(
+        models_df,
+        benchmarks_df,
+        scores_df,
+        cutoff_year=cutoff_year,
+        detection_threshold=detection_threshold,
+        min_r2=0.6,
+        min_gap_years=0.0,
+        scan_resolution=50,
+        min_points_after=3,
+        verbose=True,
+    )
+
+    # Display results
+    print("\n" + "=" * 80)
+    print("DETECTION RESULTS")
+    print("=" * 80)
+
+    if result["detected"]:
+        print(f"✓ ACCELERATION DETECTED")
+        print(f"  Years to detection: {result['years_to_detect']:.2f}")
+        print(f"  Detection time: {result['detection_time']:.2f}")
+        print(f"  Breakpoint: {result['breakpoint']:.2f}")
+        print(f"  Slope before breakpoint: {result['slope_before']:.4f}")
+        print(f"  Slope after breakpoint: {result['slope_after']:.4f}")
+        print(f"  Slope ratio: {result['ratio']:.2f}x")
+        print(f"  R²: {result['r2']:.4f}")
+    else:
+        print("✗ NO ACCELERATION DETECTED")
+        print(f"  True acceleration factor was {true_acceleration}x")
+        print(f"  Detection threshold was {detection_threshold}x")
+
+    # Save results
+    print("\n" + "=" * 80)
+    print("SAVING RESULTS")
+    print("=" * 80)
+
+    # Create example subdirectory
+    example_dir = output_dir / "example"
+    example_dir.mkdir(parents=True, exist_ok=True)
+
+    output_path = example_dir / "models.csv"
+    models_df.to_csv(output_path, index=False)
+    print(f"  Saved models: {output_path}")
+
+    output_path = example_dir / "benchmarks.csv"
+    benchmarks_df.to_csv(output_path, index=False)
+    print(f"  Saved benchmarks: {output_path}")
+
+    output_path = example_dir / "scores.csv"
+    scores_df.to_csv(output_path, index=False)
+    print(f"  Saved scores: {output_path}")
+
+    output_path = example_dir / "estimated_capabilities.csv"
+    df_est.to_csv(output_path, index=False)
+    print(f"  Saved estimated capabilities: {output_path}")
+
+    output_path = example_dir / "detection_result.csv"
+    pd.DataFrame([result]).to_csv(output_path, index=False)
+    print(f"  Saved detection result: {output_path}")
+
+    print("\n" + "=" * 80)
+    print("EXAMPLE RUN COMPLETE")
+    print("=" * 80)
+    print("\nYou can use the saved CSV files to create visualizations.")
+    print(f"All outputs saved to: {example_dir}")
+    print("=" * 80)
+
+    return result
+
+
+# ============================================================================
 # MAIN ANALYSIS
 # ============================================================================
 
@@ -1043,7 +1290,9 @@ def main():
         help="Output directory for results",
     )
     parser.add_argument(
-        "--quick", action="store_true", help="Run quick version with fewer simulations"
+        "--example-only",
+        action="store_true",
+        help="Only run a single example configuration with detailed output",
     )
     parser.add_argument(
         "--false-positive-only",
@@ -1056,6 +1305,14 @@ def main():
     # Create output directory
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    # ========================================================================
+    # EXAMPLE MODE: Run single configuration with detailed output
+    # ========================================================================
+
+    if args.example_only:
+        run_single_example(output_dir)
+        return
 
     if args.false_positive_only:
         print("=" * 80)
@@ -1080,34 +1337,28 @@ def main():
         print("PART 1: Parameter Sweep")
         print("=" * 80)
 
-        if args.quick:
-            print("\nRunning QUICK parameter sweep (fewer simulations)...")
-            models_per_year_list = [20, 40]
-            benchmarks_per_year_list = [5, 10]
-            acceleration_factors = [2, 4]
-            noise_multipliers = [1.0, 2.0]
-            n_simulations = 2
-        else:
-            print("\nRunning FULL parameter sweep...")
-            models_per_year_list = [10, 30, 50]
-            benchmarks_per_year_list = [5, 10, 15]
-            acceleration_factors = [2, 4, 8]
-            noise_multipliers = [1.0, 2.0]
-            n_simulations = 3
+        print("\nRunning parameter sweep...")
+        models_per_year_list = [30]
+        benchmarks_per_year_list = [10]
+        true_accelerations = [2, 4, 8]
+        noise_multipliers = [0.5, 1.0, 4.0]
+        frac_accelerate_models_list = [0.25, 1.0]
+        n_simulations = 5
 
         results_df = run_detection_sweep(
             models_per_year_list=models_per_year_list,
             benchmarks_per_year_list=benchmarks_per_year_list,
-            acceleration_factors=acceleration_factors,
+            true_accelerations=true_accelerations,
             noise_multipliers=noise_multipliers,
+            frac_accelerate_models_list=frac_accelerate_models_list,
             n_simulations=n_simulations,
-            horizon_years=6,
-            cutoff_year=2027,
-            detection_threshold=2.0,
+            # Using CONFIG defaults for horizon_years, cutoff_year, detection_threshold
         )
 
         # Save results
-        results_path = output_dir / "detection_sweep_results.csv"
+        sweep_dir = output_dir / "parameter_sweep"
+        sweep_dir.mkdir(parents=True, exist_ok=True)
+        results_path = sweep_dir / "detection_sweep_results.csv"
         results_df.to_csv(results_path, index=False)
         print(f"\nSaved results: {results_path}")
 
@@ -1118,7 +1369,8 @@ def main():
         print(
             results_df.sort_values(
                 [
-                    "accel_factor",
+                    "frac_accelerate_models",
+                    "true_accel",
                     "noise_multiplier",
                     "models_per_year",
                     "benchmarks_per_year",
@@ -1145,21 +1397,19 @@ def main():
     # Define sweep parameters
     noise_multipliers = [1.0, 2.0, 4.0]  # Same as parameter sweep, plus higher noise
     observation_years_list = [0.5, 1.0, 2.0, 3.0, 6.0]
-    n_trials = 50 if args.quick else 100
+    n_trials = 50
 
     fpr_results_df = test_false_positive_rate_sweep(
         noise_multipliers=noise_multipliers,
         observation_years_list=observation_years_list,
         n_trials=n_trials,
-        num_models=100,
-        num_benchmarks=20,
-        cutoff_year=2027,
-        acceleration_factor=2.0,
-        min_r2=0.6,
+        # Using CONFIG defaults for num_models, num_benchmarks, cutoff_year, detection_threshold, min_r2
     )
 
     # Save results
-    fpr_results_path = output_dir / "false_positive_rate_sweep_results.csv"
+    fpr_dir = output_dir / "false_positive"
+    fpr_dir.mkdir(parents=True, exist_ok=True)
+    fpr_results_path = fpr_dir / "false_positive_rate_sweep_results.csv"
     fpr_results_df.to_csv(fpr_results_path, index=False)
     print(f"\nSaved false positive rate sweep results: {fpr_results_path}")
 
@@ -1194,8 +1444,12 @@ def main():
 
     print("\nNext steps:")
     if not args.false_positive_only:
-        print("  - Check detection_sweep_results.csv for detailed results")
-    print("  - Check false_positive_rate_sweep_results.csv for false positive analysis")
+        print(
+            "  - Check parameter_sweep/detection_sweep_results.csv for detailed results"
+        )
+    print(
+        "  - Check false_positive/false_positive_rate_sweep_results.csv for false positive analysis"
+    )
     print("  - Adjust parameters based on false positive rate tolerance")
     print("=" * 80)
 
