@@ -323,7 +323,7 @@ def analyze_capability_gains(df, bucket_size_oom=0.3, min_models_per_bucket=3, n
 
 
 def bucket_size_sensitivity_analysis(df, eci_bucket_sizes=None, compute_bucket_sizes=None,
-                                     min_models_per_bucket=3, n_bootstrap=1000, n_bucket_sizes=5):
+                                     min_models_per_bucket=3, n_bootstrap=1000, n_bucket_sizes=20):
     """Sweep over different bucket sizes to assess sensitivity.
 
     Args:
@@ -332,7 +332,7 @@ def bucket_size_sensitivity_analysis(df, eci_bucket_sizes=None, compute_bucket_s
         compute_bucket_sizes: List of compute bucket sizes to try (if None, computed from data)
         min_models_per_bucket: Minimum SOTA models per bucket
         n_bootstrap: Number of bootstrap iterations
-        n_bucket_sizes: Number of bucket sizes to test (default: 5)
+        n_bucket_sizes: Number of bucket sizes to test (default: 20)
 
     Returns:
         compute_reduction_results: DataFrame with sensitivity results
@@ -345,16 +345,16 @@ def bucket_size_sensitivity_analysis(df, eci_bucket_sizes=None, compute_bucket_s
     # Compute bucket sizes from data if not provided
     if eci_bucket_sizes is None:
         eci_range = df['estimated_capability'].max() - df['estimated_capability'].min()
-        # Test bucket sizes from 5% to 50% of the range
-        eci_bucket_sizes = np.linspace(0.05 * eci_range, 0.5 * eci_range, n_bucket_sizes)
+        # Test bucket sizes from 5% to 25% of the range
+        eci_bucket_sizes = np.linspace(0.05 * eci_range, 0.25 * eci_range, n_bucket_sizes)
         print(f"\nECI range: {df['estimated_capability'].min():.2f} to {df['estimated_capability'].max():.2f}")
         print(f"ECI total range: {eci_range:.2f}")
         print(f"Auto-computed ECI bucket sizes: {[f'{x:.2f}' for x in eci_bucket_sizes]}")
 
     if compute_bucket_sizes is None:
         log_compute_range = df['log_compute'].max() - df['log_compute'].min()
-        # Test bucket sizes from 5% to 50% of the range
-        compute_bucket_sizes = np.linspace(0.05 * log_compute_range, 0.5 * log_compute_range, n_bucket_sizes)
+        # Test bucket sizes from 5% to 25% of the range
+        compute_bucket_sizes = np.linspace(0.05 * log_compute_range, 0.25 * log_compute_range, n_bucket_sizes)
         print(f"\nlog₁₀(Compute) range: {df['log_compute'].min():.2f} to {df['log_compute'].max():.2f}")
         print(f"log₁₀(Compute) total range: {log_compute_range:.2f}")
         print(f"Auto-computed compute bucket sizes: {[f'{x:.2f}' for x in compute_bucket_sizes]}")

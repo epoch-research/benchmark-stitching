@@ -54,9 +54,9 @@ class Observation:
 
 
 def auto_bucket_sizes(df: pd.DataFrame, n_bucket_sizes: int) -> np.ndarray:
-    """Generate evenly spaced bucket sizes between 5% and 50% of ECI range."""
+    """Generate evenly spaced bucket sizes between 5% and 25% of ECI range."""
     eci_range = df["estimated_capability"].max() - df["estimated_capability"].min()
-    bucket_sizes = np.linspace(0.05 * eci_range, 0.5 * eci_range, n_bucket_sizes)
+    bucket_sizes = np.linspace(0.05 * eci_range, 0.25 * eci_range, n_bucket_sizes)
     return bucket_sizes
 
 

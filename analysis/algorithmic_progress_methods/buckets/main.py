@@ -62,15 +62,15 @@ def main():
                        help='Comma-separated ECI bucket sizes for sweep')
     parser.add_argument('--compute-bucket-sizes', type=str, default=None,
                        help='Comma-separated compute bucket sizes for sweep')
-    parser.add_argument('--n-bucket-sizes', type=int, default=5,
-                       help='Number of bucket sizes to test in sweep (default: 5)')
+    parser.add_argument('--n-bucket-sizes', type=int, default=20,
+                       help='Number of bucket sizes to test in sweep (default: 20)')
     parser.add_argument('--label-points', action='store_true',
                        help='Label data points with model names')
     parser.add_argument('--run-hierarchical-median', action='store_true',
                        help='Estimate pooled median compute reduction via hierarchical model and plot diagnostics')
     parser.add_argument('--hierarchical-bucket-sizes', type=str, default=None,
-                       help='Comma-separated ECI bucket sizes for the hierarchical sweep (default: auto 5%-50% of range)')
-    parser.add_argument('--hierarchical-n-bucket-sizes', type=int, default=5,
+                       help='Comma-separated ECI bucket sizes for the hierarchical sweep (default: auto 5%-25% of range)')
+    parser.add_argument('--hierarchical-n-bucket-sizes', type=int, default=20,
                        help='Number of auto-generated bucket sizes for the hierarchical sweep')
     parser.add_argument('--hierarchical-min-models', type=int, default=None,
                        help='Minimum SOTA models per bucket for the hierarchical analysis (default: --min-models)')
