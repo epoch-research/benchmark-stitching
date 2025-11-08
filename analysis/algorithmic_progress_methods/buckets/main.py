@@ -107,7 +107,7 @@ def main():
     df = load_model_capabilities_and_compute(
         use_website_data=args.use_website_data,
         exclude_distilled=args.exclude_distilled,
-        include_low_confidence=args.include_low_confidence,
+        exclude_med_high_distilled=args.exclude_med_high_distilled,
         min_release_date=args.min_release_date
     )
 
@@ -119,7 +119,7 @@ def main():
     output_dir = create_output_directory(
         "buckets",
         exclude_distilled=args.exclude_distilled,
-        include_low_confidence=args.include_low_confidence,
+        exclude_med_high_distilled=args.exclude_med_high_distilled,
         use_website_data=args.use_website_data,
         min_release_date=args.min_release_date
     )
@@ -127,7 +127,7 @@ def main():
     # Generate suffix for file names
     suffix = generate_output_suffix(
         exclude_distilled=args.exclude_distilled,
-        include_low_confidence=args.include_low_confidence,
+        exclude_med_high_distilled=args.exclude_med_high_distilled,
         use_website_data=args.use_website_data,
         min_release_date=args.min_release_date
     )

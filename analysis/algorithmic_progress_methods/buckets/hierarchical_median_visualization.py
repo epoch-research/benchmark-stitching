@@ -246,10 +246,10 @@ def main():
     args = parser.parse_args()
 
     title_suffix = args.title_suffix
-    if not title_suffix and (args.exclude_distilled or args.include_low_confidence or args.use_website_data):
+    if not title_suffix and (args.exclude_distilled or args.exclude_med_high_distilled or args.use_website_data):
         title_suffix = generate_title_suffix(
             exclude_distilled=args.exclude_distilled,
-            include_low_confidence=args.include_low_confidence,
+            exclude_med_high_distilled=args.exclude_med_high_distilled,
             use_website_data=args.use_website_data,
         )
 

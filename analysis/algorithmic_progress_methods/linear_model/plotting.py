@@ -209,7 +209,7 @@ def add_predicted_frontiers(ax, df_plot, model, frequency='MS'):
 
 
 def plot_uncertainty_diagnostics(df_plot, bootstrap_results, output_dir,
-                                exclude_distilled=False, include_low_confidence=False,
+                                exclude_distilled=False, exclude_med_high_distilled=False,
                                 frontier_only=False, use_website_data=False,
                                 min_release_date=None):
     """Create diagnostic plots for bootstrap uncertainty.
@@ -218,15 +218,17 @@ def plot_uncertainty_diagnostics(df_plot, bootstrap_results, output_dir,
         df_plot: DataFrame with data
         bootstrap_results: Dict with bootstrap results
         output_dir: Path to output directory
-        exclude_distilled: Whether distilled models were excluded
-        include_low_confidence: Whether low-confidence distilled models were excluded
+        exclude_distilled: Whether all distilled models were excluded
+        exclude_med_high_distilled: Whether med/high confidence distilled models were excluded
         frontier_only: Whether only frontier models were included
         use_website_data: Whether website data was used
         min_release_date: Minimum release date filter (if applied)
     """
     suffix_parts = []
     if exclude_distilled:
-        suffix_parts.append("no_distilled_all" if include_low_confidence else "no_distilled")
+        suffix_parts.append("no_distilled")
+    elif exclude_med_high_distilled:
+        suffix_parts.append("no_med_high_distilled")
     if frontier_only:
         suffix_parts.append("frontier_only")
     if use_website_data:
@@ -379,7 +381,7 @@ def plot_uncertainty_diagnostics(df_plot, bootstrap_results, output_dir,
 
 def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
                     show_predicted_frontier=False, label_points=False,
-                    exclude_distilled=False, include_low_confidence=False,
+                    exclude_distilled=False, exclude_med_high_distilled=False,
                     frontier_only=False, use_website_data=False,
                     min_release_date=None):
     """Create the main compute vs date plot with ECI contours.
@@ -391,8 +393,8 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
         output_dir: Path to output directory
         show_predicted_frontier: Whether to show predicted Pareto frontiers
         label_points: Whether to label data points with ECI values
-        exclude_distilled: Whether distilled models were excluded
-        include_low_confidence: Whether low-confidence distilled models were excluded
+        exclude_distilled: Whether all distilled models were excluded
+        exclude_med_high_distilled: Whether med/high confidence distilled models were excluded
         frontier_only: Whether only frontier models were included
         use_website_data: Whether website data was used
         min_release_date: Minimum release date filter (if applied)
@@ -461,10 +463,9 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
     # Add suffix to title if excluding distilled models or frontier-only
     title_suffix_parts = []
     if exclude_distilled:
-        if include_low_confidence:
-            title_suffix_parts.append('excluding all distilled models')
-        else:
-            title_suffix_parts.append('excluding distilled models')
+        title_suffix_parts.append('excluding all distilled models')
+    elif exclude_med_high_distilled:
+        title_suffix_parts.append('excluding med/high confidence distilled models')
     if frontier_only:
         title_suffix_parts.append('frontier models only')
     if use_website_data:
@@ -493,7 +494,9 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
     # Add suffix to filename
     suffix_parts = []
     if exclude_distilled:
-        suffix_parts.append("no_distilled_all" if include_low_confidence else "no_distilled")
+        suffix_parts.append("no_distilled")
+    elif exclude_med_high_distilled:
+        suffix_parts.append("no_med_high_distilled")
     if show_predicted_frontier:
         suffix_parts.append("predicted_frontier")
     if frontier_only:

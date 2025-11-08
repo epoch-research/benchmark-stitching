@@ -54,15 +54,15 @@ def compute_pareto_frontier_at_release(df):
 
 
 def load_and_filter_data(exclude_distilled=False,
-                         include_low_confidence=False,
+                         exclude_med_high_distilled=False,
                          frontier_only=False,
                          use_website_data=False,
                          min_release_date=None):
     """Load ECI scores and merge with compute data.
 
     Args:
-        exclude_distilled: If True, exclude distilled models
-        include_low_confidence: If True, also exclude low-confidence distilled models
+        exclude_distilled: If True, exclude all distilled models (all confidence levels)
+        exclude_med_high_distilled: If True, exclude med/high confidence distilled models
         frontier_only: If True, only include models on Pareto frontier at release
         use_website_data: If True, load from website data
         min_release_date: If provided, only include models released on or after this date
@@ -74,7 +74,7 @@ def load_and_filter_data(exclude_distilled=False,
     df = load_model_capabilities_and_compute(
         use_website_data=use_website_data,
         exclude_distilled=exclude_distilled,
-        include_low_confidence=include_low_confidence,
+        exclude_med_high_distilled=exclude_med_high_distilled,
         filter_complete=True,
         min_release_date=min_release_date
     )
@@ -159,5 +159,11 @@ def fit_linear_predictor(df_plot, n_bootstrap=1000):
 
     # Add tradeoff results to bootstrap_results
     bootstrap_results['compute_year_tradeoff'] = tradeoff_results['bootstrap_tradeoffs']
+    bootstrap_results['tradeoff_summary'] = {
+        'tradeoff': tradeoff_results['tradeoff'],
+        'tradeoff_mean': tradeoff_results['tradeoff_mean'],
+        'tradeoff_median': tradeoff_results['tradeoff_median'],
+        'tradeoff_ci': tradeoff_results['tradeoff_ci'].tolist() if hasattr(tradeoff_results['tradeoff_ci'], 'tolist') else tradeoff_results['tradeoff_ci']
+    }
 
     return model, df_plot, bootstrap_results

@@ -10,10 +10,10 @@ def add_distilled_filter_args(parser):
     Args:
         parser: argparse.ArgumentParser instance
     """
+    parser.add_argument('--exclude-med-high-distilled', action='store_true',
+                       help='Exclude medium and high confidence distilled models from analysis')
     parser.add_argument('--exclude-distilled', action='store_true',
-                       help='Exclude distilled models (high/medium confidence) from analysis')
-    parser.add_argument('--include-low-confidence', action='store_true',
-                       help='When excluding distilled models, also exclude low-confidence ones (requires --exclude-distilled)')
+                       help='Exclude all distilled models (all confidence levels) from analysis')
 
 
 def add_data_source_args(parser):
@@ -45,18 +45,19 @@ def validate_distilled_args(args):
     Raises:
         argparse.ArgumentError if validation fails
     """
-    if args.include_low_confidence and not args.exclude_distilled:
-        raise argparse.ArgumentTypeError('--include-low-confidence requires --exclude-distilled')
+    if args.exclude_distilled and args.exclude_med_high_distilled:
+        raise argparse.ArgumentTypeError(
+            'Cannot use both --exclude-distilled and --exclude-med-high-distilled')
 
 
-def generate_output_suffix(exclude_distilled=False, include_low_confidence=False,
+def generate_output_suffix(exclude_distilled=False, exclude_med_high_distilled=False,
                            frontier_only=False, use_website_data=False,
                            min_release_date=None, **kwargs):
     """Generate consistent file suffix based on analysis options.
 
     Args:
-        exclude_distilled: Whether distilled models were excluded
-        include_low_confidence: Whether low-confidence distilled models were excluded
+        exclude_distilled: Whether all distilled models were excluded
+        exclude_med_high_distilled: Whether med/high confidence distilled models were excluded
         frontier_only: Whether only frontier models were included
         use_website_data: Whether website data was used
         min_release_date: Minimum release date filter (if applied)
@@ -68,7 +69,9 @@ def generate_output_suffix(exclude_distilled=False, include_low_confidence=False
     suffix_parts = []
 
     if exclude_distilled:
-        suffix_parts.append("no_distilled_all" if include_low_confidence else "no_distilled")
+        suffix_parts.append("no_distilled")
+    elif exclude_med_high_distilled:
+        suffix_parts.append("no_med_high_distilled")
     if frontier_only:
         suffix_parts.append("frontier_only")
     if use_website_data:
@@ -80,7 +83,7 @@ def generate_output_suffix(exclude_distilled=False, include_low_confidence=False
 
 
 def create_output_directory(method_name, base_dir="outputs/algorithmic_progress_methods",
-                           exclude_distilled=False, include_low_confidence=False,
+                           exclude_distilled=False, exclude_med_high_distilled=False,
                            frontier_only=False, use_website_data=False,
                            min_release_date=None):
     """Create output directory for a specific method with subdirectory for configuration.
@@ -88,8 +91,8 @@ def create_output_directory(method_name, base_dir="outputs/algorithmic_progress_
     Args:
         method_name: Name of the method (e.g., "buckets", "linear_model")
         base_dir: Base output directory
-        exclude_distilled: Whether distilled models were excluded
-        include_low_confidence: Whether low-confidence distilled models were excluded
+        exclude_distilled: Whether all distilled models were excluded
+        exclude_med_high_distilled: Whether med/high confidence distilled models were excluded
         frontier_only: Whether only frontier models were included
         use_website_data: Whether website data was used
         min_release_date: Minimum release date filter (if applied)
@@ -108,10 +111,9 @@ def create_output_directory(method_name, base_dir="outputs/algorithmic_progress_
 
     # Distilled model filtering
     if exclude_distilled:
-        if include_low_confidence:
-            config_parts.append("no_distilled_all")
-        else:
-            config_parts.append("no_distilled")
+        config_parts.append("no_distilled")
+    elif exclude_med_high_distilled:
+        config_parts.append("no_med_high_distilled")
     else:
         config_parts.append("with_distilled")
 
@@ -131,14 +133,14 @@ def create_output_directory(method_name, base_dir="outputs/algorithmic_progress_
     return output_dir
 
 
-def generate_title_suffix(exclude_distilled=False, include_low_confidence=False,
+def generate_title_suffix(exclude_distilled=False, exclude_med_high_distilled=False,
                           frontier_only=False, use_website_data=False,
                           min_release_date=None, **kwargs):
     """Generate human-readable suffix for plot titles.
 
     Args:
-        exclude_distilled: Whether distilled models were excluded
-        include_low_confidence: Whether low-confidence distilled models were excluded
+        exclude_distilled: Whether all distilled models were excluded
+        exclude_med_high_distilled: Whether med/high confidence distilled models were excluded
         frontier_only: Whether only frontier models were included
         use_website_data: Whether website data was used
         min_release_date: Minimum release date filter (if applied)
@@ -150,10 +152,9 @@ def generate_title_suffix(exclude_distilled=False, include_low_confidence=False,
     title_parts = []
 
     if exclude_distilled:
-        if include_low_confidence:
-            title_parts.append('excluding all distilled models')
-        else:
-            title_parts.append('excluding distilled models')
+        title_parts.append('excluding all distilled models')
+    elif exclude_med_high_distilled:
+        title_parts.append('excluding med/high confidence distilled models')
     if frontier_only:
         title_parts.append('frontier models only')
     if use_website_data:

@@ -55,32 +55,32 @@ def load_eci_from_outputs(csv_path="outputs/model_fit/model_capabilities.csv"):
     return eci_df
 
 
-def filter_distilled_models(df, exclude_distilled=False, include_low_confidence=False,
+def filter_distilled_models(df, exclude_distilled=False, exclude_med_high_distilled=False,
                             distilled_csv="data/distilled_models.csv"):
     """Filter out distilled models based on confidence levels.
 
     Args:
         df: DataFrame with 'model' column
-        exclude_distilled: If True, exclude distilled models
-        include_low_confidence: If True, also exclude low-confidence distilled models
+        exclude_distilled: If True, exclude all distilled models (all confidence levels)
+        exclude_med_high_distilled: If True, exclude med/high confidence distilled models
         distilled_csv: Path to distilled models CSV
 
     Returns:
         Filtered DataFrame
     """
-    if not exclude_distilled:
+    if not exclude_distilled and not exclude_med_high_distilled:
         return df
 
     print("\nFiltering out distilled models...")
     distilled_df = pd.read_csv(distilled_csv)
 
     # Determine which confidence levels to exclude
-    if include_low_confidence:
+    if exclude_distilled:
         confidence_levels = ['high', 'medium', 'low']
-        print("  Excluding: high, medium, AND low confidence distilled models")
-    else:
+        print("  Excluding: ALL distilled models (high, medium, and low confidence)")
+    elif exclude_med_high_distilled:
         confidence_levels = ['high', 'medium']
-        print("  Excluding: high and medium confidence distilled models only")
+        print("  Excluding: medium and high confidence distilled models only")
 
     distilled_models = distilled_df[
         (distilled_df['distilled'] == True) &
@@ -195,7 +195,7 @@ def prepare_for_analysis(df, reference_date='2020-01-01'):
 
 def load_model_capabilities_and_compute(use_website_data=False,
                                        exclude_distilled=False,
-                                       include_low_confidence=False,
+                                       exclude_med_high_distilled=False,
                                        filter_complete=True,
                                        min_release_date=None):
     """Load ECI scores and merge with compute data.
@@ -204,8 +204,8 @@ def load_model_capabilities_and_compute(use_website_data=False,
 
     Args:
         use_website_data: If True, load from data/website/epoch_capabilities_index.csv
-        exclude_distilled: If True, exclude distilled models
-        include_low_confidence: If True, also exclude low-confidence distilled models
+        exclude_distilled: If True, exclude all distilled models (all confidence levels)
+        exclude_med_high_distilled: If True, exclude med/high confidence distilled models
         filter_complete: If True, only return models with complete data
         min_release_date: If provided, only include models released on or after this date
 
@@ -217,7 +217,7 @@ def load_model_capabilities_and_compute(use_website_data=False,
         eci_df = load_eci_from_website()
 
         # Filter distilled models if requested
-        eci_df = filter_distilled_models(eci_df, exclude_distilled, include_low_confidence)
+        eci_df = filter_distilled_models(eci_df, exclude_distilled, exclude_med_high_distilled)
 
         # Filter by release date if requested
         eci_df = filter_by_release_date(eci_df, min_release_date)
@@ -237,7 +237,7 @@ def load_model_capabilities_and_compute(use_website_data=False,
         eci_df = load_eci_from_outputs()
 
         # Filter distilled models if requested
-        eci_df = filter_distilled_models(eci_df, exclude_distilled, include_low_confidence)
+        eci_df = filter_distilled_models(eci_df, exclude_distilled, exclude_med_high_distilled)
 
         # Filter by release date if requested
         eci_df = filter_by_release_date(eci_df, min_release_date)

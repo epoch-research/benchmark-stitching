@@ -217,7 +217,7 @@ def run(args: argparse.Namespace) -> None:
     df = load_model_capabilities_and_compute(
         use_website_data=args.use_website_data,
         exclude_distilled=args.exclude_distilled,
-        include_low_confidence=args.include_low_confidence,
+        exclude_med_high_distilled=args.exclude_med_high_distilled,
     )
 
     if df is None or len(df) == 0:
@@ -292,12 +292,12 @@ def run(args: argparse.Namespace) -> None:
     output_dir = create_output_directory(
         "buckets",
         exclude_distilled=args.exclude_distilled,
-        include_low_confidence=args.include_low_confidence,
+        exclude_med_high_distilled=args.exclude_med_high_distilled,
         use_website_data=args.use_website_data,
     )
     suffix = generate_output_suffix(
         exclude_distilled=args.exclude_distilled,
-        include_low_confidence=args.include_low_confidence,
+        exclude_med_high_distilled=args.exclude_med_high_distilled,
         use_website_data=args.use_website_data,
     )
 

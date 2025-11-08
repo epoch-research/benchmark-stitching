@@ -20,24 +20,24 @@ CONFIGURATIONS = [
         "flags": [],
     },
     {
-        "name": "Internal data (excluding distilled)",
-        "flags": ["--exclude-distilled"],
+        "name": "Internal data (excluding med/high distilled)",
+        "flags": ["--exclude-med-high-distilled"],
     },
     {
         "name": "Internal data (excluding all distilled)",
-        "flags": ["--exclude-distilled", "--include-low-confidence"],
+        "flags": ["--exclude-distilled"],
     },
     {
         "name": "Website data (all models)",
         "flags": ["--use-website-data"],
     },
     {
-        "name": "Website data (excluding distilled)",
-        "flags": ["--use-website-data", "--exclude-distilled"],
+        "name": "Website data (excluding med/high distilled)",
+        "flags": ["--use-website-data", "--exclude-med-high-distilled"],
     },
     {
         "name": "Website data (excluding all distilled)",
-        "flags": ["--use-website-data", "--exclude-distilled", "--include-low-confidence"],
+        "flags": ["--use-website-data", "--exclude-distilled"],
     },
 ]
 
@@ -48,8 +48,24 @@ LINEAR_MODEL_EXTRA_CONFIGS = [
         "flags": ["--frontier-only"],
     },
     {
-        "name": "Internal data (frontier only, excluding distilled)",
+        "name": "Internal data (frontier only, excluding med/high distilled)",
+        "flags": ["--frontier-only", "--exclude-med-high-distilled"],
+    },
+    {
+        "name": "Internal data (frontier only, excluding all distilled)",
         "flags": ["--frontier-only", "--exclude-distilled"],
+    },
+    {
+        "name": "Website data (frontier only)",
+        "flags": ["--use-website-data", "--frontier-only"],
+    },
+    {
+        "name": "Website data (frontier only, excluding med/high distilled)",
+        "flags": ["--use-website-data", "--frontier-only", "--exclude-med-high-distilled"],
+    },
+    {
+        "name": "Website data (frontier only, excluding all distilled)",
+        "flags": ["--use-website-data", "--frontier-only", "--exclude-distilled"],
     },
 ]
 
@@ -394,6 +410,25 @@ Examples:
         print("    internal_with_distilled_all_models/")
         print("    internal_with_distilled_frontier_only/")
         print("    ...")
+
+        # Print summary table of results
+        if not args.dry_run:
+            print("\n" + "=" * 80)
+            print("COLLECTING AND SUMMARIZING RESULTS...")
+            print("=" * 80)
+            try:
+                # Import and run result collector
+                import sys
+                from pathlib import Path
+                sys.path.insert(0, str(Path(__file__).parent))
+                from result_collector import collect_all_results, print_summary_table
+
+                results = collect_all_results()
+                print_summary_table(results)
+            except Exception as e:
+                print(f"\n⚠️  Warning: Could not generate summary table: {e}")
+                import traceback
+                traceback.print_exc()
 
 
 if __name__ == "__main__":

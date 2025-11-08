@@ -61,7 +61,7 @@ def main():
     # Load and filter data
     df_plot = load_and_filter_data(
         exclude_distilled=args.exclude_distilled,
-        include_low_confidence=args.include_low_confidence,
+        exclude_med_high_distilled=args.exclude_med_high_distilled,
         frontier_only=args.frontier_only,
         use_website_data=args.use_website_data,
         min_release_date=args.min_release_date
@@ -78,7 +78,7 @@ def main():
     output_dir = create_output_directory(
         "linear_model",
         exclude_distilled=args.exclude_distilled,
-        include_low_confidence=args.include_low_confidence,
+        exclude_med_high_distilled=args.exclude_med_high_distilled,
         frontier_only=args.frontier_only,
         use_website_data=args.use_website_data,
         min_release_date=args.min_release_date
@@ -88,7 +88,7 @@ def main():
     print("\nCreating uncertainty diagnostic plots...")
     plot_uncertainty_diagnostics(
         df_plot, bootstrap_results, output_dir,
-        args.exclude_distilled, args.include_low_confidence,
+        args.exclude_distilled, args.exclude_med_high_distilled,
         args.frontier_only, args.use_website_data,
         args.min_release_date
     )
@@ -100,7 +100,7 @@ def main():
         show_predicted_frontier=args.show_predicted_frontier,
         label_points=args.label_points,
         exclude_distilled=args.exclude_distilled,
-        include_low_confidence=args.include_low_confidence,
+        exclude_med_high_distilled=args.exclude_med_high_distilled,
         frontier_only=args.frontier_only,
         use_website_data=args.use_website_data,
         min_release_date=args.min_release_date
@@ -108,6 +108,44 @@ def main():
 
     # Print summary statistics
     print_summary_statistics(df_plot)
+
+    # Save summary to JSON for result collection
+    try:
+        import json
+        from shared.cli_utils import generate_output_suffix
+
+        suffix = generate_output_suffix(
+            exclude_distilled=args.exclude_distilled,
+            exclude_med_high_distilled=args.exclude_med_high_distilled,
+            frontier_only=args.frontier_only,
+            use_website_data=args.use_website_data,
+            min_release_date=args.min_release_date
+        )
+
+        summary_file = output_dir / f"linear_model_summary{suffix}.json"
+        tradeoff_summary = bootstrap_results.get('tradeoff_summary', {})
+
+        summary_data = {
+            "compute_year_tradeoff": {
+                "median": tradeoff_summary.get('tradeoff_median'),
+                "mean": tradeoff_summary.get('tradeoff_mean'),
+                "ci_lower": tradeoff_summary.get('tradeoff_ci', [None, None])[0],
+                "ci_upper": tradeoff_summary.get('tradeoff_ci', [None, None])[1],
+            },
+            "model_coefficients": {
+                "log_compute": float(model.coef_[0]),
+                "date": float(model.coef_[1]),
+                "intercept": float(model.intercept_)
+            },
+            "n_models": len(df_plot)
+        }
+
+        with open(summary_file, 'w') as f:
+            json.dump(summary_data, f, indent=2)
+
+        print(f"\nSummary saved to: {summary_file}")
+    except Exception as e:
+        print(f"\nWarning: Could not save summary JSON: {e}")
 
     print("\n" + "="*70)
     print("ANALYSIS COMPLETE")
