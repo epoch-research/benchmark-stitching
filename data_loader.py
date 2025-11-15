@@ -385,7 +385,7 @@ random_baseline_map = {
     # SuperGLUE overall score aggregates varied tasks; use 0.0 as conservative default
     "SuperGLUE": 0.0,
     "Terminal Bench": 0.0,
-    "TriviaQA": 0.0,    # EM
+    "TriviaQA": 1/6,
     "VideoMME": 0.25,
     "VPCT": 0.0,
     "WeirdML": 0.0,
