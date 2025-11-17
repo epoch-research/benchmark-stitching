@@ -1,32 +1,47 @@
 ﻿ID,Model version,Mean score,Notes,Source,Source link
-recaq2pSAD6GGfn5w,o3-2025-04-16_medium,8.39,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recSkbMHfjidM77vp,qwen3-235b-a22b,8.30,,lechmazur/writing Github repository,lechmazur/writing Github repository
-reccBYfi4bRrue4HQ,DeepSeek-R1,8.30,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recoz4ungN3PTpQl9,gpt-4o-2024-11-20,8.18,"Assuming latest version of gpt-4o as of March 2025, which was released in November 2024. ",lechmazur/writing Github repository,lechmazur/writing Github repository
-recsJfvmkvg5HQXtd,claude-3-7-sonnet-20250219_16K,8.11,,lechmazur/writing Github repository,lechmazur/writing Github repository
-reciVOxUS1MVywwy0,QwQ-32B (16K thinking),8.07,,lechmazur/writing Github repository,lechmazur/writing Github repository
-rectFWVD6OaR7zTAc,gemini-2.5-pro-exp-03-25,8.05,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recP7L8TeBmoCAl0r,claude-3-5-sonnet-20241022,8.03,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recJHtOReC3qBWu5u,gemma-3-27b-it,7.99,,lechmazur/writing Github repository,lechmazur/writing Github repository
-reci1bJfZoH6BKt6v,claude-3-7-sonnet-20250219,7.94,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recqkT3tIKjY1r3fM,DeepSeek-V3-0324,7.70,,lechmazur/writing Github repository,lechmazur/writing Github repository
-rec8l7OvydxWXqfLG,gemini-2.5-flash-preview-04-17 (24K thinking),7.65,,lechmazur/writing Github repository,lechmazur/writing Github repository
-rec2jPjbcJQabiidK,grok-3-beta,7.64,,lechmazur/writing Github repository,lechmazur/writing Github repository
-rec1SxklVeGLx1G1l,gpt-4.5-preview-2025-02-27,7.56,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recJzfhOd5CQMu9pU,Qwen3-30B-A3B,7.53,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recl393uYsVbqAdgp,o4-mini-2025-04-16_medium,7.50,,lechmazur/writing Github repository,lechmazur/writing Github repository
-rec7Ad0FQVVUZGJ0o,gemini-2.0-flash-thinking-exp-01-21,7.38,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recfHZVxMFIfkbYxf,claude-3-5-haiku-20241022,7.35,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recS4R7WEzc0s9V7x,grok-3-mini-beta_low,7.35,,lechmazur/writing Github repository,lechmazur/writing Github repository
-reckFMjYS4y6kWND5,qwen2.5-max,7.29,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recSGTGdSd09Lb6L8,gemini-2.0-flash-exp,7.15,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recjgF4RoMK0VJ55k,o1-2024-12-17_medium,7.02,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recTwh7ZHo9GJj9wP,mistral-large-2407,6.90,,lechmazur/writing Github repository,lechmazur/writing Github repository
-rec59iWuwAkDxmebi,gpt-4o-mini-2024-07-18,6.72,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recq4LxA84BKzH3t1,o1-mini-2024-09-12_medium,6.49,Assuming medium reasoning effort.,lechmazur/writing Github repository,lechmazur/writing Github repository
-recxwnBs6mL87lq8r,grok-2-1212,6.36,,lechmazur/writing Github repository,lechmazur/writing Github repository
-rect9gbTk2DzJqvos,phi-4,6.26,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recNUH31w7Wo1y6BP,Llama-4-Maverick-17B-128E-Instruct,6.20,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recfjLnZ7q8ZmOFwC,o3-mini-2025-01-31_high,6.17,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recF0Rko4uHeKxc4o,o3-mini-2025-01-31_medium,6.15,,lechmazur/writing Github repository,lechmazur/writing Github repository
-recJLuoiCnHOIXETL,amazon.nova-pro-v1:0,6.05,,lechmazur/writing Github repository,lechmazur/writing Github repository
+recaq2pSAD6GGfn5w,o3-2025-04-16_medium,8.39,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recSkbMHfjidM77vp,qwen3-235b-a22b,8.30,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+reccBYfi4bRrue4HQ,DeepSeek-R1,8.30,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recoz4ungN3PTpQl9,gpt-4o-2024-11-20,8.18,"Assuming latest version of gpt-4o as of March 2025, which was released in November 2024. ",lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recsJfvmkvg5HQXtd,claude-3-7-sonnet-20250219_16K,8.11,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+reciVOxUS1MVywwy0,QwQ-32B (16K thinking),8.07,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+rectFWVD6OaR7zTAc,gemini-2.5-pro-exp-03-25,8.05,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recP7L8TeBmoCAl0r,claude-3-5-sonnet-20241022,8.03,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recJHtOReC3qBWu5u,gemma-3-27b-it,7.99,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+reci1bJfZoH6BKt6v,claude-3-7-sonnet-20250219,7.94,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recqkT3tIKjY1r3fM,DeepSeek-V3-0324,7.70,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+rec8l7OvydxWXqfLG,gemini-2.5-flash-preview-04-17 (24K thinking),7.65,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+rec2jPjbcJQabiidK,grok-3-beta,7.64,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+rec1SxklVeGLx1G1l,gpt-4.5-preview-2025-02-27,7.56,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recJzfhOd5CQMu9pU,Qwen3-30B-A3B,7.53,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recl393uYsVbqAdgp,o4-mini-2025-04-16_medium,7.50,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+rec7Ad0FQVVUZGJ0o,gemini-2.0-flash-thinking-exp-01-21,7.38,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recfHZVxMFIfkbYxf,claude-3-5-haiku-20241022,7.35,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recS4R7WEzc0s9V7x,grok-3-mini-beta_low,7.35,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+reckFMjYS4y6kWND5,qwen2.5-max,7.29,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recSGTGdSd09Lb6L8,gemini-2.0-flash-exp,7.15,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recjgF4RoMK0VJ55k,o1-2024-12-17_medium,7.02,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recTwh7ZHo9GJj9wP,mistral-large-2407,6.90,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+rec59iWuwAkDxmebi,gpt-4o-mini-2024-07-18,6.72,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recq4LxA84BKzH3t1,o1-mini-2024-09-12_medium,6.49,Assuming medium reasoning effort.,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recxwnBs6mL87lq8r,grok-2-1212,6.36,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+rect9gbTk2DzJqvos,phi-4,6.26,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recNUH31w7Wo1y6BP,Llama-4-Maverick-17B-128E-Instruct,6.20,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recfjLnZ7q8ZmOFwC,o3-mini-2025-01-31_high,6.17,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recF0Rko4uHeKxc4o,o3-mini-2025-01-31_medium,6.15,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recJLuoiCnHOIXETL,amazon.nova-pro-v1:0,6.05,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+rec0Z6mn8DykfmhUG,gpt-5-2025-08-07_medium,8.72,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recGPmtzBtdNSHZ1x,moonshotai/kimi-k2-0905,8.73,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recYPhzB6GKyfcmh2,qwen3-max-2025-09-23,8.71,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recQirtQcqpnqnCmD,Kimi-K2-Instruct,8.69,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recziSpfFbKGOTfrx,o3-pro-2025-06-10_medium,8.63,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+rec0ovyX32clmB0YQ,gemini-2.5-pro,8.60,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recQGrrVSyU7LJV8J,claude-opus-4-1-20250805,8.54,No thinking,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recXUvne0qnnHCAxs,DeepSeek-V3.1_thinking,8.52,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+rectiWJo2OyeDNWWx,DeepSeek-V3.1,8.51,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recgbicrWUHFgEXUN,Qwen3-235B-A22B-Thinking-2507,8.49,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recRylKVxPMaH3b2W,grok-4-fast,8.11,Reasoning version,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recHsXHgOLusv4OM7,grok-4-0709,8.07,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+recndMUeg8j7ax2mP,glm-4.5,7.80,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+rechu7octUa0VXvGm,gpt-oss-120b,7.73,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing
+rec0zEPq8jBjjZMck,Llama-4-Maverick-17B-128E-Instruct,6.37,,lechmazur/writing Github repository,https://github.com/lechmazur/Writing

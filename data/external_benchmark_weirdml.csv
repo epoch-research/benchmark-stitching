@@ -1,19 +1,24 @@
 ﻿id,Model version,Accuracy,Cost per run,Median code length (lines),Notes,Source,Source link
 rec4qZr44BtF62vqq,gpt-5-2025-08-07_high,56.3%,$1.2100,324,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
+recX2OmQjv53BIY3l,gpt-5-pro-2025-10-06_high,56.1%,$7.8275,366,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recrKJicVBBBp5oLq,o3-pro-2025-06-10_high,53.9%,$5.2283,146,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
+recn9o1kxCulEzqBH,gpt-5-codex,51.6%,$1.1303,372,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recHsTdNwgdKqNyYc,gemini-2.5-pro_16K,50.3%,$0.8232,196,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recSCZGZmZVpfZcHB,o3-2025-04-16_high,49.8%,$0.4637,133,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recGzRI7z9Ript5yD,gpt-5-mini-2025-08-07_high,49.7%,$0.2190,293,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recSHUB127PDQxkfv,o4-mini-2025-04-16_high,49.2%,$0.3869,120,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
-recWRKD0ymts02CqB,gpt-oss-120b_high,48.9%,$0.0335,,,WeirdML Leaderboard,
+recWRKD0ymts02CqB,gpt-oss-120b_high,48.9%,$0.0335,,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recnLgZJKzq0pWJ9p,o1-preview-2024-09-12,46.1%,$3.7400,133,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recJyT9ShE1YMRU74,claude-sonnet-4-5-20250929,46.0%,$0.2780,194,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recWzey65DpSgKtm8,claude-sonnet-4-5-20250929_16K,45.4%,$0.3350,173,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recuIpEzqzmBXSuu5,claude-sonnet-4-20250514_16K,45.3%,$0.6679,198,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recGNHgU4woBudrxm,o1-2024-12-17_high,43.6%,$3.1700,152,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
+recbC3Pk2XJrtS6jq,claude-haiku-4-5-20251001,43.6%,$0.0885,171,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
+recde5VLEdMBKj0Gz,claude-haiku-4-5-20251001_16K,43.3%,$0.1223,160,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recKsN4DgMnrJJqHR,claude-sonnet-4-20250514,43.0%,$0.6080,216,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 reczHopD946ynh9x0,grok-4-0709,42.6%,$0.9340,136,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recb7bIHY4oRuegzM,claude-opus-4-20250514_16K,42.1%,$3.3979,232,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
+recQV87PGo9MozwhO,kimi-k2-thinking,42.1%,$0.0805,193,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recgozq9bI4nBC6MI,claude-opus-4-1-20250805_16K,41.8%,$3.4600,239,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recgbBevs5M9TnP36,o3-mini-2025-01-31_high,41.3%,$0.3530,155,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 reckSuCYFJ6a1ksrw,DeepSeek-R1-0528,40.9%,$0.1420,171,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
@@ -21,10 +26,12 @@ recGEblb3SNnepRe1,glm-4.5_thinking,40.8%,$0.0736,238,,WeirdML Leaderboard,https:
 recSenSiVOzoyrhM7,grok-4-fast,40.8%,$0.0130,143,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recwbp07k8ku0pbh5,Qwen3-Coder-480B-A35B-Instruct,40.7%,$0.1440,173,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recLmo6NcvCM4Ye7a,gpt-oss-120b_medium,40.2%,$0.0232,197,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
-recA6D3LkM2OuG2TH,gemini-2.5-flash-preview-09-25_16k,39.9%,$0.0738,208,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
+recA6D3LkM2OuG2TH,gemini-2.5-flash-preview-09-2025_16k,39.9%,$0.0738,208,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 rec1XWGoYSV4OlC8J,gpt-oss-20b_high,39.8%,$0.0108,160,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 reci9lthvBxTe1qFc,claude-3-5-sonnet-20241022,39.8%,$0.4931,168,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 rectdVmbAMbhHQ5K3,grok-3-mini_high,39.6%,$0.0175,130,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
+rec7uPDokMq3CWQDy,DeepSeek-V3.2-Exp_thinking,39.2%,$0.0178,214,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
+rec8W7RlpDQoWgvzo,gpt-5-chat,39.0%,$0.0777,113,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 rec1QFsYDTNUf8UB0,Qwen3-235B-A22B-Thinking-2507,38.9%,$0.0396,124,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recTOeDgbKEbXih3E,gemini-2.5-flash-preview-05-20_16K,38.7%,$0.2118,179,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recwqjqGOkm0f51Io,Kimi-K2-Instruct,38.6%,$0.0682,185,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
@@ -42,6 +49,7 @@ rec5rZXinvvAnv0LQ,DeepSeek-R1,35.6%,$0.1580,118,,WeirdML Leaderboard,https://hti
 recWpIUcWCiiJjsuv,gpt-5-nano-2025-08-07_high,35.6%,$0.0269,187,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 rec9nHByk40IO0MOR,o1-mini-2024-09-12_medium,35.4%,$0.2250,152,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recRV03WT6QZrAKTk,DeepSeek-V3-0324,35.1%,$0.0276,139,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
+recCOfjHgyxAboN8H,grok-code-fast-1,34.1%,$0.0239,119,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recNqAyRo9Bchbr4t,gemini-2.5-flash-lite-preview-06-17_16K,33.9%,$0.0610,283,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recaGKXTNqQWwgcGX,mistral-medium-2508,32.1%,$0.0395,173,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html
 recZ2Fnhy1oCABquH,claude-3-5-sonnet-20240620,30.1%,$0.4870,133,,WeirdML Leaderboard,https://htihle.github.io/weirdml.html

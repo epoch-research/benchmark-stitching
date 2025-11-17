@@ -1,14 +1,14 @@
 ﻿id,Average score,Model version,Agent,Notes,Source,Source link
-recWmaxS0ycQLxFMa,57.7%,claude-sonnet-4-5-20250929,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-recIbyRHhHFxDYfXq,57.4%,gpt-5-2025-08-07_low,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-recAiUkL2JKnr7mnB,56.4%,claude-opus-4-1-20250805,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-recR3uOS0BLHqkwxL,56.3%,claude-opus-4-20250514_2K,,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-recsWpC0ObN7DsE4t,56.0%,gpt-5-2025-08-07_medium,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-recHggeQMAdJvIEz9,55.9%,gpt-5-2025-08-07_minimal,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-reciPR9ZrmNzGMR41,55.8%,claude-sonnet-4-20250514_2K,,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-recQCpfcr9yYqfBqe,55.4%,gpt-5-2025-08-07_high,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-recAThc100QSltAYp,54.8%,grok-4-0709,checked,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-recZOsBdFIcclcWLC,53.2%,o3-2025-04-16_medium,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-rec7sfVScDTbadXOF,50.4%,claude-3-7-sonnet-20250219_2K,,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-recXizbzd3b0y22vq,44.5%,gemini-2.5-pro-preview-06-05,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
-rec8Lh9Jnh2v0o4mA,35.2%,DeepSeek-R1-0528,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recIbyRHhHFxDYfXq,53.6%,gpt-5-2025-08-07_low,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recWmaxS0ycQLxFMa,53.4%,claude-sonnet-4-5-20250929_2K,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recHggeQMAdJvIEz9,51.5%,gpt-5-2025-08-07_minimal,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recQCpfcr9yYqfBqe,51.0%,gpt-5-2025-08-07_high,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recsWpC0ObN7DsE4t,50.9%,gpt-5-2025-08-07_medium,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recAiUkL2JKnr7mnB,50.6%,claude-opus-4-1-20250805,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recR3uOS0BLHqkwxL,50.3%,claude-opus-4-20250514_2K,,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recAThc100QSltAYp,50.3%,grok-4-0709,checked,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+reciPR9ZrmNzGMR41,49.7%,claude-sonnet-4-20250514_2K,,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recZOsBdFIcclcWLC,48.4%,o3-2025-04-16_medium,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+rec7sfVScDTbadXOF,46.2%,claude-3-7-sonnet-20250219_2K,,2048 thinking token budget,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+recXizbzd3b0y22vq,44.2%,gemini-2.5-pro-preview-06-05,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
+rec8Lh9Jnh2v0o4mA,34.8%,DeepSeek-R1-0528,,,DeepResearchBench Leaderboard,https://drb.futuresearch.ai
