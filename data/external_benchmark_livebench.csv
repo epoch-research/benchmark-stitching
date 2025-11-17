@@ -62,3 +62,4 @@ phi-3-small-8k-instruct,rec2x8JSO9CA4xkBy,Phi-3-small-8k-instruct,24.03,15.92,20
 phi-3-mini-128k-instruct,recyNgAVuOsvYtdKw,Phi-3-mini-4k-instruct,22.36,20.50,15.04,15.72,34.69,9.15,39.08,LiveBench-2024-11-25,LiveBench Leaderboard,https://livebench.ai/#/,
 olmo-2-1124-13b-instruct,rec27C9qpmHPs1Lwq,OLMo-2-1124-13B-Instruct,22.12,16.33,10.41,13.64,20.60,11.16,60.56,LiveBench-2024-11-25,LiveBench Leaderboard,https://livebench.ai/#/,
 phi-3-mini-4k-instruct,recuSbAo75IkmGM80,Phi-3-mini-4k-instruct,22.08,26.83,15.54,14.96,30.21,8.56,36.36,LiveBench-2024-11-25,LiveBench Leaderboard,https://livebench.ai/#/,
+gpt-5.1_high,reccitYZXEdy5f7ZU,gpt-5.1_high,78.79,95.75,72.49,94.46,72.07,80.15,93.28,LiveBench-2024-11-25,LiveBench Leaderboard,https://livebench.ai/#/,

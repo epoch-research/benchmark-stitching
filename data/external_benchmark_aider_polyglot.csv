@@ -3,18 +3,20 @@ recusk6NHwVicJ6kW,gpt-5-2025-08-07_high,88.000,91.600,diff,$0.1300,Aider LLM Lea
 recESWz46G8mPRBRc,gpt-5-2025-08-07_medium,86.700,88.400,diff,$0.0790,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 recwknvKrFOHaRtr0,o3-pro-2025-06-10_high,84.900,97.800,diff,$0.6500,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 recTdLkFf3W6Wsboo,gemini-2.5-pro-preview-06-05_32K,83.100,99.600,diff-fenced,$0.2200,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
+recxVJrYlQfsAsfER,o3-2025-04-16_high,81.300,94.700,diff,$0.0610,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 recUEmzrfcnLZAiii,gpt-5-2025-08-07_low,81.300,86.700,diff,$0.2200,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
-recxVJrYlQfsAsfER,o3-2025-04-16_high,79.600,95.100,diff,$0.0610,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 reck399Bumr5Uaml4,grok-4-0709,79.600,97.300,diff,$0.0940,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 rectI2Vulkqa1ab26,gemini-2.5-pro-preview-06-05,79.100,100.000,diff-fenced,$0.2000,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,No thinking parameter set; default thinking token length
 recFWD297UQP8MRYi,,78.200,100.000,architect,$0.0780,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,Model version deliberately omitted because it's a mix of o3 (high) & gpt-4.1
 recQXuPMHsN1f1pXT,gemini-2.5-pro-preview-05-06,76.900,97.300,diff-fenced,$0.1700,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 rec6DP0rm1WZjXNb1,o3-2025-04-16_medium,76.900,93.800,diff,$0.0610,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
-recQlPsg6RDQbmeuu,gemini-2.5-pro-exp-03-25,72.900,92.400,diff-fenced,,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
+recdHPvT3QOnVioE2,DeepSeek-V3.2-Exp_thinking,74.200,92.400,diff,$0.0058,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
+recQlPsg6RDQbmeuu,gemini-2.5-pro-exp-03-25,72.900,97.300,diff-fenced,,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 recl9fv7t1P1NNdYa,o4-mini-2025-04-16_high,72.000,90.700,diff,$0.0870,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 recardEOKRehXXmpU,claude-opus-4-20250514_32K,72.000,97.300,diff,$0.2900,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 recRvk7ngoGy8aCj2,DeepSeek-R1-0528,71.400,94.600,diff,$0.0210,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 recRkLNIObleDWFSd,claude-opus-4-20250514,70.700,98.700,diff,$0.3100,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
+recGIpKLux7lz5yX2,DeepSeek-V3.2-Exp,70.200,98.200,diff,$0.0039,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 recyIxXTFMw9aOxsg,claude-3-7-sonnet-20250219_32K,64.900,97.800,diff,$0.1600,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 recy59pxtemikU4JV,,64.000,100.000,architect,$0.0590,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,Model version deliberately omitted because it's a mix of DeepSeek R1 & claude-3-5-sonnet-20241022
 recsBapERP76dJ1KO,o1-2024-12-17_high,61.700,91.500,diff,$0.8300,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
@@ -28,6 +30,8 @@ recuYSkwNLFezoACW,DeepSeek-V3-0324,55.100,99.600,diff,$0.0050,Aider LLM Leaderbo
 recuekZA2IXFF4GQE,gemini-2.5-flash-preview-05-20_23K,55.100,95.600,diff,$0.0380,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 rectGRIeRMF8LhwRY,o3-mini-2025-01-31_medium,53.800,95.100,diff,$0.0390,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 recxcFVs5GAmiu4VS,grok-3-beta,53.300,99.600,diff,$0.0490,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
+rec0UuNYP04KqNja4,,52.900,97.300,diff,,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,"Model ""Optimus Alpha""
+"
 recLZ9wzZof5nDN7z,gpt-4.1-2025-04-14,52.400,98.200,diff,$0.0440,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 rec57bL14FIulU6lg,claude-3-5-sonnet-20241022,51.600,99.600,diff,$0.0640,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
 recYl75ePKBbrvSdI,qwen3-235b-a22b,49.800,91.600,diff,$0.0080,Aider LLM Leaderboards,https://aider.chat/docs/leaderboards/#polyglot-leaderboard,
