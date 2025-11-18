@@ -21,6 +21,101 @@ from data_loader import scores_df
 from fit import fit_statistical_model
 
 
+import seaborn as sns
+sns.set()
+sns.set_style("whitegrid")
+
+# Custom color palette
+custom_colors = [
+    '#00A5A6',  # teal
+    '#E03D90',  # pink
+    '#FC6538',  # orange
+    '#6A3ECB',  # purple
+    '#0058DC',  # blue
+    '#EA8D00',  # yellow
+    '#B087F4',  # lightPurple
+    '#279E27',  # green
+    '#009AF1',  # lightBlue
+    '#015D90',  # darkBlue
+    '#EA4831',  # red
+    '#E1C700',  # yellow2
+    '#46FFFF',  # turquoise
+    '#63F039',  # lightGreen
+]
+
+sns.set_palette(custom_colors)
+colors = sns.color_palette()
+
+# === Seaborn global settings ===
+sns.set_theme(
+    style="whitegrid",        # or "darkgrid", "ticks", "white"
+    palette=custom_colors,    # your custom color palette
+    context="notebook"        # scaling for labels/titles ("paper", "notebook", "talk", "poster")
+)
+
+# === Matplotlib global settings (rcParams) ===
+plt.rcParams.update({
+    # Figure
+    "figure.figsize": (8, 5),
+    "figure.dpi": 120,
+    
+    # Axes
+    "axes.titley": 1.02,
+    "axes.titlesize": 14,
+    "axes.titlelocation": 'center',
+    "axes.titlepad": 0,
+    "axes.labelsize": 12,
+    "axes.labelpad": 10,           # spacing between axis and label
+    "axes.spines.top": False,
+    "axes.spines.right": False,
+    
+    # Ticks
+    "xtick.labelsize": 10,
+    "ytick.labelsize": 10,
+    # tick marks size
+    "xtick.major.size": 5,
+    "ytick.major.size": 5,
+    "xtick.labelsize": 12,
+    "ytick.labelsize": 12,
+    
+    # tick visibility
+    "xtick.top": False,
+    "xtick.bottom": True,
+    "ytick.left": True,
+    "ytick.right": False,
+    
+    # Legend
+    "legend.fontsize": 10,
+    "legend.loc": "upper left",
+    "legend.frameon": True,
+    "legend.borderaxespad": 0,
+
+    
+    # Lines and markers
+    "lines.linewidth": 2,
+    "lines.markersize": 8,
+    "lines.markeredgecolor": 'auto',   # white outline (stroke)
+    "lines.markeredgewidth": 0.5,   
+    # title alignment left
+    
+
+    
+    
+    # Error bars
+    "errorbar.capsize": 3,
+    
+    # Font
+    "font.family": "Arial",
+    "font.sans-serif": ["DejaVu Sans"],
+    
+    # Grid
+    "grid.alpha": 0.3,
+    "grid.linestyle": "-",
+    "grid.color": "lightgray",
+})
+
+
+
 def fit_subset_with_benchmark_anchor_ref_init(
     df_subset: pd.DataFrame,
     anchor_benchmark: str,
@@ -290,7 +385,7 @@ def create_analysis_plots(
     # Plot 1: Distribution of model capability differences (averaging over anchors)
     plt.figure(figsize=(10, 6))
     comp1 = results["comp1"]
-    plt.hist(comp1["diff"], bins=30, alpha=0.7, color="blue", edgecolor="black")
+    plt.hist(comp1["diff"], bins=30, alpha=1, color=colors[0], edgecolor=colors[0])
     plt.axvline(
         comp1["diff"].mean(),
         color="red",
@@ -313,7 +408,7 @@ def create_analysis_plots(
 
     # Plot 1.5: Scatter plot of optimized vs unoptimized capabilities
     plt.figure(figsize=(10, 8))
-    plt.scatter(comp1["cap_unopt"], comp1["cap_opt"], alpha=0.7, s=50, color="blue")
+    plt.scatter(comp1["cap_unopt"], comp1["cap_opt"], alpha=1, s=64, color=colors[0], edgecolor='white', linewidths=0.5)
 
     # Add y=x diagonal line
     min_val = min(comp1["cap_unopt"].min(), comp1["cap_opt"].min())
