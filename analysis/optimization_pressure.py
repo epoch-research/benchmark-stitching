@@ -385,7 +385,7 @@ def create_analysis_plots(
     # Plot 1: Distribution of model capability differences (averaging over anchors)
     plt.figure(figsize=(10, 6))
     comp1 = results["comp1"]
-    plt.hist(comp1["diff"], bins=30, alpha=1, color=colors[0], edgecolor=colors[0])
+    plt.hist(comp1["diff"], bins=30, alpha=1, color=custom_colors[0], edgecolor=custom_colors[0])
     plt.axvline(
         comp1["diff"].mean(),
         color="red",
@@ -404,11 +404,13 @@ def create_analysis_plots(
     plot1_png, plot1_pdf = save_plot(
         output_dir / "model_capability_differences_histogram"
     )
+    plt.savefig('outputs/figures/figure-16a.svg', format='svg')
+
     plt.show()
 
     # Plot 1.5: Scatter plot of optimized vs unoptimized capabilities
     plt.figure(figsize=(10, 8))
-    plt.scatter(comp1["cap_unopt"], comp1["cap_opt"], alpha=1, s=64, color=colors[0], edgecolor='white', linewidths=0.5)
+    plt.scatter(comp1["cap_unopt"], comp1["cap_opt"], alpha=1, s=64, color=custom_colors[0], edgecolor='white', linewidths=0.5)
 
     # Add y=x diagonal line
     min_val = min(comp1["cap_unopt"].min(), comp1["cap_opt"].min())
@@ -467,6 +469,7 @@ def create_analysis_plots(
 
     # Save plot 1.5
     plot1_5_png, plot1_5_pdf = save_plot(output_dir / "capability_scatter_plot")
+    plt.savefig('outputs/figures/figure-16b.svg', format='svg')
     plt.show()
 
     # Plot 1.6: Individual anchor scatter plots
