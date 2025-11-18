@@ -59,11 +59,11 @@ df_bbh.dropna(inplace=True)
 df_bbh["benchmark"] = "BBH"
 df_bbh["performance"] = pd.to_numeric(df_bbh["performance"].str.rstrip('%'), errors="raise") / 100
 
-df_boolq = pd.read_csv("data/external_benchmark_boolq.csv")[["Model version", "Score", "Source"]]
-df_boolq = df_boolq.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
-df_boolq.dropna(inplace=True)
-df_boolq["benchmark"] = "BoolQ"
-df_boolq["performance"] = pd.to_numeric(df_boolq["performance"].str.rstrip('%'), errors="raise") / 100
+# df_boolq = pd.read_csv("data/external_benchmark_boolq.csv")[["Model version", "Score", "Source"]]
+# df_boolq = df_boolq.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
+# df_boolq.dropna(inplace=True)
+# df_boolq["benchmark"] = "BoolQ"
+# df_boolq["performance"] = pd.to_numeric(df_boolq["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_cadeval = pd.read_csv("data/external_benchmark_cadeval.csv")[["Model version", "Overall pass (%)", "Source"]]
 df_cadeval = df_cadeval.rename(columns={"Model version": "model", "Overall pass (%)": "performance", "Source": "source"})
@@ -264,7 +264,7 @@ benchmarks = [
     df_arcai2, 
     df_balrog, # who's even heard of this?
     df_bbh, # chinchilla https://arxiv.org/abs/2203.15556
-    df_boolq,
+    # df_boolq, # duplicate - boolq is part of superglue
     df_cadeval, # never even heard of this, also seems pretty hard to find on google. idk how we even found out about this! https://willpatrick.xyz/cadevalresults_20250422_095709/
     df_csqa2,
     df_cybench, # probably? e.g. claude 3.7 sonnet. https://assets.anthropic.com/m/785e231869ea8b3b/original/claude-3-7-sonnet-system-card.pdf it's one of their RSP evals though, so maybe they have some disincentive to do well on this
@@ -383,15 +383,18 @@ scores_df = scores_df[['benchmark_id', 'benchmark', 'model_id', 'model', 'perfor
 df_model = pd.read_csv("data/model_versions.csv")[["id", "Model", "Version release date"]]
 df_model = df_model.rename(columns={"id": "model", "Version release date": "date"})
 df_model.loc[df_model["model"] == "gemini-exp-1206","date"] = "2024-12-06" # typo, in the benchmark it says 2025-12-06 which is impossible. to be updated.
+df_model.loc[df_model['model'] == 'LLaMA-13B', 'date'] = '2023-02-24' # inconsistent with the other LLaMA models, need to fix
+df_model.loc[df_model['model'] == 'LLaMA-33B', 'date'] = '2023-02-24' # inconsistent with the other LLaMA models, need to fix
 df_model = df_model.drop(df_model.index[df_model['Model'].eq('Mistral Large')])
 scores_df = scores_df.merge(df_model, on="model")
 print("after merge with model versions", len(scores_df))
 
 # Filter to keep only models from November 2022 onwards (ChatGPT era)
-START_DATE_FILTER = '2022-11-01'
-scores_df['date'] = pd.to_datetime(scores_df['date'], errors='coerce')
-scores_df = scores_df[scores_df['date'] >= pd.to_datetime(START_DATE_FILTER)].copy()
-print(f"after date filter (>= {START_DATE_FILTER})", len(scores_df))
+START_DATE_FILTER = '2022-11-01' # None
+if START_DATE_FILTER is not None:
+    scores_df['date'] = pd.to_datetime(scores_df['date'], errors='coerce')
+    scores_df = scores_df[scores_df['date'] >= pd.to_datetime(START_DATE_FILTER)].copy()
+    print(f"after date filter (>= {START_DATE_FILTER})", len(scores_df))
 
 scores_df = scores_df.merge(
     bench_dates[['benchmark', 'benchmark_release_date']],
