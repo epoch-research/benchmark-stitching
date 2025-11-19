@@ -10,6 +10,7 @@ testing components from the full software singularity analysis.
 """
 
 import argparse
+from concurrent.futures import ProcessPoolExecutor
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -701,6 +702,95 @@ def estimate_detection_for_single_trajectory(
 # ============================================================================
 
 
+def _run_single_simulation(args):
+    """
+    Helper function to run a single simulation.
+
+    This is designed to be called in parallel via ProcessPoolExecutor.
+
+    Parameters:
+    -----------
+    args : tuple
+        (models_per_year, benchmarks_per_year, true_accel, noise_mult,
+         frac_accelerate_models, sim_idx, seed, time_range_start, horizon_years,
+         cutoff_year, detection_threshold, base_error_std, base_noise_std_model,
+         base_noise_std_bench, min_r2, min_gap_years, scan_resolution,
+         min_points_after, store_runs, run_idx)
+
+    Returns:
+    --------
+    dict with keys: detected, years_to_detect, params, run_data (if store_runs)
+    """
+    (models_per_year, benchmarks_per_year, true_accel, noise_mult,
+     frac_accelerate_models, sim_idx, seed, time_range_start, horizon_years,
+     cutoff_year, detection_threshold, base_error_std, base_noise_std_model,
+     base_noise_std_bench, min_r2, min_gap_years, scan_resolution,
+     min_points_after, store_runs, run_idx) = args
+
+    # Generate synthetic data
+    num_models = int(models_per_year * horizon_years)
+    num_benchmarks = int(benchmarks_per_year * horizon_years)
+
+    models_df, benchmarks_df, scores_df = generate_data(
+        num_models=num_models,
+        num_benchmarks=num_benchmarks,
+        true_acceleration=true_accel,
+        time_range_start=time_range_start,
+        time_range_end=time_range_start + horizon_years,
+        cutoff_year=cutoff_year,
+        error_std=base_error_std * noise_mult,
+        noise_std_model=base_noise_std_model * noise_mult,
+        noise_std_bench=base_noise_std_bench * noise_mult,
+        frac_accelerate_models=frac_accelerate_models,
+        random_seed=seed,
+    )
+
+    # Estimate capabilities
+    df_est = estimated_capabilities(models_df, benchmarks_df, scores_df)
+
+    # Estimate detection
+    result = estimate_detection_for_single_trajectory(
+        models_df,
+        benchmarks_df,
+        scores_df,
+        cutoff_year=cutoff_year,
+        detection_threshold=detection_threshold,
+        min_r2=min_r2,
+        min_gap_years=min_gap_years,
+        scan_resolution=scan_resolution,
+        min_points_after=min_points_after,
+        verbose=False,
+    )
+
+    # Prepare return data
+    ret = {
+        "detected": result["detected"],
+        "years_to_detect": result["years_to_detect"],
+        "params": {
+            "models_per_year": models_per_year,
+            "benchmarks_per_year": benchmarks_per_year,
+            "true_accel": true_accel,
+            "noise_multiplier": noise_mult,
+            "frac_accelerate_models": frac_accelerate_models,
+            "sim_idx": sim_idx,
+            "seed": seed,
+            "cutoff_year": cutoff_year,
+        },
+        "run_idx": run_idx,
+    }
+
+    if store_runs:
+        ret["run_data"] = {
+            "models_df": models_df.copy(),
+            "benchmarks_df": benchmarks_df.copy(),
+            "scores_df": scores_df.copy(),
+            "df_est": df_est.copy(),
+            "result": result.copy(),
+        }
+
+    return ret
+
+
 def run_detection_sweep(
     models_per_year_list,
     benchmarks_per_year_list,
@@ -714,6 +804,7 @@ def run_detection_sweep(
     detection_threshold=CONFIG.detection_threshold,
     random_seed_base=42,
     store_runs=True,
+    n_jobs=1,
 ):
     """
     Run detection analysis across a grid of parameters.
@@ -728,6 +819,12 @@ def run_detection_sweep(
     For each combination, runs multiple simulations and computes:
     - Detection success rate
     - Average time to detection
+
+    Parameters:
+    -----------
+    n_jobs : int
+        Number of parallel jobs to run. If 1, runs sequentially (default).
+        If -1, uses all available CPU cores. If > 1, uses that many cores.
 
     Returns:
     --------
@@ -747,107 +844,103 @@ def run_detection_sweep(
         * len(frac_accelerate_models_list)
         * n_simulations
     )
-    run_idx = 0
 
     print(f"\nRunning detection sweep: {total_runs} total simulations")
+    if n_jobs != 1:
+        import os
+        max_workers = os.cpu_count() if n_jobs == -1 else n_jobs
+        print(f"Using {max_workers} parallel workers")
     print(f"{'='*60}\n")
 
+    # Build list of all simulation tasks
+    simulation_tasks = []
+    run_idx = 0
     for models_per_year in models_per_year_list:
         for benchmarks_per_year in benchmarks_per_year_list:
             for true_accel in true_accelerations:
                 for noise_mult in noise_multipliers:
                     for frac_accelerate_models in frac_accelerate_models_list:
-
-                        detection_times = []
-                        detections = []
-
                         for sim_idx in range(n_simulations):
                             run_idx += 1
-
-                            # Set random seed for reproducibility
                             seed = random_seed_base + run_idx
 
-                            # Generate synthetic data
-                            num_models = int(models_per_year * horizon_years)
-                            num_benchmarks = int(benchmarks_per_year * horizon_years)
-
-                            # Apply noise multiplier to base noise parameters from CONFIG
-                            models_df, benchmarks_df, scores_df = generate_data(
-                                num_models=num_models,
-                                num_benchmarks=num_benchmarks,
-                                true_acceleration=true_accel,
-                                time_range_start=time_range_start,
-                                time_range_end=time_range_start + horizon_years,
-                                cutoff_year=cutoff_year,
-                                error_std=CONFIG.base_error_std * noise_mult,
-                                noise_std_model=CONFIG.base_noise_std_model
-                                * noise_mult,
-                                noise_std_bench=CONFIG.base_noise_std_bench
-                                * noise_mult,
-                                frac_accelerate_models=frac_accelerate_models,
-                                random_seed=seed,
+                            task = (
+                                models_per_year, benchmarks_per_year, true_accel, noise_mult,
+                                frac_accelerate_models, sim_idx, seed, time_range_start, horizon_years,
+                                cutoff_year, detection_threshold, CONFIG.base_error_std,
+                                CONFIG.base_noise_std_model, CONFIG.base_noise_std_bench,
+                                CONFIG.min_r2, CONFIG.min_gap_years, CONFIG.scan_resolution,
+                                CONFIG.min_points_after, store_runs, run_idx
                             )
+                            simulation_tasks.append(task)
 
-                            # Estimate capabilities
-                            df_est = estimated_capabilities(
-                                models_df, benchmarks_df, scores_df
-                            )
+    # Run simulations (in parallel if n_jobs > 1)
+    if n_jobs == 1:
+        # Sequential execution
+        simulation_results = []
+        for i, task in enumerate(simulation_tasks, 1):
+            result = _run_single_simulation(task)
+            simulation_results.append(result)
+            if i % 10 == 0 or i == len(simulation_tasks):
+                print(f"Progress: {i}/{len(simulation_tasks)} runs complete")
+    else:
+        # Parallel execution
+        import os
+        max_workers = os.cpu_count() if n_jobs == -1 else n_jobs
+        with ProcessPoolExecutor(max_workers=max_workers) as executor:
+            simulation_results = list(executor.map(_run_single_simulation, simulation_tasks))
+        print(f"All {len(simulation_results)} simulations complete!")
 
-                            # Estimate detection
-                            result = estimate_detection_for_single_trajectory(
-                                models_df,
-                                benchmarks_df,
-                                scores_df,
-                                cutoff_year=cutoff_year,
-                                detection_threshold=detection_threshold,
-                                verbose=False,
-                            )
+    # Store run data if requested
+    if store_runs:
+        for sim_result in simulation_results:
+            if "run_data" in sim_result:
+                RUN_DATA_STORAGE[sim_result["run_idx"]] = {
+                    **sim_result["run_data"],
+                    "params": sim_result["params"],
+                }
 
-                            # Store run data if requested
-                            if store_runs:
-                                RUN_DATA_STORAGE[run_idx] = {
-                                    "models_df": models_df.copy(),
-                                    "benchmarks_df": benchmarks_df.copy(),
-                                    "scores_df": scores_df.copy(),
-                                    "df_est": df_est.copy(),
-                                    "result": result.copy(),
-                                    "params": {
-                                        "models_per_year": models_per_year,
-                                        "benchmarks_per_year": benchmarks_per_year,
-                                        "true_accel": true_accel,
-                                        "noise_multiplier": noise_mult,
-                                        "frac_accelerate_models": frac_accelerate_models,
-                                        "sim_idx": sim_idx,
-                                        "seed": seed,
-                                        "cutoff_year": cutoff_year,
-                                    },
-                                }
+    # Aggregate results by parameter combination
+    param_combos = {}
+    for sim_result in simulation_results:
+        params = sim_result["params"]
+        key = (
+            params["models_per_year"],
+            params["benchmarks_per_year"],
+            params["true_accel"],
+            params["noise_multiplier"],
+            params["frac_accelerate_models"],
+        )
 
-                            detections.append(result["detected"])
-                            if result["detected"]:
-                                detection_times.append(result["years_to_detect"])
+        if key not in param_combos:
+            param_combos[key] = {
+                "detections": [],
+                "detection_times": [],
+            }
 
-                            print(f"Progress: {run_idx}/{total_runs} runs complete")
+        param_combos[key]["detections"].append(sim_result["detected"])
+        if sim_result["detected"] and sim_result["years_to_detect"] is not None:
+            param_combos[key]["detection_times"].append(sim_result["years_to_detect"])
 
-                        # Aggregate results for this parameter combination
-                        detected_fraction = np.mean(detections)
-                        mean_detection_time = (
-                            np.mean(detection_times) if detection_times else None
-                        )
+    # Build final results dataframe
+    for key, data in param_combos.items():
+        models_per_year, benchmarks_per_year, true_accel, noise_mult, frac_accelerate_models = key
+        detected_fraction = np.mean(data["detections"])
+        mean_detection_time = np.mean(data["detection_times"]) if data["detection_times"] else None
 
-                        results.append(
-                            {
-                                "models_per_year": models_per_year,
-                                "benchmarks_per_year": benchmarks_per_year,
-                                "true_accel": true_accel,
-                                "noise_multiplier": noise_mult,
-                                "frac_accelerate_models": frac_accelerate_models,
-                                "detected_fraction": detected_fraction,
-                                "mean_years_to_detect": mean_detection_time,
-                                "n_detected": sum(detections),
-                                "n_total": n_simulations,
-                            }
-                        )
+        results.append(
+            {
+                "models_per_year": models_per_year,
+                "benchmarks_per_year": benchmarks_per_year,
+                "true_accel": true_accel,
+                "noise_multiplier": noise_mult,
+                "frac_accelerate_models": frac_accelerate_models,
+                "detected_fraction": detected_fraction,
+                "mean_years_to_detect": mean_detection_time,
+                "n_detected": sum(data["detections"]),
+                "n_total": len(data["detections"]),
+            }
+        )
 
     print(f"\nSweep complete!")
     if store_runs:
