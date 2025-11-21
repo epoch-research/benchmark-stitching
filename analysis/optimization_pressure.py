@@ -404,7 +404,7 @@ def create_analysis_plots(
     plot1_png, plot1_pdf = save_plot(
         output_dir / "model_capability_differences_histogram"
     )
-    plt.savefig('outputs/figures/figure-16a.svg', format='svg')
+    # plt.savefig('outputs/figures/figure-16a.svg', format='svg')
 
     plt.show()
 
@@ -469,7 +469,7 @@ def create_analysis_plots(
 
     # Save plot 1.5
     plot1_5_png, plot1_5_pdf = save_plot(output_dir / "capability_scatter_plot")
-    plt.savefig('outputs/figures/figure-16b.svg', format='svg')
+    # plt.savefig('outputs/figures/figure-16b.svg', format='svg')
     plt.show()
 
     # Plot 1.6: Individual anchor scatter plots

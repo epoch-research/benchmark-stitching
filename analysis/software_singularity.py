@@ -16,6 +16,8 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import least_squares
 from sklearn.metrics import r2_score
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 # ============================================================================
@@ -28,6 +30,91 @@ OUTPUT_DIR = Path("outputs/software_singularity")
 # Global storage for run data (used for visualizations)
 RUN_DATA_STORAGE = {}
 
+# ============================================================================
+# CUSTOM GRAPH STYLING
+# ============================================================================
+
+def setup_custom_style():
+    """Set up custom graph styling for all plots."""
+    # Custom color palette
+    custom_colors = [
+        '#00A5A6',  # teal
+        '#E03D90',  # pink
+        '#FC6538',  # orange
+        '#6A3ECB',  # purple
+        '#0058DC',  # blue
+        '#EA8D00',  # yellow
+        '#B087F4',  # lightPurple
+        '#279E27',  # green
+        '#009AF1',  # lightBlue
+        '#015D90',  # darkBlue
+        '#EA4831',  # red
+        '#E1C700',  # yellow2
+        '#46FFFF',  # turquoise
+        '#63F039',  # lightGreen
+    ]
+
+    sns.set_palette(custom_colors)
+
+    # Seaborn global settings
+    sns.set_theme(
+        style="whitegrid",
+        palette=custom_colors,
+        context="notebook"
+    )
+
+    # Matplotlib global settings (rcParams)
+    plt.rcParams.update({
+        # Figure
+        "figure.figsize": (8, 5),
+        "figure.dpi": 120,
+
+        # Axes
+        "axes.titley": 1.02,
+        "axes.titlesize": 14,
+        "axes.titlelocation": 'center',
+        "axes.titlepad": 0,
+        "axes.labelsize": 12,
+        "axes.labelpad": 10,
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+
+        # Ticks
+        "xtick.labelsize": 12,
+        "ytick.labelsize": 12,
+        "xtick.major.size": 5,
+        "ytick.major.size": 5,
+        "xtick.top": False,
+        "xtick.bottom": True,
+        "ytick.left": True,
+        "ytick.right": False,
+
+        # Legend
+        "legend.fontsize": 10,
+        "legend.loc": "upper left",
+        "legend.frameon": True,
+        "legend.borderaxespad": 0,
+
+        # Lines and markers
+        "lines.linewidth": 2,
+        "lines.markersize": 8,
+        "lines.markeredgecolor": 'auto',
+        "lines.markeredgewidth": 0.5,
+
+        # Error bars
+        "errorbar.capsize": 3,
+
+        # Font
+        "font.family": "Arial",
+        "font.sans-serif": ["DejaVu Sans"],
+
+        # Grid
+        "grid.alpha": 0.3,
+        "grid.linestyle": "-",
+        "grid.color": "lightgray",
+    })
+
+    return custom_colors
 
 # ============================================================================
 # DATA GENERATION
@@ -1027,6 +1114,207 @@ def test_false_positive_rate(
 
 
 # ============================================================================
+# VISUALIZATION FUNCTIONS
+# ============================================================================
+
+
+def plot_synthetic_data_over_time(models_df, benchmarks_df, output_dir, colors):
+    """
+    Plot 1: Synthetic data showing model capabilities and benchmark difficulties
+    over time.
+
+    Shows the ground truth data with acceleration visible in the model capabilities.
+    """
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    # Plot model capabilities
+    ax.scatter(
+        models_df["date"],
+        models_df["model_capabilities"],
+        alpha=0.6,
+        s=30,
+        label="Model capabilities",
+        color=colors[0],  # teal
+    )
+
+    # Plot benchmark difficulties
+    ax.scatter(
+        benchmarks_df["benchmark_release_date"],
+        benchmarks_df["benchmark_difficulties"],
+        alpha=0.6,
+        s=30,
+        label="Benchmark difficulties",
+        color=colors[2],  # orange
+    )
+
+    ax.set_xlabel("Year")
+    ax.set_ylabel("Capability / Difficulty")
+    ax.set_title("Synthetic Data: Model Capabilities and Benchmark Difficulties Over Time")
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+
+    plt.tight_layout()
+    save_path = output_dir / "synthetic_data_over_time.pdf"
+    plt.savefig(save_path, dpi=300, bbox_inches="tight")
+    print(f"  Saved: {save_path}")
+    plt.close()
+
+
+def plot_detection_demonstration(
+    models_df,
+    benchmarks_df,
+    scores_df,
+    cutoff_year,
+    acceleration_factor,
+    output_dir,
+    colors,
+):
+    """
+    Plot 2: Detection algorithm demonstration showing whether acceleration is
+    detected and when.
+
+    Shows:
+    - All model estimated capabilities (scatter)
+    - Frontier points highlighted (larger markers)
+    - Piecewise linear fit if detected (line)
+    - Cutoff year (vertical line)
+    - Detection time (vertical line if detected)
+    """
+    # Estimate capabilities
+    df_est = estimated_capabilities(models_df, benchmarks_df, scores_df, verbose=False)
+
+    if df_est.empty:
+        print("  Warning: Could not estimate capabilities for detection plot")
+        return
+
+    # Compute frontier
+    df_est = df_est.sort_values("date").copy()
+    df_est["frontier"] = df_est["estimated_capability"].cummax()
+
+    # Identify frontier points (models where capability equals frontier)
+    df_est["is_frontier"] = df_est["estimated_capability"] == df_est["frontier"]
+
+    # Run detection
+    result = estimate_detection_for_single_trajectory(
+        models_df,
+        benchmarks_df,
+        scores_df,
+        cutoff_year=cutoff_year,
+        acceleration_factor=acceleration_factor,
+        verbose=False,
+    )
+
+    # Create plot
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    # Plot all estimated capabilities (non-frontier) - using teal from first plot
+    non_frontier = df_est[~df_est["is_frontier"]]
+    ax.scatter(
+        non_frontier["date"],
+        non_frontier["estimated_capability"],
+        alpha=0.4,
+        s=30,
+        color=colors[0],  # teal (matches model capabilities in first plot)
+    )
+
+    # Highlight frontier points
+    frontier_points = df_est[df_est["is_frontier"]]
+    ax.scatter(
+        frontier_points["date"],
+        frontier_points["estimated_capability"],
+        alpha=0.8,
+        s=80,
+        color=colors[7],  # green (darker)
+        edgecolors='white',
+        linewidths=1,
+        zorder=5,
+    )
+
+    # If detected, plot breakpoint and piecewise fit
+    if result["detected"]:
+        bp = result["breakpoint"]
+        detection_time = result["detection_time"]
+
+        # Plot estimated cutoff (breakpoint)
+        ax.axvline(
+            bp,
+            color=colors[10],  # red
+            linestyle="--",
+            alpha=0.7,
+            linewidth=2,
+        )
+
+        # Recompute piecewise fit on the FULL frontier for visualization
+        # (The detection used a subset of data, but we want to show the fit on all data)
+        x_frontier = df_est["date"].values
+        y_frontier = df_est["frontier"].values
+
+        refit_result = fit_two_segments_fixed_breakpoint(x_frontier, y_frontier, bp)
+
+        if refit_result is not None:
+            m1 = refit_result["slope1"]
+            b1 = refit_result["intercept1"]
+            m2 = refit_result["slope2"]
+            b2 = refit_result["intercept2"]
+        else:
+            # Fallback to original slopes if refit fails
+            m1 = result["slope_before"]
+            m2 = result["slope_after"]
+            frontier_at_bp_idx = np.argmin(np.abs(df_est["date"].values - bp))
+            y_at_bp = df_est["frontier"].values[frontier_at_bp_idx]
+            b1 = y_at_bp - m1 * bp
+            b2 = y_at_bp - m2 * bp
+
+        x_range = df_est["date"].values
+        x_min, x_max = x_range.min(), x_range.max()
+        x_fine = np.linspace(x_min, x_max, 200)
+        y_fit = np.where(x_fine < bp, m1 * x_fine + b1, m2 * x_fine + b2)
+
+        # Compute ratio from refit if available
+        if refit_result is not None and m1 > 0:
+            fit_ratio = m2 / m1
+        else:
+            fit_ratio = result['ratio']
+
+        ax.plot(
+            x_fine,
+            y_fit,
+            linestyle=":",
+            linewidth=2.5,
+            color=colors[3],  # purple
+            alpha=0.8,
+        )
+
+        title = f"Detection time: {detection_time-cutoff_year:.2f} years"
+    else:
+        title = f"NO DETECTION (looking for {acceleration_factor}x acceleration)"
+
+    ax.set_xlabel("Year")
+    ax.set_ylabel("Capability")
+    ax.set_title(title)
+    ax.grid(True, alpha=0.3)
+
+    plt.tight_layout()
+    save_path = output_dir / "detection_demonstration.pdf"
+    plt.savefig(save_path, dpi=300, bbox_inches="tight")
+    print(f"  Saved: {save_path}")
+    plt.close()
+
+    # Print detection summary
+    print(f"\n  Detection Summary:")
+    print(f"    Total models generated: {len(models_df)}")
+    print(f"    Models with estimates: {len(df_est)}")
+    print(f"    Frontier models: {df_est['is_frontier'].sum()}")
+    print(f"    Detected: {result['detected']}")
+    if result["detected"]:
+        print(f"    Years to detect: {result['years_to_detect']:.2f}")
+        print(f"    Detection time: {result['detection_time']:.2f}")
+        print(f"    Breakpoint: {result['breakpoint']:.2f}")
+        print(f"    Detected ratio: {result['ratio']:.2f}x")
+        print(f"    R²: {result['r2']:.3f}")
+
+
+# ============================================================================
 # MAIN ANALYSIS
 # ============================================================================
 
@@ -1056,6 +1344,70 @@ def main():
     # Create output directory
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Set up custom styling
+    colors = setup_custom_style()
+
+    # ========================================================================
+    # VISUALIZATION: Generate example plots
+    # ========================================================================
+
+    print("\n" + "=" * 80)
+    print("GENERATING VISUALIZATION PLOTS")
+    print("=" * 80)
+
+    # ========================================================================
+    # Generate synthetic data (matching notebook cell 9)
+    # ========================================================================
+    print("\nCreating synthetic data (matching notebook cell 9)...")
+
+    models_broad, benchmarks_broad, df_broad = generate_data(
+        num_models=600,
+        num_benchmarks=30,
+        speedup_factor_model=2,
+        time_range_start=2020,
+        time_range_end=2030,
+        cutoff_year=2027,
+        frac_eval=0.25,
+        error_std=0.025,
+        elo_change=3.5,
+        base_model=0,
+        noise_std_model=0.25,
+        noise_std_bench=0.25,
+        base_bench=0.5,
+        saturation_level=0.05,
+        min_alpha=2.5,
+        max_alpha=10,
+        frac_accelerate_models=0.25,
+        random_seed=42,  # Fixed seed for reproducible visualizations
+    )
+
+    print(f"  Generated {len(models_broad)} models, {len(benchmarks_broad)} benchmarks")
+    print(f"  {len(df_broad)} evaluation scores")
+
+    # ========================================================================
+    # Plot 1: Synthetic data over time
+    # ========================================================================
+    print("\nGenerating Plot 1: Synthetic data over time...")
+    plot_synthetic_data_over_time(models_broad, benchmarks_broad, output_dir, colors)
+
+    # ========================================================================
+    # Plot 2: Detection demonstration (using same data as Plot 1)
+    # ========================================================================
+    print("\nGenerating Plot 2: Detection demonstration (using same data)...")
+    plot_detection_demonstration(
+        models_broad,
+        benchmarks_broad,
+        df_broad,
+        cutoff_year=2027,
+        acceleration_factor=2.0,
+        output_dir=output_dir,
+        colors=colors,
+    )
+
+    print("\n" + "=" * 80)
+    print("VISUALIZATION PLOTS COMPLETE")
+    print("=" * 80)
 
     if args.false_positive_only:
         print("=" * 80)
