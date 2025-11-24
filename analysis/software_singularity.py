@@ -14,6 +14,7 @@ from concurrent.futures import ProcessPoolExecutor
 from dataclasses import dataclass
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from scipy.optimize import least_squares
@@ -1213,6 +1214,211 @@ def test_false_positive_rate(
         "n_trials": n_trials,
         "detection_times": detection_times,
     }
+
+
+# ============================================================================
+# VISUALIZATION FUNCTIONS
+# ============================================================================
+
+
+def plot_synthetic_data_over_time(models_df, benchmarks_df, output_dir, colors):
+    """
+    Plot 1: Synthetic data showing model capabilities and benchmark difficulties
+    over time.
+
+    Shows the ground truth data with acceleration visible in the model capabilities.
+    """
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    # Plot model capabilities
+    ax.scatter(
+        models_df["date"],
+        models_df["model_capabilities"],
+        alpha=0.6,
+        s=30,
+        label="Model capabilities",
+        color=colors[0],  # teal
+    )
+
+    # Plot benchmark difficulties
+    ax.scatter(
+        benchmarks_df["benchmark_release_date"],
+        benchmarks_df["benchmark_difficulties"],
+        alpha=0.6,
+        s=30,
+        label="Benchmark difficulties",
+        color=colors[2],  # orange
+    )
+
+    ax.set_xlabel("Year")
+    ax.set_ylabel("Capability / Difficulty")
+    ax.set_title("Synthetic Data: Model Capabilities and Benchmark Difficulties Over Time")
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+
+    plt.tight_layout()
+    save_path = output_dir / "synthetic_data_over_time.pdf"
+    plt.savefig(save_path, dpi=300, bbox_inches="tight")
+    print(f"  Saved: {save_path}")
+    plt.close()
+
+
+def plot_detection_demonstration(
+    models_df,
+    benchmarks_df,
+    scores_df,
+    cutoff_year,
+    acceleration_factor,
+    output_dir,
+    colors,
+):
+    """
+    Plot 2: Detection algorithm demonstration showing whether acceleration is
+    detected and when.
+
+    Shows:
+    - All model estimated capabilities (scatter)
+    - Frontier points highlighted (larger markers)
+    - Piecewise linear fit if detected (line)
+    - Cutoff year (vertical line)
+    - Detection time (vertical line if detected)
+    """
+    # Estimate capabilities
+    df_est = estimated_capabilities(models_df, benchmarks_df, scores_df, verbose=False)
+
+    if df_est.empty:
+        print("  Warning: Could not estimate capabilities for detection plot")
+        return
+
+    # Compute frontier
+    df_est = df_est.sort_values("date").copy()
+    df_est["frontier"] = df_est["estimated_capability"].cummax()
+
+    # Identify frontier points (models where capability equals frontier)
+    df_est["is_frontier"] = df_est["estimated_capability"] == df_est["frontier"]
+
+    # Run detection
+    result = estimate_detection_for_single_trajectory(
+        models_df,
+        benchmarks_df,
+        scores_df,
+        cutoff_year=cutoff_year,
+        detection_threshold=acceleration_factor,
+        min_r2=CONFIG.min_r2,
+        min_gap_years=CONFIG.min_gap_years,
+        scan_resolution=CONFIG.scan_resolution,
+        min_points_after=CONFIG.min_points_after,
+        verbose=False,
+    )
+
+    # Create plot
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    # Plot all estimated capabilities (non-frontier) - using teal from first plot
+    non_frontier = df_est[~df_est["is_frontier"]]
+    ax.scatter(
+        non_frontier["date"],
+        non_frontier["estimated_capability"],
+        alpha=0.4,
+        s=30,
+        color=colors[0],  # teal (matches model capabilities in first plot)
+    )
+
+    # Highlight frontier points
+    frontier_points = df_est[df_est["is_frontier"]]
+    ax.scatter(
+        frontier_points["date"],
+        frontier_points["estimated_capability"],
+        alpha=0.8,
+        s=80,
+        color=colors[7],  # green (darker)
+        edgecolors='white',
+        linewidths=1,
+        zorder=5,
+    )
+
+    # If detected, plot breakpoint and piecewise fit
+    if result["detected"]:
+        bp = result["breakpoint"]
+        detection_time = result["detection_time"]
+
+        # Plot estimated cutoff (breakpoint)
+        ax.axvline(
+            bp,
+            color=colors[10],  # red
+            linestyle="--",
+            alpha=0.7,
+            linewidth=2,
+        )
+
+        # Recompute piecewise fit on the FULL frontier for visualization
+        # (The detection used a subset of data, but we want to show the fit on all data)
+        x_frontier = df_est["date"].values
+        y_frontier = df_est["frontier"].values
+
+        refit_result = fit_two_segments_fixed_breakpoint(x_frontier, y_frontier, bp)
+
+        if refit_result is not None:
+            m1 = refit_result["slope1"]
+            b1 = refit_result["intercept1"]
+            m2 = refit_result["slope2"]
+            b2 = refit_result["intercept2"]
+        else:
+            # Fallback to original slopes if refit fails
+            m1 = result["slope_before"]
+            m2 = result["slope_after"]
+            frontier_at_bp_idx = np.argmin(np.abs(df_est["date"].values - bp))
+            y_at_bp = df_est["frontier"].values[frontier_at_bp_idx]
+            b1 = y_at_bp - m1 * bp
+            b2 = y_at_bp - m2 * bp
+
+        x_range = df_est["date"].values
+        x_min, x_max = x_range.min(), x_range.max()
+        x_fine = np.linspace(x_min, x_max, 200)
+        y_fit = np.where(x_fine < bp, m1 * x_fine + b1, m2 * x_fine + b2)
+
+        # Compute ratio from refit if available
+        if refit_result is not None and m1 > 0:
+            fit_ratio = m2 / m1
+        else:
+            fit_ratio = result['ratio']
+
+        ax.plot(
+            x_fine,
+            y_fit,
+            linestyle=":",
+            linewidth=2.5,
+            color=colors[3],  # purple
+            alpha=0.8,
+        )
+
+        title = f"Detection time: {detection_time-cutoff_year:.2f} years"
+    else:
+        title = f"NO DETECTION (looking for {acceleration_factor}x acceleration)"
+
+    ax.set_xlabel("Year")
+    ax.set_ylabel("Capability")
+    ax.set_title(title)
+    ax.grid(True, alpha=0.3)
+
+    plt.tight_layout()
+    save_path = output_dir / "detection_demonstration.pdf"
+    plt.savefig(save_path, dpi=300, bbox_inches="tight")
+    print(f"  Saved: {save_path}")
+    plt.close()
+
+    # Print detection summary
+    print(f"\n  Detection Summary:")
+    print(f"    Total models generated: {len(models_df)}")
+    print(f"    Models with estimates: {len(df_est)}")
+    print(f"    Frontier models: {df_est['is_frontier'].sum()}")
+    print(f"    Detected: {result['detected']}")
+    if result["detected"]:
+        print(f"    Years to detect: {result['years_to_detect']:.2f}")
+        print(f"    Detection time: {result['detection_time']:.2f}")
+        print(f"    Breakpoint: {result['breakpoint']:.2f}")
+        print(f"    Detected ratio: {result['ratio']:.2f}x")
+        print(f"    R²: {result['r2']:.3f}")
 
 
 # ============================================================================
