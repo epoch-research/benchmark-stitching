@@ -17,8 +17,97 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sns
 from scipy.optimize import least_squares
 from sklearn.metrics import r2_score
+
+
+# ============================================================================
+# STYLING SETUP
+# ============================================================================
+
+
+def setup_custom_style():
+    """Set up custom graph styling for all plots."""
+    # Custom color palette
+    custom_colors = [
+        '#00A5A6',  # teal
+        '#E03D90',  # pink
+        '#FC6538',  # orange
+        '#6A3ECB',  # purple
+        '#0058DC',  # blue
+        '#EA8D00',  # yellow
+        '#B087F4',  # lightPurple
+        '#279E27',  # green
+        '#009AF1',  # lightBlue
+        '#015D90',  # darkBlue
+        '#EA4831',  # red
+        '#E1C700',  # yellow2
+        '#46FFFF',  # turquoise
+        '#63F039',  # lightGreen
+    ]
+
+    sns.set_palette(custom_colors)
+
+    # Seaborn global settings
+    sns.set_theme(
+        style="whitegrid",
+        palette=custom_colors,
+        context="notebook"
+    )
+
+    # Matplotlib global settings (rcParams)
+    plt.rcParams.update({
+        # Figure
+        "figure.figsize": (8, 5),
+        "figure.dpi": 120,
+
+        # Axes
+        "axes.titley": 1.02,
+        "axes.titlesize": 14,
+        "axes.titlelocation": 'center',
+        "axes.titlepad": 0,
+        "axes.labelsize": 12,
+        "axes.labelpad": 10,
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+
+        # Ticks
+        "xtick.labelsize": 12,
+        "ytick.labelsize": 12,
+        "xtick.major.size": 5,
+        "ytick.major.size": 5,
+        "xtick.top": False,
+        "xtick.bottom": True,
+        "ytick.left": True,
+        "ytick.right": False,
+
+        # Legend
+        "legend.fontsize": 10,
+        "legend.loc": "upper left",
+        "legend.frameon": True,
+        "legend.borderaxespad": 0,
+
+        # Lines and markers
+        "lines.linewidth": 2,
+        "lines.markersize": 8,
+        "lines.markeredgecolor": 'auto',
+        "lines.markeredgewidth": 0.5,
+
+        # Error bars
+        "errorbar.capsize": 3,
+
+        # Font
+        "font.family": "Arial",
+        "font.sans-serif": ["DejaVu Sans"],
+
+        # Grid
+        "grid.alpha": 0.3,
+        "grid.linestyle": "-",
+        "grid.color": "lightgray",
+    })
+
+    return custom_colors
 
 
 # ============================================================================
@@ -1257,9 +1346,17 @@ def plot_synthetic_data_over_time(models_df, benchmarks_df, output_dir, colors):
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
-    save_path = output_dir / "synthetic_data_over_time.pdf"
-    plt.savefig(save_path, dpi=300, bbox_inches="tight")
-    print(f"  Saved: {save_path}")
+
+    # Save PDF
+    save_path_pdf = output_dir / "synthetic_data_over_time.pdf"
+    plt.savefig(save_path_pdf, dpi=300, bbox_inches="tight")
+    print(f"  Saved: {save_path_pdf}")
+
+    # Save SVG
+    save_path_svg = output_dir / "synthetic_data_over_time.svg"
+    plt.savefig(save_path_svg, bbox_inches="tight")
+    print(f"  Saved: {save_path_svg}")
+
     plt.close()
 
 
@@ -1322,6 +1419,7 @@ def plot_detection_demonstration(
         alpha=0.4,
         s=30,
         color=colors[0],  # teal (matches model capabilities in first plot)
+        label="Model capabilities"
     )
 
     # Highlight frontier points
@@ -1335,6 +1433,7 @@ def plot_detection_demonstration(
         edgecolors='white',
         linewidths=1,
         zorder=5,
+        label="Frontier models"
     )
 
     # If detected, plot breakpoint and piecewise fit
@@ -1349,6 +1448,7 @@ def plot_detection_demonstration(
             linestyle="--",
             alpha=0.7,
             linewidth=2,
+            label="Detected breakpoint"
         )
 
         # Recompute piecewise fit on the FULL frontier for visualization
@@ -1390,6 +1490,7 @@ def plot_detection_demonstration(
             linewidth=2.5,
             color=colors[3],  # purple
             alpha=0.8,
+            label="Piecewise linear fit"
         )
 
         title = f"Detection time: {detection_time-cutoff_year:.2f} years"
@@ -1399,12 +1500,21 @@ def plot_detection_demonstration(
     ax.set_xlabel("Year")
     ax.set_ylabel("Capability")
     ax.set_title(title)
+    ax.legend()
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
-    save_path = output_dir / "detection_demonstration.pdf"
-    plt.savefig(save_path, dpi=300, bbox_inches="tight")
-    print(f"  Saved: {save_path}")
+
+    # Save PDF
+    save_path_pdf = output_dir / "detection_demonstration.pdf"
+    plt.savefig(save_path_pdf, dpi=300, bbox_inches="tight")
+    print(f"  Saved: {save_path_pdf}")
+
+    # Save SVG
+    save_path_svg = output_dir / "detection_demonstration.svg"
+    plt.savefig(save_path_svg, bbox_inches="tight")
+    print(f"  Saved: {save_path_svg}")
+
     plt.close()
 
     # Print detection summary
@@ -1598,12 +1708,69 @@ def main():
         action="store_true",
         help="Only run false positive testing, skip parameter sweep",
     )
+    parser.add_argument(
+        "--plot-only",
+        action="store_true",
+        help="Only generate the two visualization plots (synthetic_data_over_time and detection_demonstration)",
+    )
 
     args = parser.parse_args()
 
     # Create output directory
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Set up custom styling
+    colors = setup_custom_style()
+
+    # ========================================================================
+    # PLOT GENERATION: Generate visualization plots
+    # ========================================================================
+
+    print("\n" + "=" * 80)
+    print("GENERATING VISUALIZATION PLOTS")
+    print("=" * 80)
+
+    # Generate synthetic data for plots
+    print("\nGenerating synthetic data for visualization...")
+    models_for_plot, benchmarks_for_plot, scores_for_plot = generate_data(
+        num_models=600,
+        num_benchmarks=30,
+        true_acceleration=4.0,
+        time_range_start=2020,
+        time_range_end=2030,
+        cutoff_year=2027,
+        error_std=CONFIG.base_error_std,
+        noise_std_model=0.25,
+        noise_std_bench=0.25,
+        frac_accelerate_models=1.0,  # Accelerate all models
+        random_seed=42,
+    )
+
+    # Generate Plot 1: Synthetic data over time
+    print("\nGenerating Plot 1: Synthetic data over time...")
+    plot_synthetic_data_over_time(models_for_plot, benchmarks_for_plot, output_dir, colors)
+
+    # Generate Plot 2: Detection demonstration
+    print("\nGenerating Plot 2: Detection demonstration...")
+    plot_detection_demonstration(
+        models_for_plot,
+        benchmarks_for_plot,
+        scores_for_plot,
+        cutoff_year=2027,
+        acceleration_factor=2.0,
+        output_dir=output_dir,
+        colors=colors,
+    )
+
+    print("\n" + "=" * 80)
+    print("PLOTS GENERATED SUCCESSFULLY")
+    print("=" * 80)
+
+    # If plot-only mode, exit here
+    if args.plot_only:
+        print(f"\nPlots saved to: {output_dir}")
+        return
 
     # ========================================================================
     # EXAMPLE MODE: Run single configuration with detailed output
