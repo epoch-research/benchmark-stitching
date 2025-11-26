@@ -1503,6 +1503,10 @@ def plot_detection_demonstration(
     ax.legend()
     ax.grid(True, alpha=0.3)
 
+    # Set x-axis ticks to show every year
+    from matplotlib.ticker import MultipleLocator
+    ax.xaxis.set_major_locator(MultipleLocator(1))
+
     plt.tight_layout()
 
     # Save PDF

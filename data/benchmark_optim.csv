@@ -1,0 +1,43 @@
+benchmark,optimized_for,is_coding,is_math,benchmark_release_date,source
+Aider polyglot,TRUE,TRUE,FALSE,2024/12/21,https://aider.chat/2024/12/21/polyglot.html
+ANLI,TRUE,FALSE,FALSE,2019/10/31,https://arxiv.org/abs/1910.14599
+ARC AI2,TRUE,FALSE,FALSE,2018/03/14,https://arxiv.org/abs/1803.05457
+ARC-AGI,TRUE,FALSE,FALSE,2019/11/05,https://arxiv.org/abs/1911.01547
+Balrog,FALSE,FALSE,FALSE,2024/11/20,https://arxiv.org/abs/2411.13543
+BBH,TRUE,FALSE,FALSE,2022/10/17,https://arxiv.org/abs/2210.09261
+BoolQ,TRUE,FALSE,FALSE,2019/05/24,https://arxiv.org/abs/1905.10044
+CadEval,FALSE,TRUE,FALSE,2025/04/22,https://willpatrick.xyz/cadevalresults_20250422_095709/
+CSQA2,FALSE,FALSE,FALSE,2022/01/14,https://arxiv.org/abs/2201.05320
+Cybench,TRUE,TRUE,FALSE,2024/08/15,https://arxiv.org/abs/2408.08926
+DeepResearch Bench,FALSE,FALSE,FALSE,2025/06/13,https://arxiv.org/abs/2506.11763
+Factorio learning environment,FALSE,FALSE,FALSE,2025/03/06,https://arxiv.org/abs/2503.09617
+Fiction.LiveBench,FALSE,FALSE,FALSE,2025/02/21,https://fiction.live/stories/Fiction-liveBench-April-29-2025/oQdzQvKHw8JyXbN87
+FrontierMath-2025-02-28-Private,TRUE,FALSE,TRUE,2025/02/28,https://epoch.ai/frontiermath
+GeoBench,FALSE,FALSE,FALSE,2025/03/01,https://ccmdi.com/blog/GeoBench
+GPQA diamond,TRUE,FALSE,FALSE,2023/11/20,https://arxiv.org/abs/2311.12022
+GSM8K,TRUE,FALSE,TRUE,2021/10/27,https://arxiv.org/abs/2110.14168
+GSO-Bench,FALSE,TRUE,FALSE,2025/05/29,https://arxiv.org/abs/2505.23671
+HellaSwag,TRUE,FALSE,FALSE,2019/05/19,https://arxiv.org/abs/1905.07830
+LAMBADA,TRUE,FALSE,FALSE,2016/06/20,https://arxiv.org/abs/1606.06031
+Lech Mazur Writing,FALSE,FALSE,FALSE,2025/01/31,https://github.com/lechmazur/writing
+LiveBench,TRUE,TRUE,TRUE,2024/06/27,https://arxiv.org/abs/2406.19314
+MATH level 5,TRUE,FALSE,TRUE,2021/03/05,https://arxiv.org/abs/2103.03874
+MCBench,FALSE,FALSE,FALSE,2024/10/16,https://arxiv.org/abs/2410.12332
+MMLU,TRUE,FALSE,FALSE,2020/09/07,https://arxiv.org/abs/2009.03300
+OpenBookQA,TRUE,FALSE,FALSE,2018/09/08,https://arxiv.org/abs/1809.02789
+OSUniverse,FALSE,FALSE,FALSE,2025/05/06,https://arxiv.org/abs/2505.03570
+OSWorld,TRUE,FALSE,FALSE,2024/04/11,https://arxiv.org/abs/2404.07972
+OTIS Mock AIME 2024-2025,TRUE,FALSE,TRUE,2024/12/19,https://web.evanchen.cc/exams/sols-OTIS-Mock-AIME-2025.pdf
+PIQA,TRUE,FALSE,FALSE,2019/11/26,https://arxiv.org/abs/1911.11641
+ScienceQA,TRUE,FALSE,FALSE,2022/09/20,https://arxiv.org/abs/2209.09513
+SimpleBench,FALSE,FALSE,FALSE,2024/10/31,https://drive.google.com/file/d/1mddNFK5UbBFVr3oDftd2Kyc6D8TFctfe/view
+SuperGLUE,TRUE,FALSE,FALSE,2019/05/02,https://arxiv.org/abs/1905.00537
+SWE-Bench verified,TRUE,TRUE,FALSE,2024/08/13,https://openai.com/index/introducing-swe-bench-verified/
+Terminal Bench,TRUE,TRUE,FALSE,2025/05/19,https://www.tbench.ai/news/announcement
+The Agent Company,FALSE,FALSE,FALSE,2024/12/18,https://arxiv.org/abs/2412.14161
+TriviaQA,TRUE,FALSE,FALSE,2017/05/09,https://arxiv.org/abs/1705.03551
+VideoMME,TRUE,FALSE,FALSE,2024/05/31,https://arxiv.org/abs/2405.21075
+VPCT,FALSE,FALSE,FALSE,2025/01/30,https://x.com/ChaseBrowe32432/status/1885164397485551762
+WeirdML,FALSE,TRUE,FALSE,2025/01/16,https://www.lesswrong.com/posts/LfQCzph7rc2vxpweS/introducing-the-weirdml-benchmark
+Winogrande,TRUE,FALSE,FALSE,2019/07/24,https://arxiv.org/abs/1907.10641
+METR,FALSE,TRUE,FALSE,2025/03/18,https://arxiv.org/abs/2503.14499
