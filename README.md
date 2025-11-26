@@ -49,7 +49,7 @@ uv run run_all_analyses.py --no-plots
 uv run run_all_analyses.py --help
 ```
 
-## Jupyter Notebooks (Legacy)
+<!-- ## Jupyter Notebooks (Legacy)
 Original analysis notebooks are still available in `notebooks/`:
 - `model_fit.ipynb`: basic model fit based on `fit.py`
 - `data_exploration.ipynb`: analyze the data that is processed in `data_loader.py`
@@ -58,7 +58,19 @@ Original analysis notebooks are still available in `notebooks/`:
 - `cross_validation.ipynb`: compare sigmoid and clipped linear models
 - `optimization_pressure.ipynb`: compare fits when you subset to benchmarks that are or aren't optimized for
 - `benchmark_inclusion.ipynb`: analyze what happens if you drop some fraction of benchmarks at random
-- `change_anchor.ipynb`: see what happens if you change the anchor from winogrande with difficulty 0 and slope param 1
+- `change_anchor.ipynb`: see what happens if you change the anchor from winogrande with difficulty 0 and slope param 1 -->
+
+## Analysis files
+All analysis files can be found in `analysis/`:
+- `algorithmic_progress_new.ipynb`: Algorithmic progress analysis (Section 3.2)
+- `benchmark_inclusion.ipynb`: Robustness check varying benchmark inclusion (Appendix E.3)
+- `change_anchor.ipynb`: Robustness check varying the benchmark anchor (Appendix E.2)
+- `data_exploration.ipynb`: Creating plots to visualize benchmarking data
+- `forecasting.ipynb`: Simple projections of the estimated capability trend (Section 3.2.1)
+- `model_fit.ipynb`: Analysis notebook testing model fit and creating plots of model capabilities/benchmark difficulties over time
+- `optimization_pressure.py`: Testing whether or not we see higher estimated capabilities among benchmarks that have been heavily "optimized for" by AI labs (Section 3.1.2 and Appendix E.3.2)
+- `sigmoid_vs_linear_fit.ipynb`: Cross-validation varying the assumption that the map from `capabilities - difficulties` to performance is sigmoidal (Section E.4)
+- `software_singularity.py`: Synthetic data generation and analysis to see if our framework can detect rapid accelerations in model capabilities (Section 3.3)
 
 ## Output Structure
 All analyses save results to `outputs/[analysis_name]/` with:
@@ -69,28 +81,34 @@ All analyses save results to `outputs/[analysis_name]/` with:
 
 See `CLAUDE.md` for comprehensive documentation of the methodology, repository structure, and usage examples.
 
-## Creating figures and tables
+## Creating paper figures and tables
+- Figure 0: Illustrating how benchmark stitching works in the first place - `model_fit.ipynb`
 - Figure 1: Estimated model capabilities and benchmark difficulties over time, with error bars - `model_fit.ipynb`
-- Figure 2: top N models and top M benchmarks - `model_fit.ipynb`
-- Figure 3: map to METR time horizon - `model_fit.ipynb`
-- Table 1: example capabilities scores - `model_fit.ipynb`
-- Figure 4: optimization pressure - `optimization_pressure.ipynb`
-- Figure 5: SWE bench and geobench - `model_fit.ipynb`
-- Figure 6: 3 year forecast - `predicting_capabilities.ipynb`
-- Figure 7: Forecast validation - `predicting_capabilities.ipynb`
-- Figure 8: capabilities vs log training compute - `algorithmic_progress_new.ipynb`
-- Figure 9: synthetic data and acceleration detection - `software_singularity.ipynb`
-- Figure 10: detecting acceleration in actual data - `predicting_capabilities.ipynb`
-- Figure 11: benchmark overlap - `data_exploration.ipynb`
-- Figure 13: algorithmic progress using the old approach - `algorithmic_progress_new.ipynb`
-- Table 4 and 5: algorithmic progress using the old approach - `algorithmic_progress_new.ipynb`
-- Figure 14: Residuals for synthetic data - `model_fit.ipynb`
-- Figure 15: varying the amount of benchmark overlap - `model_fit.ipynb` (change the overlap in `data_loader.py`)
-- Figure 16: change anchors - `change_anchor.ipynb`
-- Figure 17: splitting benchmarks - `splitting_benchmarks.ipynb`
-- Table 7: cross validation - `cross_validation.ipynb`
-- Updating the stuff with 2019 data (change this in `data_loader.py`)
-- Figure 18: showing that most of our data is very recent - `data_exploration.ipynb`
+- Figure 2: Top 10 models and benchmarks - `model_fit.ipynb`
+- Figure 3: Map to METR time horizon - `model_fit.ipynb`
+- Figure 4: Residuals on SWE-Bench verified and GeoBench - `model_fit.ipynb`
+- Table 1: Example capabilities scores - `model_fit.ipynb`
+- Figure 5: 3 year forecast - `forecasting.ipynb`
+- Figure 6: Forecast validation - `forecasting.ipynb`
+- Figure 7: Capabilities vs log training compute - `algorithmic_progress_new.ipynb`
+- Table 2: Algorithmic progress estimates - `algorithmic_progress_new.ipynb`
+- Figure 8: Synthetic data and acceleration detection - `software_singularity.ipynb` (use the `--plot-only` flag)
+- Figure 9: Detecting acceleration in actual data - `forecasting.ipynb`
+- Table 3: Internal benchmarks - N/A
+- Table 4: External benchmarks - N/A
+- Figure 10: Benchmark overlap - `data_exploration.ipynb`
+- Table 5: Algorithmic progress estimates without dropping distilled models - `algorithmic_progress_new.ipynb`
+- Figure 11: Scale-dependence of algorithmic progress - N/A
+- Table 6: Algorithmic progress (compute reduction) via direct observation - `algorithmic_progress_new.ipynb`
+- Table 7: Algorithmic progress (capability growth) via direct observation - `algorithmic_progress_new.ipynb`
+- Figure 12: Algorithmic progress via direct observation - `algorithmic_progress_new.ipynb`
+- Figure 13: Residuals for synthetic data - `model_fit.ipynb`
+- Figure 14: Varying the amount of benchmark overlap - `model_fit.ipynb` (change the overlap in `data_loader.py`)
+- Figure 15: Robustness check changing benchmark anchors - `change_anchor.ipynb`
+- Figure 16: Checking if we can measure an effect from benchmarks being "optimized-for" - `optimization_pressure.ipynb`
+- Table 8: Classification of benchmarks into optimized-for/not-optimized-for - N/A
+- Figure 17: Temporal distribution of our benchmarking data - `data_exploration.ipynb`
+- Table 9: Cross validation comparing sigmoid and clipped linear models - `cross_validation.ipynb`
+- Figure 18: Analysis with older data (change this in `data_loader.py`)
+- Table 10: Estimated GPT jumps based on older data - `model_fit.ipynb`
 - Figure 19: residuals on each benchmark - `model_fit.ipynb`
-- Figure 20: estimated capabilities and difficulties - `model_fit.ipynb` (not necessary?)
-- Table 8: estimated capabilities - `model_fit.ipynb` (not necessary?)
