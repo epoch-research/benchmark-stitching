@@ -29,12 +29,6 @@ df_anli.dropna(inplace=True)
 df_anli["benchmark"] = "ANLI"
 df_anli["performance"] = pd.to_numeric(df_anli["performance"].str.rstrip('%'), errors="raise") / 100
 
-# df_arc = pd.read_csv("data/external_benchmark_arc_agi.csv")[["Model version", "Score", "Source"]]
-# df_arc = df_arc.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
-# df_arc.dropna(inplace=True)
-# df_arc["benchmark"] = "ARC-AGI"
-# df_arc["performance"] = pd.to_numeric(df_arc["performance"].str.rstrip('%'), errors="raise") / 100
-
 df_arcagi = pd.read_csv("data/external_benchmark_arc_agi.csv")[["Model version", "Score", "Source"]]
 df_arcagi = df_arcagi.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
 df_arcagi.dropna(inplace=True)
@@ -59,11 +53,12 @@ df_bbh.dropna(inplace=True)
 df_bbh["benchmark"] = "BBH"
 df_bbh["performance"] = pd.to_numeric(df_bbh["performance"].str.rstrip('%'), errors="raise") / 100
 
-df_boolq = pd.read_csv("data/external_benchmark_boolq.csv")[["Model version", "Score", "Source"]]
-df_boolq = df_boolq.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
-df_boolq.dropna(inplace=True)
-df_boolq["benchmark"] = "BoolQ"
-df_boolq["performance"] = pd.to_numeric(df_boolq["performance"].str.rstrip('%'), errors="raise") / 100
+# comment out boolq because it's a duplicate of superglue
+# df_boolq = pd.read_csv("data/external_benchmark_boolq.csv")[["Model version", "Score", "Source"]]
+# df_boolq = df_boolq.rename(columns={"Model version": "model", "Score": "performance", "Source": "source"})
+# df_boolq.dropna(inplace=True)
+# df_boolq["benchmark"] = "BoolQ"
+# df_boolq["performance"] = pd.to_numeric(df_boolq["performance"].str.rstrip('%'), errors="raise") / 100
 
 df_cadeval = pd.read_csv("data/external_benchmark_cadeval.csv")[["Model version", "Overall pass (%)", "Source"]]
 df_cadeval = df_cadeval.rename(columns={"Model version": "model", "Overall pass (%)": "performance", "Source": "source"})
@@ -243,14 +238,6 @@ df_winogrande["performance"] = pd.to_numeric(df_winogrande["performance"].str.rs
 #########################
 # data processing and filterings
 #########################
-# possible outliers
-# SWE-bench verified: o4-mini and o3 do surprisingly badly because of function calling issues
-# models_to_drop = [
-#     'o3-mini-2025-01-31_medium',
-#     'o4-mini-2025-04-16_medium',
-# ]
-# df_swebenchver = df_swebenchver[~df_swebenchver['model'].isin(models_to_drop)].reset_index(drop=True)
-
 benchmarks = [
     df_gpqa, # https://www.anthropic.com/news/claude-3-5-sonnet specifically GPQA diamond
     df_fm_private, # not public. but probably OpenAI models have hill climbed on it to some extent. will say that it has been hill-climbed on
@@ -264,7 +251,7 @@ benchmarks = [
     df_arcai2, 
     df_balrog, # who's even heard of this?
     df_bbh, # chinchilla https://arxiv.org/abs/2203.15556
-    df_boolq,
+    # df_boolq, # duplicate - boolq is part of superglue
     df_cadeval, # never even heard of this, also seems pretty hard to find on google. idk how we even found out about this! https://willpatrick.xyz/cadevalresults_20250422_095709/
     df_csqa2,
     df_cybench, # probably? e.g. claude 3.7 sonnet. https://assets.anthropic.com/m/785e231869ea8b3b/original/claude-3-7-sonnet-system-card.pdf it's one of their RSP evals though, so maybe they have some disincentive to do well on this
@@ -296,10 +283,7 @@ benchmarks = [
 ]
 
 # benchmark release dates
-sheet_id = "17YuRlWlFqfeqztj_s9VlfIruUOnGCpf5S2eMjC2Oz_Q"
-gid = "0"  # the sheet’s gid
-csv_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid={gid}"
-bench_dates = pd.read_csv(csv_url)
+bench_dates = pd.read_csv("data/benchmark_optim.csv")
 bench_dates['benchmark'] = bench_dates['benchmark'].astype(str).str.strip()
 ### Normalize boolean-like columns from the sheet
 for _col in ['optimized_for', 'is_math', 'is_coding']:
@@ -355,10 +339,6 @@ scores_df['benchmark_id'] = scores_df['benchmark'].map(benchmark_to_id)
 scores_df['model_id'] = scores_df['model'].map(model_to_id)
 scores_df = scores_df[['benchmark_id', 'benchmark', 'model_id', 'model', 'performance', 'optimized', 'is_math', 'is_coding', 'source']]
 
-saturation_level = 0 #0.025
-scores_df = scores_df[(scores_df["performance"] >= saturation_level) & (scores_df["performance"] <= 1 - saturation_level)]
-print("after saturation filter", len(scores_df))
-
 # Count the number of benchmarks per model
 model_benchmark_counts = scores_df.groupby('model')['benchmark'].nunique()
 
@@ -382,16 +362,15 @@ scores_df = scores_df[['benchmark_id', 'benchmark', 'model_id', 'model', 'perfor
 
 df_model = pd.read_csv("data/model_versions.csv")[["id", "Model", "Version release date"]]
 df_model = df_model.rename(columns={"id": "model", "Version release date": "date"})
-df_model.loc[df_model["model"] == "gemini-exp-1206","date"] = "2024-12-06" # typo, in the benchmark it says 2025-12-06 which is impossible. to be updated.
-df_model = df_model.drop(df_model.index[df_model['Model'].eq('Mistral Large')])
 scores_df = scores_df.merge(df_model, on="model")
 print("after merge with model versions", len(scores_df))
 
 # Filter to keep only models from November 2022 onwards (ChatGPT era)
-START_DATE_FILTER = '2022-11-01'
-scores_df['date'] = pd.to_datetime(scores_df['date'], errors='coerce')
-scores_df = scores_df[scores_df['date'] >= pd.to_datetime(START_DATE_FILTER)].copy()
-print(f"after date filter (>= {START_DATE_FILTER})", len(scores_df))
+START_DATE_FILTER = '2022-11-01' # None
+if START_DATE_FILTER is not None:
+    scores_df['date'] = pd.to_datetime(scores_df['date'], errors='coerce')
+    scores_df = scores_df[scores_df['date'] >= pd.to_datetime(START_DATE_FILTER)].copy()
+    print(f"after date filter (>= {START_DATE_FILTER})", len(scores_df))
 
 scores_df = scores_df.merge(
     bench_dates[['benchmark', 'benchmark_release_date']],
@@ -414,29 +393,10 @@ scores_df_aggregated = scores_df.groupby(['model_id', 'benchmark_id']).agg({
     'model': 'first',
     'date': 'first',
     'source': 'first',
-    # Add any other columns you want to keep here, using 'first' as the aggregator
 }).reset_index()
 
 print(f"Number of rows after aggregation: {len(scores_df_aggregated)}")
 
-# # Keep only benchmarks that have at least 10 scores (distinct models)
-# MIN_SCORES_PER_BENCHMARK = 10
-# benchmark_model_counts = scores_df_aggregated.groupby('benchmark_id')['model_id'].nunique()
-# eligible_benchmarks = benchmark_model_counts[benchmark_model_counts >= MIN_SCORES_PER_BENCHMARK].index
-# before_bench_count = scores_df_aggregated['benchmark_id'].nunique()
-# scores_df_aggregated = (
-#     scores_df_aggregated[scores_df_aggregated['benchmark_id'].isin(eligible_benchmarks)]
-#     .reset_index(drop=True)
-# )
-# after_bench_count = scores_df_aggregated['benchmark_id'].nunique()
-# print(
-#     f"After requiring "+
-#     f">= {MIN_SCORES_PER_BENCHMARK} scores per benchmark: "
-#     f"{len(scores_df_aggregated)} rows, "
-#     f"{after_bench_count}/{before_bench_count} benchmarks kept"
-# )
-
-# Overwrite the original dataframe with the filtered, aggregated one
 scores_df = scores_df_aggregated
 
 if __name__ == "__main__":

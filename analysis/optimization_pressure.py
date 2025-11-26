@@ -212,21 +212,25 @@ def save_results(results: dict, output_dir: Path = None):
 
     Args:
         results: Dictionary containing analysis results
-        output_dir: Output directory path (defaults to outputs/benchmark_anchor_diff/)
+        output_dir: Output directory path (defaults to outputs/optimization_pressure/)
     """
     if output_dir is None:
-        output_dir = Path("outputs/benchmark_anchor_diff")
+        output_dir = Path("outputs/optimization_pressure")
 
     # Create output directory if it doesn't exist
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Save approach 1 results
-    comp1 = results["comp1"]
-    comp1.to_csv(output_dir / "approach1_model_capabilities.csv", index=False)
+    # Create supplementary subfolder for less important outputs
+    supplementary_dir = output_dir / "supplementary"
+    supplementary_dir.mkdir(parents=True, exist_ok=True)
 
-    # Save approach 1 summary
+    # Save approach 1 results (to supplementary folder)
+    comp1 = results["comp1"]
+    comp1.to_csv(supplementary_dir / "approach1_model_capabilities.csv", index=False)
+
+    # Save approach 1 summary (to supplementary folder)
     summary1 = results["summary1"]
-    with open(output_dir / "approach1_summary.txt", "w") as f:
+    with open(supplementary_dir / "approach1_summary.txt", "w") as f:
         f.write("Benchmark Anchor Approach 1 Results\n")
         f.write("=" * 40 + "\n\n")
         f.write(f"Number of models: {summary1['n_models_overlap']}\n")
@@ -238,9 +242,9 @@ def save_results(results: dict, output_dir: Path = None):
         f.write(f"Pearson correlation: {summary1['pearson_r']:.6f}\n")
         f.write(f"Spearman correlation: {summary1['spearman_rho']:.6f}\n")
 
-    # Save execution summary
+    # Save execution summary (to supplementary folder)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    with open(output_dir / f"execution_summary_{timestamp}.txt", "w") as f:
+    with open(supplementary_dir / f"execution_summary_{timestamp}.txt", "w") as f:
         f.write("Benchmark Anchor Approach Execution Summary\n")
         f.write("=" * 50 + "\n\n")
         f.write(f"Execution time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
@@ -257,9 +261,13 @@ def save_results(results: dict, output_dir: Path = None):
         f.write(f"  - Mean delta: {results['approach1_results']['delta_mean']:.6f}\n")
 
     print(f"\nResults saved to: {output_dir}")
-    print("  - approach1_model_capabilities.csv: Model capability comparisons")
-    print("  - approach1_summary.txt: Statistical summary for approach 1")
-    print(f"  - execution_summary_{timestamp}.txt: Execution details")
+    print(
+        f"  - supplementary/approach1_model_capabilities.csv: Model capability comparisons"
+    )
+    print(
+        f"  - supplementary/approach1_summary.txt: Statistical summary for approach 1"
+    )
+    print(f"  - supplementary/execution_summary_{timestamp}.txt: Execution details")
 
 
 def create_analysis_plots(
@@ -277,13 +285,17 @@ def create_analysis_plots(
         opt_caps_by_anchor: List of capability estimates for optimized data across anchors
         unopt_caps_by_anchor: List of capability estimates for unoptimized data across anchors
         anchors20: List of anchor benchmark names
-        output_dir: Output directory path (defaults to outputs/benchmark_anchor_diff/)
+        output_dir: Output directory path (defaults to outputs/optimization_pressure/)
     """
     if output_dir is None:
-        output_dir = Path("outputs/benchmark_anchor_diff")
+        output_dir = Path("outputs/optimization_pressure")
 
     # Create output directory if it doesn't exist
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Create supplementary subfolder for less important outputs
+    supplementary_dir = output_dir / "supplementary"
+    supplementary_dir.mkdir(parents=True, exist_ok=True)
 
     print("\n=== Creating analysis plots ===")
 
@@ -496,15 +508,15 @@ def create_analysis_plots(
 
         plt.tight_layout()
 
-        # Save individual anchor plots
+        # Save individual anchor plots (to supplementary folder)
         plot1_6_png, plot1_6_pdf = save_plot(
-            output_dir / "individual_anchor_scatter_plots"
+            supplementary_dir / "individual_anchor_scatter_plots"
         )
         plt.show()
 
         print(f"\nIndividual anchor plots saved to: {plot1_6_png} and {plot1_6_pdf}")
 
-        # Save common models lists for each anchor
+        # Save common models lists for each anchor (to supplementary folder)
         print("\n=== Saving common models lists for specific anchors ===")
         for anchor in available_anchors:
             if anchor in anchor_data:
@@ -516,7 +528,7 @@ def create_analysis_plots(
                     }
                 )
                 models_csv_path = (
-                    output_dir / f"common_models_{anchor.replace(' ', '_')}.csv"
+                    supplementary_dir / f"common_models_{anchor.replace(' ', '_')}.csv"
                 )
                 models_df.to_csv(models_csv_path, index=False)
                 print(
@@ -553,9 +565,10 @@ def create_analysis_plots(
                     # Sort by difference (most negative first)
                     below_df = below_df.sort_values("difference")
 
-                    # Save to CSV
+                    # Save to CSV (to supplementary folder)
                     below_csv_path = (
-                        output_dir / f"below_diagonal_{anchor.replace(' ', '_')}.csv"
+                        supplementary_dir
+                        / f"below_diagonal_{anchor.replace(' ', '_')}.csv"
                     )
                     below_df.to_csv(below_csv_path, index=False)
                     print(f"  Saved to: {below_csv_path.name}")
@@ -652,7 +665,7 @@ def create_analysis_plots(
     plot2_png, plot2_pdf = save_plot(output_dir / "anchor_differences_barplot")
     plt.show()
 
-    # Save anchor differences data
+    # Save anchor differences data (to supplementary folder)
     anchor_df = pd.DataFrame(
         {
             "anchor_benchmark": anchor_names,
@@ -660,7 +673,7 @@ def create_analysis_plots(
             "anchor_type": anchor_types,
         }
     )
-    anchor_df.to_csv(output_dir / "anchor_differences.csv", index=False)
+    anchor_df.to_csv(supplementary_dir / "anchor_differences.csv", index=False)
 
     # Print summary statistics
     print("\nPlot 1 Summary (Model differences):")
@@ -715,9 +728,9 @@ def create_analysis_plots(
     print(f"  - {plot1_png} and {plot1_pdf}")
     print(f"  - {plot1_5_png} and {plot1_5_pdf}")
     if "plot1_6_png" in locals():
-        print(f"  - {plot1_6_png} and {plot1_6_pdf}")
+        print(f"  - {plot1_6_png} and {plot1_6_pdf} (supplementary)")
     print(f"  - {plot2_png} and {plot2_pdf}")
-    print(f"  - {output_dir / 'anchor_differences.csv'}")
+    print(f"  - {supplementary_dir / 'anchor_differences.csv'} (supplementary)")
 
 
 def run_benchmark_anchor_approach(
@@ -1109,12 +1122,12 @@ def run_permutation_test_analysis(
         anchor_benchmarks: List of benchmark names to use as anchors
         num_permutations: Number of random permutations to test (default: 100)
         random_seed: Random seed for reproducibility (default: 42)
-        output_dir: Output directory path (defaults to outputs/benchmark_anchor_diff/)
+        output_dir: Output directory path (defaults to outputs/optimization_pressure/)
         min_benchmark_date: Minimum benchmark release date as string (e.g., "2024-01-01")
                           or pd.Timestamp. If None, no date filtering is applied (default: None)
     """
     if output_dir is None:
-        output_dir = Path("outputs/benchmark_anchor_diff")
+        output_dir = Path("outputs/optimization_pressure")
     output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"\n{'='*80}")
@@ -1489,7 +1502,7 @@ if __name__ == "__main__":
 
     # Run random state robustness checks
     random_state_results, anchors_total = run_random_state_robustness_checks(
-        num_anchors=10, num_runs=1, min_benchmark_date=MIN_BENCHMARK_DATE
+        num_anchors=9, num_runs=1, min_benchmark_date=MIN_BENCHMARK_DATE
     )
     print("\nRandom state robustness checks completed successfully!")
 
