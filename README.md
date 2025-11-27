@@ -92,7 +92,7 @@ See `CLAUDE.md` for comprehensive documentation of the methodology, repository s
 - Figure 6: Forecast validation - `forecasting.ipynb`
 - Figure 7: Capabilities vs log training compute - `algorithmic_progress_new.ipynb`
 - Table 2: Algorithmic progress estimates - `algorithmic_progress_new.ipynb`
-- Figure 8: Synthetic data and acceleration detection - `software_singularity.ipynb` (use the `--plot-only` flag)
+- Figure 8: Synthetic data acceleration detection - `software_singularity.py` (use the `--plot-only` flag)
 - Figure 9: Detecting acceleration in actual data - `forecasting.ipynb`
 - Table 3: Internal benchmarks - N/A
 - Table 4: External benchmarks - N/A
@@ -102,13 +102,14 @@ See `CLAUDE.md` for comprehensive documentation of the methodology, repository s
 - Table 6: Algorithmic progress (compute reduction) via direct observation - `algorithmic_progress_new.ipynb`
 - Table 7: Algorithmic progress (capability growth) via direct observation - `algorithmic_progress_new.ipynb`
 - Figure 12: Algorithmic progress via direct observation - `algorithmic_progress_new.ipynb`
-- Figure 13: Residuals for synthetic data - `model_fit.ipynb`
-- Figure 14: Varying the amount of benchmark overlap - `model_fit.ipynb` (change the overlap in `data_loader.py`)
-- Figure 15: Robustness check changing benchmark anchors - `change_anchor.ipynb`
-- Figure 16: Checking if we can measure an effect from benchmarks being "optimized-for" - `optimization_pressure.ipynb`
+- Figure 13: Synthetic data example - `software_singularity.py`
+- Figure 14: Residuals for synthetic data - `model_fit.ipynb`
+- Figure 15: Varying the amount of benchmark overlap - `model_fit.ipynb` (change the overlap in `data_loader.py`)
+- Figure 16: Robustness check changing benchmark anchors - `change_anchor.ipynb`
+- Figure 17: Checking if we can measure an effect from benchmarks being "optimized-for" - `optimization_pressure.ipynb`
 - Table 8: Classification of benchmarks into optimized-for/not-optimized-for - N/A
-- Figure 17: Temporal distribution of our benchmarking data - `data_exploration.ipynb`
+- Figure 18: Temporal distribution of our benchmarking data - `data_exploration.ipynb`
 - Table 9: Cross validation comparing sigmoid and clipped linear models - `cross_validation.ipynb`
-- Figure 18: Analysis with older data (change this in `data_loader.py`)
+- Figure 19: Analysis with older data (change this in `data_loader.py`)
 - Table 10: Estimated GPT jumps based on older data - `model_fit.ipynb`
-- Figure 19: residuals on each benchmark - `model_fit.ipynb`
+- Figure 20: residuals on each benchmark - `model_fit.ipynb`

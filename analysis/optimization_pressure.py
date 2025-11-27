@@ -17,8 +17,97 @@ from scipy.optimize import least_squares
 from scipy.stats import ttest_rel, wilcoxon, pearsonr, spearmanr
 from datetime import datetime
 import matplotlib.pyplot as plt
+import seaborn as sns
 from data_loader import scores_df
 from fit import fit_statistical_model
+
+
+# ============================================================================
+# STYLING SETUP
+# ============================================================================
+
+
+def setup_custom_style():
+    """Set up custom graph styling for all plots."""
+    # Custom color palette
+    custom_colors = [
+        '#00A5A6',  # teal
+        '#E03D90',  # pink
+        '#FC6538',  # orange
+        '#6A3ECB',  # purple
+        '#0058DC',  # blue
+        '#EA8D00',  # yellow
+        '#B087F4',  # lightPurple
+        '#279E27',  # green
+        '#009AF1',  # lightBlue
+        '#015D90',  # darkBlue
+        '#EA4831',  # red
+        '#E1C700',  # yellow2
+        '#46FFFF',  # turquoise
+        '#63F039',  # lightGreen
+    ]
+
+    sns.set_palette(custom_colors)
+
+    # Seaborn global settings
+    sns.set_theme(
+        style="whitegrid",
+        palette=custom_colors,
+        context="notebook"
+    )
+
+    # Matplotlib global settings (rcParams)
+    plt.rcParams.update({
+        # Figure
+        "figure.figsize": (8, 5),
+        "figure.dpi": 120,
+
+        # Axes
+        "axes.titley": 1.02,
+        "axes.titlesize": 14,
+        "axes.titlelocation": 'center',
+        "axes.titlepad": 0,
+        "axes.labelsize": 12,
+        "axes.labelpad": 10,
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+
+        # Ticks
+        "xtick.labelsize": 12,
+        "ytick.labelsize": 12,
+        "xtick.major.size": 5,
+        "ytick.major.size": 5,
+        "xtick.top": False,
+        "xtick.bottom": True,
+        "ytick.left": True,
+        "ytick.right": False,
+
+        # Legend
+        "legend.fontsize": 10,
+        "legend.loc": "upper left",
+        "legend.frameon": True,
+        "legend.borderaxespad": 0,
+
+        # Lines and markers
+        "lines.linewidth": 2,
+        "lines.markersize": 8,
+        "lines.markeredgecolor": 'auto',
+        "lines.markeredgewidth": 0.5,
+
+        # Error bars
+        "errorbar.capsize": 3,
+
+        # Font
+        "font.family": "Arial",
+        "font.sans-serif": ["DejaVu Sans"],
+
+        # Grid
+        "grid.alpha": 0.3,
+        "grid.linestyle": "-",
+        "grid.color": "lightgray",
+    })
+
+    return custom_colors
 
 
 def fit_subset_with_benchmark_anchor_ref_init(
@@ -276,6 +365,7 @@ def create_analysis_plots(
     unopt_caps_by_anchor: list,
     anchors20: list,
     output_dir: Path = None,
+    colors=None,
 ):
     """
     Create two analysis plots based on opt_caps_by_anchor data.
@@ -286,9 +376,14 @@ def create_analysis_plots(
         unopt_caps_by_anchor: List of capability estimates for unoptimized data across anchors
         anchors20: List of anchor benchmark names
         output_dir: Output directory path (defaults to outputs/optimization_pressure/)
+        colors: Custom color palette (optional)
     """
     if output_dir is None:
         output_dir = Path("outputs/optimization_pressure")
+
+    # Use default colors if not provided
+    if colors is None:
+        colors = plt.rcParams['axes.prop_cycle'].by_key()['color']
 
     # Create output directory if it doesn't exist
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -302,7 +397,7 @@ def create_analysis_plots(
     # Plot 1: Distribution of model capability differences (averaging over anchors)
     plt.figure(figsize=(10, 6))
     comp1 = results["comp1"]
-    plt.hist(comp1["diff"], bins=30, alpha=0.7, color="blue", edgecolor="black")
+    plt.hist(comp1["diff"], bins=30, alpha=0.7, color=colors[0], edgecolor="black")
     plt.axvline(
         comp1["diff"].mean(),
         color="red",
@@ -311,11 +406,12 @@ def create_analysis_plots(
         label=f"Mean: {comp1['diff'].mean():.4f}",
     )
     plt.axvline(0, color="black", linestyle="-", alpha=0.5, label="No difference")
-    plt.xlabel("Model Capability Difference (Optimized - Unoptimized)")
-    plt.ylabel("Frequency")
-    plt.title("Distribution of Model Capability Differences\n(Averaging over anchors)")
-    plt.legend()
+    plt.xlabel("Model Capability Difference (Optimized - Unoptimized)", fontsize=20)
+    plt.ylabel("Frequency", fontsize=20)
+    plt.title("Distribution of Model Capability Differences\n(Averaging over anchors)", fontsize=24)
+    plt.legend(fontsize=20)
     plt.grid(True, alpha=0.3)
+    plt.tick_params(axis='both', labelsize=20)
 
     # Save plot 1
     plot1_png, plot1_pdf = save_plot(
@@ -325,7 +421,7 @@ def create_analysis_plots(
 
     # Plot 1.5: Scatter plot of optimized vs unoptimized capabilities
     plt.figure(figsize=(10, 8))
-    plt.scatter(comp1["cap_unopt"], comp1["cap_opt"], alpha=0.7, s=50, color="blue")
+    plt.scatter(comp1["cap_unopt"], comp1["cap_opt"], alpha=0.7, s=50, color=colors[0])
 
     # Add y=x diagonal line
     min_val = min(comp1["cap_unopt"].min(), comp1["cap_opt"].min())
@@ -343,11 +439,11 @@ def create_analysis_plots(
     labeled_models = [
         "DeepSeek-R1",
         "claude-3-5-sonnet-20241022",
-        "claude-sonnet-4-5-20250929",
+        # "claude-sonnet-4-5-20250929",
         "gemini-2.5-pro-exp-03-25",
         "gpt-5-2025-08-07_high",
         "gpt-4o-2024-08-06",
-        "grok-4-0709",
+        # "grok-4-0709",
     ]
     for model in labeled_models:
         if model in comp1["model"].values:
@@ -357,29 +453,31 @@ def create_analysis_plots(
                 xy=(model_data["cap_unopt"], model_data["cap_opt"]),
                 xytext=(5, 5),
                 textcoords="offset points",
-                fontsize=8,
+                fontsize=20,
                 alpha=0.8,
-                bbox=dict(boxstyle="round,pad=0.3", facecolor="yellow", alpha=0.6),
+                bbox=dict(boxstyle="round,pad=0.3", facecolor="yellow", alpha=0.6)
             )
 
     # Add correlation coefficient
     correlation = comp1["cap_opt"].corr(comp1["cap_unopt"])
-    plt.text(
-        0.05,
-        0.95,
-        f"Correlation: {correlation:.3f}",
-        transform=plt.gca().transAxes,
-        fontsize=12,
-        bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.8),
-    )
+    # plt.text(
+    #     0.05,
+    #     0.95,
+    #     f"Correlation: {correlation:.3f}",
+    #     transform=plt.gca().transAxes,
+    #     fontsize=12,
+    #     bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.8),
+    # )
 
-    plt.xlabel("Unoptimized Capability Score")
-    plt.ylabel("Optimized Capability Score")
+    plt.xlabel("Unoptimized Capability Score", fontsize=20)
+    plt.ylabel("Optimized Capability Score", fontsize=20)
     plt.title(
-        "Model Capabilities: Optimized vs Unoptimized\n(Each dot represents one model)"
+        "Model Capabilities: Optimized vs Unoptimized",
+        fontsize=24
     )
-    plt.legend()
+    plt.legend(fontsize=20)
     plt.grid(True, alpha=0.3)
+    plt.tick_params(axis='both', labelsize=20)
     plt.tight_layout()
 
     # Save plot 1.5
@@ -451,7 +549,7 @@ def create_analysis_plots(
 
                 # Create scatter plot for this anchor
                 ax = axes[i]
-                ax.scatter(unopt_common, opt_common, alpha=0.7, s=30, color="blue")
+                ax.scatter(unopt_common, opt_common, alpha=0.7, s=30, color=colors[0])
 
                 # Add y=x diagonal line
                 min_val = min(unopt_common.min(), opt_common.min())
@@ -618,11 +716,11 @@ def create_analysis_plots(
     # Create plot 2
     plt.figure(figsize=(14, 8))
     # Use different colors for optimized vs unoptimized anchors
-    colors = [
-        "#2E8B57" if anchor_type == "Optimized" else "#DC143C"
+    bar_colors = [
+        colors[7] if anchor_type == "Optimized" else colors[10]  # green for optimized, red for unoptimized
         for anchor_type in anchor_types
     ]
-    plt.bar(range(len(anchor_names)), anchor_differences, color=colors, alpha=0.7)
+    plt.bar(range(len(anchor_names)), anchor_differences, color=bar_colors, alpha=0.7)
     plt.axhline(0, color="black", linestyle="-", alpha=0.5, label="No difference")
     plt.axhline(
         np.mean(anchor_differences),
@@ -643,8 +741,8 @@ def create_analysis_plots(
     from matplotlib.patches import Patch
 
     legend_elements = [
-        Patch(facecolor="#2E8B57", alpha=0.7, label="Optimized Anchors"),
-        Patch(facecolor="#DC143C", alpha=0.7, label="Unoptimized Anchors"),
+        Patch(facecolor=colors[7], alpha=0.7, label="Optimized Anchors"),
+        Patch(facecolor=colors[10], alpha=0.7, label="Unoptimized Anchors"),
         plt.Line2D(
             [0], [0], color="black", linestyle="-", alpha=0.5, label="No difference"
         ),
@@ -1039,9 +1137,10 @@ def run_benchmark_anchor_approach(
     # Save results to files
     save_results(results)
 
-    # Create analysis plots
+    # Create analysis plots (get colors from current style)
+    current_colors = plt.rcParams['axes.prop_cycle'].by_key()['color']
     create_analysis_plots(
-        results, opt_caps_by_anchor, unopt_caps_by_anchor, anchors_total
+        results, opt_caps_by_anchor, unopt_caps_by_anchor, anchors_total, colors=current_colors
     )
 
     return results, anchors_total
@@ -1329,6 +1428,9 @@ def run_permutation_test_analysis(
     # Create visualization
     print(f"\nCreating permutation test visualization...")
 
+    # Get custom colors from current style
+    custom_colors = plt.rcParams['axes.prop_cycle'].by_key()['color']
+
     n_anchors = len(permutation_results)
     fig, axes = plt.subplots(n_anchors, 1, figsize=(12, 4 * n_anchors))
     if n_anchors == 1:
@@ -1342,7 +1444,7 @@ def run_permutation_test_analysis(
             result["null_diffs"],
             bins=30,
             alpha=0.7,
-            color="gray",
+            color=custom_colors[0],
             edgecolor="black",
             label="Null distribution (random partitions)",
         )
@@ -1486,6 +1588,9 @@ def run_random_state_robustness_checks(
 
 
 if __name__ == "__main__":
+    # Set up custom styling
+    setup_custom_style()
+
     # Set minimum benchmark date for date-filtered analysis
     # Set to None to disable date filtering (original behavior)
     # Set to "2024-01-01" to only consider benchmarks from 2024 onwards
