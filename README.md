@@ -6,7 +6,7 @@ This project contains code for the paper "A Rosetta Stone for AI Benchmarks".
 - `fit.py`: Statistical model fitting using sigmoid function to relate capabilities and difficulties
 - `analysis_utils.py`: Shared utilities for common analysis patterns and visualizations
 
-## Analysis Scripts
+<!-- ## Analysis Scripts
 Run individual analyses using these Python scripts (recommended over notebooks):
 
 - `analysis/analyze_data_exploration.py`: Dataset overview, temporal patterns, and benchmark coverage analysis
@@ -15,7 +15,7 @@ Run individual analyses using these Python scripts (recommended over notebooks):
 - `analysis/analyze_forecasting.py`: Future capability forecasting with uncertainty bounds and validation
 - `analysis/analyze_robustness.py`: Robustness testing via benchmark dropping, cross-validation, and anchor sensitivity
 - `analysis/sanity_check_fit.py`: Visual validation of model capability estimates with random sampling
-- `run_all_analyses.py`: Main runner script to execute all analyses with unified output management
+- `run_all_analyses.py`: Main runner script to execute all analyses with unified output management -->
 
 ### Quick Start
 ```bash
