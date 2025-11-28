@@ -18,6 +18,8 @@ All analysis files can be found in `analysis/`:
 - `sigmoid_vs_linear_fit.ipynb`: Cross-validation varying the assumption that the map from `capabilities - difficulties` to performance is sigmoidal (Section E.4)
 - `software_singularity.py`: Synthetic data generation and analysis to see if our framework can detect rapid accelerations in model capabilities (Section 3.3)
 
+We recommend running python scripts (`{script_name}.py`) using `uv run analysis/{script_name}`. 
+
 ## Output Structure
 All analyses save results to `outputs/[analysis_name]/` with:
 - Generated plots (PNG files)
