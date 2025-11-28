@@ -31,81 +31,72 @@ def setup_custom_style():
     """Set up custom graph styling for all plots."""
     # Custom color palette
     custom_colors = [
-        '#00A5A6',  # teal
-        '#E03D90',  # pink
-        '#FC6538',  # orange
-        '#6A3ECB',  # purple
-        '#0058DC',  # blue
-        '#EA8D00',  # yellow
-        '#B087F4',  # lightPurple
-        '#279E27',  # green
-        '#009AF1',  # lightBlue
-        '#015D90',  # darkBlue
-        '#EA4831',  # red
-        '#E1C700',  # yellow2
-        '#46FFFF',  # turquoise
-        '#63F039',  # lightGreen
+        "#00A5A6",  # teal
+        "#E03D90",  # pink
+        "#FC6538",  # orange
+        "#6A3ECB",  # purple
+        "#0058DC",  # blue
+        "#EA8D00",  # yellow
+        "#B087F4",  # lightPurple
+        "#279E27",  # green
+        "#009AF1",  # lightBlue
+        "#015D90",  # darkBlue
+        "#EA4831",  # red
+        "#E1C700",  # yellow2
+        "#46FFFF",  # turquoise
+        "#63F039",  # lightGreen
     ]
 
     sns.set_palette(custom_colors)
 
     # Seaborn global settings
-    sns.set_theme(
-        style="whitegrid",
-        palette=custom_colors,
-        context="notebook"
-    )
+    sns.set_theme(style="whitegrid", palette=custom_colors, context="notebook")
 
     # Matplotlib global settings (rcParams)
-    plt.rcParams.update({
-        # Figure
-        "figure.figsize": (8, 5),
-        "figure.dpi": 120,
-
-        # Axes
-        "axes.titley": 1.02,
-        "axes.titlesize": 14,
-        "axes.titlelocation": 'center',
-        "axes.titlepad": 0,
-        "axes.labelsize": 12,
-        "axes.labelpad": 10,
-        "axes.spines.top": False,
-        "axes.spines.right": False,
-
-        # Ticks
-        "xtick.labelsize": 12,
-        "ytick.labelsize": 12,
-        "xtick.major.size": 5,
-        "ytick.major.size": 5,
-        "xtick.top": False,
-        "xtick.bottom": True,
-        "ytick.left": True,
-        "ytick.right": False,
-
-        # Legend
-        "legend.fontsize": 10,
-        "legend.loc": "upper left",
-        "legend.frameon": True,
-        "legend.borderaxespad": 0,
-
-        # Lines and markers
-        "lines.linewidth": 2,
-        "lines.markersize": 8,
-        "lines.markeredgecolor": 'auto',
-        "lines.markeredgewidth": 0.5,
-
-        # Error bars
-        "errorbar.capsize": 3,
-
-        # Font
-        "font.family": "Arial",
-        "font.sans-serif": ["DejaVu Sans"],
-
-        # Grid
-        "grid.alpha": 0.3,
-        "grid.linestyle": "-",
-        "grid.color": "lightgray",
-    })
+    plt.rcParams.update(
+        {
+            # Figure
+            "figure.figsize": (8, 5),
+            "figure.dpi": 120,
+            # Axes
+            "axes.titley": 1.02,
+            "axes.titlesize": 14,
+            "axes.titlelocation": "center",
+            "axes.titlepad": 0,
+            "axes.labelsize": 12,
+            "axes.labelpad": 10,
+            "axes.spines.top": False,
+            "axes.spines.right": False,
+            # Ticks
+            "xtick.labelsize": 12,
+            "ytick.labelsize": 12,
+            "xtick.major.size": 5,
+            "ytick.major.size": 5,
+            "xtick.top": False,
+            "xtick.bottom": True,
+            "ytick.left": True,
+            "ytick.right": False,
+            # Legend
+            "legend.fontsize": 10,
+            "legend.loc": "upper left",
+            "legend.frameon": True,
+            "legend.borderaxespad": 0,
+            # Lines and markers
+            "lines.linewidth": 2,
+            "lines.markersize": 8,
+            "lines.markeredgecolor": "auto",
+            "lines.markeredgewidth": 0.5,
+            # Error bars
+            "errorbar.capsize": 3,
+            # Font
+            "font.family": "Arial",
+            "font.sans-serif": ["DejaVu Sans"],
+            # Grid
+            "grid.alpha": 0.3,
+            "grid.linestyle": "-",
+            "grid.color": "lightgray",
+        }
+    )
 
     return custom_colors
 
@@ -811,11 +802,28 @@ def _run_single_simulation(args):
     --------
     dict with keys: detected, years_to_detect, params, run_data (if store_runs)
     """
-    (models_per_year, benchmarks_per_year, true_accel, noise_mult,
-     frac_accelerate_models, sim_idx, seed, time_range_start, horizon_years,
-     cutoff_year, detection_threshold, base_error_std, base_noise_std_model,
-     base_noise_std_bench, min_r2, min_gap_years, scan_resolution,
-     min_points_after, store_runs, run_idx) = args
+    (
+        models_per_year,
+        benchmarks_per_year,
+        true_accel,
+        noise_mult,
+        frac_accelerate_models,
+        sim_idx,
+        seed,
+        time_range_start,
+        horizon_years,
+        cutoff_year,
+        detection_threshold,
+        base_error_std,
+        base_noise_std_model,
+        base_noise_std_bench,
+        min_r2,
+        min_gap_years,
+        scan_resolution,
+        min_points_after,
+        store_runs,
+        run_idx,
+    ) = args
 
     # Generate synthetic data
     num_models = int(models_per_year * horizon_years)
@@ -938,6 +946,7 @@ def run_detection_sweep(
     print(f"\nRunning detection sweep: {total_runs} total simulations")
     if n_jobs != 1:
         import os
+
         max_workers = os.cpu_count() if n_jobs == -1 else n_jobs
         print(f"Using {max_workers} parallel workers")
     print(f"{'='*60}\n")
@@ -955,12 +964,26 @@ def run_detection_sweep(
                             seed = random_seed_base + run_idx
 
                             task = (
-                                models_per_year, benchmarks_per_year, true_accel, noise_mult,
-                                frac_accelerate_models, sim_idx, seed, time_range_start, horizon_years,
-                                cutoff_year, detection_threshold, CONFIG.base_error_std,
-                                CONFIG.base_noise_std_model, CONFIG.base_noise_std_bench,
-                                CONFIG.min_r2, CONFIG.min_gap_years, CONFIG.scan_resolution,
-                                CONFIG.min_points_after, store_runs, run_idx
+                                models_per_year,
+                                benchmarks_per_year,
+                                true_accel,
+                                noise_mult,
+                                frac_accelerate_models,
+                                sim_idx,
+                                seed,
+                                time_range_start,
+                                horizon_years,
+                                cutoff_year,
+                                detection_threshold,
+                                CONFIG.base_error_std,
+                                CONFIG.base_noise_std_model,
+                                CONFIG.base_noise_std_bench,
+                                CONFIG.min_r2,
+                                CONFIG.min_gap_years,
+                                CONFIG.scan_resolution,
+                                CONFIG.min_points_after,
+                                store_runs,
+                                run_idx,
                             )
                             simulation_tasks.append(task)
 
@@ -976,9 +999,12 @@ def run_detection_sweep(
     else:
         # Parallel execution
         import os
+
         max_workers = os.cpu_count() if n_jobs == -1 else n_jobs
         with ProcessPoolExecutor(max_workers=max_workers) as executor:
-            simulation_results = list(executor.map(_run_single_simulation, simulation_tasks))
+            simulation_results = list(
+                executor.map(_run_single_simulation, simulation_tasks)
+            )
         print(f"All {len(simulation_results)} simulations complete!")
 
     # Store run data if requested
@@ -1014,9 +1040,17 @@ def run_detection_sweep(
 
     # Build final results dataframe
     for key, data in param_combos.items():
-        models_per_year, benchmarks_per_year, true_accel, noise_mult, frac_accelerate_models = key
+        (
+            models_per_year,
+            benchmarks_per_year,
+            true_accel,
+            noise_mult,
+            frac_accelerate_models,
+        ) = key
         detected_fraction = np.mean(data["detections"])
-        mean_detection_time = np.mean(data["detection_times"]) if data["detection_times"] else None
+        mean_detection_time = (
+            np.mean(data["detection_times"]) if data["detection_times"] else None
+        )
 
         results.append(
             {
@@ -1341,7 +1375,9 @@ def plot_synthetic_data_over_time(models_df, benchmarks_df, output_dir, colors):
 
     ax.set_xlabel("Year")
     ax.set_ylabel("Capability / Difficulty")
-    ax.set_title("Synthetic Data: Model Capabilities and Benchmark Difficulties Over Time")
+    ax.set_title(
+        "Synthetic Data: Model Capabilities and Benchmark Difficulties Over Time"
+    )
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -1419,7 +1455,7 @@ def plot_detection_demonstration(
         alpha=0.4,
         s=30,
         color=colors[0],  # teal (matches model capabilities in first plot)
-        label="Model capabilities"
+        label="Model capabilities",
     )
 
     # Highlight frontier points
@@ -1430,10 +1466,10 @@ def plot_detection_demonstration(
         alpha=0.8,
         s=80,
         color=colors[7],  # green (darker)
-        edgecolors='white',
+        edgecolors="white",
         linewidths=1,
         zorder=5,
-        label="Frontier models"
+        label="Frontier models",
     )
 
     # If detected, plot breakpoint and piecewise fit
@@ -1448,7 +1484,7 @@ def plot_detection_demonstration(
             linestyle="--",
             alpha=0.7,
             linewidth=2,
-            label="Detected breakpoint"
+            label="Detected breakpoint",
         )
 
         # Recompute piecewise fit on the FULL frontier for visualization
@@ -1481,7 +1517,7 @@ def plot_detection_demonstration(
         if refit_result is not None and m1 > 0:
             fit_ratio = m2 / m1
         else:
-            fit_ratio = result['ratio']
+            fit_ratio = result["ratio"]
 
         ax.plot(
             x_fine,
@@ -1490,7 +1526,7 @@ def plot_detection_demonstration(
             linewidth=2.5,
             color=colors[3],  # purple
             alpha=0.8,
-            label="Piecewise linear fit"
+            label="Piecewise linear fit",
         )
 
         title = f"Detection time: {detection_time-cutoff_year:.2f} years"
@@ -1505,6 +1541,7 @@ def plot_detection_demonstration(
 
     # Set x-axis ticks to show every year
     from matplotlib.ticker import MultipleLocator
+
     ax.xaxis.set_major_locator(MultipleLocator(1))
 
     plt.tight_layout()
@@ -1753,7 +1790,9 @@ def main():
 
     # Generate Plot 1: Synthetic data over time
     print("\nGenerating Plot 1: Synthetic data over time...")
-    plot_synthetic_data_over_time(models_for_plot, benchmarks_for_plot, output_dir, colors)
+    plot_synthetic_data_over_time(
+        models_for_plot, benchmarks_for_plot, output_dir, colors
+    )
 
     # Generate Plot 2: Detection demonstration
     print("\nGenerating Plot 2: Detection demonstration...")
@@ -1897,10 +1936,7 @@ def main():
     print("ANALYSIS COMPLETE")
     print("=" * 80)
     print(f"\nAll outputs saved to: {output_dir}")
-    print("\nKey findings:")
-    if not args.false_positive_only:
-        print("  - Detection time depends on model/benchmark release rates")
-        print("  - Higher acceleration is easier/faster to detect")
+    print("\nKey findings and next steps:")
 
     # Summary of false positive rates
     min_fpr = fpr_results_df["false_positive_rate"].min()
@@ -1909,10 +1945,7 @@ def main():
     print(
         f"  - False positive rate range: {min_fpr:.1%} to {max_fpr:.1%} (mean: {mean_fpr:.1%})"
     )
-    print("  - Longer observation windows generally increase false positive rate")
-    print("  - Higher noise levels generally increase false positive rate")
 
-    print("\nNext steps:")
     if not args.false_positive_only:
         print(
             "  - Check parameter_sweep/detection_sweep_results.csv for detailed results"
