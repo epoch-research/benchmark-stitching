@@ -21,13 +21,8 @@ All analysis files can be found in `analysis/`:
 We recommend running python scripts (`{script_name}.py`) using `uv run analysis/{script_name}`. 
 
 ## Output Structure
-All analyses save results to `outputs/[analysis_name]/` with:
-- Generated plots (PNG files)
-- Data tables (CSV files) 
-- Analysis summaries (TXT files)
-- Detailed parameters and statistics
 
-See `CLAUDE.md` for comprehensive documentation of the methodology, repository structure, and usage examples.
+All analyses save results to `outputs/[analysis_name]/`, with generated plots (PNG files), data tables (CSV files) and some analysis summaries (TXT files).
 
 ## Creating paper figures and tables
 - Figure 0: Illustrating how benchmark stitching works in the first place - `model_fit.ipynb`
