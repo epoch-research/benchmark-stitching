@@ -49,6 +49,15 @@ def main():
                        help='Only include models that were on the Pareto frontier at their release date')
     parser.add_argument('--label-points', action='store_true',
                        help='Label data points with ECI values')
+    parser.add_argument('--contour-spacing', type=float, default=None,
+                       help='Spacing between ECI contour lines (e.g., 0.5 for every 0.5 ECI points). '
+                            'If not specified, spacing is automatically determined based on data range.')
+    parser.add_argument('--color-contours', action='store_true',
+                       help='Color the ECI contour lines by their ECI value using viridis colormap')
+    parser.add_argument('--eci-min', type=float, default=None,
+                       help='Minimum ECI value to display on plot (analysis still uses all data)')
+    parser.add_argument('--eci-max', type=float, default=None,
+                       help='Maximum ECI value to display on plot (analysis still uses all data)')
 
     args = parser.parse_args()
 
@@ -103,7 +112,11 @@ def main():
         exclude_med_high_distilled=args.exclude_med_high_distilled,
         frontier_only=args.frontier_only,
         use_website_data=args.use_website_data,
-        min_release_date=args.min_release_date
+        min_release_date=args.min_release_date,
+        contour_spacing=args.contour_spacing,
+        color_contours=args.color_contours,
+        eci_min=args.eci_min,
+        eci_max=args.eci_max
     )
 
     # Print summary statistics

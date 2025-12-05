@@ -11,7 +11,8 @@ import matplotlib.dates as mdates
 from sklearn.linear_model import LinearRegression
 
 
-def add_eci_contours(ax, df_plot, model, eci_levels=None, bootstrap_results=None):
+def add_eci_contours(ax, df_plot, model, eci_levels=None, bootstrap_results=None,
+                     contour_spacing=None, color_contours=False):
     """Add contour lines for constant ECI values with optional uncertainty bands.
 
     Args:
@@ -20,6 +21,8 @@ def add_eci_contours(ax, df_plot, model, eci_levels=None, bootstrap_results=None
         model: Fitted LinearRegression model
         eci_levels: Optional list of ECI levels for contours
         bootstrap_results: Optional dict with bootstrap results for uncertainty bands
+        contour_spacing: Optional fixed spacing between contour lines (e.g., 5.0)
+        color_contours: If True, color contour lines by their ECI value using viridis colormap
 
     Returns:
         contours: matplotlib contour object
@@ -61,8 +64,11 @@ def add_eci_contours(ax, df_plot, model, eci_levels=None, bootstrap_results=None
         eci_max = df_plot['estimated_capability'].max()
         eci_range = eci_max - eci_min
 
-        # Choose spacing based on range
-        if eci_range > 10:
+        # Use provided spacing or choose automatically based on range
+        if contour_spacing is not None:
+            spacing = contour_spacing
+            print(f"Using user-specified contour spacing: {spacing}")
+        elif eci_range > 10:
             spacing = 2.0
         elif eci_range > 5:
             spacing = 1.0
@@ -107,14 +113,23 @@ def add_eci_contours(ax, df_plot, model, eci_levels=None, bootstrap_results=None
     print(f"Compute mesh shape: {Compute_mesh.shape}, range: {Compute_mesh.min():.2e} to {Compute_mesh.max():.2e}")
     print(f"ECI grid shape: {ECI_grid.shape}, range: {ECI_grid.min():.2f} to {ECI_grid.max():.2f}")
 
-    contours = ax.contour(Date_obj_mesh, Compute_mesh, ECI_grid,
-                          levels=eci_levels, colors='black', alpha=0.8,
-                          linewidths=2.5, linestyles='-', zorder=2)
-
-    # Add labels with background for readability
-    ax.clabel(contours, inline=True, fontsize=10, fmt='%.2f',
-              colors='black', inline_spacing=10,
-              use_clabeltext=True)
+    if color_contours:
+        # Use viridis colormap for colored contours
+        contours = ax.contour(Date_obj_mesh, Compute_mesh, ECI_grid,
+                              levels=eci_levels, cmap='viridis', alpha=0.8,
+                              linewidths=2.5, linestyles='-', zorder=2)
+        # Add labels with matching colors
+        ax.clabel(contours, inline=True, fontsize=10, fmt='%.2f',
+                  inline_spacing=10, use_clabeltext=True)
+    else:
+        # Use black contours (original behavior)
+        contours = ax.contour(Date_obj_mesh, Compute_mesh, ECI_grid,
+                              levels=eci_levels, colors='black', alpha=0.8,
+                              linewidths=2.5, linestyles='-', zorder=2)
+        # Add labels with background for readability
+        ax.clabel(contours, inline=True, fontsize=10, fmt='%.2f',
+                  colors='black', inline_spacing=10,
+                  use_clabeltext=True)
 
     print(f"Contours plotted successfully")
     return contours
@@ -383,7 +398,8 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
                     show_predicted_frontier=False, label_points=False,
                     exclude_distilled=False, exclude_med_high_distilled=False,
                     frontier_only=False, use_website_data=False,
-                    min_release_date=None):
+                    min_release_date=None, contour_spacing=None,
+                    eci_min=None, eci_max=None, color_contours=False):
     """Create the main compute vs date plot with ECI contours.
 
     Args:
@@ -398,24 +414,44 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
         frontier_only: Whether only frontier models were included
         use_website_data: Whether website data was used
         min_release_date: Minimum release date filter (if applied)
+        contour_spacing: Optional fixed spacing between contour lines (e.g., 5.0)
+        eci_min: Optional minimum ECI value to display on plot
+        eci_max: Optional maximum ECI value to display on plot
+        color_contours: If True, color contour lines by their ECI value
     """
+    # Filter data for display if ECI range specified
+    df_display = df_plot.copy()
+    if eci_min is not None or eci_max is not None:
+        original_count = len(df_display)
+        if eci_min is not None:
+            df_display = df_display[df_display['estimated_capability'] >= eci_min]
+        if eci_max is not None:
+            df_display = df_display[df_display['estimated_capability'] <= eci_max]
+        filtered_count = len(df_display)
+        print(f"\nFiltering plot display: showing {filtered_count}/{original_count} models "
+              f"(ECI range: {eci_min if eci_min is not None else 'any'} to "
+              f"{eci_max if eci_max is not None else 'any'})")
+
     # Create the main plot
     fig, ax = plt.subplots(figsize=(14, 9))
 
-    # Normalize ECI for color mapping
-    eci_values = df_plot['estimated_capability'].values
-    eci_min, eci_max = eci_values.min(), eci_values.max()
+    # Normalize ECI for color mapping (use full data range for consistency)
+    eci_values_all = df_plot['estimated_capability'].values
+    eci_values_display = df_display['estimated_capability'].values
+    vmin, vmax = eci_values_all.min(), eci_values_all.max()
 
-    # Plot each point
+    # Plot each point (using filtered data for display)
     scatter = ax.scatter(
-        df_plot['date_obj'],
-        df_plot['compute'],
-        c=df_plot['estimated_capability'],
+        df_display['date_obj'],
+        df_display['compute'],
+        c=df_display['estimated_capability'],
         cmap='viridis',
         s=100,
         alpha=0.7,
         edgecolors='black',
         linewidth=0.5,
+        vmin=vmin,
+        vmax=vmax,
         zorder=3
     )
 
@@ -424,15 +460,16 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
                         label='ECI (Epoch Capabilities Index / Capability)')
 
     # Add contour lines for constant ECI (without uncertainty bands on main plot)
-    add_eci_contours(ax, df_plot, model, bootstrap_results=None)
+    add_eci_contours(ax, df_plot, model, bootstrap_results=None,
+                     contour_spacing=contour_spacing, color_contours=color_contours)
 
     # Optionally add predicted Pareto frontiers
     if show_predicted_frontier:
         add_predicted_frontiers(ax, df_plot, model, frequency='MS')
 
-    # Add ECI labels to each point if requested
+    # Add ECI labels to each point if requested (only for displayed points)
     if label_points:
-        for _, row in df_plot.iterrows():
+        for _, row in df_display.iterrows():
             # Use 'Model' if available, otherwise fall back to 'model'
             model_name = row.get('Model', row.get('model', 'Unknown'))
             label_text = f"{model_name}\n{row['estimated_capability']:.2f}"
@@ -472,11 +509,19 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
         title_suffix_parts.append('website data')
     if min_release_date:
         title_suffix_parts.append(f'models from {min_release_date}+')
+    if eci_min is not None or eci_max is not None:
+        eci_display_range = f"displaying ECI {eci_min if eci_min is not None else 'any'} to {eci_max if eci_max is not None else 'any'}"
+        title_suffix_parts.append(eci_display_range)
 
     title_suffix = ' (' + ', '.join(title_suffix_parts) + ')' if title_suffix_parts else ''
 
+    if color_contours:
+        contour_desc = 'colored lines: constant ECI'
+    else:
+        contour_desc = 'black lines: constant ECI'
+
     title = (f'AI Models: Release Date vs Training Compute{title_suffix}\n'
-             'Colored by ECI (black lines: constant ECI)')
+             f'Colored by ECI ({contour_desc})')
     ax.set_title(title, fontsize=14, fontweight='bold')
 
     # Grid
@@ -505,6 +550,11 @@ def plot_main_figure(df_plot, model, bootstrap_results, output_dir,
         suffix_parts.append("website")
     if min_release_date:
         suffix_parts.append(f"from_{min_release_date}")
+    if color_contours:
+        suffix_parts.append("colored_contours")
+    if eci_min is not None or eci_max is not None:
+        eci_range_str = f"eci_{eci_min if eci_min is not None else 'any'}_to_{eci_max if eci_max is not None else 'any'}"
+        suffix_parts.append(eci_range_str)
 
     suffix = "_" + "_".join(suffix_parts) if suffix_parts else ""
     output_path = output_dir / f"compute_vs_date_with_eci{suffix}.png"
