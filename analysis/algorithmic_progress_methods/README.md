@@ -58,12 +58,49 @@ See [LINEAR_NOTES.md](linear_model/LINEAR_NOTES.md) for detailed methodology.
 
 ## 🔧 Usage
 
-### Buckets Method
+### Quick Start - Run Everything
+
+The easiest way to run all analyses with all configurations:
 
 ```bash
-# Activate environment
-source .venv/bin/activate
+# Run all methods with all configurations (internal + website data, with/without distilled)
+cd analysis/algorithmic_progress_methods
+python run_everything.py
 
+# Quick preview of what will run (dry run)
+python run_everything.py --dry-run
+
+# Run with reduced iterations (faster, for testing)
+python run_everything.py --quick
+
+# Run only specific methods
+python run_everything.py --buckets-only
+python run_everything.py --linear-only
+python run_everything.py --hierarchical-only
+
+# Skip website data configurations (faster)
+python run_everything.py --skip-website
+
+# Continue even if some analyses fail
+python run_everything.py --continue-on-error
+
+# See all options
+python run_everything.py --help
+```
+
+The `run_everything.py` script automatically runs:
+- **Buckets method** with 6 configurations (internal/website × all/no-distilled/no-distilled-all)
+- **Buckets sensitivity analysis** for each configuration
+- **Hierarchical median estimator** for each configuration
+- **Linear model** with 8 configurations (adds frontier-only variants)
+
+Results are organized in `outputs/algorithmic_progress_methods/` by method and configuration.
+
+### Individual Method Usage
+
+#### Buckets Method
+
+```bash
 # Basic usage
 cd analysis/algorithmic_progress_methods/buckets
 python main.py
@@ -74,6 +111,12 @@ python main.py --eci-bucket-size 0.3 --exclude-distilled
 # Sensitivity analysis
 python main.py --sweep-bucket-sizes --n-bucket-sizes 5
 
+# Hierarchical median estimator (sweeps bucket sizes and pools results)
+python hierarchical_median.py --n-bucket-sizes 7 --n-iter 30000
+
+# Same hierarchical workflow via the buckets CLI (analysis + plots)
+python main.py --run-hierarchical-median --hierarchical-n-bucket-sizes 7
+
 # Help
 python main.py --help
 ```
@@ -82,18 +125,34 @@ python main.py --help
 - `--eci-bucket-size`: Width of ECI buckets (default: 0.5)
 - `--compute-bucket-size`: Width of compute buckets (default: 0.5 OOMs)
 - `--min-models`: Minimum SOTA models per bucket (default: 3)
-- `--exclude-distilled`: Exclude distilled models
+- `--exclude-distilled`: Exclude distilled models (high/medium confidence)
+- `--include-low-confidence`: Also exclude low-confidence distilled (requires --exclude-distilled)
 - `--use-website-data`: Use website data instead of fitted data
 - `--sweep-bucket-sizes`: Run sensitivity analysis
+- `--run-hierarchical-median`: Sweep bucket sizes, fit the hierarchical model, and generate diagnostics
+- `--label-points`: Label data points with model names
 
-### Linear Model Method
-
-Currently uses the original script:
+#### Linear Model Method
 
 ```bash
 cd analysis/algorithmic_progress_methods/linear_model
-python plot_compute_vs_date_with_eci.py --help
+python main.py
+
+# With options
+python main.py --exclude-distilled --frontier-only
+
+# Help
+python main.py --help
 ```
+
+**Options:**
+- `--exclude-distilled`: Exclude distilled models
+- `--include-low-confidence`: Also exclude low-confidence distilled (requires --exclude-distilled)
+- `--use-website-data`: Use website data instead of fitted data
+- `--frontier-only`: Only include models on the Pareto frontier at release
+- `--show-predicted-frontier`: Show predicted Pareto frontier for each month
+- `--label-points`: Label data points with ECI values and model names
+- `--min-release-date`: Only include models released on or after specified date (YYYY-MM-DD)
 
 ## 📊 Output Structure
 
@@ -107,12 +166,16 @@ outputs/algorithmic_progress_methods/
 │   ├── compute_reduction_analysis{suffix}.png
 │   ├── capability_gains_analysis{suffix}.png
 │   ├── all_bucket_regressions_compute_reduction{suffix}.png
-│   └── bootstrap_distributions_compute_reduction{suffix}.png
+│   ├── bootstrap_distributions_compute_reduction{suffix}.png
+│   ├── hierarchical_median_observations{suffix}.csv
+│   ├── hierarchical_median_summary{suffix}.json
+│   └── hierarchical_median_diagnostics{suffix}.png / .svg
 │
 └── linear_model/
-    ├── compute_vs_date_with_eci{suffix}.png
+    ├── compute_vs_date_with_eci{suffix}.png / .svg
     ├── bootstrap_uncertainty_diagnostics{suffix}.png
-    └── fitted_capabilities_cache{suffix}.pkl
+    ├── coefficient_correlation{suffix}.png
+    └── compute_year_tradeoff_distribution{suffix}.png
 ```
 
 **Suffix patterns:**
