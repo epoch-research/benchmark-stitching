@@ -6,33 +6,40 @@ This directory contains different statistical methods for analyzing algorithmic 
 
 ```
 algorithmic_progress_methods/
-├── shared/                          # Shared utilities (~900 lines)
+├── shared/                          # Shared utilities (~1500 lines)
 │   ├── __init__.py
-│   ├── data_loading.py             # Data loading & preprocessing (~200 lines)
+│   ├── data_loading.py             # Data loading & preprocessing (~270 lines)
 │   ├── bootstrap.py                # Bootstrap analysis utilities (~170 lines)
-│   ├── cli_utils.py                # CLI argument parsing (~100 lines)
-│   └── plotting/                    # Plotting utilities (~600 lines)
+│   ├── cli_utils.py                # CLI argument parsing (~165 lines)
+│   └── plotting/                    # Plotting utilities (~950 lines)
 │       ├── __init__.py
-│       ├── base.py                 # Basic plotting utilities (~80 lines)
+│       ├── base.py                 # Basic plotting utilities (~90 lines)
 │       ├── distributions.py        # Histogram & bootstrap plots (~140 lines)
-│       ├── regressions.py          # Scatter + fit plots (~180 lines)
-│       └── diagnostics.py          # Uncertainty diagnostics (~200 lines)
+│       ├── regressions.py          # Scatter + fit plots (~185 lines)
+│       ├── diagnostics.py          # Uncertainty diagnostics (~205 lines)
+│       └── unified_plots.py        # Unified plotting functions (~285 lines)
 │
 ├── buckets/                         # Buckets method
 │   ├── analysis.py                 # Core analysis logic
 │   ├── plotting.py                 # Visualization functions
 │   ├── main.py                     # CLI entry point
+│   ├── hierarchical_median.py      # Hierarchical median estimator
+│   ├── hierarchical_median_visualization.py  # Visualization for hierarchical model
 │   └── BUCKET_NOTES.md             # Methodology documentation
 │
 ├── linear_model/                    # Linear regression method
 │   ├── analysis.py                 # Core analysis logic
+│   ├── plotting.py                 # Visualization functions
 │   ├── main.py                     # CLI entry point
 │   ├── LINEAR_NOTES.md             # Methodology documentation
-│   └── plot_compute_vs_date_with_eci.py
+│   └── plot_predicted_pareto_frontier.py  # Pareto frontier visualization
 │
 ├── families/                        # Model families method (in development)
 │   └── FAMILIES_NOTES.md
 │
+├── run_everything.py               # Run all methods with all configurations
+├── result_collector.py             # Collect and summarize results
+├── show_results_summary.py         # Display results summary
 └── README.md                        # This file
 ```
 
@@ -89,9 +96,9 @@ python run_everything.py --help
 ```
 
 The `run_everything.py` script automatically runs:
-- **Buckets method** with 6 configurations (internal/website × all/no-distilled/no-distilled-all)
-- **Buckets sensitivity analysis** for each configuration
-- **Hierarchical median estimator** for each configuration
+- **Buckets method** with 6 configurations (internal/website × all/exclude-med-high-distilled/exclude-all-distilled)
+- **Buckets sensitivity analysis** for each configuration (can skip with `--skip-sensitivity`)
+- **Hierarchical median estimator** for each configuration (can skip with `--skip-hierarchical`)
 - **Linear model** with 8 configurations (adds frontier-only variants)
 
 Results are organized in `outputs/algorithmic_progress_methods/` by method and configuration.
@@ -125,9 +132,10 @@ python main.py --help
 - `--eci-bucket-size`: Width of ECI buckets (default: 0.5)
 - `--compute-bucket-size`: Width of compute buckets (default: 0.5 OOMs)
 - `--min-models`: Minimum SOTA models per bucket (default: 3)
-- `--exclude-distilled`: Exclude distilled models (high/medium confidence)
-- `--include-low-confidence`: Also exclude low-confidence distilled (requires --exclude-distilled)
+- `--exclude-med-high-distilled`: Exclude medium and high confidence distilled models
+- `--exclude-distilled`: Exclude ALL distilled models (all confidence levels)
 - `--use-website-data`: Use website data instead of fitted data
+- `--min-release-date`: Only include models released on or after specified date (YYYY-MM-DD)
 - `--sweep-bucket-sizes`: Run sensitivity analysis
 - `--run-hierarchical-median`: Sweep bucket sizes, fit the hierarchical model, and generate diagnostics
 - `--label-points`: Label data points with model names
@@ -146,13 +154,16 @@ python main.py --help
 ```
 
 **Options:**
-- `--exclude-distilled`: Exclude distilled models
-- `--include-low-confidence`: Also exclude low-confidence distilled (requires --exclude-distilled)
+- `--exclude-med-high-distilled`: Exclude medium and high confidence distilled models
+- `--exclude-distilled`: Exclude ALL distilled models (all confidence levels)
 - `--use-website-data`: Use website data instead of fitted data
 - `--frontier-only`: Only include models on the Pareto frontier at release
 - `--show-predicted-frontier`: Show predicted Pareto frontier for each month
-- `--label-points`: Label data points with ECI values and model names
+- `--label-points`: Label data points with ECI values
 - `--min-release-date`: Only include models released on or after specified date (YYYY-MM-DD)
+- `--contour-spacing`: Spacing between ECI contour lines
+- `--color-contours`: Color ECI contour lines by their value using viridis colormap
+- `--eci-min` / `--eci-max`: Control displayed ECI range on plot
 
 ## 📊 Output Structure
 
@@ -179,8 +190,8 @@ outputs/algorithmic_progress_methods/
 ```
 
 **Suffix patterns:**
-- `_no_distilled` - Excluded high/medium confidence distilled models
-- `_no_distilled_all` - Excluded all distilled models (including low confidence)
+- `_no_distilled` - Excluded medium/high confidence distilled models (--exclude-med-high-distilled)
+- `_no_distilled_all` - Excluded ALL distilled models including low confidence (--exclude-distilled)
 - `_website` - Used website data instead of fitted data
 - `_frontier_only` - Only Pareto frontier models
 
