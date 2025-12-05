@@ -10,10 +10,6 @@ claude-2.1,FALSE,low,
 claude-3-5-haiku-20241022,TRUE,low,
 claude-3-5-sonnet-20240620,FALSE,high,https://www.darioamodei.com/post/on-deepseek-and-export-controls
 claude-3-5-sonnet-20241022,FALSE,medium,
-claude-3-7-sonnet-20250219,TRUE,low,
-claude-3-7-sonnet-20250219_16K,TRUE,low,
-claude-3-7-sonnet-20250219_32K,TRUE,low,
-claude-3-7-sonnet-20250219_64K,TRUE,low,
 claude-3-haiku-20240307,TRUE,low,
 claude-3-opus-20240229,FALSE,medium,"Assumed, given its size relative to rest of series"
 claude-3-sonnet-20240229,TRUE,low,
